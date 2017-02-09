@@ -1,7 +1,6 @@
 <div class="row">
     <div class="col-md-12">
         <form class="form-inline input-sm">
-            <label id="nom_ligue">La ligue des pingouins</label>
             <label>Saison</label>
                 <select>
                     <option>2015-2016</option>
@@ -14,14 +13,14 @@
 
 <div class="row">
     <div class="col-md-6">
-        @include ('content.classement')
+        @include ('content._classement')
     </div>
     <div class="col-md-6">
-        @include ('content.calendrier_et_scores')
+        @include ('content._calendrier')
     </div>
     <div class="row">
         <div class="col-md-12">
-            @include ('content.menu')
+            @include ('content._menu')
         </div>
     </div>
 </div>

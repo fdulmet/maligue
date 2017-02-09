@@ -1,4 +1,4 @@
-<div id="dialogInviterAmis" title="Inviter des amis">
+<div id="dialogInviterAmisDansEquipe" title="Inviter des amis à rejoindre mon équipe">
     <p>
         <form>
             <label>email ou facebook</label>

@@ -1,8 +1,22 @@
-header {
+#banner {
   background-color: #d62110;
-}
-
-h4{
-    vertical-align: middle;
-    color:white;
+  border-bottom: 2px solid darkred;
+  vertical-align: middle;
+  a {
+    color: white;
+    text-decoration: none;
   }
+  h3 {
+    margin: 10px;
+    text-shadow: 2px 2px 2px black;
+  }
+  ul{
+    list-style-type: none;
+  }
+  #prenom_nom{
+    text-shadow: 1px 1px 1px black;
+  }
+  #dropdownMenu{
+    color: black;
+  }
+}
