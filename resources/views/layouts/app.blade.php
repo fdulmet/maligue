@@ -9,7 +9,7 @@
     <script src="js/app.js"></script>
     <script>window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/build/css/app.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}" />
 
     <!--Dialog Boxes-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

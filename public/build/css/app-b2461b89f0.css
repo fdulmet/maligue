@@ -7696,7 +7696,6 @@ button.close {
   background-color: #d62110;
   border-bottom: 2px solid darkred;
   vertical-align: middle;
-  font-weight: normal;
 }
 
 #banner a {
@@ -7723,7 +7722,6 @@ button.close {
 
 #content {
   padding: 0px 10px 40px 40px;
-  height: 100%;
 }
 
 #content #classement {
@@ -7731,52 +7729,12 @@ button.close {
 }
 
 #content #espace_equipe {
-  height: 100%;
-  margin-top: 10px;
   padding-left: 20px;
   background-color: whitesmoke;
 }
 
 #content #espace_equipe h4 {
   font-weight: bold;
-}
-
-.table-editable {
-  position: relative;
-}
-
-.table-editable .glyphicon {
-  font-size: 20px;
-}
-
-.table-remove {
-  color: #700;
-  cursor: pointer;
-}
-
-.table-remove:hover {
-  color: #f00;
-}
-
-.table-up, .table-down {
-  color: #007;
-  cursor: pointer;
-}
-
-.table-up:hover, .table-down:hover {
-  color: #00f;
-}
-
-.table-add {
-  color: #070;
-  cursor: pointer;
-  position: absolute;
-  top: 8px;
-  right: 0;
-}
-
-.table-add:hover {
-  color: #0b0;
 }
 
 /*# sourceMappingURL=app.css.map */
