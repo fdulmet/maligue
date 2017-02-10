@@ -25,7 +25,7 @@
         </p>
         <br>
         <p>
-            <b>Prochain match :</b>
+            <b>Prochain match de :</b>
             <span></span>
         </p>
         <p>
@@ -35,6 +35,17 @@
         <p>
             <b>Composition pour tel match :</b>
             <span></span>
+        </p>
+        <p>
+            <b>Test eloquent relationships :</b>
+                <?php
+                    $user = App\User::find(1);
+
+                    $user->equipes as $equipe) {
+                    //
+                    }
+                ?>
+
         </p>
     </div>
 </div>

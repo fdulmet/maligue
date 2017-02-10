@@ -26,7 +26,7 @@ class RegisterListener
      */
     public function handle(RegisterEvent $event)
     {
-        dd($event);
+        //dd($event);
 //        TeamController->associateUserToTeam($event->user);
     }
 }

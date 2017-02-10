@@ -26,15 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    /*
+
+    /**
+     * Plusieurs équipes peuvent appartenir à un user.
+     */
+    public function equipes()
+    {
+        return $this->belongsToMany('App\Equipe');
+    }
+}
+
+/*
     public function articles()//cf Joueur.php commentaires bas pour voir qu'y faire dans le cas d'articles qui appartiennent à un user
     {
         return $this->hasMany('App\Article')
     }
     */
 
-    //public function equipe()
-    //{
-    //    return $this->hasOne('App\Equipe');//hasMany pour : un joueur peut avoir pluieurs équipes
-    //}
-}
+//public function equipe()
+//{
+//    return $this->hasOne('App\Equipe');//hasMany pour : un joueur peut avoir pluieurs équipes
+//}
