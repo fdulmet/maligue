@@ -15,7 +15,7 @@
 @stop
 
 @section('content')
-    @include('tests._banner', ['heading'=>'La ligue des Pingouins', 'body'=>'bienvenue'])
+    @include('test._bannertest', ['heading'=>'La ligue des Pingouins', 'body'=>'bienvenue'])
     <div class="container">
 
         <div class="alert alert-success">
