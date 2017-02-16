@@ -29,11 +29,21 @@
 Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-Route::get('/loginfacebook', 'LoginFacebookController@facebook');
+Route::get('/home.php', 'HomeController@index');
+
+Route::get('auth/facebook', 'Auth\FacebookController@redirectToProvider');
+Route::get('auth/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
+
+//Test editer un form :
+Route::get('tests', 'TestController@index');
+Route::get('tests/create', 'TestController@create' );
+Route::get('tests/{id}', 'TestController@show' );
+Route::post('tests', 'TestController@store');
+Route::get('tests/{id}/edit', 'TestController@edit');
+
+
 //Route::get('/', 'HomeController@show');
 //Route::get('/home', 'HomeController@show');
-
-
 
 /*Route::get('partials/contact', function () {
     $name = 'François Dulmet';

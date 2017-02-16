@@ -1,6 +1,10 @@
 <div class="row">
     <h4 class="col-md-12">
-        {{ Auth::user()->equipe }}
+        L'équipe de {{ Auth::user()->nom }} est :
+        <?php
+            $equipe = App\Equipe::find(1);
+            echo $equipe;
+        ?>
     </h4>
 </div>
 
@@ -11,7 +15,7 @@
             <br>
             <span>
                 <?php
-                $users = App\User::where('equipe', Auth::user()->equipe)->get();
+                $users = App\User::where('nom', Auth::user()->nom)->get();
                 ?>
                 @foreach ($users as $user)
                     {{ $user->prenom }} {{ $user->nom }}
@@ -38,12 +42,13 @@
         </p>
         <p>
             <b>Test eloquent relationships :</b>
-                <?php
+                <?php/*
                     $user = App\User::find(1);
 
                     $user->equipes as $equipe) {
                     //
                     }
+*/
                 ?>
 
         </p>
