@@ -10,7 +10,7 @@
             <ul class="dropdown-menu" role="menu">
                 <li>
                     <a style="color: black; cursor:pointer;" id="openerProfilJoueur">Profil Joueur</a>
-                    @ include ('content.dialogBoxProfilJoueur')
+                    @include('dialogBoxProfilJoueur')
                 </li>
                 <li>
                     <a href="{{ url('/logout') }}"
