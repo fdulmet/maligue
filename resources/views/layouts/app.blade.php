@@ -26,17 +26,7 @@
                 });
             } );
         </script>
-        <!--Inviter Amis Dans Equipe-->
-        <script>
-            $( function() {
-                $( "#dialogInviterAmisDansEquipe" ).dialog({
-                    autoOpen: false,
-                });
-                $( "#openerInviterAmisDansEquipe" ).on( "click", function() {
-                    $( "#dialogInviterAmisDansEquipe" ).dialog( "open" );
-                });
-            } );
-        </script>
+
 </head>
 <body>
 <!--Home Page-->

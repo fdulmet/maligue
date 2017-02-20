@@ -2,7 +2,7 @@
 
 @include('content.modalReglementReports')
 
-@include('content.modalReglementFootACinq')
+@include('content.modalReglesFootACinq')
 
 
 

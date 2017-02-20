@@ -7752,14 +7752,14 @@ button.close {
   margin-left: -2%;
 }
 
-#content #espace_ligue #menu .no-close {
-  display: none;
-}
-
 #content #espace_ligue #menu button {
-  padding-right: 1%;
-  border: none;
+  color: black;
+  font-size: small;
+  height: auto;
+  border-radius: 2px;
   background-color: #d2d2d2;
+  border-color: #c2c2c2;
+  padding: 1% 2% 1% 2%;
 }
 
 #content #espace_ligue #classement {
@@ -7779,6 +7779,16 @@ button.close {
 
 #content #espace_equipe h4 {
   font-weight: bold;
+}
+
+#content #espace_equipe button {
+  color: black;
+  font-size: small;
+  height: auto;
+  border-radius: 2px;
+  background-color: #d2d2d2;
+  border-color: #c2c2c2;
+  padding: 1% 2% 1% 2%;
 }
 
 .table-editable {

@@ -22,8 +22,7 @@
                 @endforeach
             </span>
             <br>
-            <button id="openerInviterAmisDansEquipe">Inviter des amis</button>
-            @include ('content.dialogInviterAmisDansEquipe')
+            @include('content.modalInviterAmisDansEquipe')
         </p>
         <br>
             <b>Prochain match :</b>
