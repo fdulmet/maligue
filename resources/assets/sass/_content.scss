@@ -1,15 +1,31 @@
 #content{
-  padding: 0px 10px 40px 40px;
-  height: 100%;
-  #classement{
-
-    border: 0px;
+  #espace_ligue{
+    padding: 0% 4% 0 4%;//haut droite bas gauche
+    #menu {
+      padding: 1% 0 1% 0;
+      margin-left:-2%;
+      .no-close {
+        display: none;
+      }
+      button {
+        padding-right: 1%;
+        border: none;
+        background-color: #d2d2d2;
+      }
+    }
+    #classement {
+      padding-right: 5%;
+      border: 0px;
+    }
+    #calendrier{
+      border: 1px;
+    }
   }
   #espace_equipe{
-    height: 100%;
-    margin-top: 10px;
-    padding-left: 20px;
-    background-color: whitesmoke;
+    border-left: 3px solid green;
+    background-color: #f1f1f1;
+    padding: 1% 0 0 1%;
+
     h4{
       font-weight: bold;
     }

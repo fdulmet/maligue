@@ -7688,53 +7688,195 @@ button.close {
   }
 }
 
-#petittest {
-  color: blue;
-}
-
 #banner {
   background-color: #d62110;
   border-bottom: 2px solid darkred;
   vertical-align: middle;
 }
 
-#banner a {
-  color: white;
-  text-decoration: none;
-}
-
 #banner h3 {
   margin: 10px;
   text-shadow: 2px 2px 2px black;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+#banner h3 #titreNomLigue {
+  color: white;
+  text-decoration: none;
+  font-family: Calibri;
+  font-size: x-large;
+  padding-left: 4%;
+}
+
+#banner #padding_menu_saison {
+  padding-left: 0;
+}
+
+#banner #padding_menu_saison #menu_saison {
+  background-color: #d62110;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  border: none;
+  cursor: pointer;
 }
 
 #banner ul {
   list-style-type: none;
 }
 
-#banner #prenom_nom {
-  text-shadow: 1px 1px 1px black;
+#banner #marges_prenom_nom {
+  margin: 0;
+  vertical-align: bottom;
+  padding-left: 0;
 }
 
-#banner #dropdownMenu {
+#banner #marges_prenom_nom #prenom_nom {
+  color: white;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px black;
+  font-size: medium;
+  vertical-align: bottom;
+}
+
+#banner #marges_prenom_nom #dropdownMenu {
   color: black;
 }
 
-#content {
-  padding: 0px 10px 40px 40px;
+#content #espace_ligue {
+  padding: 0% 4% 0 4%;
 }
 
-#content #classement {
+#content #espace_ligue #menu {
+  padding: 1% 0 1% 0;
+  margin-left: -2%;
+}
+
+#content #espace_ligue #menu .no-close {
+  display: none;
+}
+
+#content #espace_ligue #menu button {
+  padding-right: 1%;
+  border: none;
+  background-color: #d2d2d2;
+}
+
+#content #espace_ligue #classement {
+  padding-right: 5%;
   border: 0px;
 }
 
+#content #espace_ligue #calendrier {
+  border: 1px;
+}
+
 #content #espace_equipe {
-  padding-left: 20px;
-  background-color: whitesmoke;
+  border-left: 3px solid green;
+  background-color: #f1f1f1;
+  padding: 1% 0 0 1%;
 }
 
 #content #espace_equipe h4 {
   font-weight: bold;
+}
+
+.table-editable {
+  position: relative;
+}
+
+.table-editable .glyphicon {
+  font-size: 20px;
+}
+
+.table-remove {
+  color: #700;
+  cursor: pointer;
+}
+
+.table-remove:hover {
+  color: #f00;
+}
+
+.table-up, .table-down {
+  color: #007;
+  cursor: pointer;
+}
+
+.table-up:hover, .table-down:hover {
+  color: #00f;
+}
+
+.table-add {
+  color: #070;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+
+.table-add:hover {
+  color: #0b0;
+}
+
+#encart_connexion {
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  width: auto;
+}
+
+#encart_connexion #titreConnexion {
+  font-weight: bold;
+}
+
+#encart_connexion #contenu_encart_connexion {
+  padding: 0;
+}
+
+#encart_connexion #contenu_encart_connexion #bouton_connexion_facebook {
+  width: auto;
+  margin-bottom: 2%;
+}
+
+#encart_connexion #contenu_encart_connexion #formulaire {
+  margin: auto;
+  width: 50%;
+  padding: 1%;
+}
+
+#encart_connexion #contenu_encart_connexion #mdp_oublie {
+  text-align: left;
+  color: grey;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#encart_connexion #contenu_encart_connexion #bouton_connexion {
+  background-color: #545454;
+  border-color: #545454;
+}
+
+#encart_connexion #contenu_encart_connexion #se_souvenir_de_moi {
+  padding: 0;
+  text-align: left;
+  color: grey;
+}
+
+#bouton_inscription {
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: auto;
+}
+
+#bouton_inscription a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #f5f5f5;
 }
 
 /*# sourceMappingURL=app.css.map */

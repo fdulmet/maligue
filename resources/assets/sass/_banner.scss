@@ -2,21 +2,45 @@
   background-color: #d62110;
   border-bottom: 2px solid darkred;
   vertical-align: middle;
-  a {
-    color: white;
-    text-decoration: none;
-  }
   h3 {
     margin: 10px;
     text-shadow: 2px 2px 2px black;
+    padding-right:0;
+    margin-right:0;
+    #titreNomLigue {
+      color: white;
+      text-decoration: none;
+      font-family: Calibri;
+      font-size: x-large;
+      padding-left: 4%;
+    }
+  }
+  #padding_menu_saison{
+    padding-left: 0;
+    #menu_saison{
+      background-color: #d62110;
+      color: white;
+      text-shadow: 1px 1px 1px black;
+      border: none;
+      cursor:pointer;
+    }
   }
   ul{
     list-style-type: none;
   }
-  #prenom_nom{
-    text-shadow: 1px 1px 1px black;
-  }
-  #dropdownMenu{
-    color: black;
+  #marges_prenom_nom {
+    margin: 0;
+    vertical-align: bottom;
+    padding-left:0;
+    #prenom_nom {
+      color: white;
+      text-decoration: none;
+      text-shadow: 1px 1px 1px black;
+      font-size: medium;
+      vertical-align: bottom;
+    }
+    #dropdownMenu {
+      color: black;
+    }
   }
 }

@@ -1,10 +1,5 @@
-<style>
-
-    border: 1px;
-    borde
-</style>
 <div class="row">
-    <h5>Calendrier</h5>
+    <h5><b>Calendrier</b></h5>
     <div id="table" class="table-editable">
         <table class="table">
             <tr>

@@ -1,9 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);//@import url('https://fonts.googleapis.com/css?family=Pacifico:300,400,600');
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";// Bootstrap (on importe la librairie Bootstrap au format Sass)
-@import "variables";//on importe un fichier de variables pour Bootstrap
+//@import "variables";//on importe un fichier de variables pour Bootstrap
 @import "banner";
 @import "content";
-@import "editableTable";
+@import "editable_table";
+@import "login_et_register";
 // fake comment
 
 //on fait les modifs dans _variables.scss, avec gulp watch qui tourne en continue (ou uniquement gulp à chaque fois),

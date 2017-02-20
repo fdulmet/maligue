@@ -1,6 +1,6 @@
 <div class="row">
     <h4 class="col-md-12">
-        L'équipe de {{ Auth::user()->nom }} est :
+        La New Team
         <?php
             $equipe = App\Equipe::find(1);
             echo $equipe;
@@ -18,40 +18,28 @@
                 $users = App\User::where('nom', Auth::user()->nom)->get();
                 ?>
                 @foreach ($users as $user)
-                    {{ $user->prenom }} {{ $user->nom }}
-                    <br>
+                    {{ $user->prenom }} {{ $user->nom }}&nbsp;&nbsp;
                 @endforeach
             </span>
-            <p>
-            <button id="openerInviterAmisDansEquipe">Inviter des amis à rejoindre mon équipe</button>
-            @include ('content.dialogBoxInviterAmisDansEquipe')
-            </p>
+            <br>
+            <button id="openerInviterAmisDansEquipe">Inviter des amis</button>
+            @include ('content.dialogInviterAmisDansEquipe')
         </p>
         <br>
-        <p>
-            <b>Prochain match de :</b>
-            <span></span>
-        </p>
-        <p>
-            <b>Participer à :</b>
-            <span></span>
-        </p>
-        <p>
-            <b>Composition pour tel match :</b>
-            <span></span>
-        </p>
-        <p>
-            <b>Test eloquent relationships :</b>
-                <?php/*
-                    $user = App\User::find(1);
+            <b>Prochain match :</b>
+            <div>La New Team vs Les Manchots</div>
+            <div>Y participer : oui-non </div>
+            <div>Composition :</div>
 
-                    $user->equipes as $equipe) {
-                    //
-                    }
-*/
-                ?>
-
-        </p>
+        <br>
+        <!--Test eloquent relationships :</b>-->
+        <?php
+        /*
+        $user = App\User::find(1);
+        $user->equipes as $equipe) {
+        }
+        */
+        ?>
     </div>
 </div>
 
