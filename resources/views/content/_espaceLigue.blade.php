@@ -1,8 +1,12 @@
-<div class="row">
-    <div class="col-md-12" id="menu">
-        @include ('content._menu')
+<div class="row" id="menu">
+    <div class="col-md-12" style="padding: 0 0 0 0">
+        @include('layouts.modal', ['id' => 'coordonneesCapitaines', 'titre' => 'Coordonnées capitaines', 'body' => 'modals.vueCoordonneesCapitaines'])
+        @include('layouts.modal', ['id' => 'effectifsEquipes', 'titre' => 'Effectifs équipes', 'body' => 'modals.vueEffectifsEquipes'])
+        @include('layouts.modal', ['id' => 'reglesReports', 'titre' => 'Règles pour les reports', 'body' => 'modals.vueReglesReports'])
+        @include('layouts.modal', ['id' => 'reglesFootACinq', 'titre' => 'Règles du foot-à-5', 'body' => 'modals.vueReglesFootACinq'])
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-6" id="classement">
         @include ('content._classement')
@@ -11,9 +15,3 @@
         @include ('content._calendrier')
     </div>
 </div>
-
-
-
-
-
-

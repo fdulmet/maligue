@@ -22,7 +22,7 @@
                 @endforeach
             </span>
             <br>
-            @include('content.modalInviterAmisDansEquipe')
+            @include('layouts.modal', ['id' => 'inviterAmisDansEquipe', 'titre' => 'Inviter amis dans équipe', 'body' => 'modals.vueInviterAmisDansEquipe'])
         </p>
         <br>
             <b>Prochain match :</b>

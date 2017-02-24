@@ -1,10 +1,12 @@
 @extends('/layouts/app')
 
 @section('banner')
-    @include('_banner')
+    salut
+
 @stop
 
 @section('content')
-    @include ('_content')
+    bonjour
+
 @endsection
 

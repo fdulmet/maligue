@@ -26,6 +26,8 @@
 //pour les voir : php artisan route:list
 //mais il faut quand même créer les méthodes dans JoueursController (public function create() etc)
 
+Route::get('/test', 'TestController@test');
+
 Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');

@@ -7,12 +7,14 @@
             <div class="panel panel-default" id="encart_connexion">
                 <div class="panel-heading" id="titreConnexion">Connexion</div>
                 <div class="panel-body" id="contenu_encart_connexion">
+
                     <!--Login facebook-->
                     <br>
                     <a href="auth/facebook" class="btn btn-primary form-control" id="bouton_connexion_facebook">Connexion Facebook</a>
                     <p>
                         <b>OU</b>
                     </p>
+
                     <!--Login formulaire-->
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}

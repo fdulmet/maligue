@@ -33,10 +33,6 @@ class TestController extends Controller
         return redirect('tests');
     }
 
-
-
-
-
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -50,4 +46,8 @@ class TestController extends Controller
         return redirect('joueurs');
     }
 
+    public function test()
+    {
+        return view('test');
+    }
 }

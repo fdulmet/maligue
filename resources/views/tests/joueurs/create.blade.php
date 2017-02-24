@@ -8,7 +8,7 @@
     {!! Form::open(['url'=>'joueurs']) !!}
         <!-- c'est pour renvoyer sur une autre page une fois submitted-->
         <!-- on peut aussi utiliser route ou action -->
-        @include('joueurs._form', ['texteDuBouton' => 'Envoyer'])
+        @include('tests.joueurs._form', ['texteDuBouton' => 'Envoyer'])
     {!! Form::close() !!}
 
     @include('errors.list')

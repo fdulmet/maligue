@@ -7692,103 +7692,112 @@ button.close {
   background-color: #d62110;
   border-bottom: 2px solid darkred;
   vertical-align: middle;
+  padding-left: 2%;
 }
 
 #banner h3 {
   margin: 10px;
   text-shadow: 2px 2px 2px black;
-  padding-right: 0;
-  margin-right: 0;
 }
 
 #banner h3 #titreNomLigue {
   color: white;
   text-decoration: none;
   font-family: Calibri;
-  font-size: x-large;
-  padding-left: 4%;
 }
 
-#banner #padding_menu_saison {
-  padding-left: 0;
-}
-
-#banner #padding_menu_saison #menu_saison {
+#banner #menu_saison {
   background-color: #d62110;
+  font-size: small;
   color: white;
   text-shadow: 1px 1px 1px black;
   border: none;
   cursor: pointer;
 }
 
-#banner ul {
+#banner #logoutDropdownMenu {
   list-style-type: none;
-}
-
-#banner #marges_prenom_nom {
   margin: 0;
   vertical-align: bottom;
   padding-left: 0;
 }
 
-#banner #marges_prenom_nom #prenom_nom {
+#banner #logoutDropdownMenu #prenom_nom {
   color: white;
   text-decoration: none;
   text-shadow: 1px 1px 1px black;
-  font-size: medium;
+  font-size: small;
   vertical-align: bottom;
 }
 
-#banner #marges_prenom_nom #dropdownMenu {
+#banner #logoutDropdownMenu #dropdownMenu {
   color: black;
+}
+
+#banner #logoutDropdownMenu a {
+  font-size: small;
+}
+
+#banner #logoutDropdownMenu #bouton_profil_joueur {
+  font-size: small;
+  color: black;
+  width: 100%;
+  border: none;
+  background-color: white;
+  padding: 3px 20px 3px 20px;
+  border-radius: 0;
+  text-align: left;
+}
+
+#banner #logoutDropdownMenu #bouton_profil_joueur:hover {
+  background-color: #f1f1f1;
+}
+
+#banner #logoutDropdownMenu ul a:hover {
+  background-color: #f1f1f1;
+}
+
+#banner #logoutDropdownMenu #bouton_fermer_profil_joueur {
+  background-color: #d2d2d2;
+}
+
+#content button {
+  color: black;
+  font-size: small;
+  border-radius: 0px;
+  background-color: #d2d2d2;
+  border-color: #c2c2c2;
+  padding: 0.5% 1.5% 0.5% 1.5%;
 }
 
 #content #espace_ligue {
-  padding: 0% 4% 0 4%;
+  padding: 1% 4% 0 4%;
 }
 
 #content #espace_ligue #menu {
-  padding: 1% 0 1% 0;
+  padding: 0 0 0 0;
   margin-left: -2%;
 }
 
-#content #espace_ligue #menu button {
-  color: black;
-  font-size: small;
-  height: auto;
-  border-radius: 2px;
-  background-color: #d2d2d2;
-  border-color: #c2c2c2;
-  padding: 1% 2% 1% 2%;
-}
-
 #content #espace_ligue #classement {
+  margin-top: 1%;
   padding-right: 5%;
   border: 0px;
 }
 
 #content #espace_ligue #calendrier {
+  margin-top: 1%;
   border: 1px;
 }
 
 #content #espace_equipe {
-  border-left: 3px solid green;
+  border-left: 2px solid green;
   background-color: #f1f1f1;
-  padding: 1% 0 0 1%;
+  padding: 0.5% 0 0 1%;
 }
 
 #content #espace_equipe h4 {
   font-weight: bold;
-}
-
-#content #espace_equipe button {
-  color: black;
-  font-size: small;
-  height: auto;
-  border-radius: 2px;
-  background-color: #d2d2d2;
-  border-color: #c2c2c2;
-  padding: 1% 2% 1% 2%;
 }
 
 .table-editable {
