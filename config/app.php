@@ -51,7 +51,7 @@ return array(
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://maligue.fr/'),
 
     /*
     |--------------------------------------------------------------------------

@@ -27,12 +27,12 @@
 //mais il faut quand même créer les méthodes dans JoueursController (public function create() etc)
 
 Auth::routes();
+Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
+
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/home.php', 'HomeController@index');
-
-Route::get('auth/facebook', 'Auth\FacebookController@redirectToProvider');
-Route::get('auth/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
 
 //Test editer un form :
 Route::get('tests', 'TestController@index');
