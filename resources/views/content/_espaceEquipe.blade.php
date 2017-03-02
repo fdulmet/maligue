@@ -22,7 +22,8 @@
                 @endforeach
             </span>
             <br>
-            @include('layouts.modal', ['id' => 'inviterAmisDansEquipe', 'titre' => 'Inviter amis dans équipe', 'body' => 'modals.vueInviterAmisDansEquipe'])
+            @include('layouts.modal', ['id' => 'inviterAmisDansEquipe', 'titre' => 'Inviter des amis à rejoindre l\'équipe', 'body' => 'modals.vueInviterAmisDansEquipe'])
+
         </p>
         <br>
             <b>Prochain match :</b>

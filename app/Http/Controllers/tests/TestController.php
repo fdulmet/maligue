@@ -4,9 +4,28 @@ namespace App\Http\Controllers;
 
 use Request;
 use App\User;
+use App\Mail\InviterAmisDansEquipe;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use App\User;
 
 class TestController extends Controller
 {
+    public function lala()
+    {
+        echo 'bonjour';
+    }
+
+    public function build()
+    {
+        return $this->from('lala@gmail.com')//on peut aussi mettre une "global from address" dans config/mail
+                    ->view('emails.InviterAmisDansEquipe');
+                    //->text('emails.orders.shipped_plain');//si on veut plain-text version de l'email
+
+    }
+
     public function index()
     {
         $users = User::all();

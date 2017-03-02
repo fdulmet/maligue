@@ -25,7 +25,7 @@ return array(
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'localhost'),
 
     /*
     |--------------------------------------------------------------------------

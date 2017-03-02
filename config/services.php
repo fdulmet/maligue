@@ -13,6 +13,9 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
+    /*Notice that Mailtrap is missing here.
+    It uses SMTP (du coup dans .env on a MAIL_DRIVER=smtp (et donc pas MAIL_DRIVER=mailgun par exemple))
+    and is provided as default in every Laravel installation because it is made for testing purposes.*/
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
