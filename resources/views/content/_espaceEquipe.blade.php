@@ -1,9 +1,11 @@
 <div class="row">
     <h4 class="col-md-12">
-        La New Team
         <?php
-            $equipe = App\Equipe::find(1);
-            echo $equipe;
+            $equipes = App\User::find(1)->equipes()->get();
+            foreach ($equipes as $equipe)
+            {
+                echo $equipe->nom;
+            }
         ?>
     </h4>
 </div>
@@ -22,7 +24,7 @@
                 @endforeach
             </span>
             <br>
-            @include('layouts.modal', ['id' => 'inviterAmisDansEquipe', 'titre' => 'Inviter des amis à rejoindre l\'équipe', 'body' => 'modals.vueInviterAmisDansEquipe'])
+            @include('layouts.modal', ['id' => 'inviterAmisDansEquipe', 'titre' => 'Inviter un ami à rejoindre l\'équipe', 'body' => 'modals.vueInviterAmisDansEquipe'])
 
         </p>
         <br>
@@ -32,14 +34,13 @@
             <div>Composition :</div>
 
         <br>
-        <!--Test eloquent relationships :</b>-->
-        <?php
-        /*
+        <!--Test eloquent relationships :</b>
+
         $user = App\User::find(1);
         $user->equipes as $equipe) {
         }
-        */
-        ?>
+        -->
+
     </div>
 </div>
 

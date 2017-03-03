@@ -12,6 +12,11 @@
                     <a href="auth/facebook" class="btn btn-primary form-control" id="bouton_connexion_facebook">Inscription Facebook</a>
                     <p>
                         <b>OU</b>
+                    <?php
+
+                        echo $_GET['equipe'];
+
+                    ?>
                     </p>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}

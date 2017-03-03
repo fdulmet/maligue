@@ -1,17 +1,16 @@
-{!! Form::open(['route' => 'inviterAmisDansEquipe', 'method' => 'get']) !!}
+<form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmisDansEquipe') }}">
+    {{ csrf_field() }}
     <div class="form-group">
-    <!--
-    { !! Form::label('contenu', 'contenu') !!}
-    { !! Form::text('contenu', null, ['class'=>'form-control']) !!}
-    -->
-    {!! Form::label('emailInvite1', 'email ami 1 :') !!}
-    {!! Form::text('emailInvite1', null, ['class'=>'form-control']) !!}
-
-    {!! Form::label('emailInvite2', 'email ami 2 :') !!}
-    {!! Form::text('emailInvite2', null, ['class'=>'form-control']) !!}
-
-    {!! Form::submit('Envoyer', ['class' => 'btn']) !!}
+        <div class="col-md-12">
+            <input id="emailInvite1" type="text" class="form-control" name="emailInvite1"
+                   placeholder="hatembenarfa@gmail.com" required autofocus>
+        </div>
     </div>
-{!! Form::close() !!}
-
-
+    <div class="form-group">
+        <div class="col-md-12">
+            <button type="submit" class="btn">
+                Envoyer invitation
+            </button>
+        </div>
+    </div>
+</form>
