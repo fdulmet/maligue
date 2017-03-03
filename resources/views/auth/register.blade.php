@@ -12,12 +12,17 @@
                     <a href="login/facebook" class="btn btn-primary form-control" id="bouton_connexion_facebook">Inscription Facebook</a>
                     <p>
                         <b>OU</b>
+                    <?php
+
+                        echo $_GET['equipe'];
+
+                    ?>
                     </p>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}" id="formulaire">
                             <div class="col-md-12">
-                                <input id="nom" type="text" class="form-control" name="nom" value="Nom" required autofocus>
+                                <input id="nom" type="text" class="form-control" name="nom" placeholder="Ben Arfa" required autofocus>
                                 @if ($errors->has('nom'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nom') }}</strong>
@@ -27,7 +32,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('prenom') ? ' has-error' : '' }}" id="formulaire">
                             <div class="col-md-12">
-                                <input id="prenom" type="text" class="form-control" name="prenom" value="Prénom" required autofocus>
+                                <input id="prenom" type="text" class="form-control" name="prenom" placeholder="Hatem" required autofocus>
                                 @if ($errors->has('prenom'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('prenom') }}</strong>
@@ -37,7 +42,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" id="formulaire">
                             <div class="col-md-12">
-                                <input id="email" type="email" class="form-control" name="email" value="Email" required>
+                                <input id="email" type="email" class="form-control" name="email" placeholder="hatembenarfa@gmail.com" required>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -47,7 +52,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" id="formulaire">
                             <div class="col-md-12">
-                                <input id="password" type="password" class="form-control" name="password" value="123456" required>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="******" required>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -57,7 +62,7 @@
                         </div>
                         <div class="form-group" id="formulaire">
                             <div class="col-md-12">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="123456" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="******" required>
                             </div>
                         </div>
 

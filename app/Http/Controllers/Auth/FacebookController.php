@@ -25,6 +25,7 @@ class FacebookController extends Controller
      * @return Response
      */
     public function handleProviderCallback()
+<<<<<<< HEAD
     {        
 		
 		$user = Socialite::driver('facebook')->user();
@@ -32,14 +33,25 @@ class FacebookController extends Controller
 	
 		/*
 		if(Auth::check())
+=======
+    {
+        dd('bim');
+        $user = Socialite::driver('facebook')->user();
+        if(Auth::check())
+>>>>>>> 3944fb3db548d55bcc717bed683229ba67e2bab7
         {
             return view('/home');
         }
         else
         {
+<<<<<<< HEAD
             return view ('auth/login');
             //$user = Socialite::driver('facebook')->user();
         }*/
+=======
+            return view ('/login');
+        }
+>>>>>>> 3944fb3db548d55bcc717bed683229ba67e2bab7
 
         // $user->token;
     }

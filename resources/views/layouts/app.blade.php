@@ -14,6 +14,7 @@
 <body>
 <!--Home Page-->
     @yield('banner')
+    @yield('invitationEnvoyee')
     @yield('content')
     @yield ('footer') <!--comme tous les yields, il peut être utilisé OU PAS-->
 </body>

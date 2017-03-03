@@ -16,7 +16,7 @@
 //par exemple ajouter une entrée (colonne ?) equipe à la table joueurs :
 //php artisan make:migration add_equipe_to_joueurs_table
 
-//ENSUITE POUR REMPLIR UNE TABLE : SUIVRE INSTRUCTIONS DANS App/User.php (eloquent model class)
+//ENSUITE POUR REMPLIR UNE TABLE : SUIVRE INSTRUCTIONS DANS App/Joueur.php (eloquent model class)
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;

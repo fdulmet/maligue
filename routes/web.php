@@ -26,6 +26,8 @@
 //pour les voir : php artisan route:list
 //mais il faut quand même créer les méthodes dans JoueursController (public function create() etc)
 
+use App\Mail\InviterAmisDansEquipe;
+
 Auth::routes();
 Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
@@ -34,14 +36,24 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/home.php', 'HomeController@index');
 
+<<<<<<< HEAD
 //Test editer un form :
+=======
+Route::get('/invitationEnvoyee', 'InviterAmisDansEquipeController@send')->name('inviterAmisDansEquipe');
+
+/*Route::post('', function() {
+    Mail::to('lolo@gmail.com')->send(new InviterAmisDansEquipe);
+})->name('inviterAmisDansEquipe');*/
+
+/*Test editer un form :
+>>>>>>> 3944fb3db548d55bcc717bed683229ba67e2bab7
 Route::get('tests', 'TestController@index');
 Route::get('tests/create', 'TestController@create' );
 Route::get('tests/{id}', 'TestController@show' );
 Route::post('tests', 'TestController@store');
-Route::get('tests/{id}/edit', 'TestController@edit');
+Route::get('tests/{id}/edit', 'TestController@edit');*/
 
-Route::get('/test', 'TestController@test');
+//Route::get('/test', 'TestController@test');
 
 //Route::get('/', 'HomeController@show');
 //Route::get('/home', 'HomeController@show');
