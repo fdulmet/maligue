@@ -36,9 +36,6 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/home.php', 'HomeController@index');
 
-<<<<<<< HEAD
-//Test editer un form :
-=======
 Route::get('/invitationEnvoyee', 'InviterAmisDansEquipeController@send')->name('inviterAmisDansEquipe');
 
 /*Route::post('', function() {

@@ -5,19 +5,24 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" id="encart_connexion">
-                <div class="panel-heading" id="titreConnexion">Inscription</div>
+                <div class="panel-heading" id="titreConnexion">
+					Inscription 
+					<?php 
+						if (isset($_GET['equipe'])) {
+							echo $_GET['equipe'];
+						}
+						else {
+							echo '';
+						}
+					?>
+				</div>
                 <div class="panel-body" id="contenu_encart_connexion">
                     <!--Login facebook-->
                     <br>
                     <a href="login/facebook" class="btn btn-primary form-control" id="bouton_connexion_facebook">Inscription Facebook</a>
                     <p>
                         <b>OU</b>
-                    <?php
-
-                        echo $_GET['equipe'];
-
-                    ?>
-                    </p>
+					</p>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}" id="formulaire">
