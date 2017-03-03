@@ -38,7 +38,7 @@ return [
     'facebook' => [
         'client_id' => '1089588914497148',
         'client_secret' => '563d81a98dbb7c42c963e94e463cda85',
-        'redirect' => 'https://maligue.fr/login/facebook/callback',
+        'redirect' => 'https://maligue.fr/',
     ],
 
 ];
