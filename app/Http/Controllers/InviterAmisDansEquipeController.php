@@ -9,7 +9,6 @@ use Mail;
 use App\User;
 use Form;
 
-
 class InviterAmisDansEquipeController extends Controller
 {
     public function send(Request $request){
@@ -23,8 +22,15 @@ class InviterAmisDansEquipeController extends Controller
             $emailInvite1 = FormRequest::input('emailInvite1');
             //$emailInvite2 = FormRequest::input('emailInvite2');
             //$emailInvites = array ("$emailInvite1, $emailInvite2");
+            $debutPhrase = 'Invitation à rejoindre ';
+            $equipes = Auth::user()->equipes()->get();
+            foreach ($equipes as $equipe) {
+                $equipe = $equipe->nom;
+            }
 
-            $message->subject('Invitation à jouer au foot');
+            $titre = $debutPhrase . $equipe ;
+
+            $message->subject($titre);
             $message->from($emailInviteur);
             $message->to($emailInvite1);
             //$message->to($emailInvite2);

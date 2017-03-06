@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Equipe extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        //en mettre ?
+    ];
+    /**
      * Plusieurs users peuvent appartenir à une équipe.
      */
     public function users()
