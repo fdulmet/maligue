@@ -2,7 +2,7 @@
 
 @section('banner')
     @include('_banner')
-@stop
+@endsection
 
 @section('content')
     @include ('_content')

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Events\RegisterEvent;
 use App\User;
+
+use App\Equipe;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,6 +56,7 @@ class RegisterController extends Controller
             'prenom' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'equipe' => 'required|max:255',
         ]);
     }
 
@@ -64,12 +68,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        //Pour remplir la table users
+        $user = User::create([
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        //Pour remplir les tables equipe_user et equipes
+        $user->equipes()->save( new \App\Equipe(['nom' => $data['equipe']]) );
+        return $user;
+
+        //Pour remplir les tables equipe_ligue et ligues
+        /*$user->equipes()->save( new \App\Equipe(['nom' => $data['id']]) );
+        $equipe = Equipe::;
+        $equipe->ligues()->save( new \App\Ligue(['nom' => $data['ligue']]) );
+        return $equipe;*/
     }
 }
 //event(new RegisterEvent($user));

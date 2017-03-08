@@ -29,14 +29,14 @@
 use App\Mail\InviterAmisDansEquipe;
 
 Auth::routes();
-Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');
+Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
 Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/home.php', 'HomeController@index');
 
-Route::get('/invitationEnvoyee', 'InviterAmisDansEquipeController@send')->name('inviterAmisDansEquipe');
+Route::get('/invitationEnvoyee', 'Invitations\InviterAmisDansEquipeController@send')->name('inviterAmisDansEquipe');
 
 /*Route::post('', function() {
     Mail::to('lolo@gmail.com')->send(new InviterAmisDansEquipe);

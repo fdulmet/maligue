@@ -7800,6 +7800,10 @@ button.close {
   font-weight: bold;
 }
 
+#content #espace_equipe #confirmation_invitation_amis_dans_equipe_envoyee {
+  color: red;
+}
+
 .table-editable {
   position: relative;
 }

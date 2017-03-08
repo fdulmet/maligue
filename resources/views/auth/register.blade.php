@@ -25,6 +25,16 @@
                         </p>
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             {{ csrf_field() }}
+                            <div class="form-group{{ $errors->has('equipe') ? ' has-error' : '' }}" id="formulaire">
+                                <div class="col-md-12">
+                                    <input id="equipe" type="text" class="form-control" name="equipe" placeholder="Les Chauds" required autofocus>
+                                    @if ($errors->has('equipe'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('equipe') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
                                     <input id="nom" type="text" class="form-control" name="nom" placeholder="Ben Arfa" required autofocus>

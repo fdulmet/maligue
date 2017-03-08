@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Invitations;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Request as FormRequest;
 use Mail;
-use App\User;
+use \App\User;
 use Form;
+use App\Http\Controllers\Controller;
 
 class InviterAmisDansEquipeController extends Controller
 {
@@ -47,7 +48,15 @@ class InviterAmisDansEquipeController extends Controller
             $message->to($emailInviteur);
         });
 
-        return response()->view('confirmations.invitationEnvoyee');
+        $emailInvite1 = FormRequest::input('emailInvite1');
+        $teams = Auth::user()->equipes()->get();
+            foreach ($teams as $team) {
+                $equipeInviteur = $team->nom;
+            }
+        $deuxiemePhrase = '<br>Un email de confirmation vous a été envoyé';
+
+        $invitationEnvoyee = 'Vous avez bien invité '.$emailInvite1.' à rejoindre '.$equipeInviteur.'.'.$deuxiemePhrase.'.';
+        return response()->view('home', ['confirmation' => $invitationEnvoyee]);
         //return response()->json(['message' => 'Request completed']);
     }
 }

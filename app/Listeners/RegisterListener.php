@@ -24,9 +24,15 @@ class RegisterListener
      * @param  RegisterEvent  $event
      * @return void
      */
-    public function handle(RegisterEvent $event)
+    public function handle(RegisterEvent $event)// Event listeners receive the event instance in their handle method
+                                                //parenthèses remplies par artisan event:generate
     {
-        //dd($event);
-//        TeamController->associateUserToTeam($event->user);
+        //Within the handle method, you may perform any actions necessary to respond to the event
+        // Access the order using $event->order...
+
+        dd('bim');
+        //TeamController->associateUserToTeam($event->user);
+
+
     }
 }

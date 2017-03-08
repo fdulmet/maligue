@@ -13,10 +13,13 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\RegisterEvent' => [
-            'App\Listeners\RegisterListener',//et éventuellement d'autres listeners
+        'App\Events\Test' => [
+        'App\Listeners\Test',
+        //'App\Events\RegisterEvent' => [//event(key)
+          //  'App\Listeners\RegisterListener',//listeners(values) //et éventuellement d'autres listeners
         ],
     ];
+    //Ensuite php artisan event:generate génère les events et listeners listés ici
 
     /**
      * Register any events for your application.
@@ -27,6 +30,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        //à utiliser si on veut générer manuellement des events
     }
 }
