@@ -7,14 +7,6 @@
                 <div class="panel panel-default" id="encart_connexion">
                     <div class="panel-heading" id="titreConnexion">
                         Inscription
-                        <?php
-                        if (isset($_GET['equipe'])) {
-                            echo $_GET['equipe'];
-                        }
-                        else {
-                            echo '';
-                        }
-                        ?>
                     </div>
                     <div class="panel-body" id="contenu_encart_connexion">
                         <!--Login facebook-->
@@ -25,9 +17,21 @@
                         </p>
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             {{ csrf_field() }}
+                            <?php
+                            if (isset($_GET['equipe'])) {
+                                echo $_GET['equipe'];
+                                $type = 'hidden';
+                                $value = $_GET['equipe'];
+                            }
+                            else {
+                                echo '';
+                                $type = 'text';
+                                $value = '';
+                            }
+                            ?>
                             <div class="form-group{{ $errors->has('equipe') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
-                                    <input id="equipe" type="text" class="form-control" name="equipe" placeholder="Les Chauds" required autofocus>
+                                    <input value="<?php echo $value; ?>" id="equipe" type="<?php echo $type; ?>" class="form-control" name="equipe" placeholder="Les Chauds" required autofocus>
                                     @if ($errors->has('equipe'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('equipe') }}</strong>

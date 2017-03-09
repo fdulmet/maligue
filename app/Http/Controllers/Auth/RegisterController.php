@@ -52,11 +52,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'equipe' => 'required|max:255',
             'nom' => 'required|max:255',
             'prenom' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'equipe' => 'required|max:255',
         ]);
     }
 
@@ -79,6 +79,11 @@ class RegisterController extends Controller
         //Pour remplir les tables equipe_user et equipes
         $user->equipes()->save( new \App\Equipe(['nom' => $data['equipe']]) );
         return $user;
+
+
+
+
+
 
         //Pour remplir les tables equipe_ligue et ligues
         /*$user->equipes()->save( new \App\Equipe(['nom' => $data['id']]) );
