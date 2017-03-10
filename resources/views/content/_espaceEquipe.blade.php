@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
-use App\Equipe;
 use Illuminate\Support\Facades\DB;
+use App\Equipe;
 ?>
 <div class="row">
     <h4 class="col-md-12">

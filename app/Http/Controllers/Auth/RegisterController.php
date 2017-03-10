@@ -80,11 +80,6 @@ class RegisterController extends Controller
         $user->equipes()->save( new \App\Equipe(['nom' => $data['equipe']]) );
         return $user;
 
-
-
-
-
-
         //Pour remplir les tables equipe_ligue et ligues
         /*$user->equipes()->save( new \App\Equipe(['nom' => $data['id']]) );
         $equipe = Equipe::;
