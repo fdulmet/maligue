@@ -2,18 +2,26 @@
 use \App\Equipe;
 
 $equipes = \App\Equipe::all();
-foreach ($equipes as $equipe) {
+foreach ($equipes as $equipe)
+{
     $equipeNom = $equipe->nom;
     echo '<b>'.$equipeNom.'</b>'.' : <br>';
 
     $users = $equipe->users()->get();
-    foreach ($users as $user) {
+    foreach ($users as $user)
+    {
         $userPrenom = $user->prenom;
         $userNom = $user->nom;
-        echo ' '.$userPrenom.' '.$userNom.' <br>';
+        $userCapitaine = $user->capitaine;
+        if ($userCapitaine == 1)
+        {
+            echo $userPrenom.' '.$userNom.' (capitaine)<br>';
+        }
+        else
+        {
+            echo $userPrenom.' '.$userNom.' <br>';
+        }
     }
-
-
 }
 
 

@@ -19,6 +19,9 @@
                 </div>
                 <!--Password-->
                 <div>
+                <div>
+                    {{ Auth::user()->tel }}
+                </div>
 
                 </div>
                 <br>

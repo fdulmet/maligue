@@ -70,6 +70,7 @@ use App\Equipe;
                 ?>
             </div>
         </p>
+        <br>
         <p>
             <b>Prochain match :</b>
             <div>La New Team vs Les Manchots</div>

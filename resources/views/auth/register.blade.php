@@ -15,7 +15,7 @@
                         <p>
                             <b>OU</b>
                         </p>
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                        <form class="form-horizontal form-inline" role="form" method="POST" action="{{ url('/register') }}">
                             {{ csrf_field() }}
                             <?php
                             if (isset($_GET['equipe'])) {
@@ -31,6 +31,7 @@
                             ?>
                             <div class="form-group{{ $errors->has('equipe') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
+                                    <label for="male">Equipe</label>
                                     <input value="<?php echo $value; ?>" id="equipe" type="<?php echo $type; ?>" class="form-control" name="equipe" placeholder="Les Chauds" required autofocus>
                                     @if ($errors->has('equipe'))
                                         <span class="help-block">
@@ -41,6 +42,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
+                                    <label for="male">Nom</label>
                                     <input id="nom" type="text" class="form-control" name="nom" placeholder="Ben Arfa" required autofocus>
                                     @if ($errors->has('nom'))
                                         <span class="help-block">
@@ -51,6 +53,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('prenom') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
+                                    <label for="male">Prénom</label>
                                     <input id="prenom" type="text" class="form-control" name="prenom" placeholder="Hatem" required autofocus>
                                     @if ($errors->has('prenom'))
                                         <span class="help-block">
@@ -61,6 +64,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
+                                    <label for="male">email</label>
                                     <input id="email" type="email" class="form-control" name="email" placeholder="hatembenarfa@gmail.com" required>
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -71,6 +75,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
+                                    Mot de passe
                                     <input id="password" type="password" class="form-control" name="password" placeholder="******" required>
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -81,6 +86,7 @@
                             </div>
                             <div class="form-group" id="formulaire">
                                 <div class="col-md-12">
+                                    Répéter mot de passe
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="******" required>
                                 </div>
                             </div>

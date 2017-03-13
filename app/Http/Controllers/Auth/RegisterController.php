@@ -55,6 +55,8 @@ class RegisterController extends Controller
             'equipe' => 'required|max:255',
             'nom' => 'required|max:255',
             'prenom' => 'required|max:255',
+            'capitaine' => 'required',
+            'tel' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -72,6 +74,8 @@ class RegisterController extends Controller
         $user = User::create([
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
+            'capitaine' => $data['capitaine'],
+            'tel' => $data['tel'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
