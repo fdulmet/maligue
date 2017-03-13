@@ -4,22 +4,33 @@ use Illuminate\Support\Facades\DB;
 use App\Equipe;
 ?>
 <div class="row">
-    <h4 class="col-md-12">
-        <?php
-            //Nom de l'équipe du mec identifié
-            $authEquipe = Auth::user()->equipes()->get();
-            foreach ($authEquipe as $authEquipe) {
-                $nomAuthEquipe = $authEquipe->nom;
-                echo $nomAuthEquipe;
-            }
-            /*OU
-            $auth = Auth::user();
-            foreach ($auth->equipes as $authTableEquipe){
-                $authEquipe = $authTableEquipe->nom;
-                $authEquipe;
-            }*/
-        ?>
-    </h4>
+    <div class="col-md-12">
+        <div class="row">
+            <span class="col-md-6" style="float: left">
+                <h4 id="nom_equipe">
+                    <?php
+                        //Nom de l'équipe du mec identifié
+                        $authEquipe = Auth::user()->equipes()->get();
+                        foreach ($authEquipe as $authEquipe) {
+                            $nomAuthEquipe = $authEquipe->nom;
+                            echo $nomAuthEquipe;
+                        }
+                        /*OU
+                        $auth = Auth::user();
+                        foreach ($auth->equipes as $authTableEquipe){
+                            $authEquipe = $authTableEquipe->nom;
+                            $authEquipe;
+                        }*/
+                    ?>
+                </h4>
+            </span>
+            <!--Boutons invitations-->
+            <div class="col-md-6">
+                @include('modals.invitations.boutonInviterAmis')
+                @include('modals.invitations.vueInviterAmis')
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -53,9 +64,6 @@ use App\Equipe;
                 ?>
             </span>
 
-            <!--Bouton "Inviter un ami à rejoindre l'équipe"-->
-            @include('layouts.modal', ['id' => 'inviterAmisDansEquipe', 'titre' => 'Inviter un ami à rejoindre l\'équipe', 'body' => 'modals.vueInviterAmisDansEquipe'])
-
             <!--Message de confirmation qui apparaît après avoir invité un ami à rejoindre équipe-->
             <div id="confirmation_invitation_amis_dans_equipe_envoyee">
                 <!--$confirmation est définie dans InviterAmisDansEquipeController, dans :-->
@@ -70,7 +78,6 @@ use App\Equipe;
                 ?>
             </div>
         </p>
-        <br>
         <p>
             <b>Prochain match :</b>
             <div>La New Team vs Les Manchots</div>

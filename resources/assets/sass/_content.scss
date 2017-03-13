@@ -7,6 +7,8 @@
     border-color: #c2c2c2;
     padding: 0.5% 1.5% 0.5% 1.5%;//haut droite bas gauche
   }
+
+  //Espace ligue
   #espace_ligue{
     padding: 1% 4% 0 4%;//haut droite bas gauche
     #menu {
@@ -23,12 +25,24 @@
       border: 1px;
     }
   }
+
+  //Espace équipe
   #espace_equipe{
     border-left: 2px solid green;
     background-color: #f1f1f1;
     padding: 0.5% 0 0 1%;
-    h4{
+    #nom_equipe{
       font-weight: bold;
+    }
+    #bouton_invitation{
+      margin: 5% 10% 0 0;
+      padding: 4% 10% 4% 10%;
+    }
+    label{
+      font-weight: normal;
+    }
+    #bouton_submit{
+      padding: 4% 10% 4% 10%;
     }
     #confirmation_invitation_amis_dans_equipe_envoyee{
       color: red;

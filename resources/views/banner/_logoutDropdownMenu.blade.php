@@ -21,7 +21,7 @@
                     </form>
                 </li>
             </ul>
-            @include('modals.profilJoueur.modalProfilJoueur')
+            @include('modals.profilJoueur.vueProfilJoueur')
         </li>
     @endif
 </ul>

@@ -31,7 +31,7 @@
                             ?>
                             <div class="form-group{{ $errors->has('equipe') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
-                                    <label for="male">Equipe</label>
+                                    <label>Equipe</label>
                                     <input value="<?php echo $value; ?>" id="equipe" type="<?php echo $type; ?>" class="form-control" name="equipe" placeholder="Les Chauds" required autofocus>
                                     @if ($errors->has('equipe'))
                                         <span class="help-block">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
-                                    <label for="male">Nom</label>
+                                    <label>Nom</label>
                                     <input id="nom" type="text" class="form-control" name="nom" placeholder="Ben Arfa" required autofocus>
                                     @if ($errors->has('nom'))
                                         <span class="help-block">
@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('prenom') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
-                                    <label for="male">Prénom</label>
+                                    <label>Prénom</label>
                                     <input id="prenom" type="text" class="form-control" name="prenom" placeholder="Hatem" required autofocus>
                                     @if ($errors->has('prenom'))
                                         <span class="help-block">
@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" id="formulaire">
                                 <div class="col-md-12">
-                                    <label for="male">email</label>
+                                    <label>email</label>
                                     <input id="email" type="email" class="form-control" name="email" placeholder="hatembenarfa@gmail.com" required>
                                     @if ($errors->has('email'))
                                         <span class="help-block">

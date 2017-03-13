@@ -7796,8 +7796,21 @@ button.close {
   padding: 0.5% 0 0 1%;
 }
 
-#content #espace_equipe h4 {
+#content #espace_equipe #nom_equipe {
   font-weight: bold;
+}
+
+#content #espace_equipe #bouton_invitation {
+  margin: 5% 10% 0 0;
+  padding: 4% 10% 4% 10%;
+}
+
+#content #espace_equipe label {
+  font-weight: normal;
+}
+
+#content #espace_equipe #bouton_submit {
+  padding: 4% 10% 4% 10%;
 }
 
 #content #espace_equipe #confirmation_invitation_amis_dans_equipe_envoyee {
