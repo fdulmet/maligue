@@ -16,25 +16,25 @@ class UsersTableSeeder extends Seeder
             'nom' => 'Dulmet',
             'prenom' => 'François',
             'email' => 'fdulmet@gmail.com',
-            'password' => Hash::make('576925'),
+            'password' => bcrypt('576925'),
             ],
             [
                 'nom' => 'Cambay',
                 'prenom' => 'Camille',
                 'email' => 'camille@gmail.com',
-                'password' => Hash::make('123456'),
+                'password' => bcrypt('123456'),
             ],
             [
                 'nom' => 'Binet',
                 'prenom' => 'Edouard',
                 'email' => 'edouard@gmail.com',
-                'password' => Hash::make('123456'),
+                'password' => bcrypt('123456'),
             ],
             [
                 'nom' => 'Guelton',
                 'prenom' => 'Arthur',
                 'email' => 'arthur@gmail.com',
-                'password' => Hash::make('123456'),
+                'password' => bcrypt('123456'),
             ]
         ]);
     }

@@ -5,7 +5,7 @@ $emailInvite1 = FormRequest::input('emailInvite1');
 
 Vous avez bien invité {{ $emailInvite1 }} à rejoindre
 <?php
-$equipes = App\User::find(1)->equipes()->get();
+$equipes = Auth::user()->equipes()->get();
 foreach ($equipes as $equipe)
 {
     echo $equipe->nom;

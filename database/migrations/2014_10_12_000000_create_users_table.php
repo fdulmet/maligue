@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             //unsigned means that it needs to be positive
             $table->string('nom');
             $table->string('prenom');
-            //$table->boolean('capitaine');
+            $table->boolean('capitaine');
             //$table->string ('tel');//mettre que pour capitaines (string pour pas que ça vire le 0 du début) ?
             $table->string('email')->unique();
             $table->string('password');
