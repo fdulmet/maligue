@@ -7790,6 +7790,11 @@ button.close {
   border: 1px;
 }
 
+#content #espace_ligue #calendrier #titreCalendrier {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
 #content #espace_equipe {
   border-left: 2px solid green;
   background-color: #f1f1f1;

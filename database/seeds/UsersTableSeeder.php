@@ -43,6 +43,14 @@ class UsersTableSeeder extends Seeder
                 'tel' => ('0612345678'),
                 'email' => 'arthur@gmail.com',
                 'password' => bcrypt('123456'),
+            ],
+            [
+                'nom' => 'Menguy',
+                'prenom' => 'Alexandre',
+                'capitaine' => true,
+                'tel' => ('0612345678'),
+                'email' => 'alexandre@gmail.com',
+                'password' => bcrypt('123456'),
             ]
         ]);
     }

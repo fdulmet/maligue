@@ -14,20 +14,23 @@ class Equipe extends Model
     protected $fillable = [
         'nom',
     ];
-    /**
-     * Plusieurs users peuvent appartenir à une équipe.
-     */
+
+    // Plusieurs users peuvent appartenir à une équipe.
     public function users()
     {
         return $this->belongsToMany('App\User');
     }
 
-    /**
-     * Plusieurs ligues peuvent appartenir à une équipe.
-     */
+    //Plusieurs ligues peuvent appartenir à une équipe.
     public function ligues()
     {
         return $this->belongsToMany('App\Ligue');
+    }
+
+    //Plusieurs matchs peuvent appartenir à une équipe.
+    public function games()
+    {
+        return $this->belongsToMany('App\Game')->withPivot('buts');
     }
 }
 

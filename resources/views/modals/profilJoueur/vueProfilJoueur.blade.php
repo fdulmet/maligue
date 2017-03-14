@@ -28,12 +28,26 @@
                 <!--Equipe-->
                 <div>Equipe :
                     <?php
+                        //Nom
                         $entreeEquipe = Auth::user()->equipes()->get();
                         foreach ($entreeEquipe as $equipe)
                         {
                             $equipe = $equipe->nom;
                             echo $equipe;
                         }
+
+                        //Capitaine ?
+                        $user = Auth::user();
+                        $capitaine = $user->capitaine;
+                        if ($capitaine == 1)
+                        {
+                            $capitaine = ' (capitaine)';
+                        }
+                        else
+                        {
+                            $capitaine = '';
+                        }
+                        echo $capitaine.'<br>';
                     ?>
                 </div>
 

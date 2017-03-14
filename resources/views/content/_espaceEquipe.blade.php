@@ -67,7 +67,16 @@ use App\Equipe;
                             foreach ($user as $user) {
                                 $prenom = $user->prenom;
                                 $nom = $user->nom;
-                                echo $prenom.' '.$nom.'<br>';
+                                $capitaine = $user->capitaine;
+                                if ($capitaine == 1)
+                                {
+                                    $capitaine = ' (capitaine)';
+                                }
+                                else
+                                {
+                                   $capitaine = '';
+                                }
+                                echo $prenom.' '.$nom.' '.$capitaine.'<br>';
                             }
                     }
                     //$user = App\User::find(1)->equipes()->get();

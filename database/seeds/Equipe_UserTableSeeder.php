@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 class Equipe_UserTableSeeder extends Seeder
 {
+    //php artisan make:seeder UsersTableSeeder
     /**
      * Run the database seeds.
      *
@@ -27,6 +28,10 @@ class Equipe_UserTableSeeder extends Seeder
             [
                 'equipe_id' => '1',
                 'user_id' => '4',
+            ],
+            [
+                'equipe_id' => '3',
+                'user_id' => '5',
             ]
         ]);
     }
