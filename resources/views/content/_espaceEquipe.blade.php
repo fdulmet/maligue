@@ -31,8 +31,19 @@ use App\Equipe;
             </div>
         </div>
     </div>
-</div>
-<div class="row">
+    <!--Message de confirmation qui apparaît après avoir invité un ami à rejoindre équipe-->
+    <p class="col-md-12" id="confirmation_invitation_amis_dans_equipe_envoyee">
+        <!--$confirmation est définie dans InviterAmisDansEquipeController, dans :-->
+        <!--return response()->view('home', ['confirmation' => $invitationEnvoyee]);-->
+        <?php
+        if (isset ($confirmation)) {
+            echo '<br>'.$confirmation;
+        }
+        else {
+            echo '';
+        }
+        ?>
+    </p>
     <div class="col-md-12">
         <p>
             <b>Effectif :</b>
@@ -63,20 +74,6 @@ use App\Equipe;
                     //$lala = App\User::where('id_equipe', $idAuthEquipe)->get();
                 ?>
             </span>
-
-            <!--Message de confirmation qui apparaît après avoir invité un ami à rejoindre équipe-->
-            <div id="confirmation_invitation_amis_dans_equipe_envoyee">
-                <!--$confirmation est définie dans InviterAmisDansEquipeController, dans :-->
-                <!--return response()->view('home', ['confirmation' => $invitationEnvoyee]);-->
-                <?php
-                if (isset ($confirmation)) {
-                    echo $confirmation;
-                }
-                else {
-                    echo '';
-                }
-                ?>
-            </div>
         </p>
         <p>
             <b>Prochain match :</b>
@@ -89,6 +86,8 @@ use App\Equipe;
         $user->equipes as $equipe) {}-->
     </div>
 </div>
+
+
 
 
 

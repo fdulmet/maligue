@@ -1,6 +1,6 @@
 <!--le titre du mail est dans le controller ($message->subject)-->
 
-{{ $inviteurPrenom }} {{ $inviteurNom }} t'invite à rejoindre son équipe.<br>
+{{ $inviteurPrenom }} {{ $inviteurNom }} vous invite à rejoindre son équipe.<br>
 
 <br>Equipe : {{ $equipe }}
 

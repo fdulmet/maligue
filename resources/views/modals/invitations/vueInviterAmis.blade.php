@@ -13,7 +13,7 @@
             <div class="modal-body">
 
                 <!--A rejoindre son équipe-->
-                <form class="form-horizontal form-inline" role="form" method="GET" action="{{ route('inviterAmisDansEquipe') }}">
+                <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmisDansEquipe') }}">
                     {{ csrf_field() }}
                     <label>
                         à rejoindre
@@ -41,13 +41,20 @@
                     </div>
                 </form>
                 <br>
-                <br>
 
                 <!--A créer une équipe-->
-                <form class="form-horizontal form-inline" role="form" method="GET" action="{{ route('inviterAmiACreerEquipe') }}">
+                <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmiACreerEquipe') }}">
                     {{ csrf_field() }}
                     <label>
-                        à créer une nouvelle équipe :
+                        à créer une nouvelle équipe dans
+                        <?php
+                            $entreeEquipe = Auth::user()->equipes()->get();
+                            $ligue = \App\Equipe::find($entreeEquipe)->ligues()->get();
+                            foreach ($ligue as $ligue) {
+                            $ligue = $ligue->nom;
+                            echo ' '.$ligue.' :';
+                            }
+                        ?>
                     </label>
                     <div class="form-group">
                         <div class="col-md-12">
@@ -63,6 +70,7 @@
                         </div>
                     </div>
                 </form>
+                <br>
             </div>
         </div>
     </div>

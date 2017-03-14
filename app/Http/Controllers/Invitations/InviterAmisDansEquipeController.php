@@ -37,7 +37,7 @@ class InviterAmisDansEquipeController extends Controller
         $inviteurNom = Auth::user()->nom;
 
 
-        Mail::send('emails.InviterAmisDansEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'equipe'=>$equipe, 'ligue'=>$ligue, 'sport'=>$sport, ], function ($message)
+        Mail::send('emails.rejoindreEquipe.inviterAmisDansEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'equipe'=>$equipe, 'ligue'=>$ligue, 'sport'=>$sport, ], function ($message)
             //Mail::send('emails.inviterAmisDansEquipe', ['titre' => $titre, 'content' => $content], function ($message)
         {
             //Titre email
@@ -62,7 +62,7 @@ class InviterAmisDansEquipeController extends Controller
             //$message->attach($attach);
         });
 
-        Mail::send('emails.InvitationBienEnvoyee', [null], function ($message)
+        Mail::send('emails.rejoindreEquipe.invitationBienEnvoyee', [null], function ($message)
         {
             $emailInviteur = Auth::user()->email;
 
@@ -71,13 +71,13 @@ class InviterAmisDansEquipeController extends Controller
             $message->to($emailInviteur);
         });
 
+        //Message confirmation dans espace équipe
         $emailInvite1 = FormRequest::input('emailInvite1');
         $teams = Auth::user()->equipes()->get();
             foreach ($teams as $team) {
                 $equipeInviteur = $team->nom;
             }
         $deuxiemePhrase = '<br>Un email de confirmation vous a été envoyé';
-
         $invitationEnvoyee = 'Vous avez bien invité '.$emailInvite1.' à rejoindre '.$equipeInviteur.'.'.$deuxiemePhrase.'.';
         return response()->view('home', ['confirmation' => $invitationEnvoyee]);
         //return response()->json(['message' => 'Request completed']);

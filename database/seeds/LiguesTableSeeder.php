@@ -13,7 +13,7 @@ class LiguesTableSeeder extends Seeder
     {
         DB::table('ligues')->insert([
             [
-                'nom' => 'La Ligue des pingouins',
+                'nom' => 'La Ligue des Pingouins',
                 'sport' => 'Foot-à-5',
             ]
         ]);
