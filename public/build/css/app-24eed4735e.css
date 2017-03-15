@@ -7785,14 +7785,37 @@ button.close {
   border: 0px;
 }
 
+#content #espace_ligue #classement td {
+  border: 1px solid black;
+}
+
 #content #espace_ligue #calendrier {
   margin-top: 1%;
   border: 1px;
 }
 
+#content #espace_ligue #calendrier td {
+  border: 1px solid black;
+  padding: 5px 0 5px 0;
+}
+
+#content #espace_ligue #calendrier #tdTitreCalendrier {
+  border: 0;
+}
+
 #content #espace_ligue #calendrier #titreCalendrier {
-  margin-bottom: 0;
   font-weight: bold;
+}
+
+#content #espace_ligue #calendrier #tdLieu {
+  border: 0;
+}
+
+#content #espace_ligue #calendrier #tdChaqueMatch {
+  border-top: 1px solid black;
+  border-right: 0;
+  border-bottom: 1px solid black;
+  border-left: 0;
 }
 
 #content #espace_equipe {

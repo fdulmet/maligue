@@ -36,6 +36,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/home.php', 'HomeController@index');
 
+
 Route::get('/invitationDansEquipeEnvoyee', 'Invitations\InviterAmisDansEquipeController@send')->name('inviterAmisDansEquipe');
 Route::get('/invitationCreerEquipeEnvoyee', 'Invitations\InviterAmiACreerEquipeController@send')->name('inviterAmiACreerEquipe');
 
