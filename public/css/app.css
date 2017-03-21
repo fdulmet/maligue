@@ -7761,6 +7761,10 @@ button.close {
   background-color: #d2d2d2;
 }
 
+#content {
+  font-size: small;
+}
+
 #content button {
   color: black;
   font-size: small;
@@ -7771,7 +7775,7 @@ button.close {
 }
 
 #content #espace_ligue {
-  padding: 1% 4% 0 4%;
+  padding: 1% 0 0 4%;
 }
 
 #content #espace_ligue #menu {
@@ -7781,17 +7785,24 @@ button.close {
 
 #content #espace_ligue #classement {
   margin-top: 1%;
-  padding-right: 5%;
-  border: 0px;
+  padding-right: 2%;
+}
+
+#content #espace_ligue #classement #ligneTitres {
+  font-weight: bold;
+  background-color: rgba(214, 33, 16, 0.58);
 }
 
 #content #espace_ligue #classement td {
+  white-space: nowrap;
+  text-align: center;
   border: 1px solid black;
+  padding: 5px 5px 5px 5px;
 }
 
 #content #espace_ligue #calendrier {
   margin-top: 1%;
-  border: 1px;
+  padding-right: 0 2% 0 0;
 }
 
 #content #espace_ligue #calendrier td {

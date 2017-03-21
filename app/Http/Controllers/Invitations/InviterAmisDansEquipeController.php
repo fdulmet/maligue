@@ -8,6 +8,8 @@ use Request as FormRequest;
 use Mail;
 use \App\User;
 use \App\Equipe;
+use \App\Game;
+use App\Http\Controllers;
 use Form;
 use App\Http\Controllers\Controller;
 
@@ -36,8 +38,7 @@ class InviterAmisDansEquipeController extends Controller
         $inviteurPrenom = Auth::user()->prenom;
         $inviteurNom = Auth::user()->nom;
 
-
-        Mail::send('emails.rejoindreEquipe.inviterAmisDansEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'equipe'=>$equipe, 'ligue'=>$ligue, 'sport'=>$sport, ], function ($message)
+        Mail::send('emails.rejoindreEquipe.inviterAmisDansEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'equipe'=>$equipe, 'ligue'=>$ligue, 'sport'=>$sport,], function ($message)
             //Mail::send('emails.inviterAmisDansEquipe', ['titre' => $titre, 'content' => $content], function ($message)
         {
             //Titre email
@@ -79,7 +80,12 @@ class InviterAmisDansEquipeController extends Controller
             }
         $deuxiemePhrase = '<br>Un email de confirmation vous a été envoyé';
         $invitationEnvoyee = 'Vous avez bien invité '.$emailInvite1.' à rejoindre '.$equipeInviteur.'.'.$deuxiemePhrase.'.';
-        return response()->view('home', ['confirmation' => $invitationEnvoyee]);
+        //return response()->view('home', ['confirmation' => $invitationEnvoyee]);
+        return redirect()->action('HomeController@index', ['confirmation' => $invitationEnvoyee]);
         //return response()->json(['message' => 'Request completed']);
+
+        //Calendier
+        $game = \App\Game::find(1);
+        $lieu = $game->lieu;
     }
 }

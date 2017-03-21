@@ -6,18 +6,32 @@
             </div>
         </td>
     </tr>
-    @foreach($games as $game)
-        <tr>
-            <td id="tdLieu">
-                Tous les matchs sont au {{ $lieu }}
-            </td>
-        </tr>
+    <tr>
+        <td id="tdLieu">
+            Tous les matchs sont au {{ $lieu }}
+        </td>
+    </tr>
+    @foreach($stats as $stat)
         <tr>
             <td id="tdChaqueMatch">
-                {{ $date }}&nbsp;&nbsp;&nbsp;{{ $heure }}.'&nbsp;&nbsp;&nbsp;
+                {{ $stat['date'] }}&nbsp;&nbsp;&nbsp;{{ $stat['heure'] }}
+            </td>
 
                 <!--équipe1 buts1-->
-                {{ $equipe }}&nbsp;&nbsp;&nbsp;{{ $buts }}&nbsp;&nbsp;&nbsp;
+            <td>
+                {{ $stat['equipe_1'] }}&nbsp;
+            </td>
+
+            <td>
+                {{ $stat['buts_1'] }}&nbsp;
+            </td>
+
+            <td>
+                {{ $stat['buts_2'] }}&nbsp;
+            </td>
+
+            <td>
+                {{ $stat['equipe_2'] }}&nbsp;
             </td>
         </tr>
     @endforeach

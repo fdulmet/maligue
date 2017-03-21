@@ -2,14 +2,14 @@
     <tr>
         <b>Classement</b>
     </tr>
-    <tr>
+    <tr id="ligneTitres">
         <td>Rang</td>
         <td>Equipe</td>
         <td>Points</td>
-        <td>J</td>
-        <td>G</td>
-        <td>N</td>
-        <td>P</td>
+        <td>&nbsp;J&nbsp;</td>
+        <td>&nbsp;G&nbsp;</td>
+        <td>&nbsp;N&nbsp;</td>
+        <td>&nbsp;P&nbsp;</td>
         <td>bp</td>
         <td>bc</td>
         <td>diff.</td>
@@ -36,7 +36,7 @@
         <td>
             <?php
                 //Points
-
+                //il faut que les buts de chaque match soient déjà calculés
             ?>
         </td>
         <td>
@@ -99,7 +99,7 @@
         </td>
         <td>
             <?php
-            //Perdu
+            //Perdus
             foreach ($equipe->games as $game){
                 $butsPourDeChaqueMatch = $game->pivot->buts;
                 $game_id = $game->pivot->game_id;
@@ -112,13 +112,13 @@
                     $butsContreDeChaqueMatch = $autre_equipe_game->buts;
                 }
                 $diffParMatch = $butsPourDeChaqueMatch - $butsContreDeChaqueMatch;
-                $gagne = 0;
-                if ($diffParMatch>0){
-                    $gagneChaqueMatch = 1;
+                $perdus = 0;
+                if ($diffParMatch<0){
+                    $perduChaqueMatch = 1;
                 } else{
-                    $gagneChaqueMatch = 0;
+                    $perduChaqueMatch = 0;
                 }
-                echo $gagne += $gagneChaqueMatch;
+                echo $perdus += $perduChaqueMatch;
             }
 
             ?>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
+use App\Equipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -18,41 +20,53 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         //CALENDRIER
         //lieu
-        $game = \App\Game::find(1);
+        $game = Game::find(1);
         $lieu = $game->lieu;
 
-        $games = \App\Game::all();
+        $games = Game::all();
+        $stats = [];// Array of games statistics
+
+        $i = 0;
         foreach ($games as $game){
-            //date, heure
+            $stats[$i] = [];
+
+            //date
             $date = $game->date;
             $date = date('d/m/Y', strtotime($date));
+            $stats[$i]['date'] = $date;
+
+            //heure
             $heure = $game->heure;
             $heure = date('H\hi', strtotime($heure));
+            $stats[$i]['heure'] = $heure;
 
-            //équipe1 buts1
-            foreach ($game->equipes as $game){
-                $pivot = $game->pivot;
+            //equipes & buts
+            $y = 1;
+            foreach ($game->equipes as $equipe){
+                $pivot = $equipe->pivot;
                 $buts = $pivot->buts;
-                $equipe_id = $pivot->equipe_id;
-                $equipe = \App\Equipe::find($equipe_id)->nom;
+                $nom = Equipe::find( $pivot->equipe_id )->nom;
+
+                $stats[$i]['equipe_'. $y] = $nom;
+                $stats[$i]['buts_'. $y] = $buts;
+
+                $y++;
             }
-            $buts;
+
+            $i++;
         }
 
         //CLASSEMENT
 
         //VIEW
         return view('/home')->with([
-            'games' => $games,
             'lieu' => $lieu,
-            'date' => $date,
-            'heure' => $heure,
-            'equipe' => $equipe,
-            'buts' => $buts,
+            'stats' => $stats,
+            'confirmation' => $request->input('confirmation', null),
         ]);
     }
 }

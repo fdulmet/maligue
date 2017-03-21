@@ -35,8 +35,12 @@ class InviterAmiACreerEquipeController extends Controller
         $inviteurPrenom = Auth::user()->prenom;
         $inviteurNom = Auth::user()->nom;
 
+        //Calendrier
+        $game = \App\Game::find(1);
+        $lieu = $game->lieu;
 
-        Mail::send('emails.creerEquipe.inviterAmiACreerEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'ligue'=>$ligue, 'sport'=>$sport, ], function ($message)
+
+        Mail::send('emails.creerEquipe.inviterAmiACreerEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'ligue'=>$ligue, 'sport'=>$sport, 'lieu'=>$lieu, ], function ($message)
         {
             //Titre email
             $titre = 'Invitation à créer une équipe';
@@ -58,6 +62,7 @@ class InviterAmiACreerEquipeController extends Controller
             $message->to($emailInvite1);
             //$message->to($emailInvite2);
             //$message->attach($attach);
+
         });
 
         Mail::send('emails.creerEquipe.invitationBienEnvoyee', [null], function ($message)

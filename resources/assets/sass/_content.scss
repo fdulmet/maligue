@@ -1,4 +1,5 @@
 #content{
+  font-size: small;
   button{
     color: black;
     font-size: small;
@@ -10,34 +11,42 @@
 
   //Espace ligue
   #espace_ligue{
-    padding: 1% 4% 0 4%;//haut droite bas gauche
+    padding: 1% 0 0 4%;//haut droite bas gauche
     #menu {
       padding: 0 0 0 0;
       margin-left:-2%;
     }
     #classement {
       margin-top: 1%;
-      padding-right: 5%;
-      border: 0px;
+      padding-right: 2%;
+      #ligneTitres{
+        font-weight: bold;
+        background-color: rgba(214, 33, 16, 0.58);
+      }
       td {
+        white-space: nowrap;
+        text-align: center;
         border: 1px solid black;
+        padding: 5px 5px 5px 5px;
       }
     }
     #calendrier{
       margin-top: 1%;
-      border: 1px;
+      padding-right : 0 2% 0 0;
       td {
         border: 1px solid black;
         padding: 5px 0 5px 0;
       }
       #tdTitreCalendrier{
         border: 0;
+
       }
       #titreCalendrier{
         font-weight: bold;
       }
       #tdLieu{
         border: 0;
+
       }
       #tdChaqueMatch{
         border-top: 1px solid black;
