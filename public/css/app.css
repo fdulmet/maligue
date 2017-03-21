@@ -7802,31 +7802,20 @@ button.close {
 
 #content #espace_ligue #calendrier {
   margin-top: 1%;
-  padding-right: 0 2% 0 0;
-}
-
-#content #espace_ligue #calendrier td {
-  border: 1px solid black;
-  padding: 5px 0 5px 0;
-}
-
-#content #espace_ligue #calendrier #tdTitreCalendrier {
-  border: 0;
+  padding: 0 2% 0 0;
 }
 
 #content #espace_ligue #calendrier #titreCalendrier {
   font-weight: bold;
 }
 
-#content #espace_ligue #calendrier #tdLieu {
-  border: 0;
+#content #espace_ligue #calendrier #trLieu {
+  padding-left: 0;
 }
 
-#content #espace_ligue #calendrier #tdChaqueMatch {
-  border-top: 1px solid black;
-  border-right: 0;
-  border-bottom: 1px solid black;
-  border-left: 0;
+#content #espace_ligue #calendrier #trChaqueMatch td {
+  border: 0 solid black;
+  padding: 5px 5px 5px 5px;
 }
 
 #content #espace_equipe {
@@ -7853,7 +7842,7 @@ button.close {
 }
 
 #content #espace_equipe #confirmation_invitation_amis_dans_equipe_envoyee {
-  color: red;
+  color: green;
 }
 
 .table-editable {

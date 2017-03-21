@@ -1,6 +1,6 @@
 <!--le titre du mail est dans InviterAmiACreerEquipeController ($message->subject)-->
 
-{{ $inviteurPrenom }} {{ $inviteurNom }} vous invite à créer une équipe. Vous pourrez ainsi affronter la sienne.<br>
+{{ $inviteurPrenom }} {{ $inviteurNom }} vous invite à créer une nouvelle équipe.
 
 <br>Ligue : {{ $ligue }}
 

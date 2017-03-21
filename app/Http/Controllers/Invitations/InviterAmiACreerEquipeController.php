@@ -83,7 +83,8 @@ class InviterAmiACreerEquipeController extends Controller
         }
         $deuxiemePhrase = '<br>Un email de confirmation vous a été envoyé';
         $invitationEnvoyee = 'Vous avez bien invité '.$emailInvite1.' à créer une nouvelle équipe dans '.$ligue.'.'.$deuxiemePhrase.'.';
-        return response()->view('home', ['confirmation' => $invitationEnvoyee]);
+        //return response()->view('home', ['confirmation' => $invitationEnvoyee]);
+        return redirect()->action('HomeController@index', ['confirmation' => $invitationEnvoyee]);
         //return response()->json(['message' => 'Request completed']);
     }
 }

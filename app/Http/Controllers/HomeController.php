@@ -67,6 +67,8 @@ class HomeController extends Controller
             'lieu' => $lieu,
             'stats' => $stats,
             'confirmation' => $request->input('confirmation', null),
+            //on utilise resquest pour aller chercher confirmation là où elle est définie,
+            //en l'occurence dans les invitations controllers
         ]);
     }
 }

@@ -1,38 +1,27 @@
 <table class="row">
-    <tr>
-        <td id="tdTitreCalendrier">
-            <div id="titreCalendrier">
-                Calendrier
-            </div>
-        </td>
+    <tr id="trTitreCalendrier">
+        <div id="titreCalendrier">
+            Calendrier
+        </div>
     </tr>
-    <tr>
-        <td id="tdLieu">
-            Tous les matchs sont au {{ $lieu }}
-        </td>
+    <tr id="trLieu">
+        Tous les matchs sont au {{ $lieu }}
     </tr>
     @foreach($stats as $stat)
-        <tr>
-            <td id="tdChaqueMatch">
-                {{ $stat['date'] }}&nbsp;&nbsp;&nbsp;{{ $stat['heure'] }}
-            </td>
+        <tr id="trChaqueMatch">
+            <td>{{ $stat['date'] }}</td>
 
-                <!--équipe1 buts1-->
-            <td>
-                {{ $stat['equipe_1'] }}&nbsp;
-            </td>
+            <td>{{ $stat['heure'] }}</td>
 
-            <td>
-                {{ $stat['buts_1'] }}&nbsp;
-            </td>
+            <td>{{ $stat['equipe_1'] }}</td>
 
-            <td>
-                {{ $stat['buts_2'] }}&nbsp;
-            </td>
+            <td>{{ $stat['buts_1'] }}</td>
 
-            <td>
-                {{ $stat['equipe_2'] }}&nbsp;
-            </td>
+            <td>-</td>
+
+            <td>{{ $stat['buts_2'] }}</td>
+
+            <td>{{ $stat['equipe_2'] }}</td>
         </tr>
     @endforeach
 </table>
