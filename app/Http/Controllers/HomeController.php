@@ -7,6 +7,7 @@ use App\Equipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,15 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
+        //BANNER
+        $authEquipe = Auth::user()->equipes()->get();
+        foreach ($authEquipe as $authEquipe) {
+            $authLigue = $authEquipe->ligues;
+            foreach ($authLigue as $authLigue) {
+                $nomAuthLigue = $authLigue->nom;
+            }
+        }
+
         //CALENDRIER
         //lieu
         $game = Game::find(1);
@@ -195,6 +205,7 @@ class HomeController extends Controller
 
     //VIEW
         return view('/home')->with([
+            'nomAuthLigue' => $nomAuthLigue,
             'lieu' => $lieu,
             'statsCalendrier' => $statsCalendrier,
             'statsClassement' => $statsClassement,

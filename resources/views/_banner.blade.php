@@ -4,7 +4,7 @@
            <span style="float: left">
                 <h3>
                     <a href="{{ url('/') }}" id="titreNomLigue">
-                        La ligue des pingouins
+                        {{ $nomAuthLigue }}
                     </a>
                 </h3>
             </span>
