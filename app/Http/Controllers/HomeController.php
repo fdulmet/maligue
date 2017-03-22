@@ -29,20 +29,20 @@ class HomeController extends Controller
 
         //chaque ligne
         $games = Game::all();
-        $stats = [];// Array of games statistics
+        $statsCalendrier = [];// Array of games statistics
         $i = 0;
         foreach ($games as $game){
-            $stats[$i] = [];
+            $statsCalendrier[$i] = [];
 
             //date
             $date = $game->date;
             $date = date('d/m/Y', strtotime($date));
-            $stats[$i]['date'] = $date;
+            $statsCalendrier[$i]['date'] = $date;
 
             //heure
             $heure = $game->heure;
             $heure = date('H\hi', strtotime($heure));
-            $stats[$i]['heure'] = $heure;
+            $statsCalendrier[$i]['heure'] = $heure;
 
             //equipes & buts
             $y = 1;
@@ -50,39 +50,35 @@ class HomeController extends Controller
                 $pivot = $equipe->pivot;
                 $buts = $pivot->buts;
                 $nom = Equipe::find( $pivot->equipe_id )->nom;
-
-                $stats[$i]['equipe_'. $y] = $nom;
-                $stats[$i]['buts_'. $y] = $buts;
+                $statsCalendrier[$i]['equipe_'. $y] = $nom;
+                $statsCalendrier[$i]['buts_'. $y] = $buts;
 
                 $y++;
             }
             $i++;
         }
 
-
         //CLASSEMENT
         $equipes = Equipe::all();
-        $rang = 0;
         $statsClassement = [];// Array of team statistics
         $j = 0;
+        //$rang = 0;
         foreach ($equipes as $equipe){
             $statsClassement[$j] = [];
 
             //Rang
-            $rang = $rang+1;
-            $statsClassement[$j]['rang'] = $rang;
+            //$rang = $rang+1;
+            //$statsClassement[$j]['rang'] = $rang;
 
             //Equipe
             $nomEquipe = $equipe->nom;
             $statsClassement[$j]['nomEquipe'] = $nomEquipe;
 
             //buts pour
-            $z = 1;
             $butsPour = 0;
             foreach ($equipe->games as $game){
                 $butsPourDeChaqueMatch = $game->pivot->buts;
                 $butsPour += $butsPourDeChaqueMatch;
-                $z++;
             }
             $statsClassement[$j]['butsPour'] = $butsPour;
 
@@ -90,20 +86,18 @@ class HomeController extends Controller
             foreach ($equipe->games as $game){
                 $game_id = $game->pivot->game_id;
                 $equipe_id = $game->pivot->equipe_id;
-                $autre_equipe_game = DB::table('equipe_game')->where([
+                $autre_equipe_games = DB::table('equipe_game')->where([
                     ['game_id','=', $game_id],
                     ['equipe_id','!=', $equipe_id],
                 ])->get();
 
-                $zz = 1;
                 $butsContre = 0;
-                foreach ($autre_equipe_game as $autre_equipe_game){
+                foreach ($autre_equipe_games as $autre_equipe_game){
                     $butsContreDeChaqueMatch = $autre_equipe_game->buts;
                     $butsContre += $butsContreDeChaqueMatch;
-                    $zz++;
                 }
-                $statsClassement[$j]['butsContre'] = $butsContre;
             }
+            $statsClassement[$j]['butsContre'] = $butsContre;
 
             //diff.
             $diff = $butsPour - $butsContre;
@@ -114,8 +108,9 @@ class HomeController extends Controller
             $statsClassement[$j]['joues'] = $joues;
 
             //Gagnés
-            $a = 1;
+            $gagnes = 0;
             foreach ($equipe->games as $game){
+                //diff. par match
                 $butsPourDeChaqueMatch = $game->pivot->buts;
                 $game_id = $game->pivot->game_id;
                 $equipe_id = $game->pivot->equipe_id;
@@ -127,20 +122,21 @@ class HomeController extends Controller
                     $butsContreDeChaqueMatch = $autre_equipe_game->buts;
                 }
                 $diffParMatch = $butsPourDeChaqueMatch - $butsContreDeChaqueMatch;
-                $gagnes = 0;
-                if ($diffParMatch>0){
+
+                //condition
+                if ($diffParMatch > 0){
                     $gagneChaqueMatch = 1;
                 } else{
                     $gagneChaqueMatch = 0;
                 }
                 $gagnes += $gagneChaqueMatch;
-                $a++;
             }
             $statsClassement[$j]['gagnes'] = $gagnes;
 
             //Nuls
-            $b = 1;
+            $nuls = 0;
             foreach ($equipe->games as $game){
+                //diff. par match
                 $butsPourDeChaqueMatch = $game->pivot->buts;
                 $game_id = $game->pivot->game_id;
                 $equipe_id = $game->pivot->equipe_id;
@@ -152,20 +148,21 @@ class HomeController extends Controller
                     $butsContreDeChaqueMatch = $autre_equipe_game->buts;
                 }
                 $diffParMatch = $butsPourDeChaqueMatch - $butsContreDeChaqueMatch;
-                $nuls = 0;
-                if ($diffParMatch=0){
+
+                //condition
+                if ($diffParMatch = 0){
                     $nulChaqueMatch = 1;
                 } else{
                     $nulChaqueMatch = 0;
                 }
                 $nuls += $nulChaqueMatch;
-                $b++;
             }
             $statsClassement[$j]['nuls'] = $nuls;
 
             //Perdus
-            $c = 1;
+            $perdus = 0;
             foreach ($equipe->games as $game){
+                //diff. par match
                 $butsPourDeChaqueMatch = $game->pivot->buts;
                 $game_id = $game->pivot->game_id;
                 $equipe_id = $game->pivot->equipe_id;
@@ -177,14 +174,14 @@ class HomeController extends Controller
                     $butsContreDeChaqueMatch = $autre_equipe_game->buts;
                 }
                 $diffParMatch = $butsPourDeChaqueMatch - $butsContreDeChaqueMatch;
-                $perdus = 0;
+
+                //condition
                 if ($diffParMatch<0){
                     $perduChaqueMatch = 1;
                 } else{
                     $perduChaqueMatch = 0;
                 }
                 $perdus += $perduChaqueMatch;
-                $c++;
             }
             $statsClassement[$j]['perdus'] = $perdus;
 
@@ -199,7 +196,7 @@ class HomeController extends Controller
     //VIEW
         return view('/home')->with([
             'lieu' => $lieu,
-            'stats' => $stats,
+            'statsCalendrier' => $statsCalendrier,
             'statsClassement' => $statsClassement,
             'confirmation' => $request->input('confirmation', null),
             //on utilise resquest pour aller chercher confirmation là où elle est définie,

@@ -16,7 +16,7 @@
     </tr>
     @foreach($statsClassement as $statClassement)
         <tr>
-            <td id="tdChaqueEquipe">{{ $statClassement['rang'] }}</td>
+            <td id="tdChaqueEquipe">rang : sort</td>
             <td id="tdChaqueEquipe">{{ $statClassement['nomEquipe'] }}</td>
             <td id="tdChaqueEquipe">{{ $statClassement['points'] }}</td>
             <td id="tdChaqueEquipe">{{ $statClassement['joues'] }}</td>

@@ -9,12 +9,15 @@
                         Inscription
                     </div>
                     <div class="panel-body" id="contenu_encart_connexion">
-                        <!--Login facebook-->
+
+                        <!--Login facebook
                         <br>
                         <a href="login/facebook" class="btn btn-primary form-control" id="bouton_connexion_facebook">Inscription Facebook</a>
                         <p>
                             <b>OU</b>
-                        </p>
+                        </p>-->
+
+                        <!--Inscription formulaire-->
                         <form class="form-horizontal form-inline" role="form" method="POST" action="{{ url('/register') }}">
                             {{ csrf_field() }}
                             <?php
