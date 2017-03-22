@@ -24,6 +24,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         //BANNER
+        //nomAuthLigue
         $authEquipe = Auth::user()->equipes()->get();
         foreach ($authEquipe as $authEquipe) {
             $authLigue = $authEquipe->ligues;
@@ -31,6 +32,11 @@ class HomeController extends Controller
                 $nomAuthLigue = $authLigue->nom;
             }
         }
+        //saisons
+        foreach ($authEquipe->games as $authGame){
+            $authDate = $authGame->date;
+        }
+        $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));//si table games dans ordre chronologique
 
         //CALENDRIER
         //lieu
@@ -206,6 +212,7 @@ class HomeController extends Controller
     //VIEW
         return view('/home')->with([
             'nomAuthLigue' => $nomAuthLigue,
+            'anneeDuDernierMatchProgramme' => $anneeDuDernierMatchProgramme,
             'lieu' => $lieu,
             'statsCalendrier' => $statsCalendrier,
             'statsClassement' => $statsClassement,

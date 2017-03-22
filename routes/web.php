@@ -29,13 +29,20 @@
 use App\Mail\InviterAmisDansEquipe;
 
 Auth::routes();
-Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
-Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
+//Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
+//Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
+
+Route::get('/2016-2017', 'SaisonController@saison');
+Route::get('/2015-2016', 'SaisonController@saison');
+Route::get('/2014-2015', 'SaisonController@saison');
+Route::get('/2013-2014', 'SaisonController@saison');
+Route::get('/2012-2013', 'SaisonController@saison');
+Route::get('/2011-2012', 'SaisonController@saison');
+Route::get('/2010-2011', 'SaisonController@saison');
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/home.php', 'HomeController@index');
-
 
 Route::get('/invitationDansEquipeEnvoyee', 'Invitations\InviterAmisDansEquipeController@send')->name('inviterAmisDansEquipe');
 Route::get('/invitationCreerEquipeEnvoyee', 'Invitations\InviterAmiACreerEquipeController@send')->name('inviterAmiACreerEquipe');
