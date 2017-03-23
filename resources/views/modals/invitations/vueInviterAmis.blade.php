@@ -1,31 +1,23 @@
-<!-- Modal -->
 <div id="inviterAmis" class="modal" role="dialog">
     <div class="modal-dialog">
-        <!-- Modal content-->
         <div class="modal-content">
-            <!--Titre-->
             <div class="modal-header">
+
+                <!--Titre-->
                 <h4 class="modal-title">
                     Inviter des amis
                 </h4>
             </div>
-            <!--Contenu-->
             <div class="modal-body">
 
                 <!--A rejoindre son équipe-->
                 <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmisDansEquipe') }}">
                     {{ csrf_field() }}
                     <label>
-                        à rejoindre
-                        <?php
-                        //Nom de l'équipe du mec identifié
-                        $authEquipe = Auth::user()->equipes()->get();
-                        foreach ($authEquipe as $authEquipe) {
-                            $nomAuthEquipe = $authEquipe->nom;
-                            echo ' '.$nomAuthEquipe.' : ';
-                        }
-                        ?>
+                        à rejoindre {{ $nomAuthEquipe }} :
                     </label>
+
+                    <!--Champs mail de l'invité-->
                     <div class="form-group">
                         <div class="col-md-12">
                             <input id="emailInvite1" type="text" class="form-control" name="emailInvite1"
@@ -46,15 +38,7 @@
                 <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmiACreerEquipe') }}">
                     {{ csrf_field() }}
                     <label>
-                        à créer une nouvelle équipe dans
-                        <?php
-                            $entreeEquipe = Auth::user()->equipes()->get();
-                            $ligue = \App\Equipe::find($entreeEquipe)->ligues()->get();
-                            foreach ($ligue as $ligue) {
-                            $ligue = $ligue->nom;
-                            echo ' '.$ligue.' :';
-                            }
-                        ?>
+                        à créer une nouvelle équipe dans {{ $nomAuthLigue }} :
                     </label>
                     <div class="form-group">
                         <div class="col-md-12">

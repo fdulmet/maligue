@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Equipe;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -208,14 +209,32 @@ class HomeController extends Controller
             $j++;
         }
 
+        //ESPACE EQUIPE
+        //Nom équipe du mec authentifié
+        $authEquipe = Auth::user()->equipes()->get();
+        foreach ($authEquipe as $authEquipe) {
+            $nomAuthEquipe = $authEquipe->nom;
+        }
 
-    //VIEW
+        //Nom ligue du mec authentifié
+        $authLigue = Equipe::find($authEquipe)->ligues()->get();
+        foreach ($authLigue as $ligue) {
+            $nomAuthLigue = $ligue->nom;
+        }
+
+        //Carbon date pour déterminer prochain match
+        $carbonParis = Carbon::now('Europe/Paris');
+
+        //VIEW
         return view('/home')->with([
             'nomAuthLigue' => $nomAuthLigue,
             'anneeDuDernierMatchProgramme' => $anneeDuDernierMatchProgramme,
             'lieu' => $lieu,
             'statsCalendrier' => $statsCalendrier,
             'statsClassement' => $statsClassement,
+            'nomAuthEquipe' => $nomAuthEquipe,
+            'nomAuthLigue' => $nomAuthLigue,
+            'carbonParis' => $carbonParis,
             'confirmation' => $request->input('confirmation', null),
             //on utilise resquest pour aller chercher confirmation là où elle est définie,
             //en l'occurence dans les invitations controllers
