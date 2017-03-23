@@ -27,18 +27,17 @@
 //mais il faut quand même créer les méthodes dans JoueursController (public function create() etc)
 
 use App\Mail\InviterAmisDansEquipe;
+use App\Http\Controllers;
 
 Auth::routes();
 //Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
 //Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
 
-Route::get('/2016-2017', 'SaisonController@saison');
-Route::get('/2015-2016', 'SaisonController@saison');
-Route::get('/2014-2015', 'SaisonController@saison');
-Route::get('/2013-2014', 'SaisonController@saison');
-Route::get('/2012-2013', 'SaisonController@saison');
-Route::get('/2011-2012', 'SaisonController@saison');
-Route::get('/2010-2011', 'SaisonController@saison');
+for($anMoinsUn=2016; $anMoinsUn >= 2010; $anMoinsUn--)
+{
+    $an = $anMoinsUn+1;
+    Route::get($anMoinsUn.'-'.$an, 'SaisonController@saison');
+}
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');

@@ -23,8 +23,11 @@ class SaisonController extends Controller
             $authDate = $authGame->date;
         }
         $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));//si table games dans ordre chronologique
+        $an = $anneeDuDernierMatchProgramme;
+        $anMoinsUn = $anneeDuDernierMatchProgramme-1;
 
-        return view('saisons/2015-2016')->with([
+        //vue
+        return view('saisons/'.$anMoinsUn.'-'.$an)->with([
             'nomAuthLigue' => $nomAuthLigue,
             'anneeDuDernierMatchProgramme' => $anneeDuDernierMatchProgramme,
         ]);
