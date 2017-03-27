@@ -59,29 +59,24 @@ class HomeController extends Controller
             $nomEquipe = $equipe->nom;
             $statsClassement[$j]['nomEquipe'] = $nomEquipe;
 
-            //buts pour
             $butsPour = 0;
+            $butsContre = 0;
             foreach ($equipe->games as $game) {
+                // buts pour
                 $butsPourDeChaqueMatch = $game->pivot->buts;
                 $butsPour += $butsPourDeChaqueMatch;
-            }
-            $statsClassement[$j]['butsPour'] = $butsPour;
 
-            //buts contre
-            foreach ($equipe->games as $game) {
+                //buts contre
                 $game_id = $game->pivot->game_id;
                 $equipe_id = $game->pivot->equipe_id;
-                $autre_equipe_games = DB::table('equipe_game')->where([
+                $autre_equipe_game = DB::table('equipe_game')->where([
                     ['game_id', '=', $game_id],
                     ['equipe_id', '!=', $equipe_id],
-                ])->get();
+                ])->first();
 
-                $butsContre = 0;
-                foreach ($autre_equipe_games as $autre_equipe_game) {
-                    $butsContreDeChaqueMatch = $autre_equipe_game->buts;
-                    $butsContre += $butsContreDeChaqueMatch;
-                }
+                $butsContre += $autre_equipe_game->buts;
             }
+            $statsClassement[$j]['butsPour'] = $butsPour;
             $statsClassement[$j]['butsContre'] = $butsContre;
 
             //diff.
