@@ -14,6 +14,8 @@
                 <td>{{ $statCalendrier['equipe_2'] }}</td>
             </tr>
         </table>
+
+        <?php break; ?>
     @else
         {{ '' }}
     @endif

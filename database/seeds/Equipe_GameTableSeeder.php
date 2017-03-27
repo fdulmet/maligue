@@ -52,6 +52,16 @@ class Equipe_GameTableSeeder extends Seeder
                 'game_id' => 4,
                 'buts' => null,
             ],
+            [
+                'equipe_id' => 1,
+                'game_id' => 5,
+                'buts' => null,
+            ],
+            [
+                'equipe_id' => 4,
+                'game_id' => 5,
+                'buts' => null,
+            ],
 
         ]);
     }

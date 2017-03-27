@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Helpers\CalendarHelper;
 
 class HomeController extends Controller
 {
@@ -40,44 +41,7 @@ class HomeController extends Controller
         $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));//si table games dans ordre chronologique
 
         //CALENDRIER
-        //lieu
-        $game = Game::find(1);
-        $lieu = $game->lieu;
-
-        //chaque ligne
-        $games = Game::all();
-        $statsCalendrier = [];// Array of games statistics
-        $i = 0;
-        foreach ($games as $game){
-            $statsCalendrier[$i] = [];
-
-            // game id
-            $statsCalendrier[$i]['game_id'] = $game->id;
-
-            //date
-            $date = $game->date;
-            $date = date('d/m/Y', strtotime($date));
-            $statsCalendrier[$i]['date'] = $date;
-
-            //heure
-            $heure = $game->heure;
-            $heure = date('H\hi', strtotime($heure));
-            $statsCalendrier[$i]['heure'] = $heure;
-
-            //equipes & buts, equipe_n_id
-            $y = 1;
-            foreach ($game->equipes as $equipe){
-                $pivot = $equipe->pivot;
-                $buts = $pivot->buts;
-                $nom = Equipe::find( $pivot->equipe_id )->nom;
-                $statsCalendrier[$i]["equipe_{$y}_id"] = $equipe->id;
-                $statsCalendrier[$i]['equipe_'. $y] = $nom;
-                $statsCalendrier[$i]['buts_'. $y] = $buts;
-
-                $y++;
-            }
-            $i++;
-        }
+        $calendarHelper = new CalendarHelper();
 
         //CLASSEMENT
         $equipes = Equipe::all();
@@ -195,8 +159,8 @@ class HomeController extends Controller
         return view('/home')->with([
             'nomAuthLigue' => $nomAuthLigue,
             'anneeDuDernierMatchProgramme' => $anneeDuDernierMatchProgramme,
-            'lieu' => $lieu,
-            'statsCalendrier' => $statsCalendrier,
+            'lieu' => $calendarHelper->getLieu(),
+            'statsCalendrier' => $calendarHelper->getData(),
             'statsClassement' => $statsClassement,
             'nomAuthEquipe' => $nomAuthEquipe,
             'nomAuthLigue' => $nomAuthLigue,
