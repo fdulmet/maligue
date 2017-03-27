@@ -6,10 +6,11 @@ use App\Game;
 use App\Equipe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Helpers\CalendarHelper;
+use App\Http\Helpers\BannerHelper;
+use App\Http\Helpers\CalendrierHelper;
+use App\Http\Helpers\ClassementHelper;
 
 class HomeController extends Controller
 {
@@ -26,111 +27,55 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         //BANNER
-        //nomAuthLigue
-        $authEquipe = Auth::user()->equipes()->get();
-        foreach ($authEquipe as $authEquipe) {
-            $authLigue = $authEquipe->ligues;
-            foreach ($authLigue as $authLigue) {
-                $nomAuthLigue = $authLigue->nom;
-            }
-        }
-        //saisons
-        foreach ($authEquipe->games as $authGame){
-            $authDate = $authGame->date;
-        }
-        $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));//si table games dans ordre chronologique
+        $bannerHelper = new BannerHelper();
 
         //CALENDRIER
-        $calendarHelper = new CalendarHelper();
+        $calendrierHelper = new CalendrierHelper();
 
         //CLASSEMENT
+        $classementHelper = new ClassementHelper();
+
         $equipes = Equipe::all();
-        $statsClassement = [];// Array of team statistics
-        $j = 0;
-        //$rang = 0;
+
+        $rangParPoints = [];
+
         foreach ($equipes as $equipe) {
-            $statsClassement[$j] = [];
+            $gameStats  = $classementHelper->getGamesStats($equipe);
+            $points     = $classementHelper->getPoints($gameStats['gagnes'], $gameStats['nuls']);
+            $butsStats  = $classementHelper->getButs($equipe);
+            $diff       = $butsStats['butsPour'] - $butsStats['butsContre'];
 
             //Rang
-            //$rang = $rang+1;
-            //$statsClassement[$j]['rang'] = $rang;
-
-            //Equipe
-            $nomEquipe = $equipe->nom;
-            $statsClassement[$j]['nomEquipe'] = $nomEquipe;
-
-            $butsPour = 0;
-            $butsContre = 0;
-            foreach ($equipe->games as $game) {
-                // buts pour
-                $butsPourDeChaqueMatch = $game->pivot->buts;
-                $butsPour += $butsPourDeChaqueMatch;
-
-                //buts contre
-                $game_id = $game->pivot->game_id;
-                $equipe_id = $game->pivot->equipe_id;
-                $autre_equipe_game = DB::table('equipe_game')->where([
-                    ['game_id', '=', $game_id],
-                    ['equipe_id', '!=', $equipe_id],
-                ])->first();
-
-                $butsContre += $autre_equipe_game->buts;
+            if (!isset($rangParPoints[$points])) {
+                $rangParPoints[$points] = [];
             }
-            $statsClassement[$j]['butsPour'] = $butsPour;
-            $statsClassement[$j]['butsContre'] = $butsContre;
-
-            //diff.
-            $diff = $butsPour - $butsContre;
-            $statsClassement[$j]['diff'] = $diff;
-
-            //Joués
-            $joues = $equipe->games->count();
-            $statsClassement[$j]['joues'] = $joues;
-
-            //diff. par match
-            $gagnes = 0;
-            foreach ($equipe->games as $game) {
-                $butsPourDeChaqueMatch = $game->pivot->buts;
-                $game_id = $game->pivot->game_id;
-                $equipe_id = $game->pivot->equipe_id;
-                $autre_equipe_game = DB::table('equipe_game')->where([
-                    ['game_id', '=', $game_id],
-                    ['equipe_id', '!=', $equipe_id],
-                ])->get();
-                foreach ($autre_equipe_game as $autre_equipe_game) {
-                    $butsContreDeChaqueMatch = $autre_equipe_game->buts;
-                }
-                $diffParMatch = $butsPourDeChaqueMatch - $butsContreDeChaqueMatch;
-
-                //G N P
-                if ($diffParMatch > 0) {
-                    $gagneChaqueMatch = 1;
-                    $nulChaqueMatch = 0;
-                    $perduChaqueMatch = 0;
-                } elseif($diffParMatch == 0) {
-                    $gagneChaqueMatch = 0;
-                    $nulChaqueMatch = 1;
-                    $perduChaqueMatch = 0;
-                } elseif($diffParMatch < 0) {
-                    $gagneChaqueMatch = 0;
-                    $nulChaqueMatch = 0;
-                    $perduChaqueMatch = 1;
-                }
-                    $gagnes += $gagneChaqueMatch;
-                    //$nuls += $nulChaqueMatch;
-                    //$perdus += $perduChaqueMatch;
+            if (!isset($rangParPoints[$points][$diff])) {
+                $rangParPoints[$points][$diff] = [];
             }
-            $statsClassement[$j]['gagnes'] = $gagnes;
-            //$statsClassement[$j]['nuls'] = $nuls;
-            //$statsClassement[$j]['perdus'] = $perdus;
-
-
-            //Points
-            //$points = 3 * $gagnes + $nuls;
-            //$statsClassement[$j]['points'] = $points;
-
-            $j++;
+            if (!isset($rangParPoints[$points][$diff][$butsStats['butsPour']])) {
+                $rangParPoints[$points][$diff][$butsStats['butsPour']] = [];
+            }
+            $rangParPoints[$points][$diff][$butsStats['butsPour']][] = $equipe;
         }
+
+        ksort($rangParPoints);// Sort by points
+        foreach($rangParPoints as $diff) {
+            ksort($diff);
+
+            foreach($diff as $butsPour) {
+                ksort($butsPour);
+            }
+        }
+
+        function flatten(array $array) {
+            $return = array();
+            array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+            return $return;
+        }
+        $rangs = flatten($rangParPoints);
+        $rangs = array_reverse($rangs);
+
+
 
         //ESPACE EQUIPE
         //Nom équipe du mec authentifié
@@ -145,21 +90,26 @@ class HomeController extends Controller
             $nomAuthLigue = $ligue->nom;
         }
 
-
-
         //Carbon date pour déterminer prochain match
         $carbonParis = Carbon::now('Europe/Paris');
 
         //VIEW
         return view('/home')->with([
-            'nomAuthLigue' => $nomAuthLigue,
-            'anneeDuDernierMatchProgramme' => $anneeDuDernierMatchProgramme,
-            'lieu' => $calendarHelper->getLieu(),
-            'statsCalendrier' => $calendarHelper->getData(),
-            'statsClassement' => $statsClassement,
+            'carbonParis' => $carbonParis,
             'nomAuthEquipe' => $nomAuthEquipe,
             'nomAuthLigue' => $nomAuthLigue,
-            'carbonParis' => $carbonParis,
+
+            //banner saison
+            'anneeDuDernierMatchProgramme' => $bannerHelper->getAnnee(),
+
+            //calendrier
+            'lieu' => $calendrierHelper->getLieu(),
+            'statsCalendrier' => $calendrierHelper->getData(),
+
+            //classement
+            'statsClassement' => $classementHelper->getData($rangs),
+
+            //espace équipe
             'confirmation' => $request->input('confirmation', null),
             //on utilise resquest pour aller chercher confirmation là où elle est définie,
             //en l'occurence dans les invitations controllers

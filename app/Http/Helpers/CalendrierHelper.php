@@ -5,8 +5,10 @@ namespace App\Http\Helpers;
 use App\Game;
 use App\Equipe;
 
-class CalendarHelper {
-    public function __construct() {}
+class CalendrierHelper {
+    public function __construct() {
+        //
+    }
 
     public function getData() {
         $games = Game::all()->sortBy('date');
