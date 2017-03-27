@@ -20,6 +20,9 @@ class EquipesTableSeeder extends Seeder
             ],
             [
                 'nom' => 'Les Bretons',
+            ],
+            [
+                'nom' => 'Les Manchots',
             ]
         ]);
     }

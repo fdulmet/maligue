@@ -17,7 +17,7 @@ class CreateEquipeGameTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('equipe_id');
             $table->unsignedInteger('game_id');
-            $table->unsignedInteger('buts');
+            $table->unsignedInteger('buts')->nullable();
             $table->timestamps();
         });
     }

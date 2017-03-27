@@ -18,11 +18,11 @@
         <tr>
             <td></td>
             <td id="tdChaqueEquipe">{{ $statClassement['nomEquipe'] }}</td>
-            <td id="tdChaqueEquipe">{{ $statClassement['points'] }}</td>
+            <td id="tdChaqueEquipe"></td>
             <td id="tdChaqueEquipe">{{ $statClassement['joues'] }}</td>
             <td id="tdChaqueEquipe">{{ $statClassement['gagnes'] }}</td>
-            <td id="tdChaqueEquipe">{{ $statClassement['nuls'] }}</td>
-            <td id="tdChaqueEquipe">{{ $statClassement['perdus'] }}</td>
+            <td id="tdChaqueEquipe"></td>
+            <td id="tdChaqueEquipe"></td>
             <td id="tdChaqueEquipe">{{ $statClassement['butsPour'] }}</td>
             <td id="tdChaqueEquipe">{{ $statClassement['butsContre'] }}</td>
             <td id="tdChaqueEquipe">{{ $statClassement['diff'] }}</td>

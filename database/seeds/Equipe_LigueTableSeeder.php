@@ -23,6 +23,10 @@ class Equipe_LigueTableSeeder extends Seeder
             [
                 'equipe_id' => '3',
                 'ligue_id' => '1',
+            ],
+            [
+                'equipe_id' => '4',
+                'ligue_id' => '1',
             ]
         ]);
     }

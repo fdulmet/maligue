@@ -7863,6 +7863,11 @@ button.close {
   color: green;
 }
 
+#content #espace_equipe #prochainMatch td {
+  border: 0 solid black;
+  padding-right: 10px;
+}
+
 .table-editable {
   position: relative;
 }

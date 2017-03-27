@@ -27,6 +27,9 @@
     </p>
     <div class="col-md-12">
         @include('content._effectif')
+        <br>
+        @include('content._dernierMatch')
+        <br>
         @include('content._prochainMatch')
 
         <!--Test eloquent relationships :</b>

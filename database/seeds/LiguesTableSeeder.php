@@ -15,7 +15,7 @@ class LiguesTableSeeder extends Seeder
             [
                 'nom' => 'La Ligue des Pingouins',
                 'sport' => 'Foot-à-5',
-            ]
+            ],
         ]);
     }
 }

@@ -13,25 +13,46 @@ class Equipe_GameTableSeeder extends Seeder
     {
         DB::table('equipe_game')->insert([
             [
-                'equipe_id' => '1',
-                'game_id' => '1',
-                'buts' => '10',
+                'equipe_id' => 1,
+                'game_id' => 1,
+                'buts' => null,
             ],
             [
-                'equipe_id' => '2',
-                'game_id' => '1',
-                'buts' => '8',
+                'equipe_id' => 2,
+                'game_id' => 1,
+                'buts' => null,
             ],
             [
-                'equipe_id' => '3',
-                'game_id' => '2',
-                'buts' => '15',
+                'equipe_id' => 3,
+                'game_id' => 2,
+                'buts' => null,
             ],
             [
-                'equipe_id' => '1',
-                'game_id' => '2',
-                'buts' => '11',
-            ]
+                'equipe_id' => 1,
+                'game_id' => 2,
+                'buts' => null,
+            ],
+            [
+                'equipe_id' => 1,
+                'game_id' => 3,
+                'buts' => null,
+            ],
+            [
+                'equipe_id' => 4,
+                'game_id' => 3,
+                'buts' => null,
+            ],
+            [
+                'equipe_id' => 2,
+                'game_id' => 4,
+                'buts' => null,
+            ],
+            [
+                'equipe_id' => 4,
+                'game_id' => 4,
+                'buts' => null,
+            ],
+
         ]);
     }
 }
