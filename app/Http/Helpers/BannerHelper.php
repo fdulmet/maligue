@@ -3,6 +3,7 @@ namespace App\Http\Helpers;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Equipe;
 
 class BannerHelper
 {
@@ -12,15 +13,8 @@ class BannerHelper
 
     public function getAnnee()
     {
-        //nomAuthLigue
-        $authEquipe = Auth::user()->equipes()->get();
-        foreach ($authEquipe as $authEquipe) {
-            $authLigue = $authEquipe->ligues;
-            foreach ($authLigue as $authLigue) {
-                $nomAuthLigue = $authLigue->nom;
-            }
-        }
         //saisons
+        $authEquipe = Auth::user()->equipes()->get();
         foreach ($authEquipe->games as $authGame) {
             $authDate = $authGame->date;
         }

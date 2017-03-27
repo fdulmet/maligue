@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Equipe;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Helpers\DiversHelper;
 use App\Http\Helpers\BannerHelper;
 use App\Http\Helpers\CalendrierHelper;
 use App\Http\Helpers\ClassementHelper;
@@ -75,29 +75,15 @@ class HomeController extends Controller
         $rangs = flatten($rangParPoints);
         $rangs = array_reverse($rangs);
 
-
-
-        //ESPACE EQUIPE
-        //Nom équipe du mec authentifié
-        $authEquipe = Auth::user()->equipes()->get();
-        foreach ($authEquipe as $authEquipe) {
-            $nomAuthEquipe = $authEquipe->nom;
-        }
-
-        //Nom ligue du mec authentifié
-        $authLigue = Equipe::find($authEquipe)->ligues()->get();
-        foreach ($authLigue as $ligue) {
-            $nomAuthLigue = $ligue->nom;
-        }
-
-        //Carbon date pour déterminer prochain match
-        $carbonParis = Carbon::now('Europe/Paris');
+        //DIVERS
+        $diversHelper = new DiversHelper();
 
         //VIEW
         return view('/home')->with([
-            'carbonParis' => $carbonParis,
-            'nomAuthEquipe' => $nomAuthEquipe,
-            'nomAuthLigue' => $nomAuthLigue,
+            //divers
+            'carbonParis' => $diversHelper->getCarbon(),
+            'nomAuthEquipe' => $diversHelper->getNomAuthEquipe(),
+            'nomAuthLigue' => $diversHelper->getNomAuthLigue(),
 
             //banner saison
             'anneeDuDernierMatchProgramme' => $bannerHelper->getAnnee(),
