@@ -2,6 +2,7 @@
 namespace App\Http\Helpers;
 
 use Illuminate\Support\Facades\DB;
+use App\Equipe;
 
 class ClassementHelper
 {
@@ -9,11 +10,11 @@ class ClassementHelper
     {
     }
 
-    public function getData($equipes)
+    public function getClassement()
     {
         $statsClassement = [];// Array of team statistics
         $j = 0;
-
+        $equipes = Equipe::all();
         foreach ($equipes as $equipe) {
             $statsClassement[$j] = [];
 
@@ -70,7 +71,7 @@ class ClassementHelper
             //G N P
             if ($diffParMatch > 0) {
                 $gagnes++;
-            } elseif ($diffParMatch == 0) {
+            } elseif ($diffParMatch == 0 and $butsPourDeChaqueMatch != null and $butsContreDeChaqueMatch != null ) {
                 $nuls++;
             } elseif ($diffParMatch < 0) {
                 $perdus++;
@@ -111,5 +112,48 @@ class ClassementHelper
             'butsPour'  => $butsPour,
             'butsContre'  => $butsContre,
         ];
+    }
+
+    public function getClasser(){
+        $classementHelper = new ClassementHelper();
+        $equipes = Equipe::all();
+        $rangParPoints = [];
+        foreach ($equipes as $equipe) {
+            $gameStats  = $classementHelper->getGamesStats($equipe);
+            $points     = $classementHelper->getPoints($gameStats['gagnes'], $gameStats['nuls']);
+            $butsStats  = $classementHelper->getButs($equipe);
+            $diff       = $butsStats['butsPour'] - $butsStats['butsContre'];
+
+            //Rang
+            if (!isset($rangParPoints[$points])) {
+                $rangParPoints[$points] = [];
+            }
+            if (!isset($rangParPoints[$points][$diff])) {
+                $rangParPoints[$points][$diff] = [];
+            }
+            if (!isset($rangParPoints[$points][$diff][$butsStats['butsPour']])) {
+                $rangParPoints[$points][$diff][$butsStats['butsPour']] = [];
+            }
+            $rangParPoints[$points][$diff][$butsStats['butsPour']][] = $equipe;
+        }
+
+        ksort($rangParPoints);// Sort by points
+        foreach($rangParPoints as $diff) {
+            ksort($diff);
+
+            foreach($diff as $butsPour) {
+                ksort($butsPour);
+            }
+        }
+
+        function flatten(array $array) {
+            $return = array();
+            array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+            return $return;
+        }
+        $rangs = flatten($rangParPoints);
+        $rangs = array_reverse($rangs);
+
+        return ['rangs'=>$rangs];
     }
 }

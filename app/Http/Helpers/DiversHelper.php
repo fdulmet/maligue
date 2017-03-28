@@ -25,6 +25,7 @@ class DiversHelper
         foreach ($authEquipe as $authEquipe) {
             $nomAuthEquipe = $authEquipe->nom;
         }
+        return $nomAuthEquipe;
     }
 
     public function getNomAuthLigue()
@@ -35,5 +36,6 @@ class DiversHelper
         foreach ($authLigue as $ligue) {
             $nomAuthLigue = $ligue->nom;
         }
+        return $nomAuthLigue;
     }
 }

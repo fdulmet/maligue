@@ -14,9 +14,12 @@ class BannerHelper
     public function getAnnee()
     {
         //saisons
-        $authEquipe = Auth::user()->equipes()->get();
-        foreach ($authEquipe->games as $authGame) {
-            $authDate = $authGame->date;
+        $auth = Auth::user();
+        foreach ($auth->equipes as $authEquipe) {
+            $authGame = $authEquipe->games;
+            foreach ($authGame as $authGame){
+                $authDate = $authGame->date;
+            }
         }
         return $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));//si table games dans ordre chronologique
     }

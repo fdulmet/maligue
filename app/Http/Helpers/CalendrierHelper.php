@@ -10,7 +10,7 @@ class CalendrierHelper {
         //
     }
 
-    public function getData() {
+    public function getCalendrier() {
         $games = Game::all()->sortBy('date');
         $statsCalendrier = [];// Array of games statistics
         $i = 0;

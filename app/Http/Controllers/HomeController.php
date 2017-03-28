@@ -26,57 +26,17 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        //BANNER
+        //divers
+        $diversHelper = new DiversHelper();
+
+        //banner
         $bannerHelper = new BannerHelper();
 
-        //CALENDRIER
+        //calendrier
         $calendrierHelper = new CalendrierHelper();
 
-        //CLASSEMENT
+        //classement
         $classementHelper = new ClassementHelper();
-
-        $equipes = Equipe::all();
-
-        $rangParPoints = [];
-
-        foreach ($equipes as $equipe) {
-            $gameStats  = $classementHelper->getGamesStats($equipe);
-            $points     = $classementHelper->getPoints($gameStats['gagnes'], $gameStats['nuls']);
-            $butsStats  = $classementHelper->getButs($equipe);
-            $diff       = $butsStats['butsPour'] - $butsStats['butsContre'];
-
-            //Rang
-            if (!isset($rangParPoints[$points])) {
-                $rangParPoints[$points] = [];
-            }
-            if (!isset($rangParPoints[$points][$diff])) {
-                $rangParPoints[$points][$diff] = [];
-            }
-            if (!isset($rangParPoints[$points][$diff][$butsStats['butsPour']])) {
-                $rangParPoints[$points][$diff][$butsStats['butsPour']] = [];
-            }
-            $rangParPoints[$points][$diff][$butsStats['butsPour']][] = $equipe;
-        }
-
-        ksort($rangParPoints);// Sort by points
-        foreach($rangParPoints as $diff) {
-            ksort($diff);
-
-            foreach($diff as $butsPour) {
-                ksort($butsPour);
-            }
-        }
-
-        function flatten(array $array) {
-            $return = array();
-            array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
-            return $return;
-        }
-        $rangs = flatten($rangParPoints);
-        $rangs = array_reverse($rangs);
-
-        //DIVERS
-        $diversHelper = new DiversHelper();
 
         //VIEW
         return view('/home')->with([
@@ -85,15 +45,15 @@ class HomeController extends Controller
             'nomAuthEquipe' => $diversHelper->getNomAuthEquipe(),
             'nomAuthLigue' => $diversHelper->getNomAuthLigue(),
 
-            //banner saison
-            'anneeDuDernierMatchProgramme' => $bannerHelper->getAnnee(),
+            //banner
+            'anneeDuDernierMatchProgramme' => $bannerHelper->getAnnee(),//si table games dans ordre chronologique
 
             //calendrier
             'lieu' => $calendrierHelper->getLieu(),
-            'statsCalendrier' => $calendrierHelper->getData(),
+            'statsCalendrier' => $calendrierHelper->getCalendrier(),
 
             //classement
-            'statsClassement' => $classementHelper->getData($rangs),
+            'statsClassement' => $classementHelper->getClassement(),
 
             //espace équipe
             'confirmation' => $request->input('confirmation', null),
@@ -102,3 +62,4 @@ class HomeController extends Controller
         ]);
     }
 }
+
