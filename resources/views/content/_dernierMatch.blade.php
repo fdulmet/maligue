@@ -7,7 +7,7 @@
             {{ Form::open(['action' => 'EntrerScoreController@entrerscore']) }}
             {{ Form::hidden('game_id', $statCalendrier['game_id'])  }}
             <table>
-                <tr id="prochainMatch">
+                <tr id="dernierMatch">
                     <td>{{ $statCalendrier['date'] }}</td>
                     <td>{{ $statCalendrier['heure'] }}</td>
                     <td>{{ $statCalendrier['equipe_1'] }}</td>

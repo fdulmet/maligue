@@ -12,15 +12,8 @@
             <td>{{ $statCalendrier['date'] }}</td>
             <td>{{ $statCalendrier['heure'] }}</td>
             <td>{{ $statCalendrier['equipe_1'] }}</td>
-            @if($statCalendrier['date']<$carbonParis)
-                <td>{{ $statCalendrier['buts_1'] }}</td>
-                <td>-</td>
-                <td>{{ $statCalendrier['buts_2'] }}</td>
-            @else
-                <td></td>
-                <td>-</td>
-                <td></td>
-            @endif
+            <td>{{ $statCalendrier['buts_1'] }}</td>
+            <td>{{ $statCalendrier['buts_2'] }}</td>
             <td>{{ $statCalendrier['equipe_2'] }}</td>
         </tr>
     @endforeach

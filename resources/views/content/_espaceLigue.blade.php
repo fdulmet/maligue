@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class="col-md-6" id="classement">
-        @include ('content._classement')
+        @ include ('content._classement')
     </div>
     <div class="col-md-6" id="calendrier">
         @include ('content._calendrier')

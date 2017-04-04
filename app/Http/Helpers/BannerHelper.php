@@ -11,7 +11,7 @@ class BannerHelper
     {
     }
 
-    public function getAnnee()
+    public function annee()
     {
         //saisons
         $auth = Auth::user();

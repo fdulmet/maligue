@@ -12,13 +12,13 @@ class DiversHelper
     {
     }
 
-    public function getCarbon()
+    public function carbon()
     {
         //Carbon date pour déterminer prochain match
         $carbonParis = Carbon::now('Europe/Paris');
     }
 
-    public function getNomAuthEquipe()
+    public function nomAuthEquipe()
     {
         //Nom équipe du mec authentifié
         $authEquipe = Auth::user()->equipes()->get();
@@ -28,7 +28,7 @@ class DiversHelper
         return $nomAuthEquipe;
     }
 
-    public function getNomAuthLigue()
+    public function nomAuthLigue()
     {
         //Nom ligue du mec authentifié
         $authEquipe = Auth::user()->equipes()->get();

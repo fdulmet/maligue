@@ -4,23 +4,26 @@
            <span id="spanFloatleft">
                 <h3>
                     <a href="{{ url('/') }}" id="titreNomLigue">
-                        {{ $nomAuthLigue }}
+                        @if(isset($nomAuthLigue))
+                            {{ $nomAuthLigue }}
+                        @else
+                            Ma Ligue
+                        @endif
                     </a>
                 </h3>
             </span>
             <div class="col-md-8">
-                @include('banner._saisonsDropdownMenu')
+                @if(isset($nomAuthLigue))
+                    @include('banner._saisonsDropdownMenu')
+                @else
+                @endif
             </div>
         </div>
         <div class="col-md-4">
-            @include('banner._logoutDropdownMenu')
+            @if(isset($nomAuthLigue))
+                @include('banner._logoutDropdownMenu')
+            @else
+            @endif
         </div>
     </div>
 </div>
-
-
-
-
-
-
-

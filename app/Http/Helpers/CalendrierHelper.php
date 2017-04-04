@@ -10,7 +10,7 @@ class CalendrierHelper {
         //
     }
 
-    public function getCalendrier() {
+    public function calendrier() {
         $games = Game::all()->sortBy('date');
         $statsCalendrier = [];// Array of games statistics
         $i = 0;
@@ -49,7 +49,7 @@ class CalendrierHelper {
         return $statsCalendrier;
     }
 
-    public function getLieu() {
+    public function lieu() {
         $game = Game::find(1);
         return $game->lieu;
     }
