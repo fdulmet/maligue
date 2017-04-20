@@ -17,7 +17,7 @@ class LiguesTableSeeder extends Seeder
                 'sport' => 'Foot-à-5',
             ],
             [
-                'nom' => 'Ligue Zob',
+                'nom' => 'Ligue SMP',
                 'sport' => 'Foot-à-5',
             ],
 

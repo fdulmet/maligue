@@ -6,6 +6,17 @@
                 <h4 id="nom_equipe">
                     {{ $nomAuthEquipe }}
                 </h4>
+                <!--logo équipe (passer par un helper)-->
+                <?php
+                    use Illuminate\Support\Facades\Auth;
+                    use App\User;
+                    $authEquipe = Auth::user()->equipes()->get();
+                    foreach ($authEquipe as $authEquipe) {
+                        echo $logoAuthEquipe = $authEquipe->logo;
+                    }
+                ?>
+
+
             </span>
             <!--Bouton inviter des amis-->
             <div class="col-md-6">
@@ -31,10 +42,6 @@
         @include('content._dernierMatch')
         <br>
         @include('content._prochainMatch')
-
-        <!--Test eloquent relationships :</b>
-        $user = App\User::find(1);
-        $user->equipes as $equipe) {}-->
     </div>
 </div>
 

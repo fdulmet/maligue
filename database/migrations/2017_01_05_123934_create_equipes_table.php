@@ -17,6 +17,7 @@ class CreateEquipesTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->timestamps();
+            $table->binary('logo');
         });
     }
 
