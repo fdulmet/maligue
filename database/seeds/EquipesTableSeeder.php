@@ -23,7 +23,10 @@ class EquipesTableSeeder extends Seeder
             ],
             [
                 'nom' => 'Les Manchots',
-            ]
+            ],
+            [
+                'nom' => 'SMP',
+            ],
         ]);
     }
 }

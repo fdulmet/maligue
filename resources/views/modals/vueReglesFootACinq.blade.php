@@ -1,3 +1,15 @@
+<b>Principales règles</b> :<br>
+<br>
+- Si le gardien détourne le ballon en « corner » : balle à lui dans sa zone<br>
+- Si un attaquant fait action de jeu dans la zone, le ballon est rendu au gardien<br>
+- Si un défenseur fait action de jeu dans la zone, il y a pénalty<br>
+- Le gardien n’est pas autorisé à sortir de sa zone, sinon il y a pénalty<br>
+- Les tacles et les plaquages contre les murs sont interdits.<br>
+
+
+
+<!-- Règles plus longues :
+
 Les règles qui sont les mêmes au foot à 11 ne sont pas écrites.
 <br>La présence d’un arbitre n’est pas obligatoire. Chacun devra donc faire preuve de bienséance et de bonne foi à l’occasion de chaque match.
 <br>
@@ -43,4 +55,6 @@ Les règles qui sont les mêmes au foot à 11 ne sont pas écrites.
 <br>
 <br>Tirs :
 <br>- Il est interdit de tirer au but depuis sa propre moitié de terrain.
+
+-->
 

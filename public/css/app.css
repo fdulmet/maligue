@@ -7922,11 +7922,6 @@ button.close {
   padding: 0;
 }
 
-#encart_connexion #contenu_encart_connexion #bouton_connexion_facebook {
-  width: auto;
-  margin-bottom: 2%;
-}
-
 #encart_connexion #contenu_encart_connexion #formulaire {
   margin: auto;
   width: 50%;
@@ -7934,7 +7929,6 @@ button.close {
 }
 
 #encart_connexion #contenu_encart_connexion #mdp_oublie {
-  text-align: left;
   color: grey;
   margin: 0;
   padding: 0;

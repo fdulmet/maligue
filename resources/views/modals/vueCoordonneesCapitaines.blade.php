@@ -1,10 +1,14 @@
 <?php
 use \App\User;
+use \App\Equipe;
 
 $users = \App\User::all();
+//$authEquipe = Auth::
 foreach ($users as $user)
 {
     $capitaine = $user->capitaine;
+    //$equipe = $user->equipes()->get();
+
     if ($capitaine==1)
         {
             $tableEquipe = $user->equipes()->get();

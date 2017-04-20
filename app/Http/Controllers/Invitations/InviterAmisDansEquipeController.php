@@ -78,13 +78,13 @@ class InviterAmisDansEquipeController extends Controller
             foreach ($teams as $team) {
                 $equipeInviteur = $team->nom;
             }
-        $deuxiemePhrase = '<br>Un email de confirmation vous a été envoyé';
+        $deuxiemePhrase = 'Un email de confirmation vous a été envoyé';
         $invitationEnvoyee = 'Vous avez bien invité '.$emailInvite1.' à rejoindre '.$equipeInviteur.'.'.$deuxiemePhrase.'.';
         //return response()->view('home', ['confirmation' => $invitationEnvoyee]);
         return redirect()->action('HomeController@index', ['confirmation' => $invitationEnvoyee]);
         //return response()->json(['message' => 'Request completed']);
 
-        //Calendier
+        //Calendrier
         $game = \App\Game::find(1);
         $lieu = $game->lieu;
     }

@@ -53,13 +53,24 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('123456'),
             ],
             [
-            'nom' => 'de la Bourdonnaye',
-            'prenom' => 'Charles',
-            'capitaine' => true,
-            'tel' => ('0612345678'),
-            'email' => 'charles@gmail.com',
-            'password' => bcrypt('123456'),
-            ]
+                'nom' => 'de la Bourdonnaye',
+                'prenom' => 'Charles',
+                'capitaine' => true,
+                'tel' => ('0612345678'),
+                'email' => 'charles@gmail.com',
+                'password' => bcrypt('123456'),
+            ],
+            //Zobs
+            [
+                'nom' => 'Delaborde',
+                'prenom' => 'Mathias',
+                'capitaine' => true,
+                'tel' => ('0630465237'),
+                'email' => 'mathias.delaborde@gmail.com',
+                'password' => bcrypt('123456'),
+            ],
+
+
         ]);
     }
 }

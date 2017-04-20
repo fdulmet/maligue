@@ -21,7 +21,10 @@ class BannerHelper
                 $authDate = $authGame->date;
             }
         }
-        return $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));//si table games dans ordre chronologique
+        if (isset($authDate)){
+            return $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));//si table games dans ordre chronologique
+        }
+        else{}
     }
 }
 

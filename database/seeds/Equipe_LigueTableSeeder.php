@@ -27,7 +27,11 @@ class Equipe_LigueTableSeeder extends Seeder
             [
                 'equipe_id' => '4',
                 'ligue_id' => '1',
-            ]
+            ],
+            [
+                'equipe_id' => '5',
+                'ligue_id' => '2',
+            ],
         ]);
     }
 }
