@@ -19,9 +19,15 @@
                 @endif
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             @if(isset($nomAuthLigue))
                 @include('banner._logoutDropdownMenu')
+            @else
+            @endif
+        </div>
+        <div class="col-md-1">
+            @if(isset($nomAuthLigue))
+                @include('banner._contact')
             @else
             @endif
         </div>
