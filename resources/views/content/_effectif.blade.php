@@ -25,13 +25,13 @@
             $capitaine = $user->capitaine;
             if ($capitaine == 1)
             {
-                $capitaine = ' (capitaine)';
+                $capitaine = '(capitaine)';
             }
             else
             {
                 $capitaine = '';
             }
-            echo $prenom.''.$nom.''.$capitaine."<br>";
+            echo $prenom.' '.$nom.' '.$capitaine."<br>";
         }
     }
 

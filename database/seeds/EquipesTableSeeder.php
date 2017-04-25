@@ -13,25 +13,23 @@ class EquipesTableSeeder extends Seeder
     {
         DB::table('equipes')->insert([
             [
-                'nom' => 'La New Team',
-                'logo' =>  '',
-            ],
-            [
-                'nom' => 'Les Matadors',
-                'logo' =>  '',
-            ],
-            [
-                'nom' => 'Les Bretons',
-                'logo' =>  '',
-            ],
-            [
-                'nom' => 'Les Manchots',
-                'logo' =>  '',
-            ],
-            [
                 'nom' => 'Les Zobs',
-                'logo' =>  '<img src="../../resources/views/content/logo_equipe_lesZobs.png" alt="logo les zobs" style="width:240px;height:149px;">',
+                'logo' =>  '../../resources/views/content/logo_equipe_lesZobs.png',
             ],
+            [
+                'nom' => 'Les Zobs 2',
+                'logo' =>  '',
+            ],
+
+            [
+                'nom' => 'Equipe Thomas',
+                'logo' =>  '',
+            ],
+            [
+                'nom' => 'Equipe Luis',
+                'logo' =>  '',
+            ],
+
         ]);
     }
 }

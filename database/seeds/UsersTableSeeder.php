@@ -12,7 +12,52 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            //Zobs
             [
+                'nom' => 'Delaborde',
+                'prenom' => 'Mathias',
+                'capitaine' => true,
+                'tel' => ('0630465237'),
+                'email' => 'mathias.delaborde@gmail.com',
+                'password' => bcrypt('123456'),
+            ],
+            /*
+            [
+                'nom' => 'Mesmene',
+                'prenom' => 'Yannis',
+                'capitaine' => false,
+                'tel' => ('0612345678'),
+                'email' => 'yannis@gmail.com',
+                'password' => bcrypt('123456'),
+            ],
+            [
+                'nom' => 'Marlasca',
+                'prenom' => 'Esteban',
+                'capitaine' => false,
+                'tel' => ('0612345678'),
+                'email' => 'esteban@gmail.com',
+                'password' => bcrypt('123456'),
+            ],
+            [
+                'nom' => 'Khaless',
+                'prenom' => 'Mathieu',
+                'capitaine' => false,
+                'tel' => ('0612345678'),
+                'email' => 'mathieu@gmail.com',
+                'password' => bcrypt('123456'),
+            ],
+            [
+                'nom' => 'Trichet',
+                'prenom' => 'Jules',
+                'capitaine' => false,
+                'tel' => ('0612345678'),
+                'email' => 'jules@gmail.com',
+                'password' => bcrypt('123456'),
+            ],
+            */
+
+            /*Pingouins
+           [
                 'nom' => 'Dulmet',
                 'prenom' => 'François',
                 'capitaine' => true,
@@ -60,17 +105,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'charles@gmail.com',
                 'password' => bcrypt('123456'),
             ],
-            //Zobs
-            [
-                'nom' => 'Delaborde',
-                'prenom' => 'Mathias',
-                'capitaine' => true,
-                'tel' => ('0630465237'),
-                'email' => 'mathias.delaborde@gmail.com',
-                'password' => bcrypt('123456'),
-            ],
-
-
+            */
         ]);
     }
 }

@@ -12,8 +12,9 @@ class GamesTableSeeder extends Seeder
     public function run()
     {
         DB::table('games')->insert([
+
             [
-                'lieu' => 'Five Paris',
+                'lieu' => 'Urbansoccer La Défense',
                 'date' => '2017-03-16',
                 'heure' => '21:00:00',
                 'lieu_report' => 'Le Five Paris',

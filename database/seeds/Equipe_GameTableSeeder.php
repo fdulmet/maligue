@@ -12,6 +12,7 @@ class Equipe_GameTableSeeder extends Seeder
     public function run()
     {
         DB::table('equipe_game')->insert([
+
             [
                 'equipe_id' => 1,
                 'game_id' => 1,
