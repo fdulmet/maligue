@@ -14,7 +14,7 @@ class EquipesTableSeeder extends Seeder
         DB::table('equipes')->insert([
             [
                 'nom' => 'FC Zobs',
-                'logo' =>  '../../resources/views/content/logo_equipe_lesZobs.png',
+                'logo' =>  'public/logo_equipe_lesZobs.jpg',
             ],
             [
                 'nom' => 'FC Quinconces',
