@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Equipe;
 use App\User;
 use Carbon\Carbon;
+use DateTime;
 
 class DiversHelper
 {
@@ -15,7 +16,10 @@ class DiversHelper
     public function carbon()
     {
         //Carbon date pour déterminer prochain match
-        $carbonParis = Carbon::now('Europe/Paris');
+        $carbon = Carbon::now('Europe/Paris');
+        //$carbon2= date('Y-m-d', strtotime($carbon));
+        $carbonStrtotime = strtotime($carbon);
+        return $carbonStrtotime;
     }
 
     public function nomAuthEquipe()

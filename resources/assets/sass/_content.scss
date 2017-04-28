@@ -17,7 +17,7 @@
       margin-left:-2%;
     }
     #classement {
-      margin-top: 1%;
+      margin-top: 2%;
       padding-right: 2%;
       #ligneTitres{
         background-color: rgba(214, 33, 16, 0.7);
@@ -31,8 +31,8 @@
       }
     }
     #calendrier{
-      margin-top: 1%;
-      padding : 0 2% 0 0;
+      margin-top: 2%;
+      padding : 0 0 0 0;
       #trTitreCalendrier{
       }
       #titreCalendrier{
@@ -44,7 +44,14 @@
       #trChaqueMatch {
         td {
           border: 0 solid black;
-          padding: 5px 5px 5px 5px;
+          padding: 15px 10px 15px 10px;
+        }
+      }
+      #trChaqueMatch:nth-child(even){
+        td {
+          border: 0 solid black;
+          padding: 15px 10px 15px 10px;
+          background-color: #f1f1f1;
         }
       }
     }
@@ -70,6 +77,17 @@
     }
     #confirmation_invitation_amis_dans_equipe_envoyee{
       color: green;
+    }
+    #dernierMatch{
+      td{
+        border: 0 solid black;
+        padding-right: 10px;
+      }
+      #tdChampsButs{
+        input{
+          width: 50px;
+        }
+      }
     }
     #prochainMatch{
       td{

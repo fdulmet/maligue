@@ -13,14 +13,13 @@ class EquipesTableSeeder extends Seeder
     {
         DB::table('equipes')->insert([
             [
-                'nom' => 'Les Zobs',
+                'nom' => 'FC Zobs',
                 'logo' =>  '../../resources/views/content/logo_equipe_lesZobs.png',
             ],
             [
-                'nom' => 'Les Zobs 2',
+                'nom' => 'FC Quinconces',
                 'logo' =>  '',
             ],
-
             [
                 'nom' => 'Equipe Thomas',
                 'logo' =>  '',

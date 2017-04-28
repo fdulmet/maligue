@@ -5,7 +5,7 @@
         </div>
     </tr>
     <tr id="trLieu">
-        Tous les matchs sont au {{ $lieu }}
+        Tous les matchs sont à {{ $lieu }}
     </tr>
     @foreach($statsCalendrier as $statCalendrier)
         <tr id="trChaqueMatch">
@@ -13,6 +13,7 @@
             <td>{{ $statCalendrier['heure'] }}</td>
             <td>{{ $statCalendrier['equipe_1'] }}</td>
             <td>{{ $statCalendrier['buts_1'] }}</td>
+            <td>-</td>
             <td>{{ $statCalendrier['buts_2'] }}</td>
             <td>{{ $statCalendrier['equipe_2'] }}</td>
         </tr>

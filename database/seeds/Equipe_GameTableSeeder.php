@@ -16,52 +16,72 @@ class Equipe_GameTableSeeder extends Seeder
             [
                 'equipe_id' => 1,
                 'game_id' => 1,
-                'buts' => 10,
+                'buts' => null,
             ],
             [
                 'equipe_id' => 2,
                 'game_id' => 1,
-                'buts' => 8,
+                'buts' => null,
             ],
             [
                 'equipe_id' => 3,
                 'game_id' => 2,
-                'buts' => 25,
+                'buts' => 4,
             ],
             [
-                'equipe_id' => 1,
+                'equipe_id' => 2,
                 'game_id' => 2,
-                'buts' => 14,
+                'buts' => 5,
             ],
             [
                 'equipe_id' => 1,
                 'game_id' => 3,
-                'buts' => 4,
+                'buts' => 3,
             ],
             [
                 'equipe_id' => 4,
                 'game_id' => 3,
-                'buts' => 5,
+                'buts' => 2,
             ],
             [
                 'equipe_id' => 2,
                 'game_id' => 4,
-                'buts' => 13,
+                'buts' => 2,
             ],
             [
                 'equipe_id' => 4,
                 'game_id' => 4,
-                'buts' => 12,
+                'buts' => 2,
             ],
             [
                 'equipe_id' => 1,
                 'game_id' => 5,
-                'buts' => 10,
+                'buts' => 1,
             ],
             [
                 'equipe_id' => 4,
                 'game_id' => 5,
-                'buts' => 19,
+                'buts' => 1,
+            ],
+            [
+                'equipe_id' => 1,
+                'game_id' => 6,
+                'buts' => 3,
+            ],
+            [
+                'equipe_id' => 4,
+                'game_id' => 6,
+                'buts' => 4,
+            ],
+            [
+                'equipe_id' => 1,
+                'game_id' => 7,
+                'buts' => 3,
+            ],
+            [
+                'equipe_id' => 4,
+                'game_id' => 7,
+                'buts' => 4,
             ],
 
         ]);

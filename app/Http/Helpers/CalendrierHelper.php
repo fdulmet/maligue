@@ -26,6 +26,11 @@ class CalendrierHelper {
             $date = date('d/m/Y', strtotime($date));
             $statsCalendrier[$i]['date'] = $date;
 
+            //date strtotime
+            $dateStrtotime = $game->date;
+            $dateStrtotime = strtotime($dateStrtotime);
+            $statsCalendrier[$i]['dateStrtotime'] = $dateStrtotime;
+
             //heure
             $heure = $game->heure;
             $heure = date('H\hi', strtotime($heure));

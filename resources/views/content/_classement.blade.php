@@ -22,7 +22,9 @@
             <td id="tdChaqueEquipe">{{ $statClassement['joues'] }}</td>
             <td id="tdChaqueEquipe">{{ $statClassement['gagnes'] }}</td>
 
+
             <td id="tdChaqueEquipe">{{ $statClassement['butsPour'] }}</td>
+
 
         </tr>
     @endforeach
