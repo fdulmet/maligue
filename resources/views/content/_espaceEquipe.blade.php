@@ -25,6 +25,7 @@
                 @include('modals.invitations.boutonInviterAmis')
                 @include('modals.invitations.vueInviterAmis')
             </div>
+
         </div>
     </div>
     <!--Message de confirmation qui apparaît après avoir invité un ami à rejoindre équipe-->

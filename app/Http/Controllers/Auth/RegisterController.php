@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Events\RegisterEvent;
 use App\User;
-
 use App\Equipe;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -31,7 +29,11 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/pingouins';
+    //protected $redirectTo = '/LigueSMP';
+    protected function redirectTo()
+    {
+        return '/smp';
+    }
 
     /**
      * Create a new controller instance.

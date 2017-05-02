@@ -32,16 +32,16 @@ class ClassementHelper
 
             //GNP
             $GNP = new Data();
-            $statsClassement[$i]['gagnes']  = $GNP->GNP();
-            //$statsClassement[$i]['nuls']    = $nuls->GNP();
-            //$statsClassement[$i]['perdus']  = $perdus->GNP();
+            $statsClassement[$i]['gagnes']  = $GNP->GNP('gagnes');
+            $statsClassement[$i]['nuls']    = $GNP->GNP('nuls');
+            $statsClassement[$i]['perdus']  = $GNP->GNP('perdus');
 
             //butsPour butsContre
             $buts = new Data();
-            $butsPour = $buts->buts();
-            //$butsContre= $buts->buts;
+            $butsPour = $buts->buts('butsPour');
+            $butsContre= $buts->buts('butsContre');
             $statsClassement[$i]['butsPour'] = $butsPour;
-            //$statsClassement[$i]['butsContre'] = $butsContre;
+            $statsClassement[$i]['butsContre'] = $butsContre;
 
             //diff.
             //$diff = $butsPour - $butsContre;

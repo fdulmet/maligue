@@ -43,6 +43,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/home.php', 'HomeController@index');
 Route::get('/pingouins', 'HomeController@index');
+Route::get('/smp', 'HomeController@index');
 
 Route::post('/entrerscore', 'EntrerScoreController@entrerscore');
 

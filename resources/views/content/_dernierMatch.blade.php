@@ -28,7 +28,11 @@
                         @endif
                     </td>
                     <td>{{ $statCalendrier['equipe_2'] }}</td>
-                    <td>{{ Form::submit() }}</td>
+                    @if (isset($statCalendrier['buts_2']))
+                        {{ '' }}
+                    @else
+                        <td>{{ Form::submit() }}</td>
+                    @endif
                 </tr>
             </table>
             {{ Form::close('Envoyer') }}
