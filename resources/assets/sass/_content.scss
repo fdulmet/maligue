@@ -44,14 +44,26 @@
       #trChaqueMatch {
         td {
           border: 0 solid black;
-          padding: 15px 10px 15px 10px;
+          padding: 15px 5px 15px 5px;
+        }
+        #equipe1{
+          text-align: right;
+        }
+        #equipe2{
+          text-align: left;
         }
       }
       #trChaqueMatch:nth-child(even){
         td {
           border: 0 solid black;
-          padding: 15px 10px 15px 10px;
+          padding: 15px 5px 15px 5px;
           background-color: #f1f1f1;
+        }
+        #equipe1{
+          text-align: right;
+        }
+        #equipe2{
+          text-align: left;
         }
       }
     }

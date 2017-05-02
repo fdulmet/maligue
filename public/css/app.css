@@ -7843,13 +7843,29 @@ button.close {
 
 #content #espace_ligue #calendrier #trChaqueMatch td {
   border: 0 solid black;
-  padding: 15px 10px 15px 10px;
+  padding: 15px 5px 15px 5px;
+}
+
+#content #espace_ligue #calendrier #trChaqueMatch #equipe1 {
+  text-align: right;
+}
+
+#content #espace_ligue #calendrier #trChaqueMatch #equipe2 {
+  text-align: left;
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) td {
   border: 0 solid black;
-  padding: 15px 10px 15px 10px;
+  padding: 15px 5px 15px 5px;
   background-color: #f1f1f1;
+}
+
+#content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) #equipe1 {
+  text-align: right;
+}
+
+#content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) #equipe2 {
+  text-align: left;
 }
 
 #content #espace_equipe {

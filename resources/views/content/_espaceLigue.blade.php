@@ -1,5 +1,5 @@
 <div class="row" id="menu">
-    <div class="col-md-12" style="padding: 0 0 0 0">
+    <div class="col-md-12">
         @include('layouts.modal', ['id' => 'coordonneesCapitaines', 'titre' => 'Coordonnées capitaines', 'body' => 'modals.vueCoordonneesCapitaines'])
         @include('layouts.modal', ['id' => 'effectifsEquipes', 'titre' => 'Effectifs équipes', 'body' => 'modals.vueEffectifsEquipes'])
         <!--@ include('layouts.modal', ['id' => 'reglesReports', 'titre' => 'Règles pour les reports', 'body' => 'modals.vueReglesReports'])-->
