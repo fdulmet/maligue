@@ -14,8 +14,12 @@
                         @if (isset($statCalendrier['buts_1']))
                         {{ $statCalendrier['buts_1'] }}
                         @else
-                        <!--Pour entrer nouveau score. Que capitaine. (Différence avec doubles accolades ?)-->
-                        {{ Form::number('buts_'.  $statCalendrier['equipe_1_id']) }}
+                            @if( Auth::user()->capitaine==1)
+                            <!--Pour entrer nouveau score. Que capitaine. (Différence avec doubles accolades ?)-->
+                            {{ Form::number('buts_'.  $statCalendrier['equipe_1_id']) }}
+                            @else
+                            {{ ' ' }}
+                            @endif
                         @endif
                     </td>
                     <td>-</td>
@@ -23,8 +27,12 @@
                         @if (isset($statCalendrier['buts_2']))
                         {{ $statCalendrier['buts_2'] }}
                         @else
-                        <!--Pour entrer nouveau score-->
-                        {{ Form::number('buts_'. $statCalendrier['equipe_2_id']) }}
+                            @if( Auth::user()->capitaine==1)
+                            <!--Pour entrer nouveau score. Que capitaine.-->
+                            {{ Form::number('buts_'.  $statCalendrier['equipe_2_id']) }}
+                            @else
+                                {{ ' ' }}
+                            @endif
                         @endif
                     </td>
                     <td>{{ $statCalendrier['equipe_2'] }}</td>

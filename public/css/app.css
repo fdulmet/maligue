@@ -7880,6 +7880,13 @@ html, body {
   text-align: left;
 }
 
+#content #espace_ligue #cadeaux {
+  height: 100%;
+  color: darkgreen;
+  padding: 3% 3% 3% 3%;
+  margin-top: 3%;
+}
+
 #content #espace_equipe {
   border-left: 2px solid green;
   background-color: #f1f1f1;

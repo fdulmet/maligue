@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'mathias.delaborde@gmail.com',
                 'password' => bcrypt('123456'),
             ],
-            /*
+
             [
                 'nom' => 'Mesmene',
                 'prenom' => 'Yannis',
@@ -30,31 +30,32 @@ class UsersTableSeeder extends Seeder
                 'email' => 'yannis@gmail.com',
                 'password' => bcrypt('123456'),
             ],
-            [
-                'nom' => 'Marlasca',
-                'prenom' => 'Esteban',
-                'capitaine' => false,
-                'tel' => ('0612345678'),
-                'email' => 'esteban@gmail.com',
-                'password' => bcrypt('123456'),
-            ],
-            [
-                'nom' => 'Khaless',
-                'prenom' => 'Mathieu',
-                'capitaine' => false,
-                'tel' => ('0612345678'),
-                'email' => 'mathieu@gmail.com',
-                'password' => bcrypt('123456'),
-            ],
-            [
-                'nom' => 'Trichet',
-                'prenom' => 'Jules',
-                'capitaine' => false,
-                'tel' => ('0612345678'),
-                'email' => 'jules@gmail.com',
-                'password' => bcrypt('123456'),
-            ],
-            */
+            /*
+        [
+            'nom' => 'Marlasca',
+            'prenom' => 'Esteban',
+            'capitaine' => false,
+            'tel' => ('0612345678'),
+            'email' => 'esteban@gmail.com',
+            'password' => bcrypt('123456'),
+        ],
+        [
+            'nom' => 'Khaless',
+            'prenom' => 'Mathieu',
+            'capitaine' => false,
+            'tel' => ('0612345678'),
+            'email' => 'mathieu@gmail.com',
+            'password' => bcrypt('123456'),
+        ],
+        [
+            'nom' => 'Trichet',
+            'prenom' => 'Jules',
+            'capitaine' => false,
+            'tel' => ('0612345678'),
+            'email' => 'jules@gmail.com',
+            'password' => bcrypt('123456'),
+        ],
+        */
 
             /*Pingouins
            [
