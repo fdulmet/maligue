@@ -1,6 +1,14 @@
+html, body {
+  height: 100%;
+}
+
 #content{
   font-size: small;
-  button{
+  height:100%;
+  > div:first-child {
+    height: 100%;
+  }
+  button {
     color: black;
     font-size: small;
     border-radius: 0px;
@@ -12,8 +20,9 @@
   //Espace ligue
   #espace_ligue{
     padding: 1% 0 0 4%;//haut droite bas gauche
+    height: 100%;
     #menu {
-      padding: 0 0 0 0;
+      padding: 1% 0 2% 0;
       margin-left:-2%;
     }
     #classement {
@@ -37,9 +46,11 @@
       }
       #titreCalendrier{
         font-weight: bold;
+        margin-bottom: 2%;
       }
       #trLieu{
-        padding-left: 0;
+        padding: 0 0 0 0;
+        margin-bottom: 2%;
       }
       #trChaqueMatch {
         td {
@@ -73,9 +84,13 @@
   #espace_equipe{
     border-left: 2px solid green;
     background-color: #f1f1f1;
-    padding: 0.5% 0 0 1%;
+    padding: 1% 0 0 1%;
+    height: 100%;
     #nom_equipe{
       font-weight: bold;
+    }
+    #logoEquipe{
+      padding: 15% 0 5% 0;
     }
     #bouton_invitation{
       margin: 5% 10% 0 0;

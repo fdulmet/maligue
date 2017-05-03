@@ -38,6 +38,10 @@
     //$user = App\User::find(1)->equipes()->get();
     //$lala = App\User::where('id_equipe', $idAuthEquipe)->get();
     ?>
+    truc<br>
+    machin<br>
+    bidule<br>
+    zidane<br>
 </p>
 
 

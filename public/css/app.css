@@ -7692,7 +7692,7 @@ button.close {
   background-color: rgba(214, 33, 16, 0.9);
   border-bottom: 2px solid darkred;
   vertical-align: middle;
-  padding-left: 2%;
+  padding: 0 0 0 2%;
 }
 
 #banner #spanFloatleft {
@@ -7789,8 +7789,17 @@ button.close {
   padding: 0.5% 1.5% 0.5% 1.5%;
 }
 
+html, body {
+  height: 100%;
+}
+
 #content {
   font-size: small;
+  height: 100%;
+}
+
+#content > div:first-child {
+  height: 100%;
 }
 
 #content button {
@@ -7804,10 +7813,11 @@ button.close {
 
 #content #espace_ligue {
   padding: 1% 0 0 4%;
+  height: 100%;
 }
 
 #content #espace_ligue #menu {
-  padding: 0 0 0 0;
+  padding: 1% 0 2% 0;
   margin-left: -2%;
 }
 
@@ -7835,10 +7845,12 @@ button.close {
 
 #content #espace_ligue #calendrier #titreCalendrier {
   font-weight: bold;
+  margin-bottom: 2%;
 }
 
 #content #espace_ligue #calendrier #trLieu {
-  padding-left: 0;
+  padding: 0 0 0 0;
+  margin-bottom: 2%;
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch td {
@@ -7871,11 +7883,16 @@ button.close {
 #content #espace_equipe {
   border-left: 2px solid green;
   background-color: #f1f1f1;
-  padding: 0.5% 0 0 1%;
+  padding: 1% 0 0 1%;
+  height: 100%;
 }
 
 #content #espace_equipe #nom_equipe {
   font-weight: bold;
+}
+
+#content #espace_equipe #logoEquipe {
+  padding: 15% 0 5% 0;
 }
 
 #content #espace_equipe #bouton_invitation {

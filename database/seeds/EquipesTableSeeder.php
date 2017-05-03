@@ -18,7 +18,7 @@ class EquipesTableSeeder extends Seeder
             ],
             [
                 'nom' => 'FC Quinconces',
-                'logo' =>  '',
+                'logo' =>  'public/logo_equipe_FCQuinconces.jpg',
             ],
             [
                 'nom' => 'Equipe Thomas',

@@ -4,7 +4,7 @@
             @include('content._espaceLigue')
         </div>
         <div class="col-md-4" id="espace_equipe">
-            @include ('content._espaceEquipe')
+            @include('content._espaceEquipe')
         </div>
     </div>
 </div>
