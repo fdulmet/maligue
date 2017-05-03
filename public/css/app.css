@@ -7845,17 +7845,12 @@ html, body {
 
 #content #espace_ligue #calendrier #titreCalendrier {
   font-weight: bold;
-  margin-bottom: 2%;
-}
-
-#content #espace_ligue #calendrier #trLieu {
-  padding: 0 0 0 0;
-  margin-bottom: 2%;
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch td {
   border: 0 solid black;
   padding: 15px 5px 15px 5px;
+  background-color: #f1f1f1;
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch #equipe1 {
@@ -7869,7 +7864,7 @@ html, body {
 #content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) td {
   border: 0 solid black;
   padding: 15px 5px 15px 5px;
-  background-color: #f1f1f1;
+  background-color: #4cb54c;
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) #equipe1 {

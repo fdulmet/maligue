@@ -5,7 +5,7 @@
         </div>
     </tr>
     <tr id="trLieu">
-        Tous les matchs sont à {{ $lieu }}
+        Tous les matchs sont à {{ $lieu }}<br><br>
     </tr>
     @foreach($statsCalendrier as $statCalendrier)
         <tr id="trChaqueMatch">

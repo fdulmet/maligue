@@ -1,5 +1,4 @@
 <b>Principales règles</b> :<br>
-<br>
 - Si le gardien détourne le ballon en « corner » : balle à lui dans sa zone<br>
 - Si un attaquant fait action de jeu dans la zone, le ballon est rendu au gardien<br>
 - Si un défenseur fait action de jeu dans la zone, il y a pénalty<br>

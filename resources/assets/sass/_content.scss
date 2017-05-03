@@ -46,16 +46,16 @@ html, body {
       }
       #titreCalendrier{
         font-weight: bold;
-        margin-bottom: 2%;
+
       }
       #trLieu{
-        padding: 0 0 0 0;
-        margin-bottom: 2%;
+
       }
       #trChaqueMatch {
         td {
           border: 0 solid black;
           padding: 15px 5px 15px 5px;
+          background-color: #f1f1f1;
         }
         #equipe1{
           text-align: right;
@@ -68,7 +68,7 @@ html, body {
         td {
           border: 0 solid black;
           padding: 15px 5px 15px 5px;
-          background-color: #f1f1f1;
+          background-color: #4cb54c;
         }
         #equipe1{
           text-align: right;
