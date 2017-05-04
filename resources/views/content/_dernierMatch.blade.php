@@ -39,11 +39,11 @@
                     @if (isset($statCalendrier['buts_2']))
                         {{ '' }}
                     @else
-                        <td>{{ Form::submit() }}</td>
+                        <td>{{ Form::submit('OK') }}</td>
                     @endif
                 </tr>
             </table>
-            {{ Form::close('Envoyer') }}
+            {{ Form::close() }}
         @else
             {{ '' }}
         @endif

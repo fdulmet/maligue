@@ -9,16 +9,18 @@
 
 <div class="row">
     <div class="col-md-6" id="classement">
-        @ include ('content._classement')
+        @include ('content._classement')
     </div>
     <div class="col-md-6" id="calendrier">
         @include ('content._calendrier')
     </div>
 </div>
 
+<!--
 <div class="row">
     <div class="col-md-11" id="cadeaux">
-        @include ('content._cadeaux')
+        at include ('content._cadeaux')
     </div>
 </div>
+-->
 

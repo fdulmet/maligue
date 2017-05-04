@@ -28,28 +28,56 @@ html, body {
     #classement {
       margin-top: 2%;
       padding-right: 2%;
-      #ligneTitres{
-        background-color: rgba(214, 33, 16, 0.7);
-        color: black;
+      #motClassement{
+        font-weight: bold;
       }
-      td {
-        white-space: nowrap;
-        text-align: center;
-        border: 1px solid black;
-        padding: 5px 5px 5px 5px;
+      #motsEntetes{
+        //background-color: rgba(214, 33, 16, 0.7);
+        color: darkred;
+        font-weight: bold;
+        td{
+          padding: 15px 5px 15px 5px;
+        }
+      }
+      #trChaqueEquipe {
+        td {
+          border: 0 solid black;
+          padding: 15px 5px 15px 5px;
+          background-color: #f1f1f1;
+          text-align: center;
+        }
+        #equipe1{
+          text-align: right;
+        }
+        #equipe2{
+          text-align: left;
+        }
+      }
+      #trChaqueEquipe:nth-child(even){
+        td {
+          border: 0 solid black;
+          padding: 15px 5px 15px 5px;
+          background-color: #f74e3e;
+          text-align: center;
+        }
+        #equipe1{
+          text-align: right;
+        }
+        #equipe2{
+          text-align: left;
+        }
       }
     }
     #calendrier{
       margin-top: 2%;
-      padding : 0 0 0 0;
-      #trTitreCalendrier{
-      }
-      #titreCalendrier{
+      padding-right: 2%;
+      #motCalendrier{
         font-weight: bold;
-
       }
-      #trLieu{
-
+      #lieu{
+        color: darkred;
+        font-weight: bold;
+        padding: 15px 5px 15px 5px;
       }
       #trChaqueMatch {
         td {
@@ -92,11 +120,14 @@ html, body {
     background-color: #f1f1f1;
     padding: 1% 0 0 1%;
     height: 100%;
-    #nom_equipe{
-      font-weight: bold;
-    }
-    #logoEquipe{
-      padding: 15% 0 5% 0;
+    span{
+      float: left;
+      #nom_equipe{
+        font-weight: bold;
+      }
+      #logoEquipe{
+        padding: 15% 0 5% 0;
+      }
     }
     #bouton_invitation{
       margin: 5% 10% 0 0;

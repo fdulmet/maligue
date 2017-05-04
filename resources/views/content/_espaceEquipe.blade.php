@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <!--Nom de l'équipe du mec identifié-->
-            <span class="col-md-6" style="float: left">
+            <span class="col-md-6">
                 <h4 id="nom_equipe">
                     {{ $nomAuthEquipe }}
                 </h4>

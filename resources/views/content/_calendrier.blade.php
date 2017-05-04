@@ -1,11 +1,13 @@
 <table class="row">
-    <tr id="trTitreCalendrier">
-        <div id="titreCalendrier">
+    <tr>
+        <div id="motCalendrier">
             Calendrier
         </div>
     </tr>
-    <tr id="trLieu">
-        Tous les matchs sont à {{ $lieu }}<br><br>
+    <tr>
+        <div id="lieu">
+            Tous les matchs sont à {{ $lieu }}
+        </div>
     </tr>
     @foreach($statsCalendrier as $statCalendrier)
         <tr id="trChaqueMatch">
