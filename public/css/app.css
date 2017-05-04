@@ -7885,7 +7885,6 @@ html, body {
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch td {
-  border: 0 solid black;
   padding: 15px 5px 15px 5px;
   background-color: #f1f1f1;
 }
@@ -7899,7 +7898,6 @@ html, body {
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) td {
-  border: 0 solid black;
   padding: 15px 5px 15px 5px;
   background-color: #4cb54c;
 }
