@@ -11,7 +11,16 @@ class CalendrierHelper {
     }
 
     public function calendrier() {//il faut mettre un if $nomAuthLigue==... pour afficher les matchs que de la bonne ligue
-        $games = Game::all()->sortBy('date');
+        $games = Game::all()->sort(function($a, $b) {
+            if($a->date === $b->date) {
+                if($a->heure === $b->heure) {
+                    return 0;
+                }
+                return $a->heure < $b->heure ? -1 : 1;
+            }
+            return $a->date < $b->date ? -1 : 1;
+        });
+
         $statsCalendrier = [];// Array of games statistics
         $i = 0;
 
