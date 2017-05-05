@@ -1,37 +1,30 @@
 <?php
 namespace App\Http\Helpers\Classement;
 
-use Illuminate\Support\Facades\DB;
 use App\Equipe;
 
-class _ClasserHelper
+class Classer
 {
-    public function __construct()
-    {
-    }
 
-    public function getClasser()
+    static public function getClasser()
     {
-        $classementHelper = new ClassementHelper();
         $equipes = Equipe::all();
         $rangParPoints = [];
+
         foreach ($equipes as $equipe) {
-            $gameStats = $classementHelper->getGamesStats($equipe);
-            $points = $classementHelper->getPoints($gameStats['gagnes'], $gameStats['nuls']);
-            $butsStats = $classementHelper->getButs($equipe);
-            $diff = $butsStats['butsPour'] - $butsStats['butsContre'];
+            $data                   = new Data($equipe);
 
             //Rang
-            if (!isset($rangParPoints[$points])) {
-                $rangParPoints[$points] = [];
+            if (!isset($rangParPoints[$data->points])) {
+                $rangParPoints[$data->points] = [];
             }
-            if (!isset($rangParPoints[$points][$diff])) {
-                $rangParPoints[$points][$diff] = [];
+            if (!isset($rangParPoints[$data->points][$data->diff])) {
+                $rangParPoints[$data->points][$data->diff] = [];
             }
-            if (!isset($rangParPoints[$points][$diff][$butsStats['butsPour']])) {
-                $rangParPoints[$points][$diff][$butsStats['butsPour']] = [];
+            if (!isset($rangParPoints[$data->points][$data->diff][$data->butsPour])) {
+                $rangParPoints[$data->points][$data->diff][$data->butsPour] = [];
             }
-            $rangParPoints[$points][$diff][$butsStats['butsPour']][] = $equipe;
+            $rangParPoints[$data->points][$data->diff][$data->butsPour][] = $equipe;
         }
 
         ksort($rangParPoints);// Sort by points
@@ -54,6 +47,6 @@ class _ClasserHelper
         $rangs = flatten($rangParPoints);
         $rangs = array_reverse($rangs);
 
-        return ['rangs' => $rangs];
+        return $rangs;
     }
 }

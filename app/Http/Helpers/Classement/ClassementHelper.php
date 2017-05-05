@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Helpers\Classement;
 
-use App\Http\Helpers\Classement\Data;
-use App\Http\Helpers\Classement\Classer;
 use App\Equipe;
 
 class ClassementHelper
@@ -15,7 +13,7 @@ class ClassementHelper
     {
         $statsClassement = [];
         $i = 0;
-        $equipes = Equipe::all();
+        $equipes = Classer::getClasser();
         foreach ($equipes as $equipe) {
             $data                   = new Data($equipe);
             $statsClassement[$i]    = [];
@@ -49,4 +47,4 @@ class ClassementHelper
 }
 
 //classer
-//$_classerHelper = new Classer();
+$Classer = new Classer();
