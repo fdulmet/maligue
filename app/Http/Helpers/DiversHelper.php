@@ -32,6 +32,16 @@ class DiversHelper
         return $nomAuthEquipe;
     }
 
+    public function logoAuthEquipe()
+    {
+        //Logo équipe du mec authentifié
+        $authEquipe = Auth::user()->equipes()->get();
+        foreach ($authEquipe as $authEquipe) {
+            $logoAuthEquipe = $authEquipe->logo;
+        }
+        return $logoAuthEquipe;
+    }
+
     public function nomAuthLigue()
     {
         //Nom ligue du mec authentifié

@@ -29,6 +29,7 @@ class HomeController extends Controller
         return view('/home')->with([
             //divers
             'carbonStrtotime' => $diversHelper->carbon(),
+            'logoAuthEquipe' => $diversHelper->logoAuthEquipe(),
             'nomAuthEquipe' => $diversHelper->nomAuthEquipe(),
             'nomAuthLigue' => $diversHelper->nomAuthLigue(),
 
