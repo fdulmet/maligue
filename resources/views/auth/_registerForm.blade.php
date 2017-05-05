@@ -13,7 +13,17 @@
         $value = '';
         $readonly = '';
     }
+    //$ligue = $_GET['ligue'];
+        $ligue = 'Ligue SMP';
     ?>
+    <div class="form-group{{ $errors->has('ligue') ? ' has-error' : '' }}" id="formulaire">
+        <input value="{{ $ligue }}" id="ligue" class="form-control" name="ligue" placeholder="Nom de la ligue" readonly required autofocus>
+        @if ($errors->has('ligue'))
+            <span class="help-block">
+            <strong>{{ $errors->first('ligue') }}</strong>
+        </span>
+        @endif
+    </div>
 
     <div class="form-group{{ $errors->has('equipe') ? ' has-error' : '' }}" id="formulaire">
         <input value="{{ $value }}" id="equipe" class="form-control" name="equipe" placeholder="Nom de l'équipe" {{ $readonly }} required autofocus>

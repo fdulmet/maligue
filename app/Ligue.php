@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ligue extends Model
 {
+    protected $fillable = [
+        'nom', 'sport'
+    ];
+
     /**
      * Plusieurs équipes peuvent appartenir à une ligue.
      */

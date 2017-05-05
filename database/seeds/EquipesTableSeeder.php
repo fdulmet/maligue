@@ -12,6 +12,7 @@ class EquipesTableSeeder extends Seeder
     public function run()
     {
         DB::table('equipes')->insert([
+
             [
                 'nom' => 'FC Zobs',
                 'logo' =>  'images/logo_equipe_lesZobs.jpg',
@@ -28,7 +29,6 @@ class EquipesTableSeeder extends Seeder
                 'nom' => 'Sporting Luis',
                 'logo' =>  '',
             ],
-
         ]);
     }
 }

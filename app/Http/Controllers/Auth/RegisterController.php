@@ -54,11 +54,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'ligue' => 'required|max:255',
             'equipe' => 'required|max:255',
             'nom' => 'required|max:255',
             'prenom' => 'required|max:255',
-            'capitaine' => 'required',
-            'tel' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -72,19 +71,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $equipe         = \App\Equipe::where('nom', $data['equipe'])->first();
+        $isCapitaine    = !isset($equipe);
+
+
         //Pour remplir la table users
         $user = User::create([
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
-            'capitaine' => $data['capitaine'],
-            'tel' => $data['tel'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'is_capitaine' => $isCapitaine,
         ]);
 
         //Pour remplir les tables equipe_user et equipes
-        $user->equipes()->save( new \App\Equipe(['nom' => $data['equipe']]) );
+        if (isset($equipe)) {
+            $user->equipes()->save($equipe);
+        }
+        else {
+            $user->equipes()->save(new \App\Equipe(['nom' => $data['equipe']]));
+        }
+        $equipe = $user->equipes()->where('nom', $data['equipe'])->get();
+        $ligue  = new \App\Ligue(['nom' => $data['ligue'], 'sport' => 'Foot-à-5']);
+        $ligue->save();
+//        $equipe->ligues()->attach($ligue->id);
+//        $equipe->save();
+
         return $user;
+
 
         //Pour remplir les tables equipe_ligue et ligues
         /*$user->equipes()->save( new \App\Equipe(['nom' => $data['id']]) );

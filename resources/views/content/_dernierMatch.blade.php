@@ -14,7 +14,7 @@
                         @if (isset($statCalendrier['buts_1']))
                         {{ $statCalendrier['buts_1'] }}
                         @else
-                            @if( Auth::user()->capitaine==1)
+                            @if( Auth::user()->is_capitaine==1)
                             <!--Pour entrer nouveau score. Que capitaine. (Différence avec doubles accolades ?)-->
                             {{ Form::number('buts_'.  $statCalendrier['equipe_1_id']) }}
                             @else
@@ -27,7 +27,7 @@
                         @if (isset($statCalendrier['buts_2']))
                         {{ $statCalendrier['buts_2'] }}
                         @else
-                            @if( Auth::user()->capitaine==1)
+                            @if( Auth::user()->is_capitaine==1)
                             <!--Pour entrer nouveau score. Que capitaine.-->
                             {{ Form::number('buts_'.  $statCalendrier['equipe_2_id']) }}
                             @else

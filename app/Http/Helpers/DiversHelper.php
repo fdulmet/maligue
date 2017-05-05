@@ -35,21 +35,22 @@ class DiversHelper
     public function logoAuthEquipe()
     {
         //Logo équipe du mec authentifié
-        $authEquipe = Auth::user()->equipes()->get();
-        foreach ($authEquipe as $authEquipe) {
+        $authEquipes = Auth::user()->equipes()->get();
+        foreach ($authEquipes as $authEquipe) {
             $logoAuthEquipe = $authEquipe->logo;
         }
-        return $logoAuthEquipe;
+        return isset($logoAuthEquipe) ? $logoAuthEquipe : '';
     }
 
     public function nomAuthLigue()
     {
+        $nomAuthLigue = [];
         //Nom ligue du mec authentifié
         $authEquipe = Auth::user()->equipes()->get();
         $authLigue = Equipe::find($authEquipe)->ligues()->get();
         foreach ($authLigue as $ligue) {
-            $nomAuthLigue = $ligue->nom;
+            $nomAuthLigue[] = $ligue->nom;
         }
-        return $nomAuthLigue;
+        return implode(', ', $nomAuthLigue);
     }
 }

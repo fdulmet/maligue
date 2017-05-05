@@ -22,7 +22,7 @@
         foreach ($user as $user) {
             $prenom = $user->prenom;
             $nom = $user->nom;
-            $capitaine = $user->capitaine;
+            $capitaine = $user->is_capitaine;
             if ($capitaine == 1)
             {
                 $capitaine = '(capitaine)';
@@ -38,10 +38,7 @@
     //$user = App\User::find(1)->equipes()->get();
     //$lala = App\User::where('id_equipe', $idAuthEquipe)->get();
     ?>
-    truc<br>
-    machin<br>
-    bidule<br>
-    zidane<br>
+
 </p>
 
 

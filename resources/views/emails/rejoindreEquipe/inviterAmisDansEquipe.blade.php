@@ -9,7 +9,7 @@
 <br>Sport : {{ $sport }}
 
 <br><br>
-<a href="https://maligue.fr/register?equipe={{ $equipe }}">S'inscrire</a>
+<a href="https://maligue.fr/register?equipe={{ $equipe }}&ligue={{ $ligue }}">S'inscrire</a>
 
 
 

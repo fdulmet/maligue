@@ -13,49 +13,70 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             //Zobs
-            [
-                'nom' => 'Delaborde',
-                'prenom' => 'Mathias',
-                'capitaine' => true,
-                'tel' => ('0630465237'),
-                'email' => 'mathias.delaborde@gmail.com',
-                'password' => bcrypt('123456'),
-            ],
+        [
+            'nom' => 'Delaborde',
+            'prenom' => 'Mathias',
+            'is_capitaine' => true,
+            'email' => 'mathias.delaborde@gmail.com',
+            'password' => bcrypt('123456'),
+        ],
+        [
+            'nom' => 'Mesmene',
+            'prenom' => 'Yannis',
+            'is_capitaine' => true,
+            'email' => 'yannis@gmail.com',
+            'password' => bcrypt('123456'),
+        ],
+        [
+            'nom' => 'Jacquemard',
+            'prenom' => 'Thomas',
+            'is_capitaine' => true,
+            'email' => 'thomas@gmail.com',
+            'password' => bcrypt('123456'),
+        ],
+        [
+            'nom' => 'Guerrini',
+            'prenom' => 'Luis',
+            'is_capitaine' => true,
+            'email' => 'luis@gmail.com',
+            'password' => bcrypt('123456'),
+        ],
 
-            [
-                'nom' => 'Mesmene',
-                'prenom' => 'Yannis',
-                'capitaine' => false,
-                'tel' => ('0612345678'),
-                'email' => 'yannis@gmail.com',
-                'password' => bcrypt('123456'),
-            ],
-            /*
+
+        /*
         [
-            'nom' => 'Marlasca',
-            'prenom' => 'Esteban',
-            'capitaine' => false,
-            'tel' => ('0612345678'),
-            'email' => 'esteban@gmail.com',
+            'nom' => 'Mesmene',
+            'prenom' => 'Yannis',
+            'is_capitaine' => false,
+            'email' => 'yannis@gmail.com',
             'password' => bcrypt('123456'),
         ],
-        [
-            'nom' => 'Khaless',
-            'prenom' => 'Mathieu',
-            'capitaine' => false,
-            'tel' => ('0612345678'),
-            'email' => 'mathieu@gmail.com',
-            'password' => bcrypt('123456'),
-        ],
-        [
-            'nom' => 'Trichet',
-            'prenom' => 'Jules',
-            'capitaine' => false,
-            'tel' => ('0612345678'),
-            'email' => 'jules@gmail.com',
-            'password' => bcrypt('123456'),
-        ],
-        */
+
+    [
+        'nom' => 'Marlasca',
+        'prenom' => 'Esteban',
+        'capitaine' => false,
+        'tel' => ('0612345678'),
+        'email' => 'esteban@gmail.com',
+        'password' => bcrypt('123456'),
+    ],
+    [
+        'nom' => 'Khaless',
+        'prenom' => 'Mathieu',
+        'capitaine' => false,
+        'tel' => ('0612345678'),
+        'email' => 'mathieu@gmail.com',
+        'password' => bcrypt('123456'),
+    ],
+    [
+        'nom' => 'Trichet',
+        'prenom' => 'Jules',
+        'capitaine' => false,
+        'tel' => ('0612345678'),
+        'email' => 'jules@gmail.com',
+        'password' => bcrypt('123456'),
+    ],
+    */
 
             /*Pingouins
            [
