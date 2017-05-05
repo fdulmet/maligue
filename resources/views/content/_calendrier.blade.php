@@ -1,4 +1,4 @@
-<table class="row">
+<table class="row table">
     <tr>
         <div id="motCalendrier">
             Calendrier

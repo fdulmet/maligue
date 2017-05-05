@@ -17,35 +17,30 @@ class ClassementHelper
         $i = 0;
         $equipes = Equipe::all();
         foreach ($equipes as $equipe) {
-            $statsClassement[$i] = [];
+            $data                   = new Data($equipe);
+            $statsClassement[$i]    = [];
 
             //Nom équipe
-            $statsClassement[$i]['nomEquipe'] = $equipe->nom;
+            $statsClassement[$i]['nomEquipe']   = $equipe->nom;
 
             //Joués
-            $joues = new Data();
-            $statsClassement[$i]['joues'] = $joues->joues();
+            $statsClassement[$i]['joues']       = $data->joues;
 
             //Points
-            $points = new Data();
-            $statsClassement[$i]['points'] = $points->points();
+            $statsClassement[$i]['points']      = $data->points;
+
 
             //GNP
-            $GNP = new Data();
-            $statsClassement[$i]['gagnes']  = $GNP->GNP('gagnes');
-            $statsClassement[$i]['nuls']    = $GNP->GNP('nuls');
-            $statsClassement[$i]['perdus']  = $GNP->GNP('perdus');
+            $statsClassement[$i]['gagnes']      = $data->gagnes;
+            $statsClassement[$i]['nuls']        = $data->nuls;
+            $statsClassement[$i]['perdus']      = $data->perdus;
 
             //butsPour butsContre
-            $buts = new Data();
-            $butsPour = $buts->buts('butsPour');
-            $butsContre= $buts->buts('butsContre');
-            $statsClassement[$i]['butsPour'] = $butsPour;
-            $statsClassement[$i]['butsContre'] = $butsContre;
+            $statsClassement[$i]['butsPour']    = $data->butsPour;
+            $statsClassement[$i]['butsContre']  = $data->butsContre;
 
             //diff.
-            //$diff = $butsPour - $butsContre;
-            //$statsClassement[$i]['diff'] = $diff;
+            $statsClassement[$i]['diff']        = $data->diff;
 
             $i++;
         }
