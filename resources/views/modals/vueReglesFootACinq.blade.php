@@ -5,8 +5,6 @@
 - Le gardien n’est pas autorisé à sortir de sa zone, sinon il y a pénalty<br>
 - Les tacles et les plaquages contre les murs sont interdits.<br>
 
-
-
 <!-- Règles plus longues :
 
 Les règles qui sont les mêmes au foot à 11 ne sont pas écrites.

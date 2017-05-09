@@ -24,7 +24,7 @@ class Equipe_GameTableSeeder extends Seeder
                 'buts' => null,
             ],
             [
-                'equipe_id' => 1,
+                'equipe_id' => 2,
                 'game_id' => 2,
                 'buts' => null,
             ],
@@ -34,7 +34,7 @@ class Equipe_GameTableSeeder extends Seeder
                 'buts' => null,
             ],
             [
-                'equipe_id' => 2,
+                'equipe_id' => 1,
                 'game_id' => 3,
                 'buts' => null,
             ],

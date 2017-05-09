@@ -6,7 +6,7 @@ $users = \App\User::all();
 //$authEquipe = Auth::
 foreach ($users as $user)
 {
-    $capitaine = $user->capitaine;
+    $capitaine = $user->is_capitaine;
     //$equipe = $user->equipes()->get();
 
     if ($capitaine==1)

@@ -2,8 +2,8 @@
     <div class="col-md-12">
         @include('layouts.modal', ['id' => 'coordonneesCapitaines', 'titre' => 'Coordonnées capitaines', 'body' => 'modals.vueCoordonneesCapitaines'])
         @include('layouts.modal', ['id' => 'effectifsEquipes', 'titre' => 'Effectifs équipes', 'body' => 'modals.vueEffectifsEquipes'])
-        <!--@ include('layouts.modal', ['id' => 'reglesReports', 'titre' => 'Règles pour les reports', 'body' => 'modals.vueReglesReports'])-->
-        @include('layouts.modal', ['id' => 'reglesFootACinq', 'titre' => 'Règles du foot-à-5', 'body' => 'modals.vueReglesFootACinq'])
+        @include('layouts.modal', ['id' => 'reglesReports', 'titre' => 'Règlement ligue', 'body' => 'modals.vueReglesReports'])
+        @include('layouts.modal', ['id' => 'reglesFootACinq', 'titre' => 'Règles foot-à-5', 'body' => 'modals.vueReglesFootACinq'])
     </div>
 </div>
 

@@ -1,1 +1,1 @@
-<img src="{{ url($logoAuthEquipe) }}" alt="logo les zobs" style="width:240px;height:149px;">
+<img src="{{ url($logoAuthEquipe) }}" alt="logo_equipe">

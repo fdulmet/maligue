@@ -38,7 +38,7 @@
 
                         //Capitaine ?
                         $user = Auth::user();
-                        $capitaine = $user->capitaine;
+                        $capitaine = $user->is_capitaine;
                         if ($capitaine == 1)
                         {
                             $capitaine = ' (capitaine)';

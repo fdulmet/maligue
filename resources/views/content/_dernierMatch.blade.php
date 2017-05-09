@@ -1,4 +1,4 @@
-<b>Dernier match :</b>
+<b>Derniers matchs :</b>
 
 @foreach($statsCalendrier as $statCalendrier)
     @if($statCalendrier['equipe_1']==$nomAuthEquipe or $statCalendrier['equipe_2']==$nomAuthEquipe)
@@ -39,7 +39,11 @@
                     @if (isset($statCalendrier['buts_2']))
                         {{ '' }}
                     @else
+                        @if( Auth::user()->is_capitaine==1)
                         <td>{{ Form::submit('OK') }}</td>
+                        @else
+                            {{ '' }}
+                        @endif
                     @endif
                 </tr>
             </table>
