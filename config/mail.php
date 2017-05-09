@@ -17,7 +17,7 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'mailgun'),
-    //j'ai remplacé smtp par mailgun
+    //j'ai remplacé smtp par mailgun, puis remis smtp pour production
     //sinon y'a aussi sparkpost comme driver pour envoyer des mails
 
     /*
