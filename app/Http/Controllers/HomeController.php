@@ -26,7 +26,7 @@ class HomeController extends Controller
         //$effectifHelper = new EffectifHelper();
 
         //VIEW
-        return view('/home')->with([
+        return view('home')->with([
             //divers
             'carbonStrtotime' => $diversHelper->carbon(),
             'logoAuthEquipe' => $diversHelper->logoAuthEquipe(),
