@@ -25,6 +25,9 @@ class HomeController extends Controller
         $classementHelper = new ClassementHelper();
         //$effectifHelper = new EffectifHelper();
 
+
+        dd($classementHelper);
+
         //VIEW
         return view('home')->with([
             //divers
