@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/pingouins';
+    // protected $redirectTo = '/';
 
     protected function redirectTo()
     {
@@ -47,7 +47,7 @@ class LoginController extends Controller
     {
         if(Auth::check())
         {
-            return view('/home');
+            return view('home');
         }
         else
         {

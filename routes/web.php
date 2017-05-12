@@ -47,8 +47,12 @@ Route::get('/smp', 'HomeController@index');
 
 Route::post('/entrerscore', 'EntrerScoreController@entrerscore');
 
-Route::get('/invitationDansEquipeEnvoyee', 'Invitations\InviterAmisDansEquipeController@send')->name('inviterAmisDansEquipe');
-Route::get('/invitationCreerEquipeEnvoyee', 'Invitations\InviterAmiACreerEquipeController@send')->name('inviterAmiACreerEquipe');
+Route::get('/invitationDansEquipeEnvoyee',
+    'Invitations\InviterAmisDansEquipeController@send'
+)->name('inviterAmisDansEquipe');
+Route::get('/invitationCreerEquipeEnvoyee',
+    'Invitations\InviterAmiACreerEquipeController@send')
+->name('inviterAmiACreerEquipe');
 
 /*Route::post('', function() {
     Mail::to('lolo@gmail.com')->send(new InviterAmisDansEquipe);
