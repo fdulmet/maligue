@@ -17,6 +17,10 @@ return [
     It uses SMTP (du coup dans .env on a MAIL_DRIVER=smtp (et donc pas MAIL_DRIVER=mailgun par exemple))
     and is provided as default in every Laravel installation because it is made for testing purposes.*/
 
+    'mandrill' => [
+        'secret' => env('MANDRILL_KEY'),
+    ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
