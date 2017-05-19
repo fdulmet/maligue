@@ -16,6 +16,7 @@
     <script>window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
 <body>
 <!--Home Page-->
