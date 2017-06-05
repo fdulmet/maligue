@@ -7672,7 +7672,6 @@ button.close {
 
 #banner {
   background-color: rgba(214, 33, 16, 0.9);
-  border-top: 2px solid darkred;
   border-bottom: 2px solid darkred;
   vertical-align: middle;
   padding: 0 0 0 2%;
@@ -7823,7 +7822,7 @@ html, body {
 }
 
 #content #espace_ligue #classement #trChaqueEquipe td {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid darkslategrey;
   padding: 15px 5px 15px 5px;
   background-color: #f1f1f1;
   text-align: center;
@@ -7838,7 +7837,7 @@ html, body {
 }
 
 #content #espace_ligue #classement #trChaqueEquipe:nth-child(even) td {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid darkslategrey;
   padding: 15px 5px 15px 5px;
   background-color: #f74e3e;
   text-align: center;
@@ -7864,11 +7863,11 @@ html, body {
 #content #espace_ligue #calendrier #lieu {
   color: darkred;
   font-weight: bold;
-  padding: 15px 5px 15px 5px;
+  padding: 15px 5px 15px 0px;
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch td {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid darkslategrey;
   padding: 15px 5px 15px 5px;
   background-color: #f1f1f1;
 }
@@ -7882,7 +7881,7 @@ html, body {
 }
 
 #content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) td {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid darkred;
   padding: 15px 5px 15px 5px;
   background-color: #4cb54c;
 }

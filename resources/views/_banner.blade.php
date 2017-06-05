@@ -1,4 +1,3 @@
-<br>
 <div class="container-fluid">
     <div class="row" id="banner">
         <div class="col-md-8">

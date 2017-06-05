@@ -41,7 +41,7 @@ html, body {
       }
       #trChaqueEquipe {
         td {
-          border-bottom:1px solid black;
+          border-bottom:1px solid darkslategrey;
           padding: 15px 5px 15px 5px;
           background-color: #f1f1f1;
           text-align: center;
@@ -55,7 +55,7 @@ html, body {
       }
       #trChaqueEquipe:nth-child(even){
         td {
-          border-bottom:1px solid black;
+          border-bottom:1px solid darkslategrey;
           padding: 15px 5px 15px 5px;
           background-color: #f74e3e;
           text-align: center;
@@ -77,11 +77,11 @@ html, body {
       #lieu{
         color: darkred;
         font-weight: bold;
-        padding: 15px 5px 15px 5px;
+        padding: 15px 5px 15px 0px;
       }
       #trChaqueMatch {
         td {
-          border-bottom:1px solid black;
+          border-bottom:1px solid darkslategrey;
           padding: 15px 5px 15px 5px;
           background-color: #f1f1f1;
         }
@@ -94,7 +94,7 @@ html, body {
       }
       #trChaqueMatch:nth-child(even){
         td {
-          border-bottom:1px solid black;
+          border-bottom:1px solid darkred;
           padding: 15px 5px 15px 5px;
           background-color: #4cb54c;
         }
