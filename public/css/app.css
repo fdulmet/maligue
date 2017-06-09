@@ -7671,22 +7671,21 @@ button.close {
 }
 
 #banner {
-  background-color: rgba(214, 33, 16, 0.9);
-  border-bottom: 2px solid darkred;
-  vertical-align: middle;
-  padding: 0 0 0 2%;
+  background-color: rgba(214, 33, 16, 0.75);
+  border-bottom: 2px solid rgba(139, 0, 0, 0.75);
+  padding: 1% 0 1% 2%;
 }
 
 #banner #spanFloatleft {
   float: left;
 }
 
-#banner h3 {
+#banner h2 {
   margin: 10px;
   text-shadow: 1px 1px 1px black;
 }
 
-#banner h3 #titreNomLigue {
+#banner h2 #titreNomLigue {
   color: white;
   text-decoration: none;
   font-family: Calibri;
@@ -7824,8 +7823,14 @@ html, body {
 #content #espace_ligue #classement #trChaqueEquipe td {
   border-bottom: 1px solid darkslategrey;
   padding: 15px 5px 15px 5px;
-  background-color: #f1f1f1;
   text-align: center;
+  background: #cecece;
+  /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#cecece, #f7f7f7);
+  /* Standard syntax (must be last) */
 }
 
 #content #espace_ligue #classement #trChaqueEquipe #equipe1 {
@@ -7839,8 +7844,14 @@ html, body {
 #content #espace_ligue #classement #trChaqueEquipe:nth-child(even) td {
   border-bottom: 1px solid darkslategrey;
   padding: 15px 5px 15px 5px;
-  background-color: #f74e3e;
   text-align: center;
+  background: #f74e3e;
+  /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#f74e3e, rgba(247, 78, 62, 0.73));
+  /* Standard syntax (must be last) */
 }
 
 #content #espace_ligue #classement #trChaqueEquipe:nth-child(even) #equipe1 {
@@ -7990,7 +8001,7 @@ html, body {
 }
 
 #encart_connexion {
-  margin-top: 10%;
+  margin-top: 7%;
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;

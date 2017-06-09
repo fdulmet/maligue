@@ -1,12 +1,11 @@
 #banner {
-  background-color: rgba(214, 33, 16, 0.9);
-  border-bottom: 2px solid darkred;
-  vertical-align: middle;
-  padding: 0 0 0 2%;
+  background-color: rgba(214, 33, 16, 0.75);
+  border-bottom: 2px solid rgba(139, 0, 0, 0.75);
+  padding: 1% 0 1% 2%;
   #spanFloatleft{
     float: left;
   }
-  h3 {
+  h2 {
     margin: 10px;
     text-shadow: 1px 1px 1px black;
     #titreNomLigue {

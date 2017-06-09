@@ -2,7 +2,7 @@
     <div class="row" id="banner">
         <div class="col-md-8">
            <span id="spanFloatleft">
-                <h3>
+                <h2>
                     <a href="{{ url('/') }}" id="titreNomLigue">
                         @if(isset($nomAuthLigue))
                             {{ $nomAuthLigue }}
@@ -10,7 +10,7 @@
                             Ma Ligue
                         @endif
                     </a>
-                </h3>
+                </h2>
             </span>
             <div class="col-md-8">
                 @if(isset($nomAuthLigue))
