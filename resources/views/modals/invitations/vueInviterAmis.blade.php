@@ -5,23 +5,22 @@
 
                 <!--Titre-->
                 <h4 class="modal-title">
-                    Inviter un ami à rejoindre le {{ $nomAuthEquipe }} :
+                    Inviter des amis
                 </h4>
             </div>
             <div class="modal-body">
 
-                <!--A rejoindre son équipe-->
                 <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmisDansEquipe') }}">
                     {{ csrf_field() }}
-                    <!--<label>
+                    <label>
                         à rejoindre {{ $nomAuthEquipe }} :
-                    </label>-->
+                    </label>
 
                     <!--Champs mail de l'invité-->
                     <div class="form-group">
                         <div class="col-md-12">
                             <input id="emailInvite1" type="text" class="form-control" name="emailInvite1"
-                                   placeholder="hatembenarfa@gmail.com" required autofocus>
+                                   placeholder="hatembenarfa@gmail.com, antoinegriezmann@gmail.com, etc" required autofocus>
                         </div>
                     </div>
                     <div class="form-group">
@@ -33,9 +32,8 @@
                     </div>
                 </form>
 
-                <!--<br>-->
-                <!--A créer une équipe-->
-                <!--
+                <br>
+
                 <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmiACreerEquipe') }}">
                     {{ csrf_field() }}
                     <label>
@@ -44,7 +42,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <input id="emailInvite1" type="text" class="form-control" name="emailInvite1"
-                                   placeholder="florianthauvin@gmail.com, djibrilcisse@gmail.com, mathieuvalbuena@gmail.com" required autofocus>
+                                   placeholder="florianthauvin@gmail.com, djibrilcisse@gmail.com, etc" required autofocus>
                         </div>
                     </div>
                     <div class="form-group">
@@ -56,7 +54,6 @@
                     </div>
                 </form>
                 <br>
-                -->
 
             </div>
         </div>
