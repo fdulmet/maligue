@@ -18,6 +18,15 @@
                     @include('auth/_loginForm')
                 </div>
             </div>
+            <div id="pvu">
+                <h3>
+                    Ma ligue de foot à 5
+                    <br>
+                </h3>
+                - une orga simple<br>
+                - des équipes qui sont potes<br>
+                - des cadeaux pour les vainqueurs
+            </div>
         </div>
 
         <div class="col-md-6">
@@ -32,10 +41,6 @@
             </div>
         </div>
 
-    </div>
-
-    <div class="row">
-        Ce site sert à trucmucher
     </div>
 </div>
 @endsection
