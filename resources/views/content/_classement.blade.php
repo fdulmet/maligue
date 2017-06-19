@@ -28,7 +28,15 @@
             <td>{{ $statClassement['perdus'] }}</td>
             <td>{{ $statClassement['butsPour'] }}</td>
             <td>{{ $statClassement['butsContre'] }}</td>
-            <td>{{ $statClassement['diff'] }}</td>
+            <td>
+                @if($statClassement['diff']>0)
+                    +{{ $statClassement['diff'] }}
+                @else
+                    {{ $statClassement['diff'] }}
+                @endif
+            </td>
+
+
         </tr>
     @endforeach
 </table>

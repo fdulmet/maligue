@@ -22,11 +22,11 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456'),
         ],
         [
-            'nom' => 'Mesmene',
-            'prenom' => 'Yannis',
+            'nom' => 'Dulmet',
+            'prenom' => 'François',
             'is_capitaine' => true,
-            'tel' => '0165656565',
-            'email' => 'yannis@gmail.com',
+            'tel' => '0631099624',
+            'email' => 'fdulmet@gmail.com',
             'password' => bcrypt('123456'),
         ],
         [
