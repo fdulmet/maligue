@@ -12,7 +12,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
-        "miroc/laravel-adminer": "^4.2"
+        "miroc/laravel-adminer": "^4.2",
+        "mandrill/mandrill": "^1.0"
     },
 
     "require-dev": {
