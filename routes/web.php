@@ -48,7 +48,18 @@ Route::get('/register', function () {
 // }
 
 Route::get('/', 'HomeController@index');
-Route::get('/ligue/{idLigue}', 'HomeController@ligue');
+
+/**
+ * Routes pour les ligues
+ */
+Route::prefix('ligue')
+    ->group(function () {
+        Route::get('afficher/{idLigue}', 'LigueController@index');
+        Route::get('ajouter', 'LigueController@ajouter')
+            ->name('ajoutLigue');
+        Route::post('add', 'LigueController@add')
+            ->name('addLigue');
+    });
 
 
 // Route::get('/smp', 'HomeController@index');

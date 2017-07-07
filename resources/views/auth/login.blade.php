@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default" id="encart_connexion">
                 <div class="panel-heading" id="titreConnexion">
                     Connexion
@@ -23,13 +23,18 @@
                     Ma ligue de foot à 5
                     <br>
                 </h3>
-                - une orga simple<br>
-                - des équipes qui sont potes<br>
-                - des cadeaux pour les vainqueurs
+                <ul>
+                    <li>une orga simple</li>
+                    <li>des équipes qui sont potes</li>
+                    <li>des cadeaux pour les vainqueurs</li>
+                </ul>
+                <a href="{{ route('ajoutLigue') }}" class="btn btn-default btn-block">
+                    {{ trans('login.new_ligue_btn') }}
+                </a>
             </div>
         </div>
 
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <div class="panel panel-default" id="encart_connexion">
                 <div class="panel-heading" id="titreConnexion">
                     Inscription
@@ -39,7 +44,7 @@
                     @include('auth._registerForm')
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 </div>

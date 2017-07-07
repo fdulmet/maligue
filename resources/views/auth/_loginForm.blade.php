@@ -30,7 +30,7 @@
             Connexion
         </button>
     </div>
-    <div class="form-group">
+    {{-- <div class="form-group">
         <div>
             <div class="checkbox" id="se_souvenir_de_moi">
                 <label>
@@ -39,7 +39,7 @@
                 </label>
             </div>
         </div>
-    </div>
+    </div> --}}
 </form>
 
 
