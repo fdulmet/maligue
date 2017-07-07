@@ -31,10 +31,6 @@ class Equipe_UserTableSeeder extends Seeder
                 'equipe_id' => '4',
                 'user_id' => '4',
             ],
-            [
-                'equipe_id' => '4',
-                'user_id' => '5',
-            ],
         ]);
     }
 }
