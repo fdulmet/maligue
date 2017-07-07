@@ -48,6 +48,18 @@ class User extends Authenticatable
     {
         $this->notify(new MaLigueResetPassword($token));
     }
+
+    public function adminSendNewUserMail($newUserMail, $ligueName)
+    {
+        // Envoi de mail à l'admin du site
+        $this->notify(new MaLigueAdminNewUserMail($newUserMail, $ligueName));
+    }
+
+    public function sendWelcomeMail()
+    {
+        // Envoi de mail au nouvel inscris
+        $this->notify(new MaLigueUserWelcomeMail());
+    }
 }
 
 /*

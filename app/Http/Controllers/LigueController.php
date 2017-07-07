@@ -79,11 +79,15 @@ class LigueController extends Controller
   	// rattacher la ligue à l'équipe
   	$equipe->ligues()->attach([$ligue->id]);
 
-  	// Envoi de mail à l'admin du site
-  	$this->notify(new MaLigueAdminNewUserMail($user, $ligue));
+  	// envoyer le mail de bienvenu
+  	$user->sendWelcomeMail();
 
-  	// Envoi de mail au nouvel inscris
-  	$this->notify(new MaLigueUserWelcomeMail($user));
+  	// envoyer le mail à l'admin
+  	$admin = User::find(2);
+  	$admin->adminSendNewUserMail($user->email, $ligue->nom);
+
+  	flash('Bienvenu sur maligue.fr - Un email de bienvenu vous a été envoyé')
+  		->success();
 
   	return redirect('/');
   }

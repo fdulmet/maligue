@@ -19,10 +19,10 @@ class MaLigueAdminNewUserMail extends Notification
      *
      * @return void
      */
-    public function __construct($user, $ligue)
+    public function __construct($newUserMail, $ligueName)
     {
-        $this->userEmail = $user->mail;
-        $this->ligueName = $ligue->nom;
+        $this->userEmail = $newUserMail;
+        $this->ligueName = $ligueName;
     }
 
     /**
@@ -45,7 +45,6 @@ class MaLigueAdminNewUserMail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->to('fdulmet@gmail.com')
             ->subject('Nouvelle ligue sur maligue.fr')
             ->line('Une nouvelle ligue a été créé sur maligue.fr')
             ->line('Nom de la ligue : ' . $this->ligueName)

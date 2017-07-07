@@ -11,16 +11,13 @@ class MaLigueUserWelcomeMail extends Notification
 {
     use Queueable;
 
-    private $user;
-
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct()
     {
-        $this->user = $user;
     }
 
     /**
@@ -43,7 +40,6 @@ class MaLigueUserWelcomeMail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->to($this->user->email)
             ->subject('Bienvenu sur maligue.fr')
             ->line('Texte de Bienvenu.');
     }
