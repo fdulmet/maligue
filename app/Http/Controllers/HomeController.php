@@ -10,6 +10,8 @@ use App\Http\Helpers\CalendrierHelper;
 use App\Http\Helpers\EffectifHelper;
 use App\Http\Helpers\Classement\ClassementHelper;
 
+use App\Ligue;
+
 class HomeController extends Controller
 {
     public function __construct()
@@ -49,6 +51,18 @@ class HomeController extends Controller
             //on utilise resquest pour aller chercher confirmation là où elle est définie,
             //en l'occurence dans les invitations controllers
         ]);
+    }
+
+    public function ligue($idLigue)
+    {
+        try {
+            $ligue = Ligue::findOrFail($idLigue);
+
+            return view('ligue', compact($ligue) );
+        }
+        catch (Exception $e) {
+            print_r($e);
+        }
     }
 }
 

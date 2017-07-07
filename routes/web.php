@@ -29,24 +29,29 @@
 use App\Mail\InviterAmisDansEquipe;
 use App\Http\Controllers;
 
+/**
+ * Laravel Auth system
+ */
 Auth::routes();
+
 Route::get('/register', function () {
     return redirect('/login');
 });
-//Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
-//Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
 
-for($anMoinsUn=2016; $anMoinsUn >= 2010; $anMoinsUn--)
-{
-    $an = $anMoinsUn+1;
-    Route::get($anMoinsUn.'-'.$an, 'SaisonController@saison');
-}
+// Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
+// Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
+
+// for($anMoinsUn=2016; $anMoinsUn >= 2010; $anMoinsUn--)
+// {
+//     $an = $anMoinsUn+1;
+//     Route::get($anMoinsUn.'-'.$an, 'SaisonController@saison');
+// }
 
 Route::get('/', 'HomeController@index');
-//Route::get('/home', 'HomeController@index');
-//Route::get('/home.php', 'HomeController@index');
-Route::get('/pingouins', 'HomeController@index');
-Route::get('/smp', 'HomeController@index');
+Route::get('/ligue/{idLigue}', 'HomeController@ligue');
+
+
+// Route::get('/smp', 'HomeController@index');
 
 Route::post('/entrerscore', 'EntrerScoreController@entrerscore');
 
