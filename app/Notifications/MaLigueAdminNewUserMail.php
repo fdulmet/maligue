@@ -23,6 +23,8 @@ class MaLigueAdminNewUserMail extends Notification
     {
         $this->userEmail = $user->mail;
         $this->ligueName = $ligue->nom;
+        // mail de l'admin
+        $this->email = 'fdulmet@gmail.com';
     }
 
     /**
