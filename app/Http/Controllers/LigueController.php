@@ -5,11 +5,6 @@ namespace App\Http\Controllers;
 // La base
 use Illuminate\Http\Request;
 
-// Les notifs
-use Illuminate\Notifications\Notifiable;
-use App\Notifications\MaLigueAdminNewUserMail;
-use App\Notifications\MaLigueUserWelcomeMail;
-
 // Les models
 use App\Ligue;
 use App\User;
@@ -17,8 +12,6 @@ use App\Equipe;
 
 class LigueController extends Controller
 {
-	use Notifiable;
-
 	public function __construct()
 	{
 	    $this->middleware('guest');
