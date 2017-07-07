@@ -13,7 +13,6 @@ class Equipe_UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('equipe_user')->insert([
-
             [
                 'equipe_id' => '1',
                 'user_id' => '1',
@@ -24,14 +23,18 @@ class Equipe_UserTableSeeder extends Seeder
                 'user_id' => '2',
             ],
 
-        [
-            'equipe_id' => '3',
-            'user_id' => '3',
-        ],
-        [
-            'equipe_id' => '4',
-            'user_id' => '4',
-        ],
+            [
+                'equipe_id' => '3',
+                'user_id' => '3',
+            ],
+            [
+                'equipe_id' => '4',
+                'user_id' => '4',
+            ],
+            [
+                'equipe_id' => '4',
+                'user_id' => '5',
+            ],
         ]);
     }
 }
