@@ -67,12 +67,21 @@ Route::prefix('ligue')
 
 Route::post('/entrerscore', 'EntrerScoreController@entrerscore');
 
-Route::get('/invitationDansEquipeEnvoyee',
-    'Invitations\InviterAmisDansEquipeController@send'
-)->name('inviterAmisDansEquipe');
-Route::get('/invitationCreerEquipeEnvoyee',
-    'Invitations\InviterAmiACreerEquipeController@send')
-->name('inviterAmiACreerEquipe');
+
+/**
+ * Routes pour les invitations
+ */
+Route::prefix('invitation')
+    ->group(function () {
+
+        // Invitation à rejoindre une equipe
+        Route::post('rejoindreEquipe', 'InvitationController@rejoindreEquipe')
+            ->name('inviterAmisDansEquipe');
+
+        // Invitation à créer une equipe
+        Route::post('creerEquipe', 'InvitationController@creerEquipe')
+            ->name('inviterAmiACreerEquipe');
+    });
 
 /*Route::post('', function() {
     Mail::to('lolo@gmail.com')->send(new InviterAmisDansEquipe);

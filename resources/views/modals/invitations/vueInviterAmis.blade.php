@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmisDansEquipe') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('inviterAmisDansEquipe') }}">
                     {{ csrf_field() }}
                     <label>
                         à rejoindre {{ $nomAuthEquipe }} :
@@ -34,7 +34,7 @@
 
                 <br>
 
-                <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmiACreerEquipe') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('inviterAmiACreerEquipe') }}">
                     {{ csrf_field() }}
                     <label>
                         à créer une nouvelle équipe dans {{ $nomAuthLigue }} :
