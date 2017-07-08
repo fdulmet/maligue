@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // La base
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 // Les models
 use App\Ligue;
@@ -35,6 +36,24 @@ class LigueController extends Controller
   public function ajouter()
   {
     return view('ligue.ajouter');
+  }
+
+  /**
+   * Get a validator for an incoming registration request.
+   *
+   * @param  array  $data
+   * @return \Illuminate\Contracts\Validation\Validator
+   */
+  protected function validator(array $data)
+  {
+      return Validator::make($data, [
+          'ligue' => 'required|max:255',
+          'equipe' => 'required|max:255',
+          'nom' => 'required|max:255',
+          'prenom' => 'required|max:255',
+          'email' => 'required|email|max:255|unique:users',
+          'password' => 'required|min:6|confirmed',
+      ]);
   }
 
   /**
@@ -81,6 +100,8 @@ class LigueController extends Controller
 
   	flash('Bienvenu sur maligue.fr - Un email de bienvenu vous a été envoyé')
   		->success();
+
+    Auth::login($user);
 
   	return redirect('/');
   }
