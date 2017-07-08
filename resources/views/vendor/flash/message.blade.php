@@ -11,15 +11,17 @@
                     {{ $message['important'] ? 'alert-important' : '' }}"
                     role="alert"
         >
-            @if ($message['important'])
-                <button type="button"
-                        class="close"
-                        data-dismiss="alert"
-                        aria-hidden="true"
-                >&times;</button>
-            @endif
+            <div class="container-fluid">
+                @if ($message['important'])
+                    <button type="button"
+                            class="close"
+                            data-dismiss="alert"
+                            aria-hidden="true"
+                    >&times;</button>
+                @endif
 
-            {!! $message['message'] !!}
+                {!! $message['message'] !!}
+            </div>
         </div>
     @endif
 @endforeach
