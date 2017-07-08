@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // La base
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 // Les models
 use App\Ligue;
@@ -98,11 +99,14 @@ class LigueController extends Controller
   	$admin = User::find(2);
   	$admin->adminSendNewUserMail($user->email, $ligue->nom);
 
+    // Message de l'appli
   	flash('Bienvenu sur maligue.fr - Un email de bienvenu vous a été envoyé')
   		->success();
 
+    // Forcer la connexion de l'utilisateur
     Auth::login($user);
 
+    // Rediriger vers la home
   	return redirect('/');
   }
 }
