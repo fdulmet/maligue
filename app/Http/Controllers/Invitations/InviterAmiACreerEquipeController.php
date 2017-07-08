@@ -39,6 +39,9 @@ class InviterAmiACreerEquipeController extends Controller
         $game = \App\Game::find(1);
         $lieu = $game->lieu;
 
+        $emailInvite1 = FormRequest::input('emailInvite1');
+        $emailsInvite1 = [];
+
         $emailsInvite1[] = $emailInvite1;
         if( strpos($emailInvite1, ',') !== FALSE ) {
             $emailsInvite1 = explode(',', $emailInvite1);
@@ -58,16 +61,10 @@ class InviterAmiACreerEquipeController extends Controller
 
                 //Adresses mail
                 $emailInviteur = Auth::user()->email;
-                $emailInvite1 = FormRequest::input('emailInvite1');
-                //$emailInvite2 = FormRequest::input('emailInvite2');
-                //$emailInvites = array ("$emailInvite1, $emailInvite2");
 
                 $message->subject($titre);
                 $message->from($emailInviteur);
                 $message->to($emailInvite1);
-                //$message->to($emailInvite2);
-                //$message->attach($attach);
-
             });
         }
 
