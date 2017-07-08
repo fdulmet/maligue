@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
-// Models
 use App\Equipe;
 use App\Game;
+use App\User;
 
-use Mail;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+
+use App\Notifications\InvitationCreerEquipe;
+use App\Notifications\InvitationBienEnvoyee;
+use App\Notifications\InvitationRejoindreEquipe;
 
 class InvitationController extends Controller
 {
@@ -36,48 +41,34 @@ class InvitationController extends Controller
   	$inviteurNom = Auth::user()->nom;
 
   	//Calendrier
-  	$game = App\Game::find(1);
+  	$game = Game::find(1);
   	$lieu = $game->lieu;
 
   	$emailInvite1 = $request->input('emailInvite1');
-  	$emailsInvite1 = [];
+  	$emailsInvite1 = [$emailInvite1];
 
-  	$emailsInvite1[] = $emailInvite1;
   	if( strpos($emailInvite1, ',') !== FALSE ) {
   	    $emailsInvite1 = explode(',', $emailInvite1);
   	}
 
   	foreach ($emailsInvite1 as $key => $emailInvite1) {
-  	    Mail::send('emails.creerEquipe.inviterAmiACreerEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'ligue'=>$ligue, 'sport'=>$sport, 'lieu'=>$lieu, ], function ($message) use ($emailInvite1)
-  	    {
-  	        //Titre email
-  	        $titre = 'Invitation à créer une équipe';
-  	        /*$entreeEquipe = Auth::user()->equipes()->get();
-  	        $ligue = Equipe::find($entreeEquipe)->ligues()->get();
-  	        foreach ($ligue as $ligue) {
-  	            $ligue = $ligue->nom;
-  	        }
-  	        $titre = $debutPhrase . $ligue;*/
-
-  	        //Adresses mail
-  	        $emailInviteur = Auth::user()->email;
-
-  	        $message->subject($titre);
-  	        $message->from($emailInviteur);
-  	        $message->to($emailInvite1);
-  	    });
+  		$user = new User();
+  		$user->email = $emailInvite1;
+  		Notification::send(
+  			$user, new InvitationCreerEquipe(
+  				$inviteurPrenom, $inviteurNom,
+  				$ligue, $sport, $lieu
+  			)
+  		);
   	}
 
-  	Mail::send('emails.creerEquipe.invitationBienEnvoyee', [null], function ($message)
-  	{
-  	    $emailInviteur = Auth::user()->email;
+  	Notification::send(
+			Auth::user(), new InvitationBienEnvoyee(
+				$request->input('emailInvite1'), $ligue
+			)
+		);
 
-  	    $message->subject('Invitation bien envoyée');
-  	    $message->from($emailInviteur);
-  	    $message->to($emailInviteur);
-  	});
-
-  	//Message confirmation dans espace équipe
+  	// Message confirmation dans espace équipe
   	$emailInvite1 = $request->input('emailInvite1');
   	$entreeEquipe = Auth::user()->equipes()->get();
   	$ligue = Equipe::find($entreeEquipe)->ligues()->get();
@@ -129,36 +120,21 @@ class InvitationController extends Controller
   	}
 
   	foreach ($emailsInvite1 as $key => $emailInvite1) {
-  	    Mail::send('emails.rejoindreEquipe.inviterAmisDansEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'equipe'=>$equipe, 'ligue'=>$ligue, 'sport'=>$sport,], function ($message) use ($emailInvite1)
-  	    //Mail::send('emails.inviterAmisDansEquipe', ['titre' => $titre, 'content' => $content], function ($message)
-  	    {
-  	        //Titre email
-  	        $debutPhrase = 'Invitation à rejoindre ';
-  	        $entreeEquipe = Auth::user()->equipes()->get();
-  	        foreach ($entreeEquipe as $equipe)
-  	        {
-  	            $equipe = $equipe->nom;
-  	        }
-  	        $titre = $debutPhrase . $equipe;
-
-  	        $message->subject($titre);
-
-  	        //Adresses mail
-  	        $emailInviteur = Auth::user()->email;
-
-  	        $message->from($emailInviteur);
-  	        $message->to($emailInvite1);
-  	    });
+  	  $user = new User();
+  		$user->email = $emailInvite1;
+  		Notification::send(
+  			$user, new InvitationRejoindreEquipe(
+  				$inviteurPrenom, $inviteurNom, $equipe,
+  				$ligue, $sport
+  			)
+  		);
   	}
 
-  	Mail::send('emails.rejoindreEquipe.invitationBienEnvoyee', [null], function ($message)
-  	{
-  	    $emailInviteur = Auth::user()->email;
-
-  	    $message->subject('Invitation bien envoyée');
-  	    $message->from($emailInviteur);
-  	    $message->to($emailInviteur);
-  	});
+  	Notification::send(
+			Auth::user(), new InvitationBienEnvoyee(
+				$request->input('emailInvite1'), $equipe, TRUE
+			)
+		);
 
   	//Message confirmation dans espace équipe
   	$emailInvite1 = $request->input('emailInvite1');
@@ -179,7 +155,7 @@ class InvitationController extends Controller
   	    ->route('home');
 
   	//Calendrier
-  	$game = App\Game::find(1);
+  	$game = Game::find(1);
   	$lieu = $game->lieu;
   }
 }

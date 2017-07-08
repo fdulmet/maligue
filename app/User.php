@@ -2,10 +2,11 @@
 
 namespace App;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\MaLigueAdminNewUserMail;
 use App\Notifications\MaLigueUserWelcomeMail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\MaLigueResetPassword;
 
 class User extends Authenticatable
