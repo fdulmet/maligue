@@ -23,12 +23,12 @@ class InviterAmisDansEquipeController extends Controller
         foreach ($entreeEquipe as $equipe) {
             $equipe = $equipe->nom;
         }
-        //Ligue
+        // Ligue
         $ligue = \App\Equipe::find($entreeEquipe)->ligues()->get();
         foreach ($ligue as $ligue) {
             $ligue = $ligue->nom;
         }
-        //Sport
+        // Sport
         $sport = \App\Equipe::find($entreeEquipe)->ligues()->get();
         foreach ($sport as $sport) {
             $sport = $sport->sport;
@@ -38,30 +38,36 @@ class InviterAmisDansEquipeController extends Controller
         $inviteurPrenom = Auth::user()->prenom;
         $inviteurNom = Auth::user()->nom;
 
-        Mail::send('emails.rejoindreEquipe.inviterAmisDansEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'equipe'=>$equipe, 'ligue'=>$ligue, 'sport'=>$sport,], function ($message)
+        $emailInvite1 = FormRequest::input('emailInvite1');
+        $emailsInvite1 = [];
+
+        $emailsInvite1[] = $emailInvite1;
+        if( strpos($emailInvite1, ',') !== FALSE ) {
+            $emailsInvite1 = explode(',', $emailInvite1);
+        }
+
+        foreach ($emailsInvite1 as $key => $emailInvite1) {
+            Mail::send('emails.rejoindreEquipe.inviterAmisDansEquipe', ['inviteurPrenom'=>$inviteurPrenom, 'inviteurNom'=>$inviteurNom, 'equipe'=>$equipe, 'ligue'=>$ligue, 'sport'=>$sport,], function ($message) use ($emailInvite1)
             //Mail::send('emails.inviterAmisDansEquipe', ['titre' => $titre, 'content' => $content], function ($message)
-        {
-            //Titre email
-            $debutPhrase = 'Invitation à rejoindre ';
-            $entreeEquipe = Auth::user()->equipes()->get();
-            foreach ($entreeEquipe as $equipe)
             {
-                $equipe = $equipe->nom;
-            }
-            $titre = $debutPhrase . $equipe;
+                //Titre email
+                $debutPhrase = 'Invitation à rejoindre ';
+                $entreeEquipe = Auth::user()->equipes()->get();
+                foreach ($entreeEquipe as $equipe)
+                {
+                    $equipe = $equipe->nom;
+                }
+                $titre = $debutPhrase . $equipe;
 
-            //Adresses mail
-            $emailInviteur = Auth::user()->email;
-            $emailInvite1 = FormRequest::input('emailInvite1');
-            //$emailInvite2 = FormRequest::input('emailInvite2');
-            //$emailInvites = array ("$emailInvite1, $emailInvite2");
+                $message->subject($titre);
 
-            $message->subject($titre);
-            $message->from($emailInviteur);
-            $message->to($emailInvite1);
-            //$message->to($emailInvite2);
-            //$message->attach($attach);
-        });
+                //Adresses mail
+                $emailInviteur = Auth::user()->email;
+
+                $message->from($emailInviteur);
+                $message->to($emailInvite1);
+            });
+        }
 
         Mail::send('emails.rejoindreEquipe.invitationBienEnvoyee', [null], function ($message)
         {
@@ -75,14 +81,20 @@ class InviterAmisDansEquipeController extends Controller
         //Message confirmation dans espace équipe
         $emailInvite1 = FormRequest::input('emailInvite1');
         $teams = Auth::user()->equipes()->get();
-            foreach ($teams as $team) {
-                $equipeInviteur = $team->nom;
-            }
+        foreach ($teams as $team) {
+            $equipeInviteur = $team->nom;
+        }
+
         $deuxiemePhrase = 'Un email de confirmation vous a été envoyé';
-        $invitationEnvoyee = 'Vous avez bien invité '.$emailInvite1.' à rejoindre '.$equipeInviteur.'.'.$deuxiemePhrase.'.';
-        //return response()->view('home', ['confirmation' => $invitationEnvoyee]);
-        return redirect()->action('HomeController@index', ['confirmation' => $invitationEnvoyee]);
-        //return response()->json(['message' => 'Request completed']);
+        $invitationEnvoyee = 'Vous avez bien invité '.$emailInvite1.' à rejoindre '.$equipeInviteur.'.<br>'.$deuxiemePhrase.'.';
+
+        // Message de succes d'envois de mail
+        flash($invitationEnvoyee)
+            ->success();
+
+        // redirect Home
+        return redirect()
+            ->route('home');
 
         //Calendrier
         $game = \App\Game::find(1);

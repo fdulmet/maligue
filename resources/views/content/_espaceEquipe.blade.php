@@ -24,12 +24,7 @@
     <p class="col-md-12" id="confirmation_invitation_amis_dans_equipe_envoyee">
         <!--$confirmation est définie dans InviterAmisDansEquipeController, dans :-->
         <!--return response()->view('home', ['confirmation' => $invitationEnvoyee]);-->
-        <br>
-        @if (isset ($confirmation))
-            {{ $confirmation }}
-        @else
-            {{ '' }}
-        @endif
+        {{-- <br> --}}
     </p>
     <div class="col-md-12">
         @include('content._effectif')

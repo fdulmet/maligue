@@ -47,7 +47,8 @@ Route::get('/register', function () {
 //     Route::get($anMoinsUn.'-'.$an, 'SaisonController@saison');
 // }
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')
+    ->name('home');
 
 /**
  * Routes pour les ligues
