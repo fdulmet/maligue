@@ -48,7 +48,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('tel') ? ' has-error' : '' }}" id="formulaire">
-        <input id="equipe" type="text" class="form-control" name="tel" placeholder="0612345678 *" required autofocus>
+        <input id="equipe" type="text" class="form-control" name="tel" placeholder="0612345678" autofocus>
         @if ($errors->has('tel'))
         <span class="help-block">
             <strong>{{ $errors->first('tel') }}</strong>
