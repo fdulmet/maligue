@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\Test;
+use App\Events\InviteNewPersons;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Test
+class InsertEmailInInvitesTable
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class Test
     /**
      * Handle the event.
      *
-     * @param  Test  $event
+     * @param  InviteNewPersons  $event
      * @return void
      */
-    public function handle(Test $event)
+    public function handle(InviteNewPersons $event)
     {
         //
     }

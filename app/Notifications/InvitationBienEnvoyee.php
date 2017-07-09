@@ -13,18 +13,21 @@ class InvitationBienEnvoyee extends Notification
 
     public $emailsSendTo = '';
     public $joinName = '';
-    public $joinTeam = FALSE;
+    public $invitationType;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($emailsSendTo, $joinName, $rejoindreEquipe = FALSE)
-    {
+    public function __construct(
+        $invitationType,
+        $emailsSendTo,
+        $joinName
+    ) {
+        $this->invitationType = $invitationType;
         $this->emailsSendTo = $emailsSendTo;
         $this->joinName = $joinName;
-        $this->joinTeam = $rejoindreEquipe;
     }
 
     /**
@@ -46,14 +49,21 @@ class InvitationBienEnvoyee extends Notification
      */
     public function toMail($notifiable)
     {
-        if( ! $this->joinTeam ) {
-           return (new MailMessage)
-            ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre : ' . $this->joinName);
-        }
-        else {
-            return (new MailMessage)
-                ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre : ' . $this->joinName)
-                ->line('Une fois l\'invitation acceptée, il apparaîtra dans l\'effectif.');
+        switch ($this->invitationType) {
+            case 'create_team':
+                return (new MailMessage)
+                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre : ' . $this->joinName)
+                    ->line('Une fois l\'invitation acceptée, il apparaîtra dans l\'effectif.');
+                break;
+
+            case 'join_team':
+                return (new MailMessage)
+                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre : ' . $this->joinName);
+                break;
+
+            default:
+                # code...
+                break;
         }
     }
 

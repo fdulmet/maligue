@@ -16,8 +16,13 @@ class InvitationRejoindreEquipe extends Notification
      *
      * @return void
      */
-    public function __construct($inviteurPrenom, $inviteurNom, $equipe, $ligue, $sport)
-    {
+    public function __construct(
+        $inviteurPrenom,
+        $inviteurNom,
+        $equipe,
+        $ligue,
+        $sport
+    ) {
         $this->mailDatas = [
             'inviteurPrenom' => $inviteurPrenom,
             'inviteurNom' => $inviteurNom,

@@ -17,6 +17,7 @@ class CreateInvitesTable extends Migration
             $table->increments('id');
             $table->string('email');
             $table->boolean('has_register');
+            $table->boolean('invitation_type');
             $table->timestamps();
         });
     }
