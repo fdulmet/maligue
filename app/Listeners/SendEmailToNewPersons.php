@@ -29,6 +29,7 @@ class SendEmailToNewPersons
      */
     public function handle(InviteNewPersons $event)
     {
+        // @todo same system in InsertEmailInvitesTable
         // On met les emails ou l'email
         // des / de l'invité(s)
         // dans un tableau
