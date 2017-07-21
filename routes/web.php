@@ -53,11 +53,12 @@ Route::get('/', 'HomeController@index')
 /**
  * Routes pour les ligues
  */
+// route d'inscription, crée une ligue, une equipe et un user
+Route::get('inscription', 'LigueController@ajouter')
+    ->name('ajoutLigue');
 Route::prefix('ligue')
     ->group(function () {
         Route::get('afficher/{idLigue}', 'LigueController@index');
-        Route::get('ajouter', 'LigueController@ajouter')
-            ->name('ajoutLigue');
         Route::post('add', 'LigueController@add')
             ->name('addLigue');
     });

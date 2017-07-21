@@ -3,7 +3,11 @@
     {{ csrf_field() }}
 
     <div class="form-group{{ $errors->has('ligue') ? ' has-error' : '' }}" id="formulaire">
-        <input id="ligue" class="form-control" name="ligue" placeholder="Nom de la ligue *" required autofocus>
+        <input
+            id="ligue" class="form-control" name="ligue"
+            placeholder="Nom de la ligue *" required autofocus
+                @if ( isset($ligue) ) value="{{ $ligue }}" disabled @endif
+            >
         @if ($errors->has('ligue'))
             <span class="help-block">
             <strong>{{ $errors->first('ligue') }}</strong>
@@ -12,7 +16,11 @@
     </div>
 
     <div class="form-group{{ $errors->has('equipe') ? ' has-error' : '' }}" id="formulaire">
-        <input id="equipe" class="form-control" name="equipe" placeholder="Nom de l'équipe *" required autofocus>
+        <input
+            id="equipe" class="form-control" name="equipe"
+            placeholder="Nom de l'équipe *" required autofocus
+            @if ( isset($equipe) ) value="{{ $equipe }}" disabled @endif
+        >
         @if ($errors->has('equipe'))
         <span class="help-block">
             <strong>{{ $errors->first('equipe') }}</strong>

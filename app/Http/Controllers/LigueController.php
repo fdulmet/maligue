@@ -34,9 +34,9 @@ class LigueController extends Controller
    *
    * @return view()
    */
-  public function ajouter()
+  public function ajouter(Request $request)
   {
-    return view('ligue.ajouter');
+    return view('ligue.ajouter', $request->all());
   }
 
   /**
