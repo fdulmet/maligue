@@ -44,7 +44,7 @@ class SendEmailToNewPersons
         // on boucle sur les emails
         foreach ($emailInvites as $key => $emailInvite) {
             $user = new User();
-            $user->email = $emailInvite;
+            $user->email = trim( $emailInvite );
 
             // On envois le mail d'invitation
             Notification::send(

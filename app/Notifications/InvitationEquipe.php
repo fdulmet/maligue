@@ -71,7 +71,7 @@ class InvitationEquipe extends Notification
             case 'join_team':
                 return (new MailMessage)
                     ->subject('[maligue.fr] - Invitation à rejoindre une équipe')
-                    ->line($this->mailDatas['inviteurPrenom'] . ' ' . $this->mailDatas['inviteurNom'] . ' vous invite à créer une nouvelle équipe.')
+                    ->line($this->mailDatas['inviteurPrenom'] . ' ' . $this->mailDatas['inviteurNom'] . ' vous invite à rejoindre une nouvelle équipe.')
                     ->line('Ligue : ' . $this->mailDatas['ligue'])
                     ->line('Equipe : ' . $this->mailDatas['equipe'])
                     ->line('Sport : ' . $this->mailDatas['sport'])
