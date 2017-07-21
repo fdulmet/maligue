@@ -27,10 +27,9 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = '/';
-
     protected function redirectTo()
     {
-        return '/smp';
+        return '/';
     }
 
     /**
@@ -45,7 +44,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        if(Auth::check())
+        if( Auth::check() )
         {
             return view('home');
         }
