@@ -48,8 +48,8 @@ class LigueController extends Controller
   protected function validator(array $data)
   {
       return Validator::make($data, [
-          'ligue' => 'required|max:255',
-          'equipe' => 'required|max:255',
+          // 'ligue' => 'required|max:255',
+          // 'equipe' => 'required|max:255',
           'nom' => 'required|max:255',
           'prenom' => 'required|max:255',
           'email' => 'required|email|max:255|unique:users',
@@ -65,6 +65,16 @@ class LigueController extends Controller
   {
   	$inputs = $request->all();
 
+    // Validation back
+    $validator = $this->validator($inputs);
+    if ( $validator->fails() ) {
+      return redirect()
+        ->back()
+        ->withErrors(
+          $validator->errors()
+        );
+    }
+
   	// Pour remplir la table users
   	$user = User::create([
   	    'nom' => $inputs['nom'],
@@ -75,19 +85,31 @@ class LigueController extends Controller
   	    'is_capitaine' => TRUE,
   	]);
 
-  	// Creer l'equipe
-  	$equipe = Equipe::create([
-  		'nom'=>$inputs['equipe']
-  	]);
+  	// l equipe existe on recupere l'equipe existante
+    if( ! isset($inputs['equipe']) ) {
+      $equipe = Equipe::where('nom', $inputs['hidden_equipe'])->first();
+    }
+    // Creer l'equipe
+    else {
+      $equipe = Equipe::create([
+        'nom'=>$inputs['equipe']
+      ]);
+    }
 
   	// rattacher l'équipe au user
   	$user->equipes()->attach([$equipe->id]);
 
-  	// Créer la ligue
-  	$ligue = Ligue::create([
-  		'nom' => $inputs['ligue'],
-  		'sport' => 'Foot-à-5'
-  	]);
+  	// la ligue existe on recupere la ligue existante
+    if( ! isset($inputs['ligue']) ) {
+      $ligue = Ligue::where('nom', $inputs['hidden_ligue'])->first();
+    }
+    // Créer la ligue
+    else {
+      $ligue = Ligue::create([
+        'nom' => $inputs['ligue'],
+        'sport' => 'Foot-à-5'
+      ]);
+    }
 
   	// rattacher la ligue à l'équipe
   	$equipe->ligues()->attach([$ligue->id]);

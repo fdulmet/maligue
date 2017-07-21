@@ -8,10 +8,16 @@
             placeholder="Nom de la ligue *" required autofocus
                 @if ( isset($ligue) ) value="{{ $ligue }}" disabled @endif
             >
+
+        @if ( isset($ligue) )
+            <input type="hidden" name="hidden_ligue" value="{{ $ligue }}">
+        @endif
+
         @if ($errors->has('ligue'))
             <span class="help-block">
             <strong>{{ $errors->first('ligue') }}</strong>
         </span>
+
         @endif
     </div>
 
@@ -21,6 +27,11 @@
             placeholder="Nom de l'équipe *" required autofocus
             @if ( isset($equipe) ) value="{{ $equipe }}" disabled @endif
         >
+
+        @if ( isset($equipe) )
+            <input type="hidden" name="hidden_equipe" value="{{ $equipe }}">
+        @endif
+
         @if ($errors->has('equipe'))
         <span class="help-block">
             <strong>{{ $errors->first('equipe') }}</strong>
