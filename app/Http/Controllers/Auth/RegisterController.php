@@ -86,8 +86,8 @@ class RegisterController extends Controller
 
         // check si la personne est un invité
         // si oui on passe la variable à vrai
-        $isInvited = Invite::where('email', $data['email'])->first();
-        if( count($isInvited) ) {
+        $isInvited = Invite::where('email', $data['email']);
+        if( $isInvited->count() != 0 ) {
             $isInvited->update([
                 'is_registered' => TRUE
             ]);

@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-// La base
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
-
-// Les models
-use App\Ligue;
-use App\User;
 use App\Equipe;
+use App\Invite;
+use App\Ligue;
+use App\Notifications\AdminNewLigueCreated;
+use App\Notifications\AdminNewUserMail;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Validator;
 
 class LigueController extends Controller
 {
@@ -85,6 +86,15 @@ class LigueController extends Controller
   	    'is_capitaine' => TRUE,
   	]);
 
+    // check si la personne est un invité
+    // si oui on passe la variable à vrai
+    $isInvited = Invite::where('email', $inputs['email']);
+    if( $isInvited->count() != 0 ) {
+        $isInvited->update([
+            'is_registered' => TRUE
+        ]);
+    }
+
   	// l equipe existe on recupere l'equipe existante
     if( ! isset($inputs['equipe']) ) {
       $equipe = Equipe::where('nom', $inputs['hidden_equipe'])->first();
@@ -92,7 +102,7 @@ class LigueController extends Controller
     // Creer l'equipe
     else {
       $equipe = Equipe::create([
-        'nom'=>$inputs['equipe']
+        'nom'=> ucfirst ( $inputs['equipe'] )
       ]);
     }
 
@@ -106,9 +116,15 @@ class LigueController extends Controller
     // Créer la ligue
     else {
       $ligue = Ligue::create([
-        'nom' => $inputs['ligue'],
+        'nom' => ucfirst ( $inputs['ligue'] ),
         'sport' => 'Foot-à-5'
       ]);
+      // envoi mail de creation
+      // de nouvelle ligue
+      $admin = User::find(2);
+      Notification::send($admin,
+        new AdminNewLigueCreated($user->email, $ligue->nom)
+      );
     }
 
   	// rattacher la ligue à l'équipe
@@ -117,9 +133,13 @@ class LigueController extends Controller
   	// envoyer le mail de bienvenu
   	$user->sendWelcomeMail();
 
-  	// envoyer le mail à l'admin
+  	// envoyer le mail
+    // de création de compte
+    // à l'admin
   	$admin = User::find(2);
-  	$admin->adminSendNewUserMail($user->email, $ligue->nom);
+    Notification::send($admin,
+      new AdminNewUserMail($user->email, $ligue->nom)
+    );
 
     // Message de l'appli
   	flash('Bienvenu sur maligue.fr - Un email de bienvenu vous a été envoyé')

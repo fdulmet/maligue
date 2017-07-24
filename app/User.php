@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\MaLigueAdminNewUserMail;
-use App\Notifications\MaLigueUserWelcomeMail;
-use App\Notifications\MaLigueResetPassword;
+use App\Notifications\AdminNewUserMail;
+use App\Notifications\UserWelcomeMail;
+use App\Notifications\ResetPassword;
 
 class User extends Authenticatable
 {
@@ -49,19 +49,13 @@ class User extends Authenticatable
      */
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new MaLigueResetPassword($token));
-    }
-
-    public function adminSendNewUserMail($newUserMail, $ligueName)
-    {
-        // Envoi de mail à l'admin du site
-        $this->notify(new MaLigueAdminNewUserMail($newUserMail, $ligueName));
+        $this->notify(new ResetPassword($token));
     }
 
     public function sendWelcomeMail()
     {
         // Envoi de mail au nouvel inscris
-        $this->notify(new MaLigueUserWelcomeMail());
+        $this->notify(new UserWelcomeMail());
     }
 }
 

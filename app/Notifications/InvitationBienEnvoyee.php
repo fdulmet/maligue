@@ -52,13 +52,15 @@ class InvitationBienEnvoyee extends Notification
         switch ($this->invitationType) {
             case 'create_team':
                 return (new MailMessage)
-                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre : ' . $this->joinName)
-                    ->line('Une fois l\'invitation acceptée, il apparaîtra dans l\'effectif.');
+                    ->subject('[maligue.fr] - Invitation bien envoyée')
+                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre ' . $this->joinName);
                 break;
 
             case 'join_team':
                 return (new MailMessage)
-                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre : ' . $this->joinName);
+                    ->subject('[maligue.fr] - Invitation bien envoyée')
+                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre ' . $this->joinName)
+                    ->line('Une fois l\'invitation acceptée, il apparaîtra dans l\'effectif.');
                 break;
 
             default:

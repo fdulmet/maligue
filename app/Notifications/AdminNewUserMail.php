@@ -7,17 +7,22 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class MaLigueUserWelcomeMail extends Notification
+class AdminNewUserMail extends Notification
 {
     use Queueable;
+
+    private $userEmail = '';
+    private $ligueName = '';
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($newUserMail, $ligueName)
     {
+        $this->userEmail = $newUserMail;
+        $this->ligueName = $ligueName;
     }
 
     /**
@@ -40,8 +45,10 @@ class MaLigueUserWelcomeMail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Bienvenu sur maligue.fr')
-            ->line('Texte de Bienvenu.');
+            ->subject('Nouvel Utilisateur sur maligue.fr')
+            ->line('Un nouvel utilisateur s\'est inscrit sur maligue.fr')
+            ->line('Email de l\'utilisateur : ' . $this->userEmail)
+            ->line('Nom de la ligue : ' . $this->ligueName);
     }
 
     /**

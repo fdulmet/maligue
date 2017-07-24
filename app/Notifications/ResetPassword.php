@@ -5,7 +5,7 @@ namespace App\Notifications;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class MaLigueResetPassword extends Notification
+class ResetPassword extends Notification
 {
     /**
      * The password reset token.
