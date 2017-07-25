@@ -45,12 +45,15 @@ class DiversHelper
     public function nomAuthLigue()
     {
         $nomAuthLigue = [];
-        //Nom ligue du mec authentifié
+        // Nom ligue du mec authentifié
         $authEquipe = Auth::user()->equipes()->get();
         $authLigue = Equipe::find($authEquipe)->ligues()->get();
         foreach ($authLigue as $ligue) {
-            $nomAuthLigue[] = $ligue->nom;
+            if( ! in_array($ligue->nom, $nomAuthLigue) ) {
+                $nomAuthLigue[] = $ligue->nom;
+            }
         }
+
         return implode(', ', $nomAuthLigue);
     }
 }

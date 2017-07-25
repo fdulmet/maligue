@@ -18,10 +18,11 @@ return [
 
     'driver' => env('MAIL_DRIVER', 'mailgun'),
 
-    'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
-    ],
+    // 'mailgun' => [
+    //     'domain' => env('MAILGUN_DOMAIN'),
+    //     'secret' => env('MAILGUN_SECRET'),
+    // ],
+    // 'smtp' => [],
     //j'ai remplacé smtp par mailgun, puis remis smtp pour production
     //sinon y'a aussi sparkpost comme driver pour envoyer des mails
 
@@ -63,8 +64,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@maligue.fr'),
+        'name' => env('MAIL_FROM_NAME', 'maligue.fr'),
     ],
 
     /*
@@ -91,7 +92,7 @@ return [
     |
     */
 
-    //'username' => env('fdulmet@gmail.com'),
+    'username' => env('MAIL_USERNAME', 'fdulmet@gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +105,7 @@ return [
     |
     */
 
-    //  'password' => env('576925'),
+     'password' => env('MAIL_PASSWORD', '576925'),
 
     /*
     |--------------------------------------------------------------------------

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Events\RegisterEvent;
 use App\User;
+use App\Invite;
 use App\Equipe;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -30,10 +31,10 @@ class RegisterController extends Controller
      * @var string
      */
     //protected $redirectTo = '/LigueSMP';
-    protected function redirectTo()
-    {
-        return '/smp';
-    }
+    // protected function redirectTo()
+    // {
+    //     return '/smp';
+    // }
 
     /**
      * Create a new controller instance.
@@ -74,7 +75,6 @@ class RegisterController extends Controller
         $equipe         = \App\Equipe::where('nom', $data['equipe'])->first();
         $isCapitaine    = !isset($equipe);
 
-
         //Pour remplir la table users
         $user = User::create([
             'nom' => $data['nom'],
@@ -83,6 +83,15 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'is_capitaine' => $isCapitaine,
         ]);
+
+        // check si la personne est un invité
+        // si oui on passe la variable à vrai
+        $isInvited = Invite::where('email', $data['email']);
+        if( $isInvited->count() != 0 ) {
+            $isInvited->update([
+                'is_registered' => TRUE
+            ]);
+        }
 
         //Pour remplir les tables equipe_user et equipes
         if (isset($equipe)) {

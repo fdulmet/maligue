@@ -183,6 +183,7 @@ return array(
 
         Collective\Html\HtmlServiceProvider::class,//c'est une laravel class qui bootstrap des trucs ?
         //et donc là on register cette class qui vient de github ?
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ),
 

@@ -2,8 +2,12 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\AdminNewUserMail;
+use App\Notifications\UserWelcomeMail;
+use App\Notifications\ResetPassword;
 
 class User extends Authenticatable
 {
@@ -15,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom', 'prenom', 'is_capitaine', 'email', 'password'
+        'nom', 'prenom', 'is_capitaine', 'email', 'password', 'tel'
     ];
 
 
@@ -35,6 +39,23 @@ class User extends Authenticatable
     public function equipes()
     {
         return $this->belongsToMany('App\Equipe');
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
+
+    public function sendWelcomeMail()
+    {
+        // Envoi de mail au nouvel inscris
+        $this->notify(new UserWelcomeMail());
     }
 }
 

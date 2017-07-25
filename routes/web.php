@@ -29,33 +29,60 @@
 use App\Mail\InviterAmisDansEquipe;
 use App\Http\Controllers;
 
+/**
+ * Laravel Auth system
+ */
 Auth::routes();
+
 Route::get('/register', function () {
     return redirect('/login');
 });
-//Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
-//Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
 
-for($anMoinsUn=2016; $anMoinsUn >= 2010; $anMoinsUn--)
-{
-    $an = $anMoinsUn+1;
-    Route::get($anMoinsUn.'-'.$an, 'SaisonController@saison');
-}
+// Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
+// Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
 
-Route::get('/', 'HomeController@index');
-//Route::get('/home', 'HomeController@index');
-//Route::get('/home.php', 'HomeController@index');
-Route::get('/pingouins', 'HomeController@index');
-Route::get('/smp', 'HomeController@index');
+// for($anMoinsUn=2016; $anMoinsUn >= 2010; $anMoinsUn--)
+// {
+//     $an = $anMoinsUn+1;
+//     Route::get($anMoinsUn.'-'.$an, 'SaisonController@saison');
+// }
+
+Route::get('/', 'HomeController@index')
+    ->name('home');
+
+/**
+ * Routes pour les ligues
+ */
+// route d'inscription, crée une ligue, une equipe et un user
+Route::get('inscription', 'LigueController@ajouter')
+    ->name('ajoutLigue');
+Route::prefix('ligue')
+    ->group(function () {
+        Route::get('afficher/{idLigue}', 'LigueController@index');
+        Route::post('add', 'LigueController@add')
+            ->name('addLigue');
+    });
+
+
+// Route::get('/smp', 'HomeController@index');
 
 Route::post('/entrerscore', 'EntrerScoreController@entrerscore');
 
-Route::get('/invitationDansEquipeEnvoyee',
-    'Invitations\InviterAmisDansEquipeController@send'
-)->name('inviterAmisDansEquipe');
-Route::get('/invitationCreerEquipeEnvoyee',
-    'Invitations\InviterAmiACreerEquipeController@send')
-->name('inviterAmiACreerEquipe');
+
+/**
+ * Routes pour les invitations
+ */
+Route::prefix('invitation')
+    ->group(function () {
+
+        // Invitation à rejoindre une equipe
+        Route::post('rejoindreEquipe', 'InvitationController@rejoindreEquipe')
+            ->name('inviterAmisDansEquipe');
+
+        // Invitation à créer une equipe
+        Route::post('creerEquipe', 'InvitationController@creerEquipe')
+            ->name('inviterAmiACreerEquipe');
+    });
 
 /*Route::post('', function() {
     Mail::to('lolo@gmail.com')->send(new InviterAmisDansEquipe);

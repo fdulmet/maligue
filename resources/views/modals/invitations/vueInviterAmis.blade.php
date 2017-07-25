@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmisDansEquipe') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('inviterAmisDansEquipe') }}">
                     {{ csrf_field() }}
                     <label>
                         à rejoindre {{ $nomAuthEquipe }} :
@@ -19,7 +19,7 @@
                     <!--Champs mail de l'invité-->
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input id="emailInvite1" type="text" class="form-control" name="emailInvite1"
+                            <input id="emailInvite1" type="text" class="form-control" name="emails_join_team"
                                    placeholder="hatembenarfa@gmail.com, antoinegriezmann@gmail.com, etc" required autofocus>
                         </div>
                     </div>
@@ -34,14 +34,14 @@
 
                 <br>
 
-                <form class="form-horizontal" role="form" method="GET" action="{{ route('inviterAmiACreerEquipe') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('inviterAmiACreerEquipe') }}">
                     {{ csrf_field() }}
                     <label>
                         à créer une nouvelle équipe dans {{ $nomAuthLigue }} :
                     </label>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input id="emailInvite1" type="text" class="form-control" name="emailInvite1"
+                            <input id="emailInvite1" type="text" class="form-control" name="emails_create_team"
                                    placeholder="florianthauvin@gmail.com, djibrilcisse@gmail.com, etc" required autofocus>
                         </div>
                     </div>

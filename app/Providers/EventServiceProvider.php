@@ -13,13 +13,18 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Test' => [
-        'App\Listeners\Test',
-        //'App\Events\RegisterEvent' => [//event(key)
-          //  'App\Listeners\RegisterListener',//listeners(values) //et éventuellement d'autres listeners
+        // Invitation d'une nouvelle personne
+        'App\Events\InviteNewPersons' => [
+            'App\Listeners\SendEmailToNewPersons',
+            'App\Listeners\SendEmailToInviter',
+            'App\Listeners\InsertEmailInInvitesTable'
+        ],
+        // Une personne s'inscrit après
+        // avoir reçu une invite
+        'App\Events\RegisterAfterInvitation' => [
+            // 'App\Listeners\SendEmailToNewPerson'
         ],
     ];
-    //Ensuite php artisan event:generate génère les events et listeners listés ici
 
     /**
      * Register any events for your application.
