@@ -16,7 +16,6 @@ class UsersTableSeeder extends Seeder
         [
             'nom' => 'Delaborde',
             'prenom' => 'Mathias',
-            'is_capitaine' => true,
             'tel' => '0165656565',
             'email' => 'mathias.delaborde@gmail.com',
             'password' => bcrypt('123456'),
@@ -24,7 +23,6 @@ class UsersTableSeeder extends Seeder
         [
             'nom' => 'Dulmet',
             'prenom' => 'François',
-            'is_capitaine' => true,
             'tel' => '0631099624',
             'email' => 'fdulmet@gmail.com',
             'password' => bcrypt('123456'),
@@ -32,7 +30,6 @@ class UsersTableSeeder extends Seeder
         [
             'nom' => 'Jacquemard',
             'prenom' => 'Thomas',
-            'is_capitaine' => true,
             'tel' => '0165656565',
             'email' => 'thomas@gmail.com',
             'password' => bcrypt('123456'),
@@ -40,7 +37,6 @@ class UsersTableSeeder extends Seeder
         [
             'nom' => 'Guerrini',
             'prenom' => 'Luis',
-            'is_capitaine' => true,
             'tel' => '0165656565',
             'email' => 'luis@gmail.com',
             'password' => bcrypt('123456'),

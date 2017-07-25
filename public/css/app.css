@@ -8061,4 +8061,8 @@ html, body {
   margin-right: 10%;
 }
 
+.wrap-player-form {
+  display: none;
+}
+
 /*# sourceMappingURL=app.css.map */

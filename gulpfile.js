@@ -15,7 +15,8 @@ require('laravel-elixir-vue-2');
 
 elixir((mix) => {
     mix.sass('app.scss')
-    .webpack('app.js', 'editableTable.js')
+    .webpack('app.js', 'public/js/editableTable.js')
+    .webpack('maligue.js', 'public/js/maligue.js')
     .version('css/app.css');
 });
 

@@ -1,6 +1,8 @@
 <b>Effectif</b>
 <p>
     <?php
+
+use App\User;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\DB;
     use App\Equipe;
@@ -18,12 +20,12 @@
     {
         $id = $userId->user_id;
         //Et on va dans table users pour afficher prenoms/noms correspondants à ces id
-        $user = DB::table('users')->where('id', $id)->get();
+        $user = User::where('id', $id)->get();
         foreach ($user as $user) {
             $prenom = $user->prenom;
             $nom = $user->nom;
-            $capitaine = $user->is_capitaine;
-            if ($capitaine == 1)
+
+            if ( $user->isCapitaine($idAuthEquipe) == 1 )
             {
                 $capitaine = '(capitaine)';
             }
@@ -31,6 +33,7 @@
             {
                 $capitaine = '';
             }
+
             echo $prenom.' '.$nom.' '.$capitaine."<br>";
         }
     }
