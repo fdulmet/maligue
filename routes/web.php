@@ -38,6 +38,10 @@ Route::get('/register', function () {
     return redirect('/login');
 });
 
+Route::resource('user', 'UserController', ['only' => [
+    'update'
+]]);
+
 // Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
 // Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
 

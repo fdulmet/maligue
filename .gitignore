@@ -18,3 +18,10 @@ sftp-config-alt.json
 sftp-config-alt2.json
 
 phploy.ini
+
+# Ignore Sass' cache
+/.sass-cache
+
+# Ignore CSS & Map File
+*.css.map
+*.js.map

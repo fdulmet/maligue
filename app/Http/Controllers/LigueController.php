@@ -102,7 +102,8 @@ class LigueController extends Controller
     // Creer l'equipe
     else {
       $equipe = Equipe::create([
-        'nom'=> ucfirst ( $inputs['equipe'] )
+        'nom'=> ucfirst ( $inputs['equipe'] ),
+        'user_id' => $user->id
       ]);
     }
 

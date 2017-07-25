@@ -16,6 +16,14 @@ class CreateEquipesTable extends Migration
         Schema::create('equipes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
+
+            // reference au user
+            // qui est le capitaine
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
             $table->timestamps();
             $table->string('logo')->nullable();
         });

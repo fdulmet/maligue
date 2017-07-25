@@ -2,12 +2,12 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-use Illuminate\Notifications\Notifiable;
+use App\Equipe;
 use App\Notifications\AdminNewUserMail;
-use App\Notifications\UserWelcomeMail;
 use App\Notifications\ResetPassword;
+use App\Notifications\UserWelcomeMail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom', 'prenom', 'is_capitaine', 'email', 'password', 'tel'
+        'nom', 'prenom', 'email', 'password', 'tel'
     ];
 
 
@@ -56,6 +56,16 @@ class User extends Authenticatable
     {
         // Envoi de mail au nouvel inscris
         $this->notify(new UserWelcomeMail());
+    }
+
+    public function isCapitaine($idEquipe)
+    {
+        $isCapitaine = Equipe::where([
+            'id' => $idEquipe,
+            'user_id' => $this->id
+        ])->get();
+
+        return $isCapitaine->count();
     }
 }
 

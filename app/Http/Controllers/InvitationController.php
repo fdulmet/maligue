@@ -15,6 +15,7 @@ class InvitationController extends Controller
   {
   	// On lance l'évènement
   	// d'invitation de personnes
+    // avec parametre => create_team
   	// qui va dans l'ordre
   	// 1. Envoyer un mail à l'invité
   	// 2. Envoyer un mail à l'inviteur
@@ -36,6 +37,7 @@ class InvitationController extends Controller
   {
   	// On lance l'évènement
   	// d'invitation de personnes
+    // avec parametre => join_team
   	// qui va dans l'ordre
   	// 1. Envoyer un mail à l'invité
   	// 2. Envoyer un mail à l'inviteur
