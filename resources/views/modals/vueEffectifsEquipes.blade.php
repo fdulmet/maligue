@@ -24,6 +24,10 @@ foreach ($equipes as $equipe)
     }
 }
 
+@foreach( \App\Equipe::all() as $equipe )
+    <?php /**/ $capitaine = \App\User::find($equipe->user_id) /**/ ?>
+@endforeach
+
 
 
 
