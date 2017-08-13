@@ -19,6 +19,8 @@ class GamesTableSeeder extends Seeder
                 'lieu_report' => 'Urbansoccer La Défense',
                 'date_report' => '2017-03-16',
                 'heure_report' => '21:00:00',
+                'ligue_id' => 1,
+                'season_id' => 1
             ],
             [
                 'lieu' => 'Urbansoccer La Défense',
@@ -27,6 +29,8 @@ class GamesTableSeeder extends Seeder
                 'lieu_report' => 'Urbansoccer La Défense',
                 'date_report' => '2017-03-16',
                 'heure_report' => '21:00:00',
+                'ligue_id' => 1,
+                'season_id' => 1
             ],
             [
                 'lieu' => 'Urbansoccer La Défense',
@@ -35,6 +39,8 @@ class GamesTableSeeder extends Seeder
                 'lieu_report' => 'Urbansoccer La Défense',
                 'date_report' => '2017-03-23',
                 'heure_report' => '21:30:00',
+                'ligue_id' => 1,
+                'season_id' => 1
             ],
             [
                 'lieu' => 'Urbansoccer La Défense',
@@ -43,6 +49,8 @@ class GamesTableSeeder extends Seeder
                 'lieu_report' => 'Urbansoccer La Défense',
                 'date_report' => '2017-04-06',
                 'heure_report' => '21:00:00',
+                'ligue_id' => 1,
+                'season_id' => 1
             ],
             [
                 'lieu' => 'Urbansoccer La Défense',
@@ -51,6 +59,8 @@ class GamesTableSeeder extends Seeder
                 'lieu_report' => 'Urbansoccer La Défense',
                 'date_report' => '2017-03-30',
                 'heure_report' => '20:30:00',
+                'ligue_id' => 1,
+                'season_id' => 1
             ],
             [
                 'lieu' => 'Urbansoccer La Défense',
@@ -59,6 +69,8 @@ class GamesTableSeeder extends Seeder
                 'lieu_report' => 'Urbansoccer La Défense',
                 'date_report' => '2017-03-30',
                 'heure_report' => '20:30:00',
+                'ligue_id' => 1,
+                'season_id' => 1
             ],
         ]);
     }

@@ -8,6 +8,7 @@ use App\Http\Helpers\CalendrierHelper;
 use App\Http\Helpers\Classement\ClassementHelper;
 use App\Http\Helpers\DiversHelper;
 use App\Http\Helpers\EffectifHelper;
+use App\Season;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,11 @@ class HomeController extends Controller
         $bannerHelper = new BannerHelper();
         $calendrierHelper = new CalendrierHelper();
         $classementHelper = new ClassementHelper();
-        //$effectifHelper = new EffectifHelper();
+
+        // gestion des changements de saisons
+        $saisons = Season::all();
+
+        $saisonEnCoursId = $request->input('saison');
 
         //VIEW
         return view('home')->with([
@@ -54,6 +59,10 @@ class HomeController extends Controller
             //'effectif' => $effectifHelper->effectif(),
             //on utilise resquest pour aller chercher confirmation là où elle est définie,
             //en l'occurence dans les invitations controllers
+
+            // Saisons
+            'saisons' => $saisons,
+            'saisonEnCoursId' => $saisonEnCoursId,
         ]);
     }
 }

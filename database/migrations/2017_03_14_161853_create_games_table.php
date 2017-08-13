@@ -21,6 +21,14 @@ class CreateGamesTable extends Migration
             $table->string ('lieu_report');
             $table->date('date_report');
             $table->time('heure_report');
+            $table->integer('ligue_id')->unsigned();
+            $table->foreign('ligue_id')
+                ->references('id')
+                ->on('ligues');
+            $table->integer('season_id')->unsigned();
+            $table->foreign('season_id')
+                ->references('id')
+                ->on('seasons');
             $table->timestamps();
         });
     }

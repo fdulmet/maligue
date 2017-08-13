@@ -14,6 +14,7 @@ class SeasonsTableSeeder extends Seeder
       DB::table('seasons')->insert([
         [
           'nom' => 'Automne 2017',
+          'slug' => 'automne-2017',
           'ligue_id' => 2,
         ]
       ]);
