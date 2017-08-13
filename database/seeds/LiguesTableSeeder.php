@@ -16,12 +16,10 @@ class LiguesTableSeeder extends Seeder
                 'nom' => 'Ligue SMP',
                 'sport' => 'Foot-à-5',
             ],
-            /*
             [
                 'nom' => 'La Ligue des Pingouins',
                 'sport' => 'Foot-à-5',
             ],
-            */
         ]);
     }
 }

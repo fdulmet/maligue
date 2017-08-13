@@ -1,16 +1,19 @@
 <?php
 namespace App\Http\Helpers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Equipe;
+use App\Season;
 use App\User;
 use Carbon\Carbon;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class DiversHelper
 {
+    private $user;
     public function __construct()
     {
+        $this->user = Auth::user();
     }
 
     public function carbon()
@@ -24,8 +27,8 @@ class DiversHelper
 
     public function nomAuthEquipe()
     {
-        //Nom équipe du mec authentifié
-        $authEquipe = Auth::user()->equipes()->get();
+        // Nom équipe du mec authentifié
+        $authEquipe = $this->user->equipes()->get();
         foreach ($authEquipe as $authEquipe) {
             $nomAuthEquipe = $authEquipe->nom;
         }
@@ -35,7 +38,7 @@ class DiversHelper
     public function logoAuthEquipe()
     {
         //Logo équipe du mec authentifié
-        $authEquipes = Auth::user()->equipes()->get();
+        $authEquipes = $this->user->equipes()->get();
         foreach ($authEquipes as $authEquipe) {
             $logoAuthEquipe = $authEquipe->logo;
         }
@@ -46,14 +49,19 @@ class DiversHelper
     {
         $nomAuthLigue = [];
         // Nom ligue du mec authentifié
-        $authEquipe = Auth::user()->equipes()->get();
+        $authEquipe = $this->user->equipes()->get();
         $authLigue = Equipe::find($authEquipe)->ligues()->get();
         foreach ($authLigue as $ligue) {
             if( ! in_array($ligue->nom, $nomAuthLigue) ) {
                 $nomAuthLigue[] = $ligue->nom;
+                $season = Season::where('ligue_id', $ligue->id)->get();
+
+                if( ! $season->isEmpty() ) {
+                    $nomAuthLigue[] = $season->nom;
+                }
             }
         }
 
-        return implode(', ', $nomAuthLigue);
+        return implode(' - ', $nomAuthLigue);
     }
 }

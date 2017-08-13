@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Helpers\DiversHelper;
 use App\Http\Helpers\BannerHelper;
 use App\Http\Helpers\CalendrierHelper;
-use App\Http\Helpers\EffectifHelper;
 use App\Http\Helpers\Classement\ClassementHelper;
+use App\Http\Helpers\DiversHelper;
+use App\Http\Helpers\EffectifHelper;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {

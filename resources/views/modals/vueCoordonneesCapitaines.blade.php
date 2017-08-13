@@ -14,6 +14,7 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach( \App\Equipe::all() as $equipe )
             <?php /**/ $capitaine = \App\User::find($equipe->user_id) /**/ ?>
             <tr>
