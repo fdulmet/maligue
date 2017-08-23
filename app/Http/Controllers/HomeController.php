@@ -36,6 +36,11 @@ class HomeController extends Controller
 
         $saisonEnCoursId = $request->input('saison');
 
+        if (is_null($saisonEnCoursId))
+        {
+            $saisonEnCoursId = 1;
+        }
+
         //VIEW
         return view('home')->with([
             //divers
