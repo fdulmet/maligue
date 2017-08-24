@@ -15,7 +15,7 @@
         "miroc/laravel-adminer": "^4.2",
         "mandrill/mandrill": "^1.0",
         "laracasts/flash": "^3.0",
-        "spatie/laravel-sluggable": "^1.4"
+        "spatie/laravel-sluggable": "^1.5"
     },
 
     "require-dev": {
