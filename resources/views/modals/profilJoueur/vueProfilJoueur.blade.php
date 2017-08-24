@@ -58,7 +58,7 @@
                     <!--Ligue-->
                     <div>Ligue :
                         <?php
-                            $ligue = \App\Equipe::find($entreeEquipe)->ligues()->get();
+                            $ligue = \App\Equipe::find($currentEquipe->id)->ligues()->get();
                             foreach ($ligue as $ligue)
                             {
                                 $ligue = $ligue->nom;
@@ -70,7 +70,7 @@
                     <!--Sport-->
                     <div>Sport :
                         <?php
-                        $ligue = \App\Equipe::find($entreeEquipe)->ligues()->get();
+                        $ligue = \App\Equipe::find($currentEquipe->id)->ligues()->get();
                         foreach ($ligue as $ligue)
                         {
                             $sport = $ligue->sport;

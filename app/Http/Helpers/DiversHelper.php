@@ -49,8 +49,8 @@ class DiversHelper
     {
         $nomAuthLigue = [];
         // Nom ligue du mec authentifié
-        $authEquipe = $this->user->equipes()->get();
-        $authLigue = Equipe::find($authEquipe)->ligues()->get();
+        $authEquipe = $this->user->equipes()->first();
+        $authLigue = Equipe::find($authEquipe->id)->ligues()->get();
         foreach ($authLigue as $ligue) {
             if( ! in_array($ligue->nom, $nomAuthLigue) ) {
                 $nomAuthLigue[] = $ligue->nom;
