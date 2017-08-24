@@ -26,10 +26,14 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $user = Auth::user();
+
         $diversHelper = new DiversHelper();
         $bannerHelper = new BannerHelper();
         $calendrierHelper = new CalendrierHelper();
         $classementHelper = new ClassementHelper();
+
+
 
         // gestion des changements de saisons
         $saisons = Season::all();

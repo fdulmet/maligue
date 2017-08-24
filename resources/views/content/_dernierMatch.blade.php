@@ -3,7 +3,7 @@
 @foreach($statsCalendrier as $statCalendrier)
     @if($statCalendrier['equipe_1']==$nomAuthEquipe or $statCalendrier['equipe_2']==$nomAuthEquipe)
         @if($carbonStrtotime>$statCalendrier['dateStrtotime'])
-            {{ Form::open(['action' => 'EntrerScoreController@entrerscore']) }}
+            {{ Form::open(['action' => 'MatchController@save']) }}
             {{ Form::hidden('game_id', $statCalendrier['game_id'])  }}
             <table id="dernierMatch">
                 <tr>

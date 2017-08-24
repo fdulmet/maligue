@@ -12,24 +12,45 @@ class SaisonController extends Controller
         //BANNER
         //nomAuthLigue
         $authEquipe = Auth::user()->equipes()->get();
-        foreach ($authEquipe as $authEquipe) {
-            $authLigue = $authEquipe->ligues;
-            foreach ($authLigue as $authLigue) {
-                $nomAuthLigue = $authLigue->nom;
+        foreach ($authEquipe as $equipe)
+        {
+            $authLigue = $equipe->ligues;
+            foreach ($authLigue as $ligue)
+            {
+                $nomAuthLigue = $ligue->nom;
             }
         }
+
         //saisons
-        foreach ($authEquipe->games as $authGame){
+        foreach ($authEquipe->games as $authGame)
+        {
             $authDate = $authGame->date;
         }
-        $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));//si table games dans ordre chronologique
+
+        //si table games dans ordre chronologique
+        $anneeDuDernierMatchProgramme = date('Y', strtotime($authDate));
         $an = $anneeDuDernierMatchProgramme;
-        $anMoinsUn = $anneeDuDernierMatchProgramme-1;
+        $anMoinsUn = $anneeDuDernierMatchProgramme - 1;
 
         //vue
         return view('saisons/'.$anMoinsUn.'-'.$an)->with([
             'nomAuthLigue' => $nomAuthLigue,
             'anneeDuDernierMatchProgramme' => $anneeDuDernierMatchProgramme,
         ]);
+    }
+
+    public function index()
+    {
+
+    }
+
+    public function create()
+    {
+
+    }
+
+    public function store(Request $request)
+    {
+
     }
 }

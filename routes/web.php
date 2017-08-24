@@ -71,10 +71,7 @@ Route::prefix('ligue')
             ->name('addLigue');
     });
 
-
-// Route::get('/smp', 'HomeController@index');
-
-Route::post('/entrerscore', 'EntrerScoreController@entrerscore');
+Route::post('match', 'MatchController@save');
 
 
 /**

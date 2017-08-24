@@ -68,7 +68,8 @@ class LigueController extends Controller
 
     // Validation back
     $validator = $this->validator($inputs);
-    if ( $validator->fails() ) {
+    if ($validator->fails())
+    {
       return redirect()
         ->back()
         ->withErrors(
@@ -88,20 +89,23 @@ class LigueController extends Controller
     // check si la personne est un invité
     // si oui on passe la variable à vrai
     $isInvited = Invite::where('email', $inputs['email']);
-    if( $isInvited->count() != 0 ) {
+    if ($isInvited->count() != 0)
+    {
         $isInvited->update([
-            'is_registered' => TRUE
+            'is_registered' => true
         ]);
     }
 
   	// l equipe existe on recupere l'equipe existante
-    if( ! isset($inputs['equipe']) ) {
+    if (!isset($inputs['equipe']))
+    {
       $equipe = Equipe::where('nom', $inputs['hidden_equipe'])->first();
     }
-    // Creer l'equipe
-    else {
+    // creer l'equipe
+    else
+    {
       $equipe = Equipe::create([
-        'nom'=> ucfirst ( $inputs['equipe'] ),
+        'nom' => ucfirst($inputs['equipe']),
         'user_id' => $user->id
       ]);
     }
@@ -110,17 +114,21 @@ class LigueController extends Controller
   	$user->equipes()->attach([$equipe->id]);
 
   	// la ligue existe on recupere la ligue existante
-    if( ! isset($inputs['ligue']) ) {
+    if (!isset($inputs['ligue']))
+    {
       $ligue = Ligue::where('nom', $inputs['hidden_ligue'])->first();
     }
     // Créer la ligue
-    else {
+    else
+    {
       $ligue = Ligue::create([
-        'nom' => ucfirst ( $inputs['ligue'] ),
+        'nom' => ucfirst($inputs['ligue']),
         'sport' => 'Foot-à-5'
       ]);
+
       // envoi mail de creation
       // de nouvelle ligue
+      // todo: refacto
       $admin = User::find(2);
       Notification::send($admin,
         new AdminNewLigueCreated($user->email, $ligue->nom)
@@ -142,8 +150,7 @@ class LigueController extends Controller
     );
 
     // Message de l'appli
-  	flash('Bienvenu sur maligue.fr - Un email de bienvenu vous a été envoyé')
-  		->success();
+  	$request->session()->flash('welcome', 'Bienvenu sur maligue.fr - Un email de bienvenu vous a été envoyé');
 
     // Forcer la connexion de l'utilisateur
     Auth::login($user);
