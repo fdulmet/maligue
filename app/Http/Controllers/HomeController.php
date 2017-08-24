@@ -9,6 +9,7 @@ use App\Http\Helpers\Classement\ClassementHelper;
 use App\Http\Helpers\DiversHelper;
 use App\Http\Helpers\EffectifHelper;
 use App\Season;
+use App\Equipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +21,9 @@ class HomeController extends Controller
     }
 
     /**
-     * [index description]
-     * @param  Request $request [description]
-     * @return [type]           [description]
+     * Homepage
+     * @param  Request $request
+     * @return \Illuminate\View\View
      */
     public function index(Request $request)
     {
@@ -33,9 +34,7 @@ class HomeController extends Controller
         $calendrierHelper = new CalendrierHelper();
         $classementHelper = new ClassementHelper();
 
-
-
-        // gestion des changements de saisons
+        $equipes = Equipe::all();
         $saisons = Season::all();
 
         $saisonEnCoursId = $request->input('saison');
@@ -45,8 +44,10 @@ class HomeController extends Controller
             $saisonEnCoursId = 1;
         }
 
-        //VIEW
         return view('home')->with([
+            'user' => $user,
+            'equipes' => $equipes,
+
             //divers
             'carbonStrtotime' => $diversHelper->carbon(),
             'logoAuthEquipe' => $diversHelper->logoAuthEquipe(),

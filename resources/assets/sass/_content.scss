@@ -17,6 +17,20 @@ html, body {
     padding: 0.5% 1.5% 0.5% 1.5%;//haut droite bas gauche
   }
 
+  #effectifsEquipes {
+    button {
+      color: #337ab7;
+      border: none;
+      background: none;
+    }
+  }
+
+  .modal-inside {
+    .modal-dialog {
+      width: 70%;
+    }
+  }
+
   //Espace ligue
   #espace_ligue{
     padding: 1% 0 0 4%;//haut droite bas gauche

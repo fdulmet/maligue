@@ -24,7 +24,15 @@ class CalendrierHelper {
         $statsCalendrier = [];// Array of games statistics
         $i = 0;
 
-        foreach ($games as $game){
+        foreach ($games as $game)
+        {
+            // Check that the two teams are active
+            if ($game->equipes->count() < 2)
+            {
+                $games->forget($game->id);
+                continue;
+            }
+
             $statsCalendrier[$i] = [];
 
             //game id
@@ -47,7 +55,8 @@ class CalendrierHelper {
 
             //equipes & buts
             $y = 1;
-            foreach ($game->equipes as $equipe){
+            foreach ($game->equipes as $equipe)
+            {
                 $pivot = $equipe->pivot;
                 $buts = $pivot->buts;
                 $nom = Equipe::find( $pivot->equipe_id )->nom;

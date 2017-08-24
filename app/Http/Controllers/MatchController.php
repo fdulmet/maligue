@@ -8,6 +8,11 @@ use App\Game;
 
 class MatchController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function save(Request $request)
     {
         $input = $request->all();

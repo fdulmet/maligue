@@ -73,6 +73,8 @@ Route::prefix('ligue')
 
 Route::post('match', 'MatchController@save');
 
+Route::get('equipe/deactivate', 'EquipeController@deactivate')->name('equipe.deactivate');
+
 
 /**
  * Routes pour les invitations
