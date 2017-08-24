@@ -9,7 +9,8 @@ use App\User;
 
     //On prend l'id de l'équipe du mec authentifié
     $authEquipe = Auth::user()->equipes()->get();
-    foreach ($authEquipe as $authEquipe) {
+    foreach ($authEquipe as $authEquipe)
+    {
         $idAuthEquipe = $authEquipe->id;
     }
 
@@ -21,11 +22,12 @@ use App\User;
         $id = $userId->user_id;
         //Et on va dans table users pour afficher prenoms/noms correspondants à ces id
         $user = User::where('id', $id)->get();
-        foreach ($user as $user) {
+        foreach ($user as $user)
+        {
             $prenom = $user->prenom;
             $nom = $user->nom;
 
-            if ( $user->isCapitaine($idAuthEquipe) == 1 )
+            if ($user->isCapitaine())
             {
                 $capitaine = '(capitaine)';
             }

@@ -40,6 +40,10 @@ class RolesTableSeeder extends Seeder
                 'role_id' => Role::ADMIN,
                 'user_id' => 2,
             ],
+            [
+                'role_id' => Role::CAPITAINE,
+                'user_id' => 2,
+            ],
         ]);
     }
 }

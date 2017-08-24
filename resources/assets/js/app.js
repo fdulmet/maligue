@@ -29,4 +29,18 @@ $(function () {
     format: 'MM/DD/YYYY',
     allowInputToggle: true
   });
+
+  $('#formUpdateCapitaine').one('submit', function (e) {
+    e.preventDefault();
+
+    if ($('#selectCapitaine').val() === '')
+    {
+      alert('Vous devez sélectionner un joueur pour le désigner capitaine');
+      return false;
+    }
+    else
+    {
+      $(this).submit();
+    }
+  });
 });

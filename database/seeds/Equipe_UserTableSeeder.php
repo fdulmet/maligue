@@ -17,12 +17,14 @@ class Equipe_UserTableSeeder extends Seeder
                 'equipe_id' => '1',
                 'user_id' => '1',
             ],
-
             [
                 'equipe_id' => '2',
                 'user_id' => '2',
             ],
-
+            [
+                'equipe_id' => '2',
+                'user_id' => '5',
+            ],
             [
                 'equipe_id' => '3',
                 'user_id' => '3',

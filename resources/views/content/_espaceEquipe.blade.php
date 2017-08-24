@@ -14,8 +14,15 @@
 
             <!--Bouton inviter des amis-->
             <div class="col-md-6">
-                @include('modals.invitations.boutonInviterAmis')
-                @include('modals.invitations.vueInviterAmis')
+
+                <div class="row">
+                    @include('modals.invitations.boutonInviterAmis')
+                    @include('modals.invitations.vueInviterAmis')
+                </div>
+
+                <div class="row">
+                    @include('modals.equipe.updateCapitaine')
+                </div>
             </div>
 
         </div>

@@ -54,10 +54,13 @@ class DiversHelper
         foreach ($authLigue as $ligue) {
             if( ! in_array($ligue->nom, $nomAuthLigue) ) {
                 $nomAuthLigue[] = $ligue->nom;
-                $season = Season::where('ligue_id', $ligue->id)->get();
-
-                if( ! $season->isEmpty() ) {
-                    $nomAuthLigue[] = $season->nom;
+                $seasons = Season::where('ligue_id', $ligue->id)->get();
+                if (!$seasons->isEmpty())
+                {
+                    foreach ($seasons as $season)
+                    {
+                        $nomAuthLigue[] = $season->nom;
+                    }
                 }
             }
         }

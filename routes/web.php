@@ -79,6 +79,8 @@ Route::get('saisons', 'SaisonController@index')->name('saison.index');
 Route::get('saisons/creer', 'SaisonController@create')->name('saison.create');
 Route::post('saisons/creer', 'SaisonController@store')->name('saison.store');
 
+Route::put('equipe/modifier-capitaine', 'EquipeController@update')->name('equipe.update');
+
 
 /**
  * Routes pour les invitations

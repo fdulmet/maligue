@@ -23,7 +23,7 @@
     <br>
 
     @foreach($equipe->users()->get() as $joueur)
-        @if($joueur->capitaine == 1)
+        @if($joueur->isCapitaine())
             {{ $joueur->prenom  }} {{ $joueur->nom }} (capitaine)<br>
         @else
             {{ $joueur->prenom  }} {{ $joueur->nom }} <br>

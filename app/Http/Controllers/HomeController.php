@@ -38,6 +38,26 @@ class HomeController extends Controller
         $saisons = Season::all();
 
         $saisonEnCoursId = $request->input('saison');
+        $currentEquipeId = $request->input('equipe');
+
+        if (is_null($currentEquipeId))
+        {
+            $currentEquipe = Auth::user()->equipes()->first();
+        }
+        else
+        {
+            $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
+        }
+
+        $currentJoueursEquipe = $currentEquipe->users()->get();
+        $currentSelectableJoueursEquipe = [];
+        foreach ($currentJoueursEquipe as $joueur)
+        {
+            if ($joueur->id !== $user->id && !$joueur->isCapitaine())
+            {
+                $currentSelectableJoueursEquipe[$joueur->id] = $joueur->nom . ' ' . $joueur->prenom;
+            }
+        }
 
         if (is_null($saisonEnCoursId))
         {
@@ -47,6 +67,8 @@ class HomeController extends Controller
         return view('home')->with([
             'user' => $user,
             'equipes' => $equipes,
+            'currentEquipe' => $currentEquipe,
+            'currentSelectableJoueursEquipe' => $currentSelectableJoueursEquipe,
 
             //divers
             'carbonStrtotime' => $diversHelper->carbon(),
