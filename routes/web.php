@@ -75,6 +75,10 @@ Route::post('match', 'MatchController@save');
 
 Route::get('equipe/deactivate', 'EquipeController@deactivate')->name('equipe.deactivate');
 
+Route::get('saisons', 'SaisonController@index')->name('saison.index');
+Route::get('saisons/creer', 'SaisonController@create')->name('saison.create');
+Route::post('saisons/creer', 'SaisonController@store')->name('saison.store');
+
 
 /**
  * Routes pour les invitations

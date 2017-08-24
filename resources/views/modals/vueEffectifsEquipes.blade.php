@@ -13,7 +13,7 @@
                         <h4 class="modal-title"> Êtes-vous sûr de vouloir désactiver l'équipe {{ $equipe->nom }} ?</h4>
                     </div>
                     <div class="modal-footer">
-                        {!! link_to_route('equipe.deactivate', 'Oui', ['id' => $equipe->id, 'class' => 'btn btn-default']) !!}
+                        {!! link_to_route('equipe.deactivate', 'Oui', ['id' => $equipe->id], ['class' => 'btn btn-default']) !!}
                         <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
                     </div>
                 </div>

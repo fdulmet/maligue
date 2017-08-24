@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+//require('./bootstrap');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -19,6 +19,14 @@ require('./bootstrap');
 //     el: '#app'
 // });
 
-(function($) {
-	console.log('test')
-})(jQuery);
+$(function () {
+  $('#datetimepicker1').datetimepicker({
+    format: 'MM/DD/YYYY',
+    allowInputToggle: true
+  });
+
+  $('#datetimepicker2').datetimepicker({
+    format: 'MM/DD/YYYY',
+    allowInputToggle: true
+  });
+});
