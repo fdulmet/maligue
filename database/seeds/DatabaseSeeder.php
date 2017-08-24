@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(EquipesTableSeeder::class);
         $this->call(LiguesTableSeeder::class);
+        $this->call(SeasonsTableSeeder::class);
         $this->call(GamesTableSeeder::class);
         $this->call(Equipe_UserTableSeeder::class);
         $this->call(Equipe_LigueTableSeeder::class);

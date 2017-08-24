@@ -45,11 +45,15 @@ Route::resource('user', 'UserController', ['only' => [
 // Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
 // Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
 
-// for($anMoinsUn=2016; $anMoinsUn >= 2010; $anMoinsUn--)
-// {
-//     $an = $anMoinsUn+1;
-//     Route::get($anMoinsUn.'-'.$an, 'SaisonController@saison');
-// }
+/**
+ * Routes pour les saisons
+ */
+// Route::prefix('saison')
+//     ->group(function () {
+//         Route::get('{saisonSlug}', function($saisonSlug) {
+//             echo $saisonSlug;
+//         });
+//     });
 
 Route::get('/', 'HomeController@index')
     ->name('home');

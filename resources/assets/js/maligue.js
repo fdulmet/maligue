@@ -1,10 +1,13 @@
 (function($) {
 
 	$(function() {
+
+		// profil modal
+		var $playerInfos = $('.wrap-player-infos'),
+		$playerform = $('.wrap-player-form');
+		// toggle edit infos form user
 		$('#toggle-edit-profile')
 			.on('click', function() {
-				var $playerInfos = $('.wrap-player-infos'),
-				$playerform = $('.wrap-player-form');
 
 				if( $playerform.is(':visible') == false ) {
 					$playerInfos
@@ -18,6 +21,14 @@
 					$playerInfos
 						.fadeIn();
 				}
+			});
+
+		$('#profilJoueur')
+			.on('hidden.bs.modal', function () {
+		    $playerform
+					.hide();
+				$playerInfos
+					.fadeIn();
 			});
 	});
 

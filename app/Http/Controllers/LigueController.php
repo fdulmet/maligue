@@ -83,7 +83,6 @@ class LigueController extends Controller
   	    'email' => $inputs['email'],
   	    'tel' => $inputs['tel'],
   	    'password' => bcrypt($inputs['password']),
-  	    'is_capitaine' => TRUE,
   	]);
 
     // check si la personne est un invité

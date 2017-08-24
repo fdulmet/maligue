@@ -12,7 +12,7 @@ class Equipe extends Model
      * @var array
      */
     protected $fillable = [
-        'nom',
+        'nom', 'user_id'
     ];
 
     // Plusieurs users peuvent appartenir à une équipe.

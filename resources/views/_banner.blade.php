@@ -13,7 +13,7 @@
                 </h2>
             </span>
             <div class="col-md-8">
-                @if(isset($nomAuthLigue))
+                @if( isset($nomAuthLigue) )
                     @include('banner._saisonsDropdownMenu')
                 @else
                 @endif
