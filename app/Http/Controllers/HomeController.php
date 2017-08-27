@@ -10,6 +10,7 @@ use App\Http\Helpers\DiversHelper;
 use App\Http\Helpers\EffectifHelper;
 use App\Season;
 use App\Equipe;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,6 +60,8 @@ class HomeController extends Controller
             }
         }
 
+        $playersWithoutTeam = User::doesntHave('equipes')->pluck('nom', 'id');
+
         if (is_null($saisonEnCoursId))
         {
             $saisonEnCoursId = 1;
@@ -69,6 +72,7 @@ class HomeController extends Controller
             'equipes' => $equipes,
             'currentEquipe' => $currentEquipe,
             'currentSelectableJoueursEquipe' => $currentSelectableJoueursEquipe,
+            'playersWithoutTeam' => $playersWithoutTeam,
 
             //divers
             'carbonStrtotime' => $diversHelper->carbon(),

@@ -7,7 +7,7 @@
         @else
             {{ 'maligue' }}
         @endif
-    </title><!--importer de bdd-->
+    </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,13 +22,11 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-<!--Home Page-->
     @yield('banner')
     @yield('invitationEnvoyee')
     @include('flash::message')
     @yield('content')
-    @yield ('footer') <!--comme tous les yields, il peut être utilisé OU PAS-->
+    @yield ('footer')
     <script src="{{ elixir('js/app.js') }}"></script>
-    <script src="{{ elixir('js/maligue.js') }}"></script>
 </body>
 </html>

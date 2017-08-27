@@ -5,7 +5,7 @@
     <div class="form-group{{ $errors->has('ligue') ? ' has-error' : '' }}" id="formulaire">
         <input
             id="ligue" class="form-control" name="ligue"
-            placeholder="Nom de la ligue *" required autofocus
+            placeholder="Nom de la ligue *" required
                 @if ( isset($ligue) ) value="{{ $ligue }}" disabled @endif
             >
 
@@ -24,7 +24,7 @@
     <div class="form-group{{ $errors->has('equipe') ? ' has-error' : '' }}" id="formulaire">
         <input
             id="equipe" class="form-control" name="equipe"
-            placeholder="Nom de l'équipe *" required autofocus
+            placeholder="Nom de l'équipe *" required
             @if ( isset($equipe) ) value="{{ $equipe }}" disabled @endif
         >
 
@@ -40,7 +40,7 @@
     </div>
 
     <div class=" form-group{{ $errors->has('nom') ? ' has-error' : '' }}" id="formulaire">
-        <input id="equipe" type="text" class="form-control" name="nom" placeholder="Ben Arfa *" required autofocus>
+        <input id="equipe" type="text" class="form-control" name="nom" placeholder="Ben Arfa *" required>
         @if ($errors->has('nom'))
         <span class="help-block">
             <strong>{{ $errors->first('nom') }}</strong>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('prenom') ? ' has-error' : '' }}" id="formulaire">
-        <input id="equipe" type="text" class="form-control" name="prenom" placeholder="Hatem *" required autofocus>
+        <input id="equipe" type="text" class="form-control" name="prenom" placeholder="Hatem *" required>
         @if ($errors->has('prenom'))
         <span class="help-block">
             <strong>{{ $errors->first('prenom') }}</strong>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}" id="formulaire">
-        <input id="equipe" type="text" class="form-control" name="email" placeholder="hatembenarfa@gmail.com *" required autofocus>
+        <input id="equipe" type="text" class="form-control" name="email" placeholder="hatembenarfa@gmail.com *" required>
         @if ($errors->has('email'))
         <span class="help-block">
             <strong>{{ $errors->first('email') }}</strong>
@@ -67,7 +67,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('tel') ? ' has-error' : '' }}" id="formulaire">
-        <input id="equipe" type="text" class="form-control" name="tel" placeholder="0612345678" autofocus>
+        <input id="equipe" type="text" class="form-control" name="tel" placeholder="0612345678">
         @if ($errors->has('tel'))
         <span class="help-block">
             <strong>{{ $errors->first('tel') }}</strong>
@@ -76,7 +76,7 @@
     </div>
 
     <div class=" form-group{{ $errors->has('password') ? ' has-error' : '' }}" id="formulaire">
-        <input id="equipe" type="password" class="form-control" name="password" placeholder="mot de passe *" required autofocus>
+        <input id="equipe" type="password" class="form-control" name="password" placeholder="mot de passe *" required>
         @if ($errors->has('password'))
         <span class="help-block">
                 <strong>{{ $errors->first('password') }}</strong>

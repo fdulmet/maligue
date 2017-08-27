@@ -16,7 +16,6 @@ require('laravel-elixir-vue-2');
 elixir((mix) => {
     mix.sass('app.scss')
     .webpack('app.js', 'public/js/app.js')
-    .webpack('maligue.js', 'public/js/maligue.js')
     .version('css/app.css');
 });
 

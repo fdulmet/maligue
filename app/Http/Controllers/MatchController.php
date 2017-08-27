@@ -17,7 +17,7 @@ class MatchController extends Controller
     {
         $input = $request->all();
 
-        $game = Game::find($input['game_id']);
+        $game = Game::find(intval($input['game_id']));
 
         if (!$game)
         {
@@ -30,7 +30,7 @@ class MatchController extends Controller
             $equipe->pivot->save();
         }
 
-        $request->session()->flash('saveMatch', 'Merci d\'avoir rentrer le score du match.');
+        flash('Merci d\'avoir rentrer le score du match.')->success();
 
         return redirect()->action('HomeController@index');
     }
