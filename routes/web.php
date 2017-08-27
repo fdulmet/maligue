@@ -76,8 +76,12 @@ Route::post('match', 'MatchController@save');
 Route::get('equipe/desactiver', 'EquipeController@deactivate')->name('equipe.deactivate');
 Route::get('equipe/retirerjoueur', 'EquipeController@removePlayer')->name('equipe.removePlayer');
 Route::post('equipe/ajouterjoueur', 'EquipeController@addPlayer')->name('equipe.addPlayer');
+Route::post('equipe/creer', 'EquipeController@store')->name('equipe.store');
 Route::put('equipe/modifier-capitaine', 'EquipeController@updateCapitaine')->name('equipe.updateCapitaine');
 Route::put('equipe/modifier-nom', 'EquipeController@updateName')->name('equipe.updateName');
+Route::put('equipe/modifier-logo', 'EquipeController@updateLogo')->name('equipe.updateLogo');
+
+Route::get('/changer-equipe', 'HomeController@index')->name('switchTeam');
 
 Route::get('saisons', 'SaisonController@index')->name('saison.index');
 Route::get('saisons/creer', 'SaisonController@create')->name('saison.create');

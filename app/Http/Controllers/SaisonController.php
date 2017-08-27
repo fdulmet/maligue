@@ -78,7 +78,16 @@ class SaisonController extends Controller
             $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
         }
 
+        $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
+
+        if (is_null($currentSaison))
+        {
+            $currentSaison = Season::all()->first();
+            flash('Cette saison n\'est pas disponible.')->error();
+        }
+
         return view('saisons/index')->with([
+            'currentSaison' => $currentSaison,
             'saisons' => $saisons,
             'ligues' => $ligues,
             'nomAuthLigue' => $diversHelper->nomAuthLigue(),

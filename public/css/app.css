@@ -294,7 +294,8 @@ html, body {
 }
 
 #content #espace_equipe #bouton_invitation,
-#content #espace_equipe #bouton_updateCapitaine {
+#content #espace_equipe #bouton_updateCapitaine,
+#content #espace_equipe #bouton_createNewTeam {
   margin: 1% 0 0 1%;
 }
 
@@ -480,6 +481,124 @@ span.play-mix-btn:hover {
 .listing-tab .nav-tabs > li.active > a {
   border-bottom: 2px solid #bb0000;
   color: #000;
+}
+
+.thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+
+.caption {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  display: none;
+  text-align: center;
+  color: #fff !important;
+  z-index: 2;
+}
+
+.artist-collage .thumbnail .caption {
+  text-align: right;
+}
+
+.artist-collage .thumbnail .caption .label {
+  font-size: 100%;
+}
+
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  box-sizing: border-box;
+}
+
+.btn-file {
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+}
+
+.btn-file > input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: translate(-300px, 0) scale(4);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+.fileupload {
+  margin-bottom: 9px;
+}
+
+.fileupload .uneditable-input {
+  display: inline-block;
+  margin-bottom: 0px;
+  vertical-align: middle;
+  cursor: text;
+}
+
+.fileupload .thumbnail {
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 5px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.fileupload .thumbnail > img {
+  display: inline-block;
+  vertical-align: middle;
+  max-height: 100%;
+}
+
+.fileupload .btn {
+  vertical-align: middle;
+}
+
+.fileupload-exists .fileupload-new, .fileupload-new .fileupload-exists {
+  display: none;
+}
+
+.fileupload-inline .fileupload-controls {
+  display: inline;
+}
+
+.fileupload-new .input-append .btn-file {
+  border-radius: 0 3px 3px 0;
+}
+
+.thumbnail-borderless .thumbnail {
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fileupload-new.thumbnail-borderless .thumbnail {
+  border: 1px solid #ddd;
+}
+
+#content button.btn-sm,
+.btn-sm {
+  font-size: 75%;
 }
 
 .table-editable {

@@ -26,7 +26,8 @@
     @yield('invitationEnvoyee')
     @include('flash::message')
     @yield('content')
-    @yield ('footer')
+    @yield('modals')
+    @yield('footer')
     <script src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>

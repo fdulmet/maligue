@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateTeamRequest;
+use App\Http\Requests\SaveLogoRequest;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -15,6 +17,40 @@ class EquipeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function store(CreateTeamRequest $request)
+    {
+        if (!$request->has('nom'))
+        {
+            flash('Erreur, vous devez renseigner un nom à l\'équipe`.')->error();
+
+            return redirect()->action('HomeController@index');
+        }
+
+        $equipe = new Equipe();
+        $equipe->nom = $request->input('nom');
+        $equipe->user_id = Auth::user()->id;
+
+        if ($request->hasFile('logo'))
+        {
+            $imageName = camel_case($equipe->nom) . '.' . $request->file('logo')->getClientOriginalExtension();
+
+            $request->file('logo')->move(
+                base_path() . '/public/images/logos/', $imageName
+            );
+
+            $equipe->logo = 'images/logos/' . $imageName;
+        }
+
+        if (!$equipe->save())
+        {
+            throw new InternalErrorException('Unable to create the team.');
+        }
+
+        flash('L\'équipe `'.$equipe->nom.'` a bien été créée.')->success();
+
+        return redirect()->action('HomeController@index');
     }
 
     public function deactivate(Request $request)
@@ -103,6 +139,47 @@ class EquipeController extends Controller
         }
 
         flash('Le nom de l\'équipe a bien été modifié.')->success();
+
+        return redirect()->action('HomeController@index');
+    }
+
+    public function updateLogo(SaveLogoRequest $request)
+    {
+        if (!$request->has('equipe'))
+        {
+            flash('Erreur, aucune équipe sélectionné.')->error();
+
+            return redirect()->action('HomeController@index');
+        }
+
+        if (!$request->hasFile('logo'))
+        {
+            flash('Erreur, aucune image sélectionnée.')->error();
+
+            return redirect()->action('HomeController@index');
+        }
+
+        $equipe = Equipe::find(intval($request->input('equipe')));
+
+        if (is_null($equipe))
+        {
+            throw new ModelNotFoundException('Equipe not found.');
+        }
+
+        $imageName = camel_case($equipe->nom) . '.' . $request->file('logo')->getClientOriginalExtension();
+
+        $request->file('logo')->move(
+            base_path() . '/public/images/logos/', $imageName
+        );
+
+        $equipe->logo = 'images/logos/' . $imageName;
+
+        if (!$equipe->save())
+        {
+            throw new InternalErrorException('Unable to update the team.');
+        }
+
+        flash('Le logo de l\'équipe a bien été modifié.')->success();
 
         return redirect()->action('HomeController@index');
     }

@@ -41,6 +41,11 @@ class HomeController extends Controller
         $saisonEnCoursId = $request->input('saison');
         $currentEquipeId = $request->input('equipe');
 
+        if ($request->session()->exists('equipe'))
+        {
+            $currentEquipeId = intval(session('equipe'));
+        }
+
         if (is_null($currentEquipeId))
         {
             $currentEquipe = Auth::user()->equipes()->first();
@@ -65,6 +70,14 @@ class HomeController extends Controller
         if (is_null($saisonEnCoursId))
         {
             $saisonEnCoursId = 1;
+        }
+
+        $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
+
+        if (is_null($currentSaison))
+        {
+            $currentSaison = Season::all()->first();
+            flash('Cette saison n\'est pas disponible.')->error();
         }
 
         return view('home')->with([
@@ -98,9 +111,30 @@ class HomeController extends Controller
             //en l'occurence dans les invitations controllers
 
             // Saisons
+            'currentSaison' => $currentSaison,
             'saisons' => $saisons,
             'saisonEnCoursId' => $saisonEnCoursId,
         ]);
+    }
+
+    public function switchTeam(Request $request)
+    {
+        if (!$request->has('equipeId'))
+        {
+            flash('Impossible de changer d\'équipe')->error();
+        }
+
+        $equipeId = intval($request->get('equipeId'));
+
+        $equipe = Equipe::where(['id' => $equipeId])->first();
+        if (is_null($equipe))
+        {
+            flash('Cette équipe n\'est pas disponible.')->error();
+        }
+
+        $request->session()->put('equipe', $equipeId);
+
+        return redirect()->action('HomeController@index');
     }
 }
 
