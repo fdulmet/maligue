@@ -2,19 +2,46 @@ html, body {
   height: 100%;
 }
 
+.alert {
+  margin-bottom: 0;
+}
+
+.logoEquipe {
+  img {
+    width: 60px;
+    height: 60px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,30,0.8);
+    overflow: hidden;
+  }
+}
+
+#effectifsEquipes {
+  span.label {
+    padding-top: 4px;
+  }
+}
+
 #content{
   font-size: small;
   height:100%;
   > div:first-child {
     height: 100%;
   }
-  button {
+  a.btn, button {
     color: black;
     font-size: small;
     border-radius: 0px;
     background-color: #d2d2d2;
     border-color: #c2c2c2;
-    padding: 0.5% 1.5% 0.5% 1.5%;//haut droite bas gauche
+    padding: 0.5% 1.5% 0.5% 1.5%;
+    transition: .2s all ease;
+
+    &:hover {
+      background-color: #aeaeae;
+    }
   }
 
   #effectifsEquipes {
@@ -37,7 +64,6 @@ html, body {
     height: 100%;
     #menu {
       padding: 1% 0 2% 0;
-      margin-left:-2%;
     }
     #classement {
       margin-top: 2%;
@@ -142,8 +168,8 @@ html, body {
   #espace_equipe{
     border-left: 2px solid green;
     background-color: #f1f1f1;
-    padding: 1% 0 0 1%;
     height: 100%;
+
     span{
       float: left;
       #nom_equipe{

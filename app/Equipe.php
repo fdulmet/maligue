@@ -5,6 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @mixin \Eloquent
+ * @package App
+ */
 class Equipe extends Model
 {
     use SoftDeletes;

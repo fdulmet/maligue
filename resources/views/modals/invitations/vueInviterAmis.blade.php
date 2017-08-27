@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <input id="emailInvite1" type="text" class="form-control" name="emails_join_team"
-                                   placeholder="hatembenarfa@gmail.com, antoinegriezmann@gmail.com, etc" required autofocus>
+                                   placeholder="hatembenarfa@gmail.com, antoinegriezmann@gmail.com, etc" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <input id="emailInvite1" type="text" class="form-control" name="emails_create_team"
-                                   placeholder="florianthauvin@gmail.com, djibrilcisse@gmail.com, etc" required autofocus>
+                                   placeholder="florianthauvin@gmail.com, djibrilcisse@gmail.com, etc" required>
                         </div>
                     </div>
                     <div class="form-group">

@@ -20,9 +20,6 @@
                         {{ csrf_field() }}
                     </form>
                 </li>
-                <li>
-                    {!! link_to_route('saison.index', 'Saisons') !!}
-                </li>
             </ul>
             @include('modals.profilJoueur.vueProfilJoueur')
         </li>

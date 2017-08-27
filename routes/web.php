@@ -73,7 +73,9 @@ Route::prefix('ligue')
 
 Route::post('match', 'MatchController@save');
 
-Route::get('equipe/deactivate', 'EquipeController@deactivate')->name('equipe.deactivate');
+Route::get('equipe/desactiver', 'EquipeController@deactivate')->name('equipe.deactivate');
+Route::get('equipe/retirerjoueur', 'EquipeController@removePlayer')->name('equipe.removePlayer');
+Route::post('equipe/ajouterjoueur', 'EquipeController@addPlayer')->name('equipe.addPlayer');
 
 Route::get('saisons', 'SaisonController@index')->name('saison.index');
 Route::get('saisons/creer', 'SaisonController@create')->name('saison.create');

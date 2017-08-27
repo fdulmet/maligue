@@ -24,7 +24,7 @@
         @foreach($datas as $data)
             <div class="col-md-12 form-group{{ $errors->has($data[$info]) ? ' has-error' : '' }}" id="formulaire">
                 <label class="control-label col-md-6">{{ $data[$label] }}</label>
-                <input value="{{ $value }}" id="equipe" type="{{ $type }}" class="form-control col-md-6" name="{{ $data[$name] }}" placeholder="{{ $data[$placeholder] }}" required autofocus>
+                <input value="{{ $value }}" id="equipe" type="{{ $type }}" class="form-control col-md-6" name="{{ $data[$name] }}" placeholder="{{ $data[$placeholder] }}" required>
                 @if ($errors->has($has))
                     <span class="help-block">
                         <strong>{{ $errors->first($first) }}</strong>
@@ -35,7 +35,7 @@
 
         <div class="col-md-12 form-group{{ $errors->has($password) ? ' has-error' : '' }}" id="formulaire">
             <label class="control-label col-md-6">Mot de passe</label>
-            <input value="{{ $value }}" id="equipe" type="password" class="form-control col-md-6" name="password" placeholder="******" required autofocus>
+            <input value="{{ $value }}" id="equipe" type="password" class="form-control col-md-6" name="password" placeholder="******" required>
             @if ($errors->has('password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>

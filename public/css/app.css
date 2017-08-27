@@ -103,6 +103,22 @@ html, body {
   height: 100%;
 }
 
+.alert {
+  margin-bottom: 0;
+}
+
+.logoEquipe img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 30, 0.8);
+  overflow: hidden;
+}
+
+#effectifsEquipes span.label {
+  padding-top: 4px;
+}
+
 #content {
   font-size: small;
   height: 100%;
@@ -112,13 +128,18 @@ html, body {
   height: 100%;
 }
 
-#content button {
+#content a.btn, #content button {
   color: black;
   font-size: small;
   border-radius: 0px;
   background-color: #d2d2d2;
   border-color: #c2c2c2;
   padding: 0.5% 1.5% 0.5% 1.5%;
+  transition: .2s all ease;
+}
+
+#content a.btn:hover, #content button:hover {
+  background-color: #aeaeae;
 }
 
 #content #effectifsEquipes button {
@@ -138,7 +159,6 @@ html, body {
 
 #content #espace_ligue #menu {
   padding: 1% 0 2% 0;
-  margin-left: -2%;
 }
 
 #content #espace_ligue #classement {
@@ -254,7 +274,6 @@ html, body {
 #content #espace_equipe {
   border-left: 2px solid green;
   background-color: #f1f1f1;
-  padding: 1% 0 0 1%;
   height: 100%;
 }
 

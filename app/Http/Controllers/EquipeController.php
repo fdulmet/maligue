@@ -36,7 +36,7 @@ class EquipeController extends Controller
 
         $equipe->delete();
 
-        $request->session()->flash('deactivateEquipe', 'L\'équipe a bien été désactivée.');
+        flash('L\'équipe a bien été désactivée.')->success();
 
         return redirect()->action('HomeController@index');
     }
@@ -45,7 +45,7 @@ class EquipeController extends Controller
     {
         if (!$request->has('equipe') || !$request->has('joueur'))
         {
-            $request->session()->flash('updateEquipe', 'Erreur, aucune équipe ou joueur sélectionné.');
+            flash('Erreur, aucune équipe ou joueur sélectionné.')->error();
 
             return redirect()->action('HomeController@index');
         }
@@ -75,6 +75,64 @@ class EquipeController extends Controller
 
         $joueur->roles()->attach(Role::CAPITAINE);
         $lastCapitaine->roles()->detach(Role::CAPITAINE);
+
+        return redirect()->action('HomeController@index');
+    }
+
+    public function addPlayer(Request $request)
+    {
+        if (!$request->has('equipe') || !$request->has('joueur'))
+        {
+            flash('Erreur, aucune équipe ou joueur sélectionné.')->error();
+
+            return redirect()->action('HomeController@index');
+        }
+
+        $equipe = Equipe::find(intval($request->input('equipe')));
+        $joueur = User::find(intval($request->input('joueur')));
+
+        if (is_null($equipe))
+        {
+            throw new ModelNotFoundException('Equipe not found.');
+        }
+
+        if (is_null($joueur))
+        {
+            throw new ModelNotFoundException('User not found.');
+        }
+
+        $joueur->equipes()->attach($equipe);
+
+        flash('L\'utilisateur a bien été ajouté à l\'équipe.')->success();
+
+        return redirect()->action('HomeController@index');
+    }
+
+    public function removePlayer(Request $request)
+    {
+        if (!$request->has('equipe') || !$request->has('joueur'))
+        {
+            flash('Erreur, aucune équipe ou joueur sélectionné.')->error();
+
+            return redirect()->action('HomeController@index');
+        }
+
+        $equipe = Equipe::find(intval($request->get('equipe')));
+        $joueur = User::find(intval($request->get('joueur')));
+
+        if (is_null($equipe))
+        {
+            throw new ModelNotFoundException('Equipe not found.');
+        }
+
+        if (is_null($joueur))
+        {
+            throw new ModelNotFoundException('User not found.');
+        }
+
+        $joueur->equipes()->detach($equipe);
+
+        flash('L\'utilisateur a bien été retiré de l\'équipe.')->success();
 
         return redirect()->action('HomeController@index');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Equipe;
 use App\Http\Requests\CreateSaisonRequest;
 use App\Ligue;
 use App\Season;
@@ -66,10 +67,22 @@ class SaisonController extends Controller
         $saisons = Season::all();
         $ligues = Ligue::pluck('nom', 'id');
 
+        $currentEquipeId = $request->input('equipe');
+
+        if (is_null($currentEquipeId))
+        {
+            $currentEquipe = Auth::user()->equipes()->first();
+        }
+        else
+        {
+            $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
+        }
+
         return view('saisons/index')->with([
             'saisons' => $saisons,
             'ligues' => $ligues,
             'nomAuthLigue' => $diversHelper->nomAuthLigue(),
+            'currentEquipe' => $currentEquipe,
             'saisonEnCoursId' => $saisonEnCoursId,
             'anneeDuDernierMatchProgramme' => $bannerHelper->annee(),//si table games dans ordre chronologique
         ]);
