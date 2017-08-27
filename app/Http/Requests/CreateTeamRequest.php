@@ -26,6 +26,7 @@ class CreateTeamRequest extends FormRequest
     {
         return [
             'nom' => 'required',
+            'logo' => 'mimes:jpg,jpeg,gif,png',
         ];
     }
 }

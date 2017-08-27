@@ -21,7 +21,36 @@ class EquipeController extends Controller
 
     public function store(CreateTeamRequest $request)
     {
-        dd($request->all());
+        if (!$request->has('nom'))
+        {
+            flash('Erreur, vous devez renseigner un nom à l\'équipe`.')->error();
+
+            return redirect()->action('HomeController@index');
+        }
+
+        $equipe = new Equipe();
+        $equipe->nom = $request->input('nom');
+        $equipe->user_id = Auth::user()->id;
+
+        if ($request->hasFile('logo'))
+        {
+            $imageName = camel_case($equipe->nom) . '.' . $request->file('logo')->getClientOriginalExtension();
+
+            $request->file('logo')->move(
+                base_path() . '/public/images/logos/', $imageName
+            );
+
+            $equipe->logo = 'images/logos/' . $imageName;
+        }
+
+        if (!$equipe->save())
+        {
+            throw new InternalErrorException('Unable to create the team.');
+        }
+
+        flash('L\'équipe `'.$equipe->nom.'` a bien été créée.')->success();
+
+        return redirect()->action('HomeController@index');
     }
 
     public function deactivate(Request $request)
