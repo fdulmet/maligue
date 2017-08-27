@@ -81,6 +81,8 @@ Route::put('equipe/modifier-capitaine', 'EquipeController@updateCapitaine')->nam
 Route::put('equipe/modifier-nom', 'EquipeController@updateName')->name('equipe.updateName');
 Route::put('equipe/modifier-logo', 'EquipeController@updateLogo')->name('equipe.updateLogo');
 
+Route::get('/changer-equipe', 'HomeController@index')->name('switchTeam');
+
 Route::get('saisons', 'SaisonController@index')->name('saison.index');
 Route::get('saisons/creer', 'SaisonController@create')->name('saison.create');
 Route::post('saisons/creer', 'SaisonController@store')->name('saison.store');

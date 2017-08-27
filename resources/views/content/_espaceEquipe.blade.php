@@ -1,4 +1,15 @@
 <div class="row">
+    <div class="col-md-12">
+        {!! Form::open(['route' => 'switchTeam', 'method' => 'get']) !!}
+
+            {!! Form::label('equipe', 'Mes équipes :') !!}
+            {!! Form::select('equipe', [], null, ['class' => 'form-control']) !!}
+
+        {!! Form::close() !!}
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-12 watch-card">
         <div class="artist-title col-md-12">
             <div class="row">
@@ -21,7 +32,7 @@
                     <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#updateCapitaine" id="bouton_updateCapitaine">
                         Modifier le capitaine d'équipe
                     </button>
-                    <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#createNewTeam" id="bouton_createNewTeam">
+                    <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#createNewTeam" id="bouton_createNewTeam">
                         Créer nouvelle équipe
                     </button>
                 </div>
@@ -54,7 +65,7 @@
                     <ul>
                         @foreach($currentJoueursEquipe as $joueur)
                             @if($joueur->isCapitaine())
-                                <li>{{ $joueur->prenom }} {{ $joueur->nom }} <span><span class="glyphicon glyphicon-king"></span></span></li>
+                                <li>{{ $joueur->prenom }} {{ $joueur->nom }} <span><span class="glyphicon glyphicon-king" rel="tooltip" title="Capitaine"></span></span></li>
                             @else
                                 <li>{{ $joueur->prenom }} {{ $joueur->nom }}</li>
                             @endif
