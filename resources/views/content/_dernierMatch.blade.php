@@ -1,5 +1,3 @@
-<b>Derniers matchs :</b>
-
 @foreach($statsCalendrier as $statCalendrier)
     @if($statCalendrier['equipe_1']==$nomAuthEquipe or $statCalendrier['equipe_2']==$nomAuthEquipe)
         @if($carbonStrtotime>$statCalendrier['dateStrtotime'])

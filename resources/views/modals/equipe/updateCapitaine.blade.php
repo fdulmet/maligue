@@ -14,7 +14,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('equipe.update') }}" id="formUpdateCapitaine">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('equipe.updateCapitaine') }}" id="formUpdateCapitaine">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
 

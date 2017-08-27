@@ -41,7 +41,7 @@ class EquipeController extends Controller
         return redirect()->action('HomeController@index');
     }
 
-    public function update(Request $request)
+    public function updateCapitaine(Request $request)
     {
         if (!$request->has('equipe') || !$request->has('joueur'))
         {
@@ -75,6 +75,34 @@ class EquipeController extends Controller
 
         $joueur->roles()->attach(Role::CAPITAINE);
         $lastCapitaine->roles()->detach(Role::CAPITAINE);
+
+        return redirect()->action('HomeController@index');
+    }
+
+    public function updateName(Request $request)
+    {
+        if (!$request->has('equipe'))
+        {
+            flash('Erreur, aucune équipe sélectionné.')->error();
+
+            return redirect()->action('HomeController@index');
+        }
+
+        $equipe = Equipe::find(intval($request->input('equipe')));
+
+        if (is_null($equipe))
+        {
+            throw new ModelNotFoundException('Equipe not found.');
+        }
+
+        $equipe->nom = $request->input('nom');
+
+        if (!$equipe->save())
+        {
+            throw new InternalErrorException('Unable to update the team.');
+        }
+
+        flash('Le nom de l\'équipe a bien été modifié.')->success();
 
         return redirect()->action('HomeController@index');
     }
