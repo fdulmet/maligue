@@ -5,7 +5,7 @@
                 <div class="col-md-12">
                     <h4>
                         <strong>{{ $nomAuthEquipe }}</strong>
-                        <a href="#" class="pull-right" title="Modifier nom de l'équipe" data-toggle="modal" data-target="#updateTeamName">
+                        <a href="#" class="pull-right" title="Modifier nom de l'équipe" rel="tooltip" data-toggle="modal" data-target="#updateTeamName">
                             <span class="glyphicon glyphicon-edit"></span>
                         </a>
                         @include('modals.equipe.updateTeamName')
@@ -15,16 +15,30 @@
             <!--Bouton inviter des amis-->
             <div class="row">
                 <div class="col-md-12">
-                    @include('modals.invitations.boutonInviterAmis')
-                    @include('modals.invitations.vueInviterAmis')
-
-                    @include('modals.equipe.updateCapitaine')
+                    <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#inviterAmis" id="bouton_invitation">
+                        Inviter des amis
+                    </button>
+                    <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#updateCapitaine" id="bouton_updateCapitaine">
+                        Modifier le capitaine d'équipe
+                    </button>
+                    <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#createNewTeam" id="bouton_createNewTeam">
+                        Créer nouvelle équipe
+                    </button>
                 </div>
             </div>
         </div>
         <div class="artist-collage col-md-12">
             <div class="col-md-12">
-                <img src="{{ url($logoAuthEquipe) }}" alt="logo_equipe">
+                <div class="thumbnail">
+                    @if(!$logoAuthEquipe)
+                        <p><br><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#updateTeamLogo">Ajouter logo</a></p>
+                    @else
+                        <div class="caption">
+                            <p><a href="#" class="label label-primary" data-toggle="modal" data-target="#updateTeamLogo">Changer logo</a></p>
+                        </div>
+                        <img src="{{ url($logoAuthEquipe) }}" alt="logo_equipe">
+                    @endif
+                </div>
             </div>
         </div>
         <div class="listing-tab col-md-12">
