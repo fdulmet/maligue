@@ -1,43 +1,65 @@
 <div class="row">
-    <div class="col-md-12">
-        <div class="row">
-            <!--Nom de l'équipe du mec identifié-->
-            <span class="col-md-6">
-                <h4 id="nom_equipe">
-                    {{ $nomAuthEquipe }}
-                </h4>
-                <!--logo équipe (passer par un helper)-->
-                <div id="logoEquipe">
-                    @include('content._logoEquipe')
+    <div class="col-md-12 watch-card">
+        <div class="artist-title col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                        <strong>{{ $nomAuthEquipe }}</strong>
+                        <a href="#" class="pull-right" title="Modifier nom de l'équipe" data-toggle="modal" data-target="#updateTeamName">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        @include('modals.equipe.updateTeamName')
+                    </h4>
                 </div>
-            </span>
-
+            </div>
             <!--Bouton inviter des amis-->
-            <div class="col-md-6">
-
-                <div class="row">
+            <div class="row">
+                <div class="col-md-12">
                     @include('modals.invitations.boutonInviterAmis')
                     @include('modals.invitations.vueInviterAmis')
-                </div>
 
-                <div class="row">
                     @include('modals.equipe.updateCapitaine')
                 </div>
             </div>
-
         </div>
-    </div>
-    <!--Message de confirmation qui apparaît après avoir invité un ami à rejoindre équipe-->
-    <p class="col-md-12" id="confirmation_invitation_amis_dans_equipe_envoyee">
-        <!--$confirmation est définie dans InviterAmisDansEquipeController, dans :-->
-        <!--return response()->view('home', ['confirmation' => $invitationEnvoyee]);-->
-        {{-- <br> --}}
-    </p>
-    <div class="col-md-12">
-        @include('content._effectif')
-        <br>
-        @include('content._dernierMatch')
-        <br>
-        @include('content._prochainMatch')
+        <div class="artist-collage col-md-12">
+            <div class="col-md-12">
+                <img src="{{ url($logoAuthEquipe) }}" alt="logo_equipe">
+            </div>
+        </div>
+        <div class="listing-tab col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                <li role="presentation" class="active"><a href="#effectif" aria-controls="effectif" role="tab" data-toggle="tab">Effectif</a></li>
+                <!--<li role="presentation"><a href="#albums" aria-controls="albums" role="tab" data-toggle="tab">Albums</a></li>-->
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="effectif">
+                    <ul>
+                        @foreach($currentJoueursEquipe as $joueur)
+                            @if($joueur->isCapitaine())
+                                <li>{{ $joueur->prenom }} {{ $joueur->nom }} <span><span class="glyphicon glyphicon-king"></span></span></li>
+                            @else
+                                <li>{{ $joueur->prenom }} {{ $joueur->nom }}</li>
+                            @endif
+                        @endforeach
+                    </ul>
+                    <div class="related-artist">
+                        <h3>Derniers matchs</h3>
+                        <div class="col-md-12">
+                            @include('content._dernierMatch')
+                        </div>
+                    </div>
+                    <div class="related-artist">
+                        <h3>Prochains matchs</h3>
+                        <div class="col-md-12">
+                            @include('content._prochainMatch')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

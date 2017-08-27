@@ -71,6 +71,7 @@ class HomeController extends Controller
             'user' => $user,
             'equipes' => $equipes,
             'currentEquipe' => $currentEquipe,
+            'currentJoueursEquipe' => $currentJoueursEquipe,
             'currentSelectableJoueursEquipe' => $currentSelectableJoueursEquipe,
             'playersWithoutTeam' => $playersWithoutTeam,
 
