@@ -54,7 +54,7 @@ class HomeController extends Controller
         }
         else
         {
-            $currentSaison = $saisons->first();
+            $currentSaison = $saisons->last();
             $saisonEnCoursId = $currentSaison->id;
         }
 
@@ -75,6 +75,7 @@ class HomeController extends Controller
             if ($currentEquipeId === 0)
             {
                 $currentEquipe = $equipes->first();
+                $currentEquipeId = $currentEquipe->id;
             }
             else
             {
@@ -87,6 +88,7 @@ class HomeController extends Controller
             if ($currentEquipeId === 0)
             {
                 $currentEquipe = $user->equipes()->first();
+                $currentEquipeId = $currentEquipe->id;
             }
             else
             {
