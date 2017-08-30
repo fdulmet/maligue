@@ -8,6 +8,7 @@ use App\Http\Helpers\CalendrierHelper;
 use App\Http\Helpers\Classement\ClassementHelper;
 use App\Http\Helpers\DiversHelper;
 use App\Http\Helpers\EffectifHelper;
+use App\Ligue;
 use App\Season;
 use App\Equipe;
 use App\User;
@@ -35,26 +36,71 @@ class HomeController extends Controller
         $calendrierHelper = new CalendrierHelper();
         $classementHelper = new ClassementHelper();
 
-        $equipes = Equipe::all();
-        $saisons = Season::all();
+        $saisons = Season::all()->sortByDesc('date_start');
 
-        $saisonEnCoursId = $request->input('saison');
-        $currentEquipeId = $request->input('equipe');
+        // Todo: save in sessions the current team/ligue/season on login once for all
+        $saisonEnCoursId = intval($request->get('saison'));
+        $currentEquipeId = intval($request->get('equipe'));
+
+        if ($saisonEnCoursId !== 0)
+        {
+            $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
+            $request->session()->put('saison', $saisonEnCoursId);
+        }
+        elseif ($request->session()->exists('saison') && intval($request->session()->get('saison')) !== 0)
+        {
+            $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
+            $saisonEnCoursId = $currentSaison->id;
+        }
+        else
+        {
+            $currentSaison = $saisons->first();
+            $saisonEnCoursId = $currentSaison->id;
+        }
 
         if ($request->session()->exists('equipe'))
         {
             $currentEquipeId = intval(session('equipe'));
         }
 
-        if (is_null($currentEquipeId))
+        // Admin, not a player
+        if ($user->isAdmin() || $user->isAdminligue())
         {
-            $currentEquipe = Auth::user()->equipes()->first();
+            $currentLigue = Ligue::where(['id' => $currentSaison->ligue_id])->first();
+
+            $myTeams = $currentLigue->equipes()->pluck('equipes.nom', 'equipes.id');
+
+            $equipes = $currentLigue->equipes()->get();
+
+            if ($currentEquipeId === 0)
+            {
+                $currentEquipe = $equipes->first();
+            }
+            else
+            {
+                $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
+            }
         }
+        // Player
         else
         {
-            $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
+            if ($currentEquipeId === 0)
+            {
+                $currentEquipe = $user->equipes()->first();
+            }
+            else
+            {
+                $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
+            }
+
+            $currentLigue = Ligue::where(['id' => $currentSaison->ligue_id])->first();
+
+            $myTeams = $user->equipes()->pluck('equipes.nom', 'equipes.id');
+
+            $equipes = $currentLigue->equipes()->get();
         }
 
+        $nomAuthLigue = $currentLigue->nom;
         $currentJoueursEquipe = $currentEquipe->users()->get();
         $currentSelectableJoueursEquipe = [];
         foreach ($currentJoueursEquipe as $joueur)
@@ -67,19 +113,6 @@ class HomeController extends Controller
 
         $playersWithoutTeam = User::doesntHave('equipes')->pluck('nom', 'id');
 
-        if (is_null($saisonEnCoursId))
-        {
-            $saisonEnCoursId = 1;
-        }
-
-        $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
-
-        if (is_null($currentSaison))
-        {
-            $currentSaison = Season::all()->first();
-            flash('Cette saison n\'est pas disponible.')->error();
-        }
-
         return view('home')->with([
             'user' => $user,
             'equipes' => $equipes,
@@ -87,12 +120,14 @@ class HomeController extends Controller
             'currentJoueursEquipe' => $currentJoueursEquipe,
             'currentSelectableJoueursEquipe' => $currentSelectableJoueursEquipe,
             'playersWithoutTeam' => $playersWithoutTeam,
+            'myTeams' => $myTeams,
 
             //divers
             'carbonStrtotime' => $diversHelper->carbon(),
-            'logoAuthEquipe' => $diversHelper->logoAuthEquipe(),
-            'nomAuthEquipe' => $diversHelper->nomAuthEquipe(),
-            'nomAuthLigue' => $diversHelper->nomAuthLigue(),
+            'currentLigue' => $currentLigue,
+            'logoAuthEquipe' => $currentEquipe->logo,
+            'nomAuthEquipe' => $currentEquipe->nom,
+            'nomAuthLigue' => $nomAuthLigue,
 
             //banner
             'anneeDuDernierMatchProgramme' => $bannerHelper->annee(),//si table games dans ordre chronologique
@@ -106,9 +141,6 @@ class HomeController extends Controller
 
             //espace équipe
             'confirmation' => $request->input('confirmation', null),
-            //'effectif' => $effectifHelper->effectif(),
-            //on utilise resquest pour aller chercher confirmation là où elle est définie,
-            //en l'occurence dans les invitations controllers
 
             // Saisons
             'currentSaison' => $currentSaison,

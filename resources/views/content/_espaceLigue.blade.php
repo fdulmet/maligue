@@ -2,6 +2,7 @@
 <div class="row" id="menu_admin">
     <div class="col-md-12">
         {!! link_to_route('saison.index', 'Saisons', [], ['class' => 'btn btn-info btn-lg']) !!}
+        {!! link_to_route('matchs.index', 'Matchs', [], ['class' => 'btn btn-info btn-lg']) !!}
     </div>
 </div>
 @endif

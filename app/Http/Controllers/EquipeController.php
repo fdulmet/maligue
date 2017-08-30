@@ -109,8 +109,8 @@ class EquipeController extends Controller
             throw new InternalErrorException('Unable to update the team.');
         }
 
-        $joueur->roles()->attach(Role::CAPITAINE);
         $lastCapitaine->roles()->detach(Role::CAPITAINE);
+        $joueur->roles()->attach(Role::CAPITAINE);
 
         return redirect()->action('HomeController@index');
     }
