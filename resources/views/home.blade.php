@@ -13,5 +13,9 @@
     @include('modals.equipe.updateTeamLogo')
     @include('modals.equipe.createNewTeam')
     @include('modals.invitations.vueInviterAmis')
+
+    @if($user->isAdmin() || $user->isAdminLigue())
+        @include('modals.equipe.deactivateTeam')
+    @endif
 @endsection
 

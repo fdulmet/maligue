@@ -9,7 +9,6 @@ use App\Season;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Helpers\DiversHelper;
 use App\Http\Helpers\BannerHelper;
 use Symfony\Component\CssSelector\Exception\InternalErrorException;
 
@@ -54,24 +53,48 @@ class SaisonController extends Controller
 
     public function index(Request $request)
     {
-        $diversHelper = new DiversHelper();
-        $bannerHelper = new BannerHelper();
+        $user = Auth::user();
 
-        $saisonEnCoursId = $request->input('saison');
-
-        if (is_null($saisonEnCoursId))
+        if (!$user->isAdmin() && !$user->isAdminligue())
         {
-            $saisonEnCoursId = 1;
+            flash('Vous n\'êtes pas autorisé à accéder à cette page.')->error();
+
+            return redirect()->action('HomeController@index');
         }
 
-        $saisons = Season::all();
-        $ligues = Ligue::pluck('nom', 'id');
+        $bannerHelper = new BannerHelper();
 
-        $currentEquipeId = $request->input('equipe');
+        $saisons = Season::all()->sortByDesc('date_start');
+        $saisonEnCoursId = $request->input('saison');
+
+        if (!is_null($saisonEnCoursId))
+        {
+            $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
+            $request->session()->put('saison', $saisonEnCoursId);
+        }
+        elseif ($request->session()->exists('saison'))
+        {
+            $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
+        }
+        else
+        {
+            $currentSaison = $saisons->first();
+            $saisonEnCoursId = $currentSaison->id;
+        }
+
+        if ($request->session()->exists('equipe'))
+        {
+            $currentEquipeId = intval(session('equipe'));
+        }
+
+        $ligues = Ligue::pluck('nom', 'id');
+        $currentLigue = Ligue::where(['id' => $currentSaison->ligue_id])->first();
+
+        $equipes = $currentLigue->equipes()->get();
 
         if (is_null($currentEquipeId))
         {
-            $currentEquipe = Auth::user()->equipes()->first();
+            $currentEquipe = $equipes->first();
         }
         else
         {
@@ -83,14 +106,14 @@ class SaisonController extends Controller
         if (is_null($currentSaison))
         {
             $currentSaison = Season::all()->first();
-            flash('Cette saison n\'est pas disponible.')->error();
         }
 
         return view('saisons/index')->with([
             'currentSaison' => $currentSaison,
+            'currentLigue' => $currentLigue,
             'saisons' => $saisons,
             'ligues' => $ligues,
-            'nomAuthLigue' => $diversHelper->nomAuthLigue(),
+            'nomAuthLigue' => $currentLigue->nom,
             'currentEquipe' => $currentEquipe,
             'saisonEnCoursId' => $saisonEnCoursId,
             'anneeDuDernierMatchProgramme' => $bannerHelper->annee(),//si table games dans ordre chronologique
@@ -99,6 +122,15 @@ class SaisonController extends Controller
 
     public function create()
     {
+        $user = Auth::user();
+
+        if (!$user->isAdmin() && !$user->isAdminligue())
+        {
+            flash('Vous n\'êtes pas autorisé à accéder à cette page.')->error();
+
+            return redirect()->action('HomeController@index');
+        }
+        
         $ligues = Ligue::pluck('nom', 'id');
 
         return view('saisons/create')->with([

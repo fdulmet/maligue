@@ -10,6 +10,11 @@ $(function () {
     allowInputToggle: true
   });
 
+  $('#datetimepickermatch').datetimepicker({
+    format: 'MM/DD/YYYY HH:mm:ss',
+    allowInputToggle: true
+  });
+
   $('#formUpdateCapitaine').one('submit', function (e) {
     e.preventDefault();
 
@@ -22,6 +27,10 @@ $(function () {
     {
       $(this).submit();
     }
+  });
+
+  $('#switchTeam').on('change', function(){
+    $(this).parents('form').submit();
   });
 
   // profil modal

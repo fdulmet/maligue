@@ -56,16 +56,7 @@
                     </div>
 
                     <!--Ligue-->
-                    <div>Ligue :
-                        <?php
-                            $ligue = \App\Equipe::find($currentEquipe->id)->ligues()->get();
-                            foreach ($ligue as $ligue)
-                            {
-                                $ligue = $ligue->nom;
-                                echo $ligue;
-                            }
-                        ?>
-                    </div>
+                    <div>Ligue : {{ $nomAuthLigue  }}</div>
 
                     <!--Sport-->
                     <div>Sport :
