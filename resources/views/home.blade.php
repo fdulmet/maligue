@@ -1,7 +1,11 @@
 @extends('/layouts/app')
 
 @section('banner')
-    @include('_banner')
+    @if(Auth::guest())
+        @include('_banner_guest')
+    @else
+        @include('_banner')
+    @endif
 @endsection
 
 @section('content')
@@ -13,6 +17,8 @@
     @include('modals.equipe.updateTeamLogo')
     @include('modals.equipe.createNewTeam')
     @include('modals.invitations.vueInviterAmis')
+    @include('modals.contact.vueContact')
+    @include('modals.profilJoueur.vueProfilJoueur')
 
     @if($user->isAdmin() || $user->isAdminLigue())
         @include('modals.equipe.deactivateTeam')

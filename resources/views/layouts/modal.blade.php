@@ -1,5 +1,5 @@
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#{{ $id }}">
+<button type="button" class="btn btn-green" data-toggle="modal" data-target="#{{ $id }}">
     {{ $titre }}
 </button>
 

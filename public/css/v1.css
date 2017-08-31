@@ -1,0 +1,166 @@
+html, body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+#wrapper {
+  padding: 5px;
+  max-width: 1440px;
+  width: 90%;
+  margin: 20px auto;
+}
+
+#banner {
+  background: #fff;
+  padding: 0;
+  border-bottom: 2px solid #E24242;
+}
+
+#banner #logoSite img {
+  max-width: 160px;
+}
+
+#banner ul {
+  list-style: none;
+}
+
+#banner ul li .caret {
+  margin-left: 8px;
+}
+
+#banner .banner-right {
+  text-align: right;
+}
+
+#banner .banner-right .container-fluid {
+  height: 100%;
+  padding: 0;
+}
+
+#banner .banner-right .container-fluid .row {
+  height: 100%;
+  padding-bottom: 1.5rem;
+}
+
+#banner .btn-contact {
+  margin-left: 2rem;
+  padding: 4px 30px 5px;
+}
+
+.content-login {
+  padding: 7rem 0 4rem;
+}
+
+.content-login #pvu {
+  color: #494949;
+}
+
+#cardLogin {
+  width: 26rem;
+  border: 1px solid #297D3E;
+  border-radius: .75rem;
+}
+
+#cardLogin .card-header {
+  background: #FC3838;
+  color: #fff;
+}
+
+#cardLogin .card-header:first-child {
+  border-radius: calc(.75rem - 1px) calc(.75rem - 1px) 0 0;
+  padding: .5rem;
+}
+
+#espace_equipe .dropdown-equipe a {
+  font-size: .8rem;
+}
+
+#espace_equipe .equipe-profil {
+  margin-top: 1rem;
+}
+
+#espace_equipe .equipe-buttons {
+  text-align: right;
+}
+
+#espace_equipe .equipe-buttons .btn {
+  min-width: 10rem;
+  margin-bottom: .5rem;
+  font-size: .8rem;
+}
+
+#espace_equipe .list-players .list-group-item:first-child {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#espace_equipe .list-players .list-group-item:last-child {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+#espace_equipe .list-players .list-group-item {
+  background: none;
+  color: #297D3E;
+  border: 0;
+  padding: 0;
+}
+
+.btn-orange,
+.btn-green {
+  width: auto;
+  padding: 4px 10px 5px;
+  color: #fff;
+  display: inline-block;
+}
+
+.btn-orange:hover, .btn-orange:focus, .btn-orange:visited,
+.btn-green:hover,
+.btn-green:focus,
+.btn-green:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-orange a,
+.btn-green a {
+  color: #fff;
+}
+
+.btn-orange a:hover, .btn-orange a:focus, .btn-orange a:visited,
+.btn-green a:hover,
+.btn-green a:focus,
+.btn-green a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-orange {
+  background: #E24242;
+}
+
+.btn-green {
+  background: #297D3E;
+}
+
+.btn {
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.btn.focus, .btn:focus {
+  box-shadow: none;
+}
+
+.btn-link {
+  color: #FC3838;
+}
+
+.btn-dropdown {
+  display: inline-block;
+}
+
+.color-green {
+  color: #297D3E;
+}
+
+/*# sourceMappingURL=v1.css.map */
