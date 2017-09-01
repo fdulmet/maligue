@@ -1,8 +1,14 @@
 @if(Auth::user()->isAdmin() || Auth::user()->isAdminLigue())
 <div class="row" id="menu_admin">
     <div class="col-md-12">
-        {!! link_to_route('saison.index', 'Saisons', [], ['class' => 'btn btn-info btn-lg']) !!}
-        {!! link_to_route('matchs.index', 'Matchs', [], ['class' => 'btn btn-info btn-lg']) !!}
+        {!! link_to_route('saison.index', 'Saisons', [], ['class' => 'btn btn-green']) !!}
+        {!! link_to_route('matchs.index', 'Matchs', [], ['class' => 'btn btn-green']) !!}
+
+        <div class="col-md-8">
+            @if(isset($currentLigue))
+                @include('banner._saisonsDropdownMenu')
+            @endif
+        </div>
     </div>
 </div>
 @endif

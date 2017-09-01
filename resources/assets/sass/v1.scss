@@ -1,0 +1,165 @@
+
+html, body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+#wrapper {
+  padding: 5px;
+  max-width: 1440px;
+  width: 90%;
+  margin: 20px auto;
+}
+
+#banner {
+  background: #fff;
+  padding: 0;
+  border-bottom: 2px solid #E24242;
+
+  #logoSite {
+    img {
+      max-width: 160px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    
+    li {
+
+      .caret {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .banner-right {
+    text-align: right;
+
+    .container-fluid {
+      height: 100%;
+      padding: 0;
+
+      .row {
+        height: 100%;
+        padding-bottom: 1.5rem;
+      }
+    }
+  }
+
+  .btn-contact {
+    margin-left: 2rem;
+    padding: 4px 30px 5px;
+  }
+}
+
+.content-login {
+  padding: 7rem 0 4rem;
+
+  #pvu{
+    color: #494949;
+  }
+}
+
+#cardLogin {
+  width: 26rem;
+  border: 1px solid #297D3E;
+  border-radius: .75rem;
+
+  .card-header {
+    background: #FC3838;
+    color: #fff;
+
+    &:first-child {
+      border-radius: calc(.75rem - 1px) calc(.75rem - 1px) 0 0;
+      padding: .5rem;
+    }
+  }
+}
+
+#espace_equipe {
+
+  .dropdown-equipe {
+    a {
+      font-size: .8rem;
+    }
+  }
+
+  .equipe-profil {
+    margin-top: 1rem;
+  }
+
+  .equipe-buttons {
+    text-align: right;
+
+    .btn {
+      min-width: 10rem;
+      margin-bottom: .5rem;
+      font-size: .8rem;
+    }
+  }
+
+  .list-players .list-group-item:first-child {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+
+  .list-players .list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  .list-players .list-group-item {
+    background: none;
+    color: #297D3E;
+    border: 0;
+    padding: 0;
+  }
+}
+
+
+.list-group :not(:first-child) {
+}
+
+.btn-orange,
+.btn-green {
+  width: auto;
+  padding: 4px 10px 5px;
+  color: #fff;
+  display: inline-block;
+
+  &:hover, &:focus, &:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  a {
+    color: #fff;
+    
+    &:hover, &:focus, &:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+.btn-orange {background: #E24242;}
+.btn-green {background: #297D3E;}
+
+.btn {
+  border-radius: 0;
+  cursor: pointer;
+
+  &.focus, &:focus {
+    box-shadow: none;
+  }
+}
+.btn-link {
+  color: #FC3838;
+}
+
+.btn-dropdown {
+  display: inline-block;
+}
+
+.color-green {
+  color: #297D3E;
+}

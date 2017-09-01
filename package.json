@@ -16,6 +16,7 @@
     "vue-resource": "^1.0.3"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "normalize-css": "^2.3.1"
   }
 }

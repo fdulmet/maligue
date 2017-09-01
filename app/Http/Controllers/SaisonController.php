@@ -130,7 +130,7 @@ class SaisonController extends Controller
 
             return redirect()->action('HomeController@index');
         }
-        
+
         $ligues = Ligue::pluck('nom', 'id');
 
         return view('saisons/create')->with([
