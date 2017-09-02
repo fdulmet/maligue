@@ -3,12 +3,12 @@
         @if($carbonStrtotime>$statCalendrier['dateStrtotime'])
             {{ Form::open(['action' => 'MatchController@save']) }}
             {{ Form::hidden('game_id', $statCalendrier['game_id'])  }}
-            <table id="dernierMatch">
+            <table class="dernierMatch">
                 <tr>
                     <td>{{ $statCalendrier['date'] }}</td>
                     <td>{{ $statCalendrier['heure'] }}</td>
                     <td>{{ $statCalendrier['equipe_1'] }}</td>
-                    <td id="tdChampsButs">
+                    <td class="tdChampsButs">
                         @if (isset($statCalendrier['buts_1']))
                         {{ $statCalendrier['buts_1'] }}
                         @else
@@ -21,7 +21,7 @@
                         @endif
                     </td>
                     <td>-</td>
-                    <td id="tdChampsButs">
+                    <td class="tdChampsButs">
                         @if (isset($statCalendrier['buts_2']))
                         {{ $statCalendrier['buts_2'] }}
                         @else

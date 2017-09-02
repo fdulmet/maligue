@@ -9,8 +9,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../../../node_modules/font-awesome/fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("../../../node_modules/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../../../node_modules/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../../../node_modules/font-awesome/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../../../node_modules/font-awesome/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../../../node_modules/font-awesome/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3159,125 +3159,6 @@ html, body {
 
 #content .modal-inside .modal-dialog {
   width: 70%;
-}
-
-#content #espace_ligue {
-  padding: 1% 0 0 4%;
-  height: 100%;
-}
-
-#content #espace_ligue #menu {
-  padding: 1% 0 2% 0;
-}
-
-#content #espace_ligue #classement {
-  margin-top: 2%;
-  padding-right: 2%;
-}
-
-#content #espace_ligue #classement #motClassement {
-  font-weight: bold;
-}
-
-#content #espace_ligue #classement #motsEntetes {
-  color: darkred;
-  font-weight: bold;
-}
-
-#content #espace_ligue #classement #motsEntetes td {
-  padding: 15px 5px 15px 5px;
-}
-
-#content #espace_ligue #classement #trChaqueEquipe td {
-  border-bottom: 1px solid darkslategrey;
-  padding: 15px 5px 15px 5px;
-  text-align: center;
-  background: #cecece;
-  /* For browsers that do not support gradients */
-  /* For Safari 5.1 to 6.0 */
-  /* For Opera 11.1 to 12.0 */
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#cecece, #f7f7f7);
-  /* Standard syntax (must be last) */
-}
-
-#content #espace_ligue #classement #trChaqueEquipe #equipe1 {
-  text-align: right;
-}
-
-#content #espace_ligue #classement #trChaqueEquipe #equipe2 {
-  text-align: left;
-}
-
-#content #espace_ligue #classement #trChaqueEquipe:nth-child(even) td {
-  border-bottom: 1px solid darkslategrey;
-  padding: 15px 5px 15px 5px;
-  text-align: center;
-  background: #f74e3e;
-  /* For browsers that do not support gradients */
-  /* For Safari 5.1 to 6.0 */
-  /* For Opera 11.1 to 12.0 */
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#f74e3e, rgba(247, 78, 62, 0.73));
-  /* Standard syntax (must be last) */
-}
-
-#content #espace_ligue #classement #trChaqueEquipe:nth-child(even) #equipe1 {
-  text-align: right;
-}
-
-#content #espace_ligue #classement #trChaqueEquipe:nth-child(even) #equipe2 {
-  text-align: left;
-}
-
-#content #espace_ligue #calendrier {
-  margin-top: 2%;
-  padding-right: 2%;
-}
-
-#content #espace_ligue #calendrier #motCalendrier {
-  font-weight: bold;
-}
-
-#content #espace_ligue #calendrier #lieu {
-  color: darkred;
-  font-weight: bold;
-  padding: 15px 5px 15px 0px;
-}
-
-#content #espace_ligue #calendrier #trChaqueMatch td {
-  border-bottom: 1px solid darkslategrey;
-  padding: 15px 5px 15px 5px;
-  background-color: #f1f1f1;
-}
-
-#content #espace_ligue #calendrier #trChaqueMatch #equipe1 {
-  text-align: right;
-}
-
-#content #espace_ligue #calendrier #trChaqueMatch #equipe2 {
-  text-align: left;
-}
-
-#content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) td {
-  border-bottom: 1px solid darkred;
-  padding: 15px 5px 15px 5px;
-  background-color: #4cb54c;
-}
-
-#content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) #equipe1 {
-  text-align: right;
-}
-
-#content #espace_ligue #calendrier #trChaqueMatch:nth-child(even) #equipe2 {
-  text-align: left;
-}
-
-#content #espace_ligue #cadeaux {
-  height: 100%;
-  color: darkgreen;
-  padding: 3% 3% 3% 3%;
-  margin-top: 3%;
 }
 
 #content #espace_equipe {

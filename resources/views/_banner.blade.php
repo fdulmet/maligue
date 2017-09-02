@@ -9,6 +9,8 @@
             <div class="container-fluid">
                 <div class="row align-items-end justify-content-end">
                     <div class="col">
+                        <a href="#" role="button" class="btn btn-orange btn-contact" data-toggle="modal" data-target="#contact">Contact</a>
+
                         <div class="btn-dropdown dropdown">
                             <a class="btn dropdown-toggle btn-orange" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->prenom }} {{ Auth::user()->nom }}
@@ -22,8 +24,6 @@
                                 </form>
                             </div>
                         </div>
-
-                        <a href="#" role="button" class="btn btn-orange btn-contact" data-toggle="modal" data-target="#contact">Contact</a>
                     </div>
                 </div>
             </div>
