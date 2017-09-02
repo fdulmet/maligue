@@ -16,7 +16,7 @@ html, body {
 }
 
 #banner #logoSite img {
-  max-width: 160px;
+  max-width: 120px;
 }
 
 #banner ul {
@@ -70,12 +70,16 @@ html, body {
   padding: .5rem;
 }
 
+#espace_equipe .dropdown-equipe .btn {
+  font-weight: bold;
+}
+
 #espace_equipe .dropdown-equipe a {
-  font-size: .8rem;
+  font-size: 1.4rem;
 }
 
 #espace_equipe .equipe-profil {
-  margin-top: 1rem;
+  margin-top: 1.6rem;
 }
 
 #espace_equipe .equipe-buttons {
@@ -84,7 +88,7 @@ html, body {
 
 #espace_equipe .equipe-buttons .btn {
   min-width: 10rem;
-  margin-bottom: .5rem;
+  margin-bottom: .25rem;
   font-size: .8rem;
 }
 
@@ -100,9 +104,70 @@ html, body {
 
 #espace_equipe .list-players .list-group-item {
   background: none;
-  color: #297D3E;
+  color: #000;
   border: 0;
   padding: 0;
+}
+
+#espace_equipe .list-players .list-group-item i.fa {
+  margin-left: .5rem;
+}
+
+.prochainMatch,
+.dernierMatch {
+  border-bottom: 2px solid #E24242;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+
+.prochainMatch tr td:nth-of-type(1),
+.dernierMatch tr td:nth-of-type(1) {
+  width: 5rem;
+}
+
+.prochainMatch tr td:nth-of-type(2),
+.dernierMatch tr td:nth-of-type(2) {
+  width: 3.5rem;
+}
+
+.prochainMatch tr td:nth-of-type(3),
+.dernierMatch tr td:nth-of-type(3) {
+  width: 6rem;
+  text-align: right;
+}
+
+.prochainMatch tr td.tdChampsButs,
+.dernierMatch tr td.tdChampsButs {
+  width: 1rem;
+}
+
+.prochainMatch tr td:nth-of-type(5),
+.dernierMatch tr td:nth-of-type(5) {
+  width: .5rem;
+}
+
+.prochainMatch tr td:last-child,
+.dernierMatch tr td:last-child {
+  width: 6rem;
+  text-align: left;
+}
+
+.prochainMatch td,
+.dernierMatch td {
+  border: 0 solid black;
+  padding-right: .5rem;
+  padding-bottom: .25rem;
+}
+
+.prochainMatch .tdChampsButs input,
+.dernierMatch .tdChampsButs input {
+  width: 50px;
+}
+
+h1 {
+  font-weight: bold;
+  color: #E24242;
+  font-size: 1.8rem;
 }
 
 .btn-orange,
@@ -139,12 +204,20 @@ html, body {
 }
 
 .btn-green {
-  background: #297D3E;
+  background: #fff;
+  color: #297D3E;
+  border: 1px solid #297D3E;
+}
+
+.btn-green:hover, .btn-green.hover, .btn-green.active, .btn-green:active, .btn-green:focus, .btn-green:visited {
+  color: #297D3E;
+  background: #fff;
 }
 
 .btn {
   border-radius: 0;
   cursor: pointer;
+  font-size: .9rem;
 }
 
 .btn.focus, .btn:focus {
@@ -159,8 +232,251 @@ html, body {
   display: inline-block;
 }
 
+.btn-dropdown-orange {
+  color: #E24242;
+  border: 0;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.dropdown.dropdown-equipe {
+  display: inline-block;
+  margin-top: 0.3rem;
+}
+
+.dropdown.show > .btn-secondary.dropdown-toggle.btn-dropdown-green {
+  color: #297D3E;
+  background-color: #f1f1f1;
+  border-color: #297D3E;
+}
+
+.dropdown .btn.btn-dropdown-green {
+  color: #297D3E;
+  border: 0;
+}
+
+.dropdown .btn.btn-dropdown-green.btn.btn-secondary:hover, .dropdown .btn.btn-dropdown-green.btn.btn-secondary.hover, .dropdown .btn.btn-dropdown-green.btn.btn-secondary.active, .dropdown .btn.btn-dropdown-green.btn.btn-secondary:active {
+  color: #297D3E;
+  background-color: #f1f1f1;
+  border-color: #297D3E;
+}
+
+.dropdown .btn.btn-secondary:hover {
+  color: #E24242;
+  background-color: #f9efef;
+  border-color: #E24242;
+}
+
+.dropdown .btn.btn-secondary.active, .dropdown .btn.btn-secondary:active {
+  color: #E24242;
+  background-color: #f9efef;
+  border-color: #E24242;
+}
+
+.dropdown.show > .btn-secondary.dropdown-toggle {
+  color: #E24242;
+  background-color: #f9efef;
+  border-color: #E24242;
+}
+
+.dropdown .dropdown-menu {
+  font-size: .7rem;
+  color: #E24242;
+  border: 1px solid #E24242;
+  border-radius: 0;
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+  padding: 6px 1.5rem;
+  font-size: 0.9rem !important;
+}
+
 .color-green {
   color: #297D3E;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.header-saison {
+  margin-top: 2.6rem;
+  margin-bottom: 2rem;
+}
+
+.header-saison h1 img {
+  max-width: 4rem;
+}
+
+.header-saison .buttons button {
+  float: right;
+  margin-left: .25rem;
+  margin-bottom: .25rem;
+}
+
+.header-saison .dropdown {
+  display: inline-block;
+  margin-left: .5rem;
+  margin-top: .5rem;
+}
+
+.header-saison .dropdown .btn {
+  font-size: .7rem;
+  font-weight: bold;
+  padding: .5rem;
+  border: 0;
+}
+
+.header-saison .dropdown .btn.btn-secondary:hover {
+  color: #E24242;
+  background-color: #f9efef;
+  border-color: #E24242;
+}
+
+.header-saison .dropdown .btn.btn-secondary.active, .header-saison .dropdown .btn.btn-secondary:active {
+  color: #E24242;
+  background-color: #f9efef;
+  border-color: #E24242;
+}
+
+.header-saison .dropdown.show > .btn-secondary.dropdown-toggle {
+  color: #E24242;
+  background-color: #f9efef;
+  border-color: #E24242;
+}
+
+.header-saison .dropdown .dropdown-menu {
+  font-size: .7rem;
+}
+
+#menu {
+  margin: 1.5rem 0 2.5rem;
+}
+
+#espace_ligue {
+  height: 100%;
+}
+
+#espace_ligue .classement {
+  width: 100%;
+}
+
+#espace_ligue .classement.table thead tr:nth-of-type(2) td {
+  color: #297D3E;
+}
+
+#espace_ligue .classement.table thead tr th {
+  border-color: transparent;
+}
+
+#espace_ligue .classement #motClassement {
+  font-weight: bold;
+}
+
+#espace_ligue .classement #motsEntetes {
+  color: darkred;
+  font-weight: bold;
+}
+
+#espace_ligue .classement #motsEntetes td {
+  padding: 15px 5px 15px 5px;
+}
+
+#espace_ligue .classement #trChaqueEquipe td {
+  padding: 10px 5px 10px 5px;
+  text-align: center;
+  background: #fff;
+}
+
+#espace_ligue .classement #trChaqueEquipe #equipe1 {
+  text-align: right;
+}
+
+#espace_ligue .classement #trChaqueEquipe #equipe2 {
+  text-align: left;
+}
+
+#espace_ligue .classement #trChaqueEquipe:nth-child(even) td {
+  padding: 10px 5px 10px 5px;
+  text-align: center;
+  background: #f07676;
+}
+
+#espace_ligue .classement #trChaqueEquipe:nth-child(even) #equipe1 {
+  text-align: right;
+}
+
+#espace_ligue .classement #trChaqueEquipe:nth-child(even) #equipe2 {
+  text-align: left;
+}
+
+#espace_ligue .calendrier {
+  width: 100%;
+}
+
+#espace_ligue .calendrier.table thead th {
+  border-color: transparent;
+}
+
+#espace_ligue .calendrier #lieu {
+  color: darkred;
+  font-weight: bold;
+  padding: 15px 5px 15px 0px;
+}
+
+#espace_ligue .calendrier #trChaqueMatch td {
+  padding: 10px 5px 10px 5px;
+  background-color: #fff;
+}
+
+#espace_ligue .calendrier #trChaqueMatch #equipe1 {
+  text-align: right;
+}
+
+#espace_ligue .calendrier #trChaqueMatch #equipe2 {
+  text-align: left;
+}
+
+#espace_ligue .calendrier #trChaqueMatch:nth-child(even) td {
+  padding: 10px 5px 10px 5px;
+  background-color: #6dbf6d;
+}
+
+#espace_ligue .calendrier #trChaqueMatch:nth-child(even) #equipe1 {
+  text-align: right;
+}
+
+#espace_ligue .calendrier #trChaqueMatch:nth-child(even) #equipe2 {
+  text-align: left;
+}
+
+#espace_ligue #cadeaux {
+  height: 100%;
+  color: darkgreen;
+  padding: 3% 3% 3% 3%;
+  margin-top: 3%;
+}
+
+.modal-dialog {
+  max-width: 700px !important;
+}
+
+#style-4::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  /* background-color: #F5F5F5; */
+  border-radius: 10px;
+}
+
+#style-4::-webkit-scrollbar {
+  width: 10px;
+  /* background-color: #F5F5F5; */
+}
+
+#style-4::-webkit-scrollbar-thumb {
+  background-color: #d2d2d2;
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=v1.css.map */

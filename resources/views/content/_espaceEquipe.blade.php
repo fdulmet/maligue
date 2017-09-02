@@ -1,16 +1,15 @@
-<div class="row align-items-center">
-    <div class="col-md-3">
-        <strong>
+<!--<div class="row align-items-center">
+    <div class="col">
+        <strong class="inline-block">
             @if($user->isAdmin() || $user->isAdminLigue())
                 Liste des équipes :
             @else
                 Mes équipes :
             @endif
         </strong>
-    </div>
-    <div class="col">
+
         <div class="dropdown dropdown-equipe">
-            <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="btn btn-secondary btn-dropdown-orange dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ $currentEquipe->nom }}
             </a>
 
@@ -21,13 +20,28 @@
             </div>
         </div>
     </div>
-</div>
+    <div class="col">
+
+    </div>
+</div>-->
 
 @if(!$myTeams->isEmpty())
 <div class="row equipe-profil">
     <div class="col">
         <h4>
-            <strong class="color-green">{{ $nomAuthEquipe }}</strong>
+            <div class="dropdown dropdown-equipe">
+                <a class="btn btn-secondary btn-dropdown-green dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ $currentEquipe->nom }}
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    @foreach($equipes as $equipe)
+                        <a class="dropdown-item" href="{{ route('switchTeam', ['equipeId' => $equipe->id]) }}">{{ $equipe->nom }}</a>
+                    @endforeach
+                </div>
+            </div>
+
+
             @if($user->isAdmin() || $user->isAdminLigue() || $user->isCapitaine())
                 <a href="#" class="pull-right" title="Modifier nom de l'équipe" rel="tooltip" data-toggle="modal" data-target="#updateTeamName">
                     <span class="glyphicon glyphicon-edit"></span>
@@ -92,7 +106,7 @@
             @foreach($currentJoueursEquipe as $joueur)
                 <span class="list-group-item">
                     @if($joueur->isCapitaine())
-                        {{ $joueur->prenom }} {{ $joueur->nom }} <i class="fa fa-home fa-fw" aria-hidden="true" rel="tooltip" title="Capitaine">
+                        {{ $joueur->prenom }} {{ $joueur->nom }} (capitaine)
                     @else
                         {{ $joueur->prenom }} {{ $joueur->nom }}
                     @endif
@@ -112,7 +126,8 @@
         <br>
         <br>
         <strong class="color-green">Derniers matchs :</strong>
-
+        <br>
+        <br>
         @include('content._dernierMatch')
     </div>
 </div>
@@ -122,7 +137,8 @@
         <br>
         <br>
         <strong class="color-green">Prochains matchs :</strong>
-
+        <br>
+        <br>
         @include('content._prochainMatch')
     </div>
 </div>

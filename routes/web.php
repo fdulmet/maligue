@@ -81,6 +81,7 @@ Route::put('equipe/modifier-nom', 'EquipeController@updateName')->name('equipe.u
 Route::put('equipe/modifier-logo', 'EquipeController@updateLogo')->name('equipe.updateLogo');
 
 Route::get('/changer-equipe', 'HomeController@switchTeam')->name('switchTeam');
+Route::get('/changer-saison', 'HomeController@switchSaison')->name('switchSaison');
 
 
 // Saisons
