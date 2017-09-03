@@ -40,7 +40,7 @@
                             <div class='input-group date' id='datetimepickermatch'>
                                 {!! Form::text('date', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    <i class="fa fa-calendar"></i>
                                 </span>
                             </div>
                         </div>

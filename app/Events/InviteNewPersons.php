@@ -33,7 +33,7 @@ class InviteNewPersons
      *
      * @return void
      */
-    public function __construct($invitationType, $newPersonInputEmails)
+    public function __construct($invitationType, $newPersonInputEmails, $data)
     {
         // On stock le type d'invitation
         $this->invitationType = $invitationType;
@@ -42,18 +42,12 @@ class InviteNewPersons
         $this->newPersonInputEmails = $newPersonInputEmails;
         $this->currentUser = Auth::user();
 
-        // Equipe
-        $entreeEquipe = $this->currentUser->equipes()->get();
-        foreach ($entreeEquipe as $equipe) {
-            $this->equipe = $equipe->nom;
-        }
+        $currentEquipe = $data['currentEquipe'];
+        $this->equipe = $currentEquipe->nom;
 
-        // Ligue
-        $ligue = Equipe::find($entreeEquipe)->ligues()->get();
-        foreach ($ligue as $ligue) {
-            $this->ligue = $ligue->nom;
-            $this->sport = $ligue->sport;
-        }
+        $currentLigue = $data['currentLigue'];
+        $this->ligue = $currentLigue->nom;
+        $this->sport = $currentLigue->sport;
 
         // Calendrier
         $this->game = Game::find(1);

@@ -21,6 +21,11 @@ class EquipeController extends Controller
 
     public function store(CreateTeamRequest $request)
     {
+        $user = Auth::user();
+        $currentEquipe = $request->session()->get('currentEquipe');
+        $currentLigue = $request->session()->get('currentLigue');
+        $currentSaison = $request->session()->get('currentSaison');
+
         if (!$request->has('nom'))
         {
             flash('Erreur, vous devez renseigner un nom à l\'équipe`.')->error();
@@ -30,7 +35,7 @@ class EquipeController extends Controller
 
         $equipe = new Equipe();
         $equipe->nom = $request->input('nom');
-        $equipe->user_id = Auth::user()->id;
+        $equipe->user_id = $user->id;
 
         if ($request->hasFile('logo'))
         {
@@ -47,6 +52,9 @@ class EquipeController extends Controller
         {
             throw new InternalErrorException('Unable to create the team.');
         }
+
+        $equipe->users()->attach($user->id);
+        $equipe->ligues()->attach($currentLigue->id);
 
         flash('L\'équipe `'.$equipe->nom.'` a bien été créée.')->success();
 

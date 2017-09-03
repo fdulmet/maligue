@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class CreateTeamRequest extends FormRequest
+class InvitationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +24,8 @@ class CreateTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom' => 'required',
-            'logo' => 'mimes:jpg,jpeg,gif,png',
+            'emails' => 'required',
+            'emails.*' => 'email',
         ];
     }
 }

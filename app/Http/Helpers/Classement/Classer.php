@@ -8,10 +8,13 @@ class Classer
 
     static public function getClasser()
     {
-        $equipes = Equipe::all();
+        $currentLigue = session('currentLigue');
+
+        $equipes = $currentLigue->equipes()->get();
         $rangParPoints = [];
 
-        foreach ($equipes as $equipe) {
+        foreach ($equipes as $equipe)
+        {
             $data                   = new Data($equipe);
 
             //Rang

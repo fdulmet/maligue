@@ -23,7 +23,7 @@
     @foreach($statsClassement as $idx => $statClassement)
         <tr id="trChaqueEquipe">
             <td>{{ $idx +  1 }}</td>
-            <td>{{ $statClassement['nomEquipe'] }}</td>
+            <td>{{ str_limit($statClassement['nomEquipe'], 20, '...') }}</td>
             <td>{{ $statClassement['points'] }}</td>
             <td>{{ $statClassement['joues'] }}</td>
             <td>{{ $statClassement['gagnes'] }}</td>

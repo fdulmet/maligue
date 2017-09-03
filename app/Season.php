@@ -23,4 +23,9 @@ class Season extends Model
             ->generateSlugsFrom('nom')
             ->saveSlugsTo('slug');
     }
+
+    public function ligue()
+    {
+        return $this->belongsTo('App\Ligue');
+    }
 }

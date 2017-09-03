@@ -13,11 +13,6 @@
                 François Dulmet<br>
                 fdulmet@gmail.com<br>
                 0631099624<br>
-                <br>
-                Direction commerciale<br>
-                Mathias Delaborde<br>
-                mathias.delaborde@gmail.com<br>
-                0630465237<br>
             </div>
         </div>
     </div>

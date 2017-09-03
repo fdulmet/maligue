@@ -76,6 +76,25 @@ html, body {
   }
 }
 
+.reset-password,
+.no-season {
+
+  .card {
+    border: 1px solid #297D3E;
+    border-radius: .75rem;
+
+    .card-header {
+      background: #FC3838;
+      color: #fff;
+
+      &:first-child {
+        border-radius: calc(.75rem - 1px) calc(.75rem - 1px) 0 0;
+        padding: .5rem;
+      }
+    }
+  }
+}
+
 #espace_equipe {
 
   .dropdown-equipe {
@@ -91,6 +110,17 @@ html, body {
 
   .equipe-profil {
     margin-top: 1.6rem;
+
+    .team-name {
+      margin-top: .9rem;
+      font-weight: bold;
+      color: #297D3E;
+    }
+
+    .btn-group {
+      margin-left: -0.3rem;
+      margin-bottom: .3rem;
+    }
   }
 
   .equipe-buttons {
@@ -130,7 +160,7 @@ html, body {
 
 .prochainMatch,
 .dernierMatch {
-  border-bottom: 2px solid #E24242;
+  border-bottom: 1px solid #d9d9d9;
   width: 100%;
   margin-bottom: .5rem;
 
@@ -152,7 +182,7 @@ html, body {
   }
   .tdChampsButs{
     input{
-      width: 50px;
+      width: 40px;
     }
   }
 }
@@ -161,6 +191,10 @@ h1 {
   font-weight: bold;
   color: #E24242;
   font-size: 1.8rem;
+}
+
+.sportHidden {
+  display: none;
 }
 
 .btn-orange,
@@ -194,6 +228,7 @@ h1 {
   &:hover,&.hover,&.active,&:active,&:focus,&:visited {
     color: #297D3E;
     background: #fff;
+    box-shadow: inset 0px 0px 1px 1px #cbe4d1;
   }
 }
 
@@ -304,10 +339,23 @@ h2 {
 
   .buttons {
 
-    button {
-      float: right;
+    > .row > .col {
+      text-align: right;
+    }
+
+    a, button {
       margin-left: .25rem;
       margin-bottom: .25rem;
+      font-size: .8rem;
+    }
+
+    .btn-green {
+      color: #E24242;
+      border-color: #E24242;
+
+      &:hover {
+        box-shadow: none;
+      }
     }
   }
 
@@ -349,6 +397,14 @@ h2 {
 
 #menu {
   margin: 1.5rem 0 2.5rem;
+}
+
+#effectifsEquipes {
+  .media {
+    h5 {
+      margin-left: 1rem;
+    }
+  }
 }
 
 //Espace ligue
@@ -460,14 +516,12 @@ h2 {
 #style-4::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  /* background-color: #F5F5F5; */
   border-radius: 10px;
 }
 
 #style-4::-webkit-scrollbar
 {
   width: 10px;
-  /* background-color: #F5F5F5; */
 }
 
 #style-4::-webkit-scrollbar-thumb
@@ -475,3 +529,25 @@ h2 {
   background-color: #d2d2d2;
   border-radius: 10px;
 }
+
+.reset-password,
+.no-season {
+  margin-top: 4rem;
+}
+
+.alert {
+  width: 100%;
+  border-radius: 0 0 .25rem .25rem;
+}
+.alert-dismissible .close {
+  top: 0;
+  right: 0;
+  padding: 0;
+}
+
+.btn-group {
+  .btn-green {
+    border: 0;
+  }
+}
+

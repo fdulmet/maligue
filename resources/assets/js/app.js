@@ -33,25 +33,20 @@ $(function () {
     $(this).parents('form').submit();
   });
 
-  // profil modal
-  var $playerInfos = $('.wrap-player-infos'),
-    $playerform = $('.wrap-player-form');
-
-  // toggle edit infos form user
-  $('#toggle-edit-profile').on('click', function() {
-    if ($playerform.is(':visible') === false) {
-      $playerInfos.hide();
-      $playerform.fadeIn();
+  $('#sport').on('change', function(e){
+    if ($(this).val() == 'Autre') {
+      $('#sportText').attr('disabled', false).show();
+      $('.sportHidden').show();
     } else {
-      $playerform.hide();
-      $playerInfos.fadeIn();
+      $('#sportText').attr('disabled', true).hide();
+      $('.sportHidden').hide();
     }
   });
 
-  $('#profilJoueur').on('hidden.bs.modal', function() {
-    $playerform.hide();
-    $playerInfos.fadeIn();
+  $.each($('.scrollToBottom'), function(key, value) {
+    $(this).scrollTop($(this)[0].scrollHeight);
   });
+
 
   $("[rel='tooltip']").tooltip();
 
