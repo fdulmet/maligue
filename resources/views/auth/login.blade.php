@@ -7,6 +7,7 @@
 @section('content')
 <div class="container-fluid content-login">
     <div class="row align-items-center">
+    <!--
         <div class="col-md-5 offset-md-2">
             <div id="pvu">
                 <h3>
@@ -24,8 +25,8 @@
                 </a>
             </div>
         </div>
-
-        <div class="col-md-5">
+-->
+        <div class="col-md-6 offset-md-4">
             @include('auth/_loginForm')
         </div>
     </div>

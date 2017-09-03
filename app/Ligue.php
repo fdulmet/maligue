@@ -17,4 +17,9 @@ class Ligue extends Model
     {
         return $this->belongsToMany('App\Equipe');
     }
+
+    public function seasons()
+    {
+        return $this->hasMany('App\Season');
+    }
 }

@@ -1,25 +1,23 @@
 @foreach($statsCalendrier as $statCalendrier)
     @if($statCalendrier['equipe_1']==$nomAuthEquipe or $statCalendrier['equipe_2']==$nomAuthEquipe)
     @if($carbonStrtotime<$statCalendrier['dateStrtotime'])
-        <table>
-            <tr id="prochainMatch">
+        <table class="prochainMatch">
+            <tr>
                 <td>{{ $statCalendrier['date'] }}</td>
                 <td>{{ $statCalendrier['heure'] }}</td>
                 <td>{{ $statCalendrier['equipe_1'] }}</td>
                 @if($statCalendrier['date']>$carbonStrtotime)
-                    <td>{{ $statCalendrier['buts_1'] }}</td>
+                    <td class="tdChampsButs">{{ $statCalendrier['buts_1'] }}</td>
                     <td>-</td>
-                    <td>{{ $statCalendrier['buts_2'] }}</td>
+                    <td class="tdChampsButs">{{ $statCalendrier['buts_2'] }}</td>
                 @else
-                    <td></td>
+                    <td class="tdChampsButs"></td>
                     <td>-</td>
-                    <td></td>
+                    <td class="tdChampsButs"></td>
                 @endif
                 <td>{{ $statCalendrier['equipe_2'] }}</td>
             </tr>
         </table>
-
-        <?php break; ?>
     @else
         {{ '' }}
     @endif

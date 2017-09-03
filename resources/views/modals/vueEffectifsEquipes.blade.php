@@ -6,7 +6,7 @@
                         @if($equipe->logo != '')
                             <img src="{{ url($equipe->logo) }}">
                         @else
-                            <img src="">
+                            <img src="{{ asset('images/logo-default.svg') }}">
                         @endif
                     </div>
                     <div class="media-body">

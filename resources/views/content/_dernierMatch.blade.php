@@ -14,7 +14,7 @@
                         @else
                             @if(Auth::user()->isAdmin() || Auth::user()->isAdminLigue() || Auth::user()->isCapitaine())
                             <!--Pour entrer nouveau score. Que capitaine. (Différence avec doubles accolades ?)-->
-                            {{ Form::number('buts_'.  $statCalendrier['equipe_1_id']) }}
+                            <input type="text" name="buts_1">
                             @else
                             {{ ' ' }}
                             @endif
@@ -27,7 +27,7 @@
                         @else
                             @if(Auth::user()->isAdmin() || Auth::user()->isAdminLigue() || Auth::user()->isCapitaine())
                             <!--Pour entrer nouveau score. Que capitaine.-->
-                            {{ Form::number('buts_'.  $statCalendrier['equipe_2_id']) }}
+                                <input type="text" name="buts_2">
                             @else
                                 {{ ' ' }}
                             @endif
@@ -38,7 +38,7 @@
                         {{ '' }}
                     @else
                         @if(Auth::user()->isAdmin() || Auth::user()->isAdminLigue() || Auth::user()->isCapitaine())
-                        <td>{{ Form::submit('OK') }}</td>
+                        <td>{{ Form::submit('OK', ['class' => 'btn btn-orange']) }}</td>
                         @else
                             {{ '' }}
                         @endif

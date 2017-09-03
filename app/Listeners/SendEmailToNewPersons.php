@@ -43,9 +43,16 @@ class SendEmailToNewPersons
         }
 
         // on boucle sur les emails
-        foreach ($emailInvites as $key => $emailInvite) {
+        foreach ($emailInvites as $key => $emailInvite)
+        {
+            if (!filter_var(trim($emailInvite), FILTER_VALIDATE_EMAIL))
+            {
+                flash('Erreur, les adresses emails sont incorrectes.')->error();
+                return false;
+            }
+
             $user = new User();
-            $user->email = trim( $emailInvite );
+            $user->email = trim($emailInvite);
 
             // On envois le mail d'invitation
             Notification::send(

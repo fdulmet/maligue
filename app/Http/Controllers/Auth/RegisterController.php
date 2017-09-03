@@ -26,17 +26,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    //protected $redirectTo = '/LigueSMP';
-    // protected function redirectTo()
-    // {
-    //     return '/smp';
-    // }
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -116,5 +105,3 @@ class RegisterController extends Controller
         return $equipe;*/
     }
 }
-//event(new RegisterEvent($user));
-//...?

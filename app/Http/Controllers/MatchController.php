@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Equipe;
 use App\Http\Helpers\BannerHelper;
 use App\Http\Requests\CreerMatchRequest;
+use App\Http\Requests\SaveResultatMatchRequest;
 use App\Ligue;
 use App\Season;
 use Carbon\Carbon;
@@ -38,42 +39,38 @@ class MatchController extends Controller
         $saisonEnCoursId = intval($request->get('saison'));
         $currentEquipeId = intval($request->get('equipe'));
 
+        $currentEquipe = $request->session()->get('currentEquipe');
+        $currentLigue = $request->session()->get('currentLigue');
+
         if ($saisonEnCoursId !== 0)
         {
             $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
             $request->session()->put('saison', $saisonEnCoursId);
         }
-        elseif ($request->session()->exists('saison'))
+        elseif ($request->session()->exists('saison') && intval($request->session()->get('saison')) !== 0)
         {
             $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
+            $saisonEnCoursId = $currentSaison->id;
         }
         else
         {
-            $currentSaison = $saisons->first();
+            $currentSaison = $currentLigue->seasons()->first();
             $saisonEnCoursId = $currentSaison->id;
         }
 
-        if ($request->session()->exists('equipe'))
+        if (is_null($currentSaison))
         {
-            $currentEquipeId = intval(session('equipe'));
+            return view('errors.no-seasons')->with([
+                'user' => $user,
+                'currentLigue' => $currentLigue,
+            ]);
         }
-
-        $currentLigue = Ligue::where(['id' => $currentSaison->ligue_id])->first();
 
         $ligues = Ligue::pluck('nom', 'id');
 
         $saisonsList = $saisons->pluck('nom', 'id');
 
         $equipes = $currentLigue->equipes()->get();
-
-        if (is_null($currentEquipeId))
-        {
-            $currentEquipe = $equipes->first();
-        }
-        else
-        {
-            $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
-        }
 
         $games = Game::with('equipes')->where([
             'ligue_id' => $currentLigue->id,
@@ -127,27 +124,32 @@ class MatchController extends Controller
         $saisonEnCoursId = intval($request->get('saison'));
         $currentEquipeId = intval($request->get('equipe'));
 
+        $currentEquipe = $request->session()->get('currentEquipe');
+        $currentLigue = $request->session()->get('currentLigue');
+
         if ($saisonEnCoursId !== 0)
         {
             $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
             $request->session()->put('saison', $saisonEnCoursId);
         }
-        elseif ($request->session()->exists('saison'))
+        elseif ($request->session()->exists('saison') && intval($request->session()->get('saison')) !== 0)
         {
             $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
+            $saisonEnCoursId = $currentSaison->id;
         }
         else
         {
-            $currentSaison = $saisons->first();
+            $currentSaison = $currentLigue->seasons()->first();
             $saisonEnCoursId = $currentSaison->id;
         }
 
-        if ($request->session()->exists('equipe'))
+        if (is_null($currentSaison))
         {
-            $currentEquipeId = intval(session('equipe'));
+            return view('errors.no-seasons')->with([
+                'user' => $user,
+                'currentLigue' => $currentLigue,
+            ]);
         }
-
-        $currentLigue = Ligue::where(['id' => $currentSaison->ligue_id])->first();
 
         $teams = $currentLigue->equipes()->pluck('equipes.nom', 'equipes.id');
 
@@ -192,7 +194,7 @@ class MatchController extends Controller
         return redirect()->action('MatchController@index');
     }
 
-    public function save(Request $request)
+    public function save(SaveResultatMatchRequest $request)
     {
         $input = $request->all();
 
@@ -203,10 +205,13 @@ class MatchController extends Controller
             throw new ModelNotFoundException('Game not found.');
         }
 
-        foreach ($game->equipes as $equipe)
+        foreach ($game->equipes as $i => $equipe)
         {
-            $equipe->pivot->buts = $input['buts_'. $equipe->id];
-            $equipe->pivot->save();
+            $equipe->pivot->buts = $input['buts_'. ($i +1)];
+            if (!$equipe->pivot->save())
+            {
+                flash('Vous devez rentrer un chiffre positif')->error();
+            }
         }
 
         flash('Merci d\'avoir rentrer le score du match.')->success();

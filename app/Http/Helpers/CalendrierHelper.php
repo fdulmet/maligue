@@ -4,21 +4,28 @@ namespace App\Http\Helpers;
 
 use App\Game;
 use App\Equipe;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class CalendrierHelper {
-    public function __construct() {
-        //
+    public function __construct(Request $request) {
+        $this->request = $request;
     }
 
-    public function calendrier() {//il faut mettre un if $nomAuthLigue==... pour afficher les matchs que de la bonne ligue
-        $games = Game::all()->sort(function($a, $b) {
+    public function calendrier() {
+        $user = Auth::user();
+        $currentEquipe = session('currentEquipe');
+        $currentLigue = session('currentLigue');
+        $currentSaison = session('currentSaison');
+
+        $games = Game::where(['ligue_id' => $currentLigue->id, 'season_id' => $this->request->session()->get('saison')])->get()->sort(function($a, $b) {
             if($a->date === $b->date) {
                 if($a->heure === $b->heure) {
                     return 0;
                 }
-                return $a->heure < $b->heure ? 1 : -1;
+                return $a->heure < $b->heure ? -1 : 1;
             }
-            return $a->date < $b->date ? 1 : -1;
+            return $a->date < $b->date ? -1 : 1;
         });
 
         $statsCalendrier = [];// Array of games statistics

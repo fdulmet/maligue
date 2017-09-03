@@ -1,11 +1,11 @@
-<div id="updateTeamLogo" class="modal" role="dialog">
+<div id="updateTeamLogo" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">
-                    Modifier le logo de l'équipe
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </h4>
+                <h5 class="modal-title">Modifier le logo de l'équipe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <form class="form-horizontal" role="form" method="POST" action="{{ route('equipe.updateLogo') }}" id="formUpdateTeamLogo" enctype="multipart/form-data">
                 <div class="modal-body">
@@ -18,7 +18,7 @@
                             {{ Form::hidden('equipe', $currentEquipe->id) }}
 
                             <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <span class="btn btn-primary btn-file">
+                                <span class="btn btn-orange btn-file">
                                 <span class="fileupload-new">Choisir image</span>
                                 <span class="fileupload-exists">Choisir une autre image</span>
                                     <input name="logo" type="file">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="bouton_submit">
+                    <button type="submit" class="btn btn-orange btn-block" id="bouton_submit">
                         Modifier
                     </button>
                 </div>

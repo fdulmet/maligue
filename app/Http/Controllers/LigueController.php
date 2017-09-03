@@ -7,6 +7,7 @@ use App\Invite;
 use App\Ligue;
 use App\Notifications\AdminNewLigueCreated;
 use App\Notifications\AdminNewUserMail;
+use App\Http\Requests\RegisterLigueRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +63,7 @@ class LigueController extends Controller
    * [add description]
    * @param Request $request [description]
    */
-  public function add(Request $request)
+  public function add(RegisterLigueRequest $request)
   {
   	$inputs = $request->all();
 

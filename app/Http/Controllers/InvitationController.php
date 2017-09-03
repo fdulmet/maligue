@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\InviteNewPersons;
+use App\Http\Requests\InvitationRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Notification;
 
 class InvitationController extends Controller
 {
-  public function creerEquipe(Request $request)
+  public function creerEquipe(InvitationRequest $request)
   {
   	// On lance l'évènement
   	// d'invitation de personnes
@@ -21,10 +22,18 @@ class InvitationController extends Controller
   	// 2. Envoyer un mail à l'inviteur
   	// 3. Insérer le mail de la personne invité
   	//    dans la table invitees
+
+    $currentEquipe = $request->session()->get('currentEquipe');
+    $currentLigue = $request->session()->get('currentLigue');
+
   	event(
   		new InviteNewPersons(
   			'create_team',
-  			$request->input('emails_create_team')
+  			$request->input('emails'),
+            [
+                'currentEquipe' => $currentEquipe,
+                'currentLigue' => $currentLigue,
+            ]
   		)
   	);
 
@@ -33,7 +42,7 @@ class InvitationController extends Controller
   	    ->route('home');
   }
 
-  public function rejoindreEquipe(Request $request)
+  public function rejoindreEquipe(InvitationRequest $request)
   {
   	// On lance l'évènement
   	// d'invitation de personnes
@@ -43,10 +52,18 @@ class InvitationController extends Controller
   	// 2. Envoyer un mail à l'inviteur
   	// 3. Insérer le mail de la personne invité
   	//    dans la table invitees
+
+    $currentEquipe = $request->session()->get('currentEquipe');
+    $currentLigue = $request->session()->get('currentLigue');
+
   	event(
   		new InviteNewPersons(
   			'join_team',
-  			$request->input('emails_join_team')
+  			$request->input('emails'),
+            [
+                'currentEquipe' => $currentEquipe,
+                'currentLigue' => $currentLigue,
+            ]
   		)
   	);
 

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class CreateTeamRequest extends FormRequest
+class RegisterLigueRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +24,13 @@ class CreateTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom' => 'required',
-            'logo' => 'mimes:jpg,jpeg,gif,png',
+            'ligue' => 'required|max:100',
+            'equipe' => 'required|max:100',
+            'nom' => 'required|max:100',
+            'prenom' => 'required|max:100',
+            'email' => 'required|email|confirmed|max:255|unique:users',
+            'tel' => 'required',
+            'password' => 'required|min:6|confirmed',
         ];
     }
 }

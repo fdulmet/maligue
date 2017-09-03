@@ -46,7 +46,7 @@ class Data
             $diffParMatch = $butsPourDeChaqueMatch - $butsContreDeChaqueMatch;
             if ($diffParMatch > 0) {
                 $this->gagnes++;
-            } elseif ($diffParMatch == 0 and $butsPourDeChaqueMatch != null and $butsContreDeChaqueMatch != null) {
+            } elseif ($diffParMatch === 0  and $butsPourDeChaqueMatch !== null and $butsContreDeChaqueMatch !== null) {
                 $this->nuls++;
             } elseif ($diffParMatch < 0) {
                 $this->perdus++;

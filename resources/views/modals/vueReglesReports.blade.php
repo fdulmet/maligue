@@ -1,7 +1,3 @@
-- En cas de forfait, l'autre équipe gagne 10-0.<br>
-- Seuls les capitaines peuvent entrer les scores.<br>
-
-<!--
 Les reports sont à limiter au maximum, étant donné les complications qu'ils engendrent !
 <br>
 <br>Le mode de réservation pour lequel j'ai opté au Five paris-la chapelle (20% d'acompte sur internet)
@@ -34,4 +30,3 @@ Les reports sont à limiter au maximum, étant donné les complications qu'ils e
 </ul>
 
 <p>=> Si le créneau initial d'un autre match réporté vous intéresse, demandez-moi si le créneau est toujours disponible !</p>
--->
