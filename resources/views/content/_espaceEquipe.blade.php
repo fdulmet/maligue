@@ -1,7 +1,7 @@
 
 @if(!$myTeams->isEmpty())
 <div class="row equipe-profil">
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="row">
             <div class="col">
             @if($user->equipes()->count() > 1)
@@ -62,10 +62,10 @@
         <div class="row">
             <div class="col-md-12">
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisRejoindre" id="bouton_invitation_rejoindre">
-                    Inviter des amis à rejoindre mon équipe
+                    Inviter à rejoindre mon équipe
                 </button>
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisCreer" id="bouton_invitation_creer">
-                    Inviter des amis à créer une équipe
+                    Inviter à créer une équipe
                 </button>
                 <br>
                 <br>

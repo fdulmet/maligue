@@ -1,5 +1,5 @@
 <div class="row header-saison">
-    <div class="col">
+    <div class="col-md-7">
         <h1>
             @if($currentLigue->logo)
                 <img src="{{ url($currentLigue->logo) }}" alt="logo_ligue">
