@@ -15,19 +15,7 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function index() // on crée la méthode (fonction...?) index
-    {
-        $prenom= 'François'; // importer de bdd
-        $nom= 'Dulmet'; // importer de bdd
-        return view('index', compact('prenom', 'nom')); //compact reconnait les variables écrites (?)
-    }
 }
-
-//si on a bcp de data, faire avec un array comme ça :
-//return view('partials')->with([
-//    'prenom' => 'François',
-//    'nom' => 'Dulmet'
-//]);
 
 
 
