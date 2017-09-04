@@ -24,8 +24,6 @@ class RegisterLigueRequest extends FormRequest
     public function rules()
     {
         return [
-            'ligue' => 'required|max:100',
-            'equipe' => 'required|max:100',
             'nom' => 'required|max:100',
             'prenom' => 'required|max:100',
             'email' => 'required|email|confirmed|max:255|unique:users',

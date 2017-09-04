@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Auth;
 
-class HomeController extends Controller
+class HomeController2 extends Controller
 {
 
 }
