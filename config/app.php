@@ -184,6 +184,7 @@ return array(
         Collective\Html\HtmlServiceProvider::class,//c'est une laravel class qui bootstrap des trucs ?
         //et donc là on register cette class qui vient de github ?
         Laracasts\Flash\FlashServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ),
 
@@ -235,7 +236,7 @@ return array(
         'Form'  => Collective\Html\FormFacade::class,
         'Html'  => Collective\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ),
 
 );
