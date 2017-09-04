@@ -16,7 +16,8 @@
         "mandrill/mandrill": "^1.0",
         "laracasts/flash": "^3.0",
         "spatie/laravel-sluggable": "^1.5",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "barryvdh/laravel-debugbar": "^2.4.*"
     },
 
     "require-dev": {
