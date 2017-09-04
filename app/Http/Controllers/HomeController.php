@@ -29,6 +29,15 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->session()->exists('notloggedin'))
+        {
+            flash($request->session()->get('notloggedin'))->error();
+            $request->session()->forget(['notloggedin']);
+            Auth::logout();
+
+            return view('auth.login');
+        }
+
         $user = Auth::user();
 
         $diversHelper = new DiversHelper();
@@ -40,25 +49,14 @@ class HomeController extends Controller
         $saisonEnCoursId = intval($request->get('saison'));
         $currentEquipeId = intval($request->get('equipe'));
 
-        if ($request->session()->exists('equipe'))
-        {
-            $currentEquipeId = intval(session('equipe'));
-            $exists = Equipe::where(['id' => $currentEquipeId])->first();
-            if (is_null($exists))
-            {
-                $currentEquipeId = 0;
-            }
-        }
+        $currentEquipe = $request->session()->get('currentEquipe');
+        $currentLigue  = $request->session()->get('currentLigue');
+        $currentSaison = $request->session()->get('currentSaison');
 
         // Admin, not a player
         if ($user->isAdmin() || $user->isAdminligue())
         {
-            if ($currentEquipeId === 0)
-            {
-                $currentEquipe = $user->equipes()->first();
-                $currentEquipeId = $currentEquipe->id;
-            }
-            else
+            if ($currentEquipeId !== 0)
             {
                 $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
             }
@@ -69,11 +67,6 @@ class HomeController extends Controller
             {
                 $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
                 $request->session()->put('saison', $saisonEnCoursId);
-            }
-            elseif ($request->session()->exists('saison') && intval($request->session()->get('saison')) !== 0)
-            {
-                $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
-                $saisonEnCoursId = $currentSaison->id;
             }
             else
             {
@@ -91,17 +84,12 @@ class HomeController extends Controller
 
             $myTeams = $currentLigue->equipes()->pluck('equipes.nom', 'equipes.id');
 
-            $equipes = $currentLigue->equipes()->get();
+            $equipes = $currentLigue->equipes()->with('users')->get();
         }
         // Player
         else
         {
-            if ($currentEquipeId === 0)
-            {
-                $currentEquipe = $user->equipes()->first();
-                $currentEquipeId = $currentEquipe->id;
-            }
-            else
+            if ($currentEquipeId !== 0)
             {
                 $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
             }
@@ -112,11 +100,6 @@ class HomeController extends Controller
             {
                 $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
                 $request->session()->put('saison', $saisonEnCoursId);
-            }
-            elseif ($request->session()->exists('saison') && intval($request->session()->get('saison')) !== 0)
-            {
-                $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
-                $saisonEnCoursId = $currentSaison->id;
             }
             else
             {
@@ -134,7 +117,7 @@ class HomeController extends Controller
 
             $myTeams = $user->equipes()->pluck('equipes.nom', 'equipes.id');
 
-            $equipes = $currentLigue->equipes()->get();
+            $equipes = $currentLigue->equipes()->with('users')->get();
         }
 
         $saisons = Season::where(['ligue_id' => $currentLigue->id])->orderBy('date_start', 'desc')->get();
@@ -151,20 +134,6 @@ class HomeController extends Controller
         }
 
         $playersWithoutTeam = User::doesntHave('equipes')->pluck('nom', 'id');
-
-        // Sessions
-        if (!$request->session()->exists('currentEquipe'))
-        {
-            $request->session()->put('currentEquipe', $currentEquipe);
-        }
-        if (!$request->session()->exists('currentLigue'))
-        {
-            $request->session()->put('currentLigue', $currentLigue);
-        }
-        if (!$request->session()->exists('currentSaison'))
-        {
-            $request->session()->put('currentSaison', $currentSaison);
-        }
 
         return view('home')->with([
             'user' => $user,
@@ -217,7 +186,7 @@ class HomeController extends Controller
             flash('Cette équipe n\'est pas disponible.')->error();
         }
 
-        $request->session()->put('equipe', $equipeId);
+        $request->session()->put('currentEquipe', $equipe);
 
         return redirect()->action('HomeController@index');
     }
@@ -237,7 +206,7 @@ class HomeController extends Controller
             flash('Cette saison n\'est pas disponible.')->error();
         }
 
-        $request->session()->put('saison', $saisonId);
+        $request->session()->put('currentSaison', $saison);
 
         return redirect()->action('HomeController@index');
     }

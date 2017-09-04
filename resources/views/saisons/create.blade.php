@@ -7,20 +7,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <br>
-            <br>
-            {!! link_to_route('saison.index', 'Liste des saisons', [], ['class' => 'btn btn-primary']) !!}
-            <br>
-            <br>
+            <div class="col">
+                <p>
+                    <br>
+                    {!! link_to_route('saison.index', 'Liste des saisons', [], ['class' => 'btn btn-green']) !!}
+                    <br>
+                </p>
+            </div>
         </div>
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
                         Créer une nouvelle saison
                     </div>
-                    <div class="panel-body">
+                    <div class="card-block">
                         {!! Form::open(['route' => 'saison.store', 'method' => 'post']) !!}
 
                         {{ csrf_field() }}
@@ -42,25 +44,19 @@
 
                         <div class="form-group">
                             {{ Form::label('date_start', 'Date de début') }}
-                            <div class='input-group date' id='datetimepicker1'>
-                                {!! Form::text('date_start', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                            <div class="col-4" style="padding: 0">
+                                <input name="date_start" class="form-control" type="date" value="">
                             </div>
                         </div>
 
                         <div class="form-group">
                             {{ Form::label('date_end', 'Date de fin') }}
-                            <div class='input-group date' id='datetimepicker2'>
-                                {!! Form::text('date_end', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                            <div class="col-4" style="padding: 0">
+                                <input name="date_end" class="form-control" type="date" value="">
                             </div>
                         </div>
 
-                        {!! Form::submit('Créer', ['class' => 'btn btn-default']) !!}
+                        {!! Form::submit('Créer', ['class' => 'btn btn-green pull-right']) !!}
 
                         {!! Form::close() !!}
                     </div>

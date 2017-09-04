@@ -1,19 +1,5 @@
 
 $(function () {
-  $('#datetimepicker1').datetimepicker({
-    format: 'MM/DD/YYYY',
-    allowInputToggle: true
-  });
-
-  $('#datetimepicker2').datetimepicker({
-    format: 'MM/DD/YYYY',
-    allowInputToggle: true
-  });
-
-  $('#datetimepickermatch').datetimepicker({
-    format: 'MM/DD/YYYY HH:mm:ss',
-    allowInputToggle: true
-  });
 
   $('#formUpdateCapitaine').one('submit', function (e) {
     e.preventDefault();
@@ -45,6 +31,11 @@ $(function () {
 
   $.each($('.scrollToBottom'), function(key, value) {
     $(this).scrollTop($(this)[0].scrollHeight);
+  });
+
+  $('#retirerJoueur').on('show.bs.modal', function(e) {
+    var url = e.relatedTarget.dataset.url;
+    $('#retirerJoueurUrl').attr('href', url);
   });
 
 

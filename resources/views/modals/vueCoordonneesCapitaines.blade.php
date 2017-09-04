@@ -9,15 +9,26 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($currentLigue->equipes()->get() as $equipe)
-            <?php $capitaine = \App\User::find($equipe->user_id); ?>
-            <tr>
-                <th scope="row">{{ $equipe->nom }}</th>
-                <td>{{ $capitaine->prenom }}</td>
-                <td>{{ $capitaine->nom }}</td>
-                <td>{{ $capitaine->tel }}</td>
-                <td>{{ $capitaine->email }}</td>
-            </tr>
+        @foreach($equipes as $equipe)
+            <?php $capitaine = $equipe->users()->first(); ?>
+            @if($capitaine)
+                <tr>
+                    <th scope="row">{{ $equipe->nom }}</th>
+                    <td>{{ $capitaine->prenom }}</td>
+                    <td>{{ $capitaine->nom }}</td>
+                    <td>{{ $capitaine->tel }}</td>
+                    <td>{{ $capitaine->email }}</td>
+                </tr>
+            @else
+                <tr>
+                    <th scope="row">{{ $equipe->nom }}</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            @endif
+
         @endforeach
     </tbody>
 </table>

@@ -37,6 +37,7 @@ Route::group(['middleware' => ['web']], function() {
 // Login Routes...
     Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
     Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
+    Route::get('logout', ['as' => 'logout.get', 'uses' => 'UserController@logout']);
     Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 // Registration Routes...
@@ -110,7 +111,9 @@ Route::post('saisons/creer', 'SaisonController@store')->name('saison.store');
 Route::post('match', 'MatchController@save');
 Route::get('matchs', 'MatchController@index')->name('matchs.index');
 Route::get('matchs/creer', 'MatchController@create')->name('matchs.create');
+Route::get('matchs/editer', 'MatchController@create')->name('matchs.edit');
 Route::post('matchs/creer', 'MatchController@store')->name('matchs.store');
+Route::get('matchs/supprimer', 'MatchController@destroy')->name('matchs.destroy');
 
 /**
  * Routes pour les invitations

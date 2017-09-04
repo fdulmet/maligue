@@ -24,6 +24,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\RegisterAfterInvitation' => [
             // 'App\Listeners\SendEmailToNewPerson'
         ],
+
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LogSuccessfulLogin',
+        ],
     ];
 
     /**

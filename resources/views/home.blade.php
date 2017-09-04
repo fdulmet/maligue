@@ -16,6 +16,7 @@
     @include('modals.equipe.updateCapitaine')
     @include('modals.equipe.updateTeamLogo')
     @include('modals.equipe.createNewTeam')
+    @include('modals.equipe.retirerJoueur')
     @include('modals.invitations.vueInviterAmis')
     @include('modals.invitations.vueInviterAmisCreer')
     @include('modals.contact.vueContact')

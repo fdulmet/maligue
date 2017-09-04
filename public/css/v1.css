@@ -492,7 +492,7 @@ h2 {
 
 #espace_ligue .calendrier #trChaqueMatch:nth-child(even) td {
   padding: 10px 5px 10px 5px;
-  background-color: #6dbf6d;
+  background-color: #f1f1f1;
 }
 
 #espace_ligue .calendrier #trChaqueMatch:nth-child(even) #equipe1 {
@@ -546,6 +546,14 @@ h2 {
 
 .btn-group .btn-green {
   border: 0;
+}
+
+.table-small {
+  font-size: .8rem;
+}
+
+.badge-lg {
+  font-size: 100%;
 }
 
 /*# sourceMappingURL=v1.css.map */

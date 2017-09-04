@@ -97,7 +97,7 @@
                         {{ $joueur->prenom }} {{ $joueur->nom }}
                     @endif
                     @if(($user->isAdmin() || $user->isAdminLigue()) && $joueur->id !== $user->id)
-                        <a href="{{ route('equipe.removePlayer', ['joueur' => $joueur->id, 'equipe' => $currentEquipe->id]) }}" title="Retirer le joueur">
+                        <a href="#" data-url="{{ route('equipe.removePlayer', ['joueur' => $joueur->id, 'equipe' => $currentEquipe->id]) }}" title="Retirer le joueur" data-toggle="modal" data-target="#retirerJoueur">
                             <i class="fa fa-remove"></i>
                         </a>
                     @endif
@@ -118,7 +118,7 @@
                             {{ $joueur->prenom }} {{ $joueur->nom }}
                         @endif
                         @if(($user->isAdmin() || $user->isAdminLigue()) && $joueur->id !== $user->id)
-                            <a href="{{ route('equipe.removePlayer', ['joueur' => $joueur->id, 'equipe' => $currentEquipe->id]) }}" title="Retirer le joueur">
+                            <a href="#" data-url="{{ route('equipe.removePlayer', ['joueur' => $joueur->id, 'equipe' => $currentEquipe->id]) }}" title="Retirer le joueur" data-toggle="modal" data-target="#retirerJoueur">
                             <i class="fa fa-remove"></i>
                         </a>
                         @endif

@@ -32,31 +32,15 @@ class MatchController extends Controller
             return redirect()->action('HomeController@index');
         }
 
+        $currentEquipe = $request->session()->get('currentEquipe');
+        $currentLigue  = $request->session()->get('currentLigue');
+        $currentSaison = $request->session()->get('currentSaison');
+
         $bannerHelper = new BannerHelper();
 
         $saisons = Season::all()->sortByDesc('date_start');
 
-        $saisonEnCoursId = intval($request->get('saison'));
-        $currentEquipeId = intval($request->get('equipe'));
-
-        $currentEquipe = $request->session()->get('currentEquipe');
-        $currentLigue = $request->session()->get('currentLigue');
-
-        if ($saisonEnCoursId !== 0)
-        {
-            $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
-            $request->session()->put('saison', $saisonEnCoursId);
-        }
-        elseif ($request->session()->exists('saison') && intval($request->session()->get('saison')) !== 0)
-        {
-            $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
-            $saisonEnCoursId = $currentSaison->id;
-        }
-        else
-        {
-            $currentSaison = $currentLigue->seasons()->first();
-            $saisonEnCoursId = $currentSaison->id;
-        }
+        $saisonEnCoursId = $currentSaison->id;
 
         if (is_null($currentSaison))
         {
@@ -121,27 +105,12 @@ class MatchController extends Controller
 
         $saisons = Season::all()->sortByDesc('date_start');
 
-        $saisonEnCoursId = intval($request->get('saison'));
-        $currentEquipeId = intval($request->get('equipe'));
-
         $currentEquipe = $request->session()->get('currentEquipe');
-        $currentLigue = $request->session()->get('currentLigue');
+        $currentLigue  = $request->session()->get('currentLigue');
+        $currentSaison = $request->session()->get('currentSaison');
 
-        if ($saisonEnCoursId !== 0)
-        {
-            $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
-            $request->session()->put('saison', $saisonEnCoursId);
-        }
-        elseif ($request->session()->exists('saison') && intval($request->session()->get('saison')) !== 0)
-        {
-            $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
-            $saisonEnCoursId = $currentSaison->id;
-        }
-        else
-        {
-            $currentSaison = $currentLigue->seasons()->first();
-            $saisonEnCoursId = $currentSaison->id;
-        }
+        $saisonEnCoursId = $currentSaison->id;
+        $currentEquipeId = $currentEquipe->id;
 
         if (is_null($currentSaison))
         {
@@ -162,7 +131,14 @@ class MatchController extends Controller
             $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
         }
 
+        $match = new Game();
+        if ($request->has('matchId'))
+        {
+            $match = Game::find(intval($request->get('matchId')));
+        }
+
         return view('matchs/create')->with([
+            'match' => $match,
             'saisons' => $saisons,
             'currentSaison' => $currentSaison,
             'currentLigue' => $currentLigue,
@@ -175,13 +151,36 @@ class MatchController extends Controller
 
     public function store(CreerMatchRequest $request)
     {
-        $game = Game::create([
-            'lieu' => $request->input('lieu'),
-            'ligue_id' => $request->input('ligue_id'),
-            'season_id' => $request->input('season_id'),
-            'date' => Carbon::parse($request->input('date'))->format('Y-m-d'),
-            'heure' => Carbon::parse($request->input('date'))->format('H:i:s'),
-        ]);
+        if ($request->has('matchId'))
+        {
+            $game = Game::find(intval($request->get('matchId')));
+
+            if (!$game)
+            {
+                throw new ModelNotFoundException('Game not found.');
+            }
+        }
+        else
+        {
+            $game = new Game();
+        }
+
+        $game->lieu = $request->input('lieu');
+        $game->ligue_id = $request->input('ligue_id');
+        $game->season_id = $request->input('season_id');
+        $game->date = Carbon::parse($request->input('date'))->format('Y-m-d');
+        $game->heure = Carbon::parse($request->input('date'))->format('H:i:s');
+
+        if ($request->has('lieu_report'))
+        {
+            $game->lieu_report = $request->input('lieu_report');
+        }
+
+        if ($request->has('date_report'))
+        {
+            $game->date_report = Carbon::parse($request->input('date_report'))->format('Y-m-d');
+            $game->heure_report = Carbon::parse($request->input('date_report'))->format('H:i:s');
+        }
 
         $game->equipes()->attach($request->input('equipe1'));
         $game->equipes()->attach($request->input('equipe2'));
@@ -217,5 +216,26 @@ class MatchController extends Controller
         flash('Merci d\'avoir rentrer le score du match.')->success();
 
         return redirect()->action('HomeController@index');
+    }
+
+    public function destroy(Request $request)
+    {
+        $input = $request->all();
+
+        $game = Game::find(intval($request->get('matchId')));
+
+        if (!$game)
+        {
+            throw new ModelNotFoundException('Game not found.');
+        }
+
+        if (!$game->delete())
+        {
+            throw new InternalErrorException('Une erreur s\'est produite, impossible de supprimer le match.');
+        }
+
+        flash('Le match a bien été supprimé.')->success();
+
+        return redirect()->action('MatchController@index');
     }
 }

@@ -34,6 +34,17 @@ class UserController extends Controller
             ->back();
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect()->action('Auth\LoginController@showLoginForm');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -490,7 +490,8 @@ h2 {
     #trChaqueMatch:nth-child(even){
       td {
         padding: 10px 5px 10px 5px;
-        background-color: #6dbf6d;
+        //background-color: #6dbf6d;
+        background-color: #f1f1f1;
       }
       #equipe1{
         text-align: right;
@@ -551,3 +552,10 @@ h2 {
   }
 }
 
+.table-small {
+  font-size: .8rem;
+}
+
+.badge-lg {
+  font-size: 100%;
+}

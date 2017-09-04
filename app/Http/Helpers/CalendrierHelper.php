@@ -18,7 +18,7 @@ class CalendrierHelper {
         $currentLigue = session('currentLigue');
         $currentSaison = session('currentSaison');
 
-        $games = Game::where(['ligue_id' => $currentLigue->id, 'season_id' => $this->request->session()->get('saison')])->get()->sort(function($a, $b) {
+        $games = Game::where(['ligue_id' => $currentLigue->id, 'season_id' => $currentSaison->id])->get()->sort(function($a, $b) {
             if($a->date === $b->date) {
                 if($a->heure === $b->heure) {
                     return 0;
@@ -59,6 +59,17 @@ class CalendrierHelper {
             $heure = $game->heure;
             $heure = date('H\hi', strtotime($heure));
             $statsCalendrier[$i]['heure'] = $heure;
+
+            if (!is_null($game->lieu_report))
+            {
+                $statsCalendrier[$i]['lieu_report'] = $game->lieu_report;
+            }
+
+            if (!is_null($game->date_report))
+            {
+                $statsCalendrier[$i]['date_report'] = $game->date_report;
+                $statsCalendrier[$i]['heure_report'] = $game->heure_report;
+            }
 
             //equipes & buts
             $y = 1;

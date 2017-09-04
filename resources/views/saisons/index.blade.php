@@ -7,11 +7,13 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <br>
-            <br>
-            {!! link_to_route('saison.create', 'Créer une nouvelle saison', [], ['class' => 'btn btn-primary']) !!}
-            <br>
-            <br>
+            <div class="col">
+                <p>
+                    <br>
+                    {!! link_to_route('saison.create', 'Créer une nouvelle saison', [], ['class' => 'btn btn-green']) !!}
+                    <br>
+                </p>
+            </div>
         </div>
 
         <div class="row">
@@ -35,8 +37,8 @@
                             <td>{{ Carbon\Carbon::parse($saison->date_start)->format('d/m/Y') }}</td>
                             <td>{{ Carbon\Carbon::parse($saison->date_end)->format('d/m/Y') }}</td>
                             <td>
-                                <a href="#" class="btn btn-primary">Modifier</a>
-                                <a href="#" class="btn btn-danger">Archiver</a>
+                                <a href="#" class="btn btn-green">Modifier</a>
+                                <a href="#" class="btn btn-orange btn-block">Archiver</a>
                             </td>
                         </tr>
                     @endforeach
