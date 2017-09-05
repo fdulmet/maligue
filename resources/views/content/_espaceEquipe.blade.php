@@ -62,7 +62,7 @@
         <div class="row">
             <div class="col-md-12">
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisRejoindre" id="bouton_invitation_rejoindre">
-                    Inviter à rejoindre mon équipe
+                    Inviter à rejoindre {{ $currentEquipe->nom }}
                 </button>
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisCreer" id="bouton_invitation_creer">
                     Inviter à créer une équipe
@@ -71,7 +71,7 @@
                 <br>
                 @if($user->isAdmin() || $user->isAdminLigue() || $user->isCapitaine())
                     <button type="button" class="btn btn-green" data-toggle="modal" data-target="#updateCapitaine" id="bouton_updateCapitaine">
-                        Modifier le capitaine d'équipe
+                        Modifier le capitaine
                     </button>
                 @endif
                 <!--

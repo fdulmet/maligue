@@ -64,18 +64,18 @@ class InvitationEquipe extends Notification
                     ->line($this->mailDatas['inviteurPrenom'] . ' ' . $this->mailDatas['inviteurNom'] . ' vous invite à créer une nouvelle équipe.')
                     ->line('Ligue : ' . $this->mailDatas['ligue'])
                     ->line('Sport : ' . $this->mailDatas['sport'])
-                    ->action('S\'inscrire', url('/inscription?ligue=' . $this->mailDatas['ligue']));
+                    ->action('Créer une nouvelle équipe', url('/rejoindre?ligue=' . $this->mailDatas['ligue']));
                 break;
 
             // Rejoindre une equipe
             case 'join_team':
                 return (new MailMessage)
-                    ->subject('[maligue.fr] - Invitation à rejoindre une équipe')
-                    ->line($this->mailDatas['inviteurPrenom'] . ' ' . $this->mailDatas['inviteurNom'] . ' vous invite à rejoindre une nouvelle équipe.')
+                    ->subject('[maligue.fr] - Invitation à rejoindre l\'équipe de ' . $this->mailDatas['inviteurPrenom'] . ' ' . $this->mailDatas['inviteurNom'])
+                    ->line($this->mailDatas['inviteurPrenom'] . ' ' . $this->mailDatas['inviteurNom'] . ' vous invite à rejoindre son équipe.')
                     ->line('Ligue : ' . $this->mailDatas['ligue'])
                     ->line('Equipe : ' . $this->mailDatas['equipe'])
                     ->line('Sport : ' . $this->mailDatas['sport'])
-                    ->action('S\'inscrire', url('/inscription?ligue=' . $this->mailDatas['ligue'] . '&equipe='. $this->mailDatas['equipe']));
+                    ->action('Rejoindre l\'équipe', url('/rejoindre?ligue=' . $this->mailDatas['ligue'] . '&equipe='. $this->mailDatas['equipe']));
                 break;
 
             default:

@@ -559,3 +559,25 @@ h2 {
 .badge-lg {
   font-size: 100%;
 }
+
+.calendrier {
+  thead
+  {
+    display: inline-block;
+    width: 100%;
+  }
+
+  tbody
+  {
+    max-height: 25rem;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+
+    tr {
+      width: 100%;
+      display: inline-table;
+    }
+  }
+}
+

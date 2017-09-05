@@ -57,7 +57,7 @@ class InvitationRejoindreEquipe extends Notification
             ->line('Equipe : ' . $this->mailDatas['equipe'])
             ->line('Ligue : ' . $this->mailDatas['ligue'])
             ->line('Sport : ' . $this->mailDatas['sport'])
-            ->action('S\'inscrire', url('/register?ligue=' . $this->mailDatas['ligue'] . '&equipe='. $this->mailDatas['equipe']));
+            ->action('S\'inscrire', url('/rejoindre?ligue=' . $this->mailDatas['ligue'] . '&equipe='. $this->mailDatas['equipe']));
     }
 
     /**

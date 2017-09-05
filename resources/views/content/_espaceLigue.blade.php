@@ -22,8 +22,8 @@
                     <a class="dropdown-item" href="http://laliguedespingouins.fr/2014-2015.php" target="_blank">2014-15</a>
                     <a class="dropdown-item" href="http://laliguedespingouins.fr/2013-2014.php" target="_blank">2013-14</a>
                     <a class="dropdown-item" href="http://laliguedespingouins.fr/2012-2013.php" target="_blank">2012-13</a>
-                    <a class="dropdown-item" href="http://laliguedespingouins.fr/2012-2013.php" target="_blank">2011-12</a>
-                    <a class="dropdown-item" href="http://laliguedespingouins.fr/2012-2013.php" target="_blank">2010-11</a>
+                    <a class="dropdown-item" href="http://laliguedespingouins.fr/2011-2012.php" target="_blank">2011-12</a>
+                    <a class="dropdown-item" href="http://laliguedespingouins.fr/2010-2011.php" target="_blank">2010-11</a>
                 </div>
             </div>
         </h1>

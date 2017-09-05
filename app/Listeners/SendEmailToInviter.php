@@ -33,7 +33,8 @@ class SendEmailToInviter
             $event->currentUser, new InvitationBienEnvoyee(
                 $event->invitationType,
                 $event->newPersonInputEmails,
-                $event->ligue
+                $event->ligue,
+                $event->equipe
             )
         );
     }

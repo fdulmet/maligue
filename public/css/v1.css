@@ -556,4 +556,21 @@ h2 {
   font-size: 100%;
 }
 
+.calendrier thead {
+  display: inline-block;
+  width: 100%;
+}
+
+.calendrier tbody {
+  max-height: 25rem;
+  display: inline-block;
+  width: 100%;
+  overflow: auto;
+}
+
+.calendrier tbody tr {
+  width: 100%;
+  display: inline-table;
+}
+
 /*# sourceMappingURL=v1.css.map */

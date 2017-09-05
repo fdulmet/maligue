@@ -14,6 +14,7 @@ class InvitationBienEnvoyee extends Notification
     public $emailsSendTo = '';
     public $joinName = '';
     public $invitationType;
+    public $equipe;
 
     /**
      * Create a new notification instance.
@@ -23,11 +24,13 @@ class InvitationBienEnvoyee extends Notification
     public function __construct(
         $invitationType,
         $emailsSendTo,
-        $joinName
+        $joinName,
+        $equipe
     ) {
         $this->invitationType = $invitationType;
         $this->emailsSendTo = $emailsSendTo;
         $this->joinName = $joinName;
+        $this->equipe = $equipe;
     }
 
     /**
@@ -53,13 +56,13 @@ class InvitationBienEnvoyee extends Notification
             case 'create_team':
                 return (new MailMessage)
                     ->subject('[maligue.fr] - Invitation bien envoyée')
-                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre ' . $this->joinName);
+                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à créer une nouvelle équipe dans la ligue ' . $this->joinName);
                 break;
 
             case 'join_team':
                 return (new MailMessage)
                     ->subject('[maligue.fr] - Invitation bien envoyée')
-                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre ' . $this->joinName)
+                    ->line('Vous avez bien invité ' . $this->emailsSendTo . ' à rejoindre votre équipe ' . $this->equipe)
                     ->line('Une fois l\'invitation acceptée, il apparaîtra dans l\'effectif.');
                 break;
 

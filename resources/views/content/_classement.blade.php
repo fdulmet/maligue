@@ -8,14 +8,14 @@
         <tr>
             <td>Rang</td>
             <td>Equipe</td>
-            <td>Points</td>
-            <td>&nbsp;J&nbsp;</td>
-            <td>&nbsp;G&nbsp;</td>
-            <td>&nbsp;N&nbsp;</td>
-            <td>&nbsp;P&nbsp;</td>
-            <td>bp</td>
-            <td>bc</td>
-            <td>diff.</td>
+            <td class="text-center">Points</td>
+            <td class="text-center">&nbsp;J&nbsp;</td>
+            <td class="text-center">&nbsp;G&nbsp;</td>
+            <td class="text-center">&nbsp;N&nbsp;</td>
+            <td class="text-center">&nbsp;P&nbsp;</td>
+            <td class="text-center">bp</td>
+            <td class="text-center">bc</td>
+            <td class="text-center">diff.</td>
         </tr>
     </thead>
 
@@ -23,7 +23,7 @@
     @foreach($statsClassement as $idx => $statClassement)
         <tr id="trChaqueEquipe">
             <td>{{ $idx +  1 }}</td>
-            <td>{{ str_limit($statClassement['nomEquipe'], 20, '...') }}</td>
+            <td class="text-left">{{ str_limit($statClassement['nomEquipe'], 20, '...') }}</td>
             <td>{{ $statClassement['points'] }}</td>
             <td>{{ $statClassement['joues'] }}</td>
             <td>{{ $statClassement['gagnes'] }}</td>

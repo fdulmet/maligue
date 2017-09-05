@@ -2,7 +2,7 @@
     <div class="row no-gutters" id="banner">
         <div class="col col-md-8 banner-left">
             <h2>
-                <a href="{{ url('/') }}" id="logoSite"><img src="{{ asset('images/logo_maligue.svg') }}"></a>
+                <a href="{{ url('/' . $currentLigue->slug) }}" id="logoSite"><img src="{{ asset('images/logo_maligue.svg') }}"></a>
             </h2>
         </div>
         <div class="col col-md-4 banner-right">

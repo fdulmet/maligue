@@ -47,7 +47,7 @@
     <script src="{{ elixir('js/app.js') }}"></script>
 
     <script>
-      $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+      $('div.alert').not('.alert-important').delay(10000).fadeOut(350);
     </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -27,7 +27,7 @@ class HomeController extends Controller
      * @param  Request $request
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request, $ligue = null)
     {
         if ($request->session()->exists('notloggedin'))
         {
@@ -38,21 +38,31 @@ class HomeController extends Controller
             return view('auth.login');
         }
 
-        if ($request->has('ligue'))
+        if (!is_null($ligue))
         {
-            $ligue = Ligue::where(['slug' => $request->get('ligue')])->first();
+            $ligue = Ligue::where(['slug' => $ligue])->first();
             if (is_null($ligue))
             {
-                redirect('/');
+                return redirect('/');
             }
 
             $request->session()->put('currentLigue', $ligue);
         }
         else
         {
-            $currentLigue  = $request->session()->get('currentLigue');
-            redirect('/' . $currentLigue->slug);
+            if ($request->session()->exists('redirectToLigue'))
+            {
+                $request->session()->forget('redirectToLigue');
+            }
+            else
+            {
+                $currentLigue  = $request->session()->get('currentLigue');
+                $request->session()->put('redirectToLigue', true);
+                return redirect('/' . $currentLigue->slug);
+            }
         }
+
+
 
         $user = Auth::user();
 
