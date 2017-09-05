@@ -60,6 +60,20 @@
                                 </div>
                             </div>
 
+                            <div class="row form-group{{ $errors->has('saison') ? ' has-danger' : '' }}">
+                                <label for="saison" class="col-md-4 control-label">Nom de la saison *</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="saison" placeholder="" required @if(isset($saison)) value="{{ $saison }}" disabled @endif>
+                                    @if(isset($saison))
+                                        <input type="hidden" name="hidden_saison" value="{{ $saison }}">
+                                    @endif
+                                    @if($errors->has('saison'))
+                                        <div class="form-control-feedback">{{ $errors->first('saison') }}</div>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="row form-group{{ $errors->has('equipe') ? ' has-danger' : '' }}">
                                 <label for="equipe" class="col-md-4 control-label">Nom de l'équipe *</label>
 

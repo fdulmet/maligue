@@ -9,6 +9,7 @@ use App\Notifications\AdminNewLigueCreated;
 use App\Notifications\AdminNewUserMail;
 use App\Http\Requests\RegisterLigueRequest;
 use App\Role;
+use App\Season;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -141,6 +142,22 @@ class LigueController extends Controller
 
   	// rattacher la ligue à l'équipe
   	$equipe->ligues()->attach([$ligue->id]);
+
+      // la saison existe on recupere la saison existante
+      if (!isset($inputs['saison']))
+      {
+          $saison = Season::where('nom', $inputs['hidden_saison'])->first();
+      }
+      // Créer la saison
+      else
+      {
+          $saison = Season::create([
+              'nom' => $inputs['saison'],
+          ]);
+      }
+
+      $saison->ligue()->associate($ligue);
+
 
   	// envoyer le mail de bienvenu
   	$user->sendWelcomeMail();
