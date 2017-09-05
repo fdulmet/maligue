@@ -90,8 +90,8 @@ class CalendrierHelper {
         return $statsCalendrier;
     }
 
-    public function lieu() {
-        $game = Game::find(1);
-        return $game->lieu;
+    public function lieu()
+    {
+        return 'UrbanSoccer la Défense';
     }
 }
