@@ -130,10 +130,10 @@ class LigueController extends Controller
       // envoi mail de creation
       // de nouvelle ligue
       // todo: refacto
-      $admin = User::find(2);
+      /*$admin = User::find(1);
       Notification::send($admin,
         new AdminNewLigueCreated($user->email, $ligue->nom)
-      );
+      );*/
     }
 
   	// rattacher la ligue à l'équipe
@@ -145,10 +145,10 @@ class LigueController extends Controller
   	// envoyer le mail
     // de création de compte
     // à l'admin
-  	$admin = User::find(2);
+  	/*$admin = User::find(2);
     Notification::send($admin,
       new AdminNewUserMail($user->email, $ligue->nom)
-    );
+    );*/
 
     // Message de l'appli
   	$request->session()->flash('welcome', 'Bienvenu sur maligue.fr - Un email de bienvenu vous a été envoyé');
