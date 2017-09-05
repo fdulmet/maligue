@@ -151,12 +151,12 @@ class LigueController extends Controller
       // Créer la saison
       else
       {
-          $saison = Season::create([
-              'nom' => $inputs['saison'],
-          ]);
+          $saison = new Season();
+          $saison->nom = $inputs['saison'];
       }
 
       $saison->ligue()->associate($ligue);
+      $saison->save();
 
 
   	// envoyer le mail de bienvenu
