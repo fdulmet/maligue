@@ -48,6 +48,11 @@ class HomeController extends Controller
 
             $request->session()->put('currentLigue', $ligue);
         }
+        else
+        {
+            $currentLigue  = $request->session()->get('currentLigue');
+            redirect('/' . $currentLigue->slug);
+        }
 
         $user = Auth::user();
 
