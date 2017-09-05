@@ -103,6 +103,7 @@ class LigueController extends Controller
     if (!isset($inputs['equipe']))
     {
       $equipe = Equipe::where('nom', $inputs['hidden_equipe'])->first();
+        $user->roles()->attach([Role::JOUEUR]);
     }
     // creer l'equipe
     else
@@ -111,9 +112,9 @@ class LigueController extends Controller
         'nom' => ucfirst($inputs['equipe']),
         'user_id' => $user->id
       ]);
+        $user->roles()->attach([Role::CAPITAINE]);
     }
 
-    $user->roles()->attach([Role::JOUEUR]);
 
   	// rattacher l'équipe au user
   	$user->equipes()->attach([$equipe->id]);

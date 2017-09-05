@@ -38,6 +38,17 @@ class HomeController extends Controller
             return view('auth.login');
         }
 
+        if ($request->has('ligue'))
+        {
+            $ligue = Ligue::where(['slug' => $request->get('ligue')])->first();
+            if (is_null($ligue))
+            {
+                redirect('/');
+            }
+
+            $request->session()->put('currentLigue', $ligue);
+        }
+
         $user = Auth::user();
 
         $diversHelper = new DiversHelper();

@@ -41,7 +41,10 @@ class UserWelcomeMail extends Notification
     {
         return (new MailMessage)
             ->subject('Bienvenue sur maligue.fr')
-            ->line('Texte de Bienvenu.');
+            ->line('Merci d\'avoir créé une nouvelle ligue sur maligue.fr !')
+            ->line('Tu peux désormais inviter des joueurs dans ton équipe et inviter tes amis à créer de nouvelles équipes.')
+            ->line('')
+            ->line('Nous te contacterons rapidement pour te proposer un calendrier des matchs.');
     }
 
     /**
