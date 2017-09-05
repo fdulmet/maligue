@@ -107,6 +107,6 @@ class LogSuccessfulLogin
             session(['currentSaison' => $currentSaison]);
         }
 
-        flash("Bienvenu {$user->prenom}")->success();
+        flash("Bienvenue {$user->prenom}")->success();
     }
 }

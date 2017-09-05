@@ -213,7 +213,7 @@ class MatchController extends Controller
             }
         }
 
-        flash('Merci d\'avoir rentrer le score du match.')->success();
+        flash('Merci d\'avoir rentré le score du match.')->success();
 
         return redirect()->action('HomeController@index');
     }
