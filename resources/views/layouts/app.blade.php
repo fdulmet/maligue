@@ -23,6 +23,12 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
     <script>window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?></script>
+    <meta property="og:image" content="/og-image.jpg">
+    <meta property="og:image:width" content="205">
+    <meta property="og:image:height" content="205">
+    <meta property="og:description" content="Everything you need to know about the topic you are looking for">
+    <meta property="og:title" content="Maligue.fr">
+    <meta property="og:url" content="http://www.maligue.fr">
 </head>
 <body>
     <div id="wrapper">
