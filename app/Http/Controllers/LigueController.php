@@ -8,6 +8,7 @@ use App\Ligue;
 use App\Notifications\AdminNewLigueCreated;
 use App\Notifications\AdminNewUserMail;
 use App\Http\Requests\RegisterLigueRequest;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -110,6 +111,8 @@ class LigueController extends Controller
         'user_id' => $user->id
       ]);
     }
+
+    $user->roles()->attach([Role::JOUEUR]);
 
   	// rattacher l'équipe au user
   	$user->equipes()->attach([$equipe->id]);
