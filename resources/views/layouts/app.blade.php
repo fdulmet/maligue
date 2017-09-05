@@ -26,8 +26,9 @@
     <meta property="og:image" content="/og-image.jpg">
     <meta property="og:image:width" content="205">
     <meta property="og:image:height" content="205">
-    <meta property="og:description" content="Everything you need to know about the topic you are looking for">
+    <meta property="og:description" content="">
     <meta property="og:title" content="Maligue.fr">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="http://www.maligue.fr">
 </head>
 <body>
