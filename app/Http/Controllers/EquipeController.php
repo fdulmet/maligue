@@ -80,6 +80,8 @@ class EquipeController extends Controller
 
         $equipe->delete();
 
+        $request->session()->put('currentEquipe', $equipe);
+
         flash('L\'équipe a bien été désactivée.')->success();
 
         return redirect()->action('HomeController@index');
@@ -117,6 +119,8 @@ class EquipeController extends Controller
             throw new InternalErrorException('Unable to update the team.');
         }
 
+        $request->session()->put('currentEquipe', $equipe);
+
         $lastCapitaine->roles()->detach(Role::CAPITAINE);
         $joueur->roles()->attach(Role::CAPITAINE);
 
@@ -145,6 +149,8 @@ class EquipeController extends Controller
         {
             throw new InternalErrorException('Unable to update the team.');
         }
+
+        $request->session()->put('currentEquipe', $equipe);
 
         flash('Le nom de l\'équipe a bien été modifié.')->success();
 
