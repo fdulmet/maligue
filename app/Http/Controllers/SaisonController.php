@@ -88,7 +88,7 @@ class SaisonController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $user = Auth::user();
 
@@ -99,10 +99,21 @@ class SaisonController extends Controller
             return redirect()->action('HomeController@index');
         }
 
+        $currentEquipe = $request->session()->get('currentEquipe');
+        $currentLigue  = $request->session()->get('currentLigue');
+        $currentSaison = $request->session()->get('currentSaison');
+
+        $saisons = Season::all()->sortByDesc('date_start');
         $ligues = Ligue::pluck('nom', 'id');
 
         return view('saisons/create')->with([
+            'currentSaison' => $currentSaison,
+            'currentLigue' => $currentLigue,
+            'saisons' => $saisons,
             'ligues' => $ligues,
+            'nomAuthLigue' => $currentLigue->nom,
+            'currentEquipe' => $currentEquipe,
+            'saisonEnCoursId' => $currentSaison->id,
         ]);
     }
 
@@ -114,11 +125,6 @@ class SaisonController extends Controller
             'date_start' => Carbon::parse($request->input('date_start')),
             'date_end' => Carbon::parse($request->input('date_end')),
         ]);
-
-        if (!$saison->save())
-        {
-            throw new InternalErrorException('Une erreur s\'est produite, impossible de créer la nouvelle saison.');
-        }
 
         return redirect()->action('SaisonController@index');
     }
