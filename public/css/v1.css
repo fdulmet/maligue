@@ -100,6 +100,10 @@ html, body {
   margin-top: 1.6rem;
 }
 
+#espace_equipe .equipe-profil h4 {
+  display: inline-block;
+}
+
 #espace_equipe .equipe-profil .team-name {
   margin-top: .9rem;
   font-weight: bold;
@@ -107,18 +111,23 @@ html, body {
 }
 
 #espace_equipe .equipe-profil .btn-group {
-  margin-left: -0.3rem;
+  margin-left: .3rem;
   margin-bottom: .3rem;
+  margin-top: .3rem;
 }
 
 #espace_equipe .equipe-buttons {
-  text-align: right;
+  margin-top: .5rem;
 }
 
 #espace_equipe .equipe-buttons .btn {
   min-width: 10rem;
   margin-bottom: .25rem;
   font-size: .8rem;
+}
+
+#espace_equipe .equipe-buttons .btn.btn-dropdown-green {
+  font-size: 1.2rem;
 }
 
 #espace_equipe .list-players .list-group-item:first-child {
@@ -151,28 +160,28 @@ html, body {
 
 .prochainMatch tr td:nth-of-type(1),
 .dernierMatch tr td:nth-of-type(1) {
-  width: 5rem;
+  width: 8rem;
 }
 
 .prochainMatch tr td:nth-of-type(2),
 .dernierMatch tr td:nth-of-type(2) {
-  width: 3.5rem;
+  min-width: 6rem;
+  text-align: right;
 }
 
 .prochainMatch tr td:nth-of-type(3),
 .dernierMatch tr td:nth-of-type(3) {
-  width: 6rem;
-  text-align: right;
+  width: 2rem;
 }
 
-.prochainMatch tr td.tdChampsButs,
-.dernierMatch tr td.tdChampsButs {
+.prochainMatch tr td:nth-of-type(4),
+.dernierMatch tr td:nth-of-type(4) {
   width: 1rem;
 }
 
 .prochainMatch tr td:nth-of-type(5),
 .dernierMatch tr td:nth-of-type(5) {
-  width: .5rem;
+  width: 2rem;
 }
 
 .prochainMatch tr td:last-child,
@@ -344,8 +353,9 @@ h2 {
   max-width: 4rem;
 }
 
-.header-saison .buttons > .row > .col {
-  text-align: right;
+.header-saison .buttons {
+  margin-top: -.2rem;
+  margin-left: 4rem;
 }
 
 .header-saison .buttons a, .header-saison .buttons button {
@@ -480,6 +490,32 @@ h2 {
 #espace_ligue .calendrier #trChaqueMatch td {
   padding: 10px 5px 10px 5px;
   background-color: #fff;
+}
+
+#espace_ligue .calendrier #trChaqueMatch td:nth-of-type(1) {
+  width: 8rem;
+}
+
+#espace_ligue .calendrier #trChaqueMatch td:nth-of-type(2) {
+  min-width: 6rem;
+  text-align: right;
+}
+
+#espace_ligue .calendrier #trChaqueMatch td:nth-of-type(3) {
+  width: 1rem;
+}
+
+#espace_ligue .calendrier #trChaqueMatch td:nth-of-type(4) {
+  width: .5rem;
+}
+
+#espace_ligue .calendrier #trChaqueMatch td:nth-of-type(5) {
+  width: 1rem;
+}
+
+#espace_ligue .calendrier #trChaqueMatch td:last-child {
+  width: 6rem;
+  text-align: left;
 }
 
 #espace_ligue .calendrier #trChaqueMatch #equipe1 {

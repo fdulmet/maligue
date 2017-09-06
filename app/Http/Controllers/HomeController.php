@@ -62,8 +62,6 @@ class HomeController extends Controller
             }
         }
 
-
-
         $user = Auth::user();
 
         $diversHelper = new DiversHelper();

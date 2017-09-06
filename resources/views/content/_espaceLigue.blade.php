@@ -1,5 +1,5 @@
 <div class="row header-saison">
-    <div class="col-md-7">
+    <div class="col-md-12">
         <h1>
             @if($currentLigue->logo)
                 <img src="{{ url($currentLigue->logo) }}" alt="logo_ligue">
@@ -39,10 +39,6 @@
                     Effectifs équipes
                 </button>
 
-                @if(Auth::user()->isAdmin() || Auth::user()->isAdminLigue())
-                    {!! link_to_route('saison.index', 'Saisons', [], ['class' => 'btn btn-green']) !!}
-                @endif
-
                 <!--
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#reglesReports">
                     Règlement ligue
@@ -54,6 +50,10 @@
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#reglesReports">
                     Règlement pour les reports
                 </button>
+
+                @if(Auth::user()->isAdmin() || Auth::user()->isAdminLigue())
+                    {!! link_to_route('saison.index', 'Saisons', [], ['class' => 'btn btn-green']) !!}
+                @endif
 
                 @if(Auth::user()->isAdmin() || Auth::user()->isAdminLigue())
                     {!! link_to_route('matchs.index', 'Matchs', [], ['class' => 'btn btn-green']) !!}

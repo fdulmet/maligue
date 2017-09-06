@@ -33,29 +33,17 @@
                 -->
 
                 @if(isset($statCalendrier['lieu_report']))
-                        <br>
-                    <span class="badge badge-warning">{{ $statCalendrier['lieu_report'] }}</span>
+                    <!--<br>
+                    <span class="badge badge-warning">{{ $statCalendrier['lieu_report'] }}</span>-->
                 @endif
             </td>
             <td id="equipe1">{{ str_limit($statCalendrier['equipe_1'], 20, '...') }}</td>
             <td>
-                @if($statCalendrier['buts_1'] > $statCalendrier['buts_2'])
-                    <span class="badge badge-lg badge-success">{{ $statCalendrier['buts_1'] }}</span>
-                @elseif($statCalendrier['buts_1'] < $statCalendrier['buts_2'])
-                    <span class="badge badge-lg badge-danger">{{ $statCalendrier['buts_1'] }}</span>
-                @else
-                    <span class="badge badge-lg badge-default">{{ $statCalendrier['buts_1'] }}</span>
-                @endif
+                {{ $statCalendrier['buts_1'] }}
             </td>
             <td>-</td>
             <td>
-                @if($statCalendrier['buts_2'] > $statCalendrier['buts_1'])
-                    <span class="badge badge-lg badge-success">{{ $statCalendrier['buts_2'] }}</span>
-                @elseif($statCalendrier['buts_2'] < $statCalendrier['buts_1'])
-                    <span class="badge badge-lg badge-danger">{{ $statCalendrier['buts_2'] }}</span>
-                @else
-                    <span class="badge badge-lg badge-default">{{ $statCalendrier['buts_2'] }}</span>
-                @endif
+                {{ $statCalendrier['buts_2'] }}
             </td>
             <td id="equipe2">{{ str_limit($statCalendrier['equipe_2'], 20, '...') }}</td>
         </tr>

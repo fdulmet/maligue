@@ -23,8 +23,8 @@
                             -->
 
                         @if(isset($statCalendrier['lieu_report']))
-                            <br>
-                            <span class="badge badge-warning">{{ $statCalendrier['lieu_report'] }}</span>
+                            <!--<br>
+                            <span class="badge badge-warning">{{ $statCalendrier['lieu_report'] }}</span>-->
                         @endif
                     </td>
                     <td>{{ $statCalendrier['equipe_1'] }}</td>

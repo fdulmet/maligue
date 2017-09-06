@@ -130,7 +130,7 @@ Route::prefix('invitation')
             ->name('inviterAmiACreerEquipe');
     });
 
-Route::get('/{ligue}', 'HomeController@index')->name('currentLigue');
+Route::get('/{ligue?}', 'HomeController@index')->name('currentLigue');
 
 /*Route::post('', function() {
     Mail::to('lolo@gmail.com')->send(new InviterAmisDansEquipe);

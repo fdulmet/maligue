@@ -1,79 +1,73 @@
 
 @if(!$myTeams->isEmpty())
-<div class="row equipe-profil">
-    <div class="col-md-4">
-        <div class="row">
-            <div class="col">
-            @if($user->equipes()->count() > 1)
-                <h4>
-                    <div class="dropdown dropdown-equipe">
-                        <a class="btn btn-secondary btn-dropdown-green dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ $currentEquipe->nom }}
-                        </a>
+<div class="row equipe-profil no-gutters">
+    <div class="artist-collage col-md-2">
+        @if(!$logoAuthEquipe)
+            <p><br><a href="#" class="btn btn-oragen" data-toggle="modal" data-target="#updateTeamLogo">Ajouter logo</a></p>
+        @else
+            <img src="{{ url($logoAuthEquipe) }}" alt="logo_equipe">
+        @endif
+    </div>
+    <div class="col-md-10">
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <div class="row no-gutters">
+            <div class="col">
+                @if($user->equipes()->count() > 1)
+                    <h4>
+                        <div class="dropdown dropdown-equipe">
+                            <a class="btn btn-secondary btn-dropdown-green dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ $currentEquipe->nom }}
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                @if($user->isAdmin() || $user->isAdminLigue())
+                                    @foreach($currentLigue->equipes()->get() as $equipe)
+                                        <a class="dropdown-item" href="{{ route('switchTeam', ['equipeId' => $equipe->id]) }}">{{ $equipe->nom }}</a>
+                                    @endforeach
+                                @else
+                                    @foreach($user->equipes()->get() as $equipe)
+                                        <a class="dropdown-item" href="{{ route('switchTeam', ['equipeId' => $equipe->id]) }}">{{ $equipe->nom }}</a>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </h4>
+                @else
+                    <h4 class="team-name">{{ $currentEquipe->nom }}</h4>
+                @endif
+
+                @if($user->isAdmin() || $user->isAdminLigue() || $user->isCapitaine())
+                    <div class="btn-group btn-group-sm" role="group">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-green" title="Modifier nom de l'équipe" rel="tooltip" data-toggle="modal" data-target="#updateTeamName"><i class="fa fa-edit"></i></button>
                             @if($user->isAdmin() || $user->isAdminLigue())
-                                @foreach($currentLigue->equipes()->get() as $equipe)
-                                    <a class="dropdown-item" href="{{ route('switchTeam', ['equipeId' => $equipe->id]) }}">{{ $equipe->nom }}</a>
-                                @endforeach
-                            @else
-                                @foreach($user->equipes()->get() as $equipe)
-                                    <a class="dropdown-item" href="{{ route('switchTeam', ['equipeId' => $equipe->id]) }}">{{ $equipe->nom }}</a>
-                                @endforeach
+                                <button type="button" class="btn btn-green" title="Désactiver l'équipe" rel="tooltip" data-toggle="modal" data-target="#deactivateEquipe{{ $currentEquipe->id }}"><i class="fa fa-ban" title="Désactiver l'équipe"></i></button>
+                                <button type="button" class="btn btn-green" title="Ajouter un joueur" rel="tooltip" data-toggle="modal" data-target="#addPlayer{{ $currentEquipe->id }}"><i class="fa fa-plus" title="Ajouter un joueur"></i></button>
+                            @endif
+                            @if($logoAuthEquipe)
+                                <button type="button" class="btn btn-green" title="Changer logo" rel="tooltip" data-toggle="modal" data-target="#updateTeamLogo"><i class="fa fa-picture-o" title="Changer logo"></i></button>
                             @endif
                         </div>
                     </div>
-                </h4>
-            @else
-                <h4 class="team-name">{{ $currentEquipe->nom }}</h4>
-            @endif
+                @endif
             </div>
         </div>
 
-        @if($user->isAdmin() || $user->isAdminLigue() || $user->isCapitaine())
-        <div class="row">
-            <div class="col">
-                <div class="btn-group btn-group-sm" role="group">
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-green" title="Modifier nom de l'équipe" rel="tooltip" data-toggle="modal" data-target="#updateTeamName"><i class="fa fa-edit"></i></button>
-                        @if($user->isAdmin() || $user->isAdminLigue())
-                            <button type="button" class="btn btn-green" title="Désactiver l'équipe" rel="tooltip" data-toggle="modal" data-target="#deactivateEquipe{{ $currentEquipe->id }}"><i class="fa fa-ban" title="Désactiver l'équipe"></i></button>
-                            <button type="button" class="btn btn-green" title="Ajouter un joueur" rel="tooltip" data-toggle="modal" data-target="#addPlayer{{ $currentEquipe->id }}"><i class="fa fa-plus" title="Ajouter un joueur"></i></button>
-                        @endif
-                        @if($logoAuthEquipe)
-                            <button type="button" class="btn btn-green" title="Changer logo" rel="tooltip" data-toggle="modal" data-target="#updateTeamLogo"><i class="fa fa-picture-o" title="Changer logo"></i></button>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif
 
-        <div class="artist-collage col">
-            @if(!$logoAuthEquipe)
-                <p><br><a href="#" class="btn btn-oragen" data-toggle="modal" data-target="#updateTeamLogo">Ajouter logo</a></p>
-            @else
-                <img src="{{ url($logoAuthEquipe) }}" alt="logo_equipe">
-            @endif
-        </div>
-    </div>
-    <div class="col equipe-buttons">
         <!--Bouton inviter des amis-->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 equipe-buttons">
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisRejoindre" id="bouton_invitation_rejoindre">
                     Inviter à rejoindre {{ $currentEquipe->nom }}
                 </button>
-                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisCreer" id="bouton_invitation_creer">
-                    Inviter à créer une équipe
-                </button>
-                <br>
-                <br>
                 @if($user->isAdmin() || $user->isAdminLigue() || $user->isCapitaine())
                     <button type="button" class="btn btn-green" data-toggle="modal" data-target="#updateCapitaine" id="bouton_updateCapitaine">
                         Modifier le capitaine
                     </button>
                 @endif
+                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisCreer" id="bouton_invitation_creer">
+                    Inviter à créer une équipe
+                </button>
                 <!--
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#createNewTeam" id="bouton_createNewTeam">
                     Créer une nouvelle équipe
@@ -150,7 +144,7 @@
         <strong class="color-green">Prochains matchs :</strong>
         <br>
         <br>
-        <div class="scrollbar" id="style-4" style="max-height: 4rem; overflow: auto;">
+        <div class="scrollbar" id="style-4" style="max-height: 6rem; overflow: auto;">
             <div class="force-overflow"></div>
             @include('content._prochainMatch')
         </div>

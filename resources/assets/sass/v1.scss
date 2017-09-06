@@ -111,6 +111,10 @@ html, body {
   .equipe-profil {
     margin-top: 1.6rem;
 
+    h4 {
+      display: inline-block;
+    }
+
     .team-name {
       margin-top: .9rem;
       font-weight: bold;
@@ -118,18 +122,23 @@ html, body {
     }
 
     .btn-group {
-      margin-left: -0.3rem;
+      margin-left: .3rem;
       margin-bottom: .3rem;
+      margin-top: .3rem;
     }
   }
 
   .equipe-buttons {
-    text-align: right;
+    margin-top: .5rem;
 
     .btn {
       min-width: 10rem;
       margin-bottom: .25rem;
       font-size: .8rem;
+
+      &.btn-dropdown-green {
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -166,11 +175,11 @@ html, body {
 
   tr {
     td {
-      &:nth-of-type(1) { width: 5rem; }
-      &:nth-of-type(2) { width: 3.5rem; }
-      &:nth-of-type(3) { width: 6rem; text-align: right; }
-      &.tdChampsButs { width: 1rem; }
-      &:nth-of-type(5) { width: .5rem; }
+      &:nth-of-type(1) { width: 8rem; }
+      &:nth-of-type(2) { min-width: 6rem; text-align: right; }
+      &:nth-of-type(3) { width: 2rem; }
+      &:nth-of-type(4) { width: 1rem; }
+      &:nth-of-type(5) { width: 2rem; }
       &:last-child { width: 6rem; text-align: left; }
     }
   }
@@ -338,10 +347,8 @@ h2 {
   }
 
   .buttons {
-
-    > .row > .col {
-      text-align: right;
-    }
+    margin-top: -.2rem;
+    margin-left: 4rem;
 
     a, button {
       margin-left: .25rem;
@@ -479,6 +486,13 @@ h2 {
       td {
         padding: 10px 5px 10px 5px;
         background-color: #fff;
+
+        &:nth-of-type(1) { width: 8rem; }
+        &:nth-of-type(2) { min-width: 6rem; text-align: right; }
+        &:nth-of-type(3) { width: 1rem; }
+        &:nth-of-type(4) { width: .5rem; }
+        &:nth-of-type(5) { width: 1rem; }
+        &:last-child { width: 6rem; text-align: left; }
       }
       #equipe1{
         text-align: right;

@@ -85,7 +85,6 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-green" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-orange btn-block">Mettre à jour</button>
                 </div>
             </div>

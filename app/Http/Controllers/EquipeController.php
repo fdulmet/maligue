@@ -187,6 +187,8 @@ class EquipeController extends Controller
             throw new InternalErrorException('Unable to update the team.');
         }
 
+        $request->session()->put('currentEquipe', $equipe);
+
         flash('Le logo de l\'équipe a bien été modifié.')->success();
 
         return redirect()->action('HomeController@index');
