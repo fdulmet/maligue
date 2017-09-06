@@ -3131,10 +3131,8 @@ html, body {
 }
 
 .logoEquipe img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 0, 30, 0.8);
+  width: 64px;
+  height: 64px;
   overflow: hidden;
 }
 
