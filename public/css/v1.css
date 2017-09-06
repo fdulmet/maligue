@@ -102,6 +102,7 @@ html, body {
 
 #espace_equipe .equipe-profil h4 {
   display: inline-block;
+  margin-left: 1rem;
 }
 
 #espace_equipe .equipe-profil .team-name {
@@ -118,6 +119,7 @@ html, body {
 
 #espace_equipe .equipe-buttons {
   margin-top: .5rem;
+  margin-left: 1rem;
 }
 
 #espace_equipe .equipe-buttons .btn {
