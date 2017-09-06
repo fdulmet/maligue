@@ -62,51 +62,19 @@ class SaisonController extends Controller
             return redirect()->action('HomeController@index');
         }
 
+        $currentEquipe = $request->session()->get('currentEquipe');
+        $currentLigue  = $request->session()->get('currentLigue');
+        $currentSaison = $request->session()->get('currentSaison');
+
         $bannerHelper = new BannerHelper();
 
         $saisons = Season::all()->sortByDesc('date_start');
-        $saisonEnCoursId = $request->input('saison');
 
-        if (!is_null($saisonEnCoursId))
-        {
-            $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
-            $request->session()->put('saison', $saisonEnCoursId);
-        }
-        elseif ($request->session()->exists('saison'))
-        {
-            $currentSaison = Season::where(['id' => intval($request->session()->get('saison'))])->first();
-        }
-        else
-        {
-            $currentSaison = $saisons->first();
-            $saisonEnCoursId = $currentSaison->id;
-        }
-
-        if ($request->session()->exists('equipe'))
-        {
-            $currentEquipeId = intval(session('equipe'));
-        }
 
         $ligues = Ligue::pluck('nom', 'id');
-        $currentLigue = Ligue::where(['id' => $currentSaison->ligue_id])->first();
 
         $equipes = $currentLigue->equipes()->get();
 
-        if (is_null($currentEquipeId))
-        {
-            $currentEquipe = $equipes->first();
-        }
-        else
-        {
-            $currentEquipe = Equipe::where(['id' => $currentEquipeId])->first();
-        }
-
-        $currentSaison = Season::where(['id' => $saisonEnCoursId])->first();
-
-        if (is_null($currentSaison))
-        {
-            $currentSaison = Season::all()->first();
-        }
 
         return view('saisons/index')->with([
             'currentSaison' => $currentSaison,
@@ -115,7 +83,7 @@ class SaisonController extends Controller
             'ligues' => $ligues,
             'nomAuthLigue' => $currentLigue->nom,
             'currentEquipe' => $currentEquipe,
-            'saisonEnCoursId' => $saisonEnCoursId,
+            'saisonEnCoursId' => $currentSaison->id,
             'anneeDuDernierMatchProgramme' => $bannerHelper->annee(),//si table games dans ordre chronologique
         ]);
     }
