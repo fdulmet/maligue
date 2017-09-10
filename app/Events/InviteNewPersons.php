@@ -51,7 +51,7 @@ class InviteNewPersons
 
         // Calendrier
         $this->game = Game::find(1);
-        $this->lieu = $this->game->lieu;
+        $this->lieu = 'UrbanSoccer la Défense';
     }
 
     /**
