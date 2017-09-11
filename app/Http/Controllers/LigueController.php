@@ -43,9 +43,9 @@ class LigueController extends Controller
       $ligue = null;
       $equipe = null;
 
-      if ($request->has('ligue_slug'))
+      if ($request->has('ligue'))
       {
-          $ligue = Ligue::findBySlug($request->get('ligue_slug'));
+          $ligue = Ligue::findBySlug($request->get('ligue'));
 
           if (!$ligue)
           {
@@ -59,9 +59,9 @@ class LigueController extends Controller
           return redirect('/');
       }
 
-      if ($request->has('equipe_slug'))
+      if ($request->has('equipe'))
       {
-          $equipe = Equipe::findBySlug($request->get('equipe_slug'));
+          $equipe = Equipe::findBySlug($request->get('equipe'));
 
           if (!$equipe)
           {
