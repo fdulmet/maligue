@@ -8,7 +8,6 @@
     <div class="container reset-password">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <?php dd($ligue); ?>
                 <div class="card">
                     <div class="card-header">
                         Inscription
@@ -51,9 +50,9 @@
                                 <label for="ligue" class="col-md-4 control-label">Nom de la ligue *</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="ligue" placeholder="" required @if(isset($ligue)) value="{{ $ligue }}" disabled @endif>
+                                    <input type="text" class="form-control" name="ligue" placeholder="" required @if(isset($ligue)) value="{{ $ligue->nom }}" disabled @endif>
                                     @if(isset($ligue))
-                                        <input type="hidden" name="hidden_ligue" value="{{ $ligue }}">
+                                        <input type="hidden" name="hidden_ligue" value="{{ $ligue->id }}">
                                     @endif
                                     @if($errors->has('ligue'))
                                         <div class="form-control-feedback">{{ $errors->first('ligue') }}</div>
@@ -65,9 +64,9 @@
                                 <label for="saison" class="col-md-4 control-label">Nom de la saison *</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="saison" placeholder="" required @if(isset($saison)) value="{{ $saison }}" disabled @endif>
+                                    <input type="text" class="form-control" name="saison" placeholder="" required @if(isset($saison)) value="{{ $saison->nom }}" disabled @endif>
                                     @if(isset($saison))
-                                        <input type="hidden" name="hidden_saison" value="{{ $saison }}">
+                                        <input type="hidden" name="hidden_saison" value="{{ $saison->id }}">
                                     @endif
                                     @if($errors->has('saison'))
                                         <div class="form-control-feedback">{{ $errors->first('saison') }}</div>
@@ -79,9 +78,9 @@
                                 <label for="equipe" class="col-md-4 control-label">Nom de l'équipe *</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="equipe" placeholder="" required @if(isset($equipe)) value="{{ $equipe }}" disabled @endif>
+                                    <input type="text" class="form-control" name="equipe" placeholder="" required @if(isset($equipe)) value="{{ $equipe->nom }}" disabled @endif>
                                     @if(isset($equipe))
-                                        <input type="hidden" name="hidden_equipe" value="{{ $equipe }}">
+                                        <input type="hidden" name="hidden_equipe" value="{{ $equipe->id }}">
                                     @endif
                                     @if($errors->has('equipe'))
                                         <div class="form-control-feedback">{{ $errors->first('equipe') }}</div>

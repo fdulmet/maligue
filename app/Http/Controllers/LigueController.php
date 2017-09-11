@@ -135,9 +135,9 @@ class LigueController extends Controller
     }
 
   	// l equipe existe on recupere l'equipe existante
-    if (!isset($inputs['equipe']))
+    if (isset($inputs['hidden_equipe']))
     {
-      $equipe = Equipe::where('nom', $inputs['hidden_equipe'])->first();
+      $equipe = Equipe::where('id', $inputs['hidden_equipe'])->first();
         $user->roles()->attach([Role::JOUEUR]);
     }
     // creer l'equipe
@@ -155,9 +155,9 @@ class LigueController extends Controller
   	$user->equipes()->attach([$equipe->id]);
 
   	// la ligue existe on recupere la ligue existante
-    if (!isset($inputs['ligue']))
+    if (isset($inputs['hidden_ligue']))
     {
-      $ligue = Ligue::where('nom', $inputs['hidden_ligue'])->first();
+      $ligue = Ligue::where('id', $inputs['hidden_ligue'])->first();
     }
     // Créer la ligue
     else
@@ -180,9 +180,9 @@ class LigueController extends Controller
   	$equipe->ligues()->attach([$ligue->id]);
 
       // la saison existe on recupere la saison existante
-      if (!isset($inputs['saison']))
+      if (isset($inputs['hidden_saison']))
       {
-          $saison = Season::where('nom', $inputs['hidden_saison'])->first();
+          $saison = Season::where('id', $inputs['hidden_saison'])->first();
       }
       // Créer la saison
       else
