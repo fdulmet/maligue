@@ -45,7 +45,7 @@ class LigueController extends Controller
 
       if ($request->has('ligue'))
       {
-          $ligue = Ligue::findBySlug($request->get('ligue'));
+          $ligue = Ligue::where(['slug' => $request->get('ligue')])->first();
 
           if (!$ligue)
           {
@@ -61,7 +61,7 @@ class LigueController extends Controller
 
       if ($request->has('equipe') && !empty($request->get('equipe')))
       {
-          $equipe = Equipe::findBySlug($request->get('equipe'));
+          $equipe = Equipe::where(['slug' => $request->get('equipe')])->first();
 
           if (!$equipe)
           {
