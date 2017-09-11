@@ -59,7 +59,7 @@ class LigueController extends Controller
           return redirect('/');
       }
 
-      if ($request->has('equipe'))
+      if ($request->has('equipe') && !empty($request->get('equipe')))
       {
           $equipe = Equipe::findBySlug($request->get('equipe'));
 
