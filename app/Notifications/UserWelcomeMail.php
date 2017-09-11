@@ -43,9 +43,9 @@ class UserWelcomeMail extends Notification
             ->subject('Bienvenue sur maligue.fr')
             ->line('Merci d\'avoir créé une nouvelle ligue sur maligue.fr !')
             ->line('Tu peux désormais inviter des joueurs dans ton équipe et inviter tes amis à créer de nouvelles équipes.')
-            ->line('<br>')
+            ->line('')
             ->line('Nous te contacterons rapidement pour te proposer un calendrier des matchs.')
-            ->line('<a href="http://maligue.fr">maligue.fr</a>');
+            ->line('maligue.fr');
     }
 
     /**
