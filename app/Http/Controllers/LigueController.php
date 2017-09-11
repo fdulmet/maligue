@@ -40,6 +40,9 @@ class LigueController extends Controller
    */
   public function ajouter(Request $request)
   {
+      dd($request->all());
+
+
     return view('ligue.ajouter', $request->all());
   }
 
