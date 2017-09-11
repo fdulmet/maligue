@@ -177,7 +177,10 @@ class LigueController extends Controller
     }
 
   	// rattacher la ligue à l'équipe
-  	$equipe->ligues()->attach([$ligue->id]);
+      if (!$equipe->ligues->contains($ligue->id))
+      {
+          $equipe->ligues()->attach([$ligue->id]);
+      }
 
       // la saison existe on recupere la saison existante
       if (isset($inputs['hidden_saison']))
