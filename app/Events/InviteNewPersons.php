@@ -24,6 +24,8 @@ class InviteNewPersons
     public $ligue;
     public $equipe;
     public $sport;
+    public $ligue_slug;
+    public $equipe_slug;
     public $game;
     public $lieu;
     public $invitationType;
@@ -48,6 +50,9 @@ class InviteNewPersons
         $currentLigue = $data['currentLigue'];
         $this->ligue = $currentLigue->nom;
         $this->sport = $currentLigue->sport;
+
+        $this->ligue_slug = $currentLigue->slug;
+        $this->equipe_slug = $currentEquipe->slug;
 
         // Calendrier
         $this->game = Game::find(1);

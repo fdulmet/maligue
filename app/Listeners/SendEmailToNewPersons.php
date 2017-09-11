@@ -62,7 +62,9 @@ class SendEmailToNewPersons
                     $event->currentUser->nom,
                     $event->equipe,
                     $event->ligue,
-                    $event->sport
+                    $event->sport,
+                    $event->equipe_slug,
+                    $event->ligue_slug
                 )
             );
         }

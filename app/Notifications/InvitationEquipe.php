@@ -24,7 +24,9 @@ class InvitationEquipe extends Notification
         $inviteurNom,
         $equipe,
         $ligue,
-        $sport
+        $sport,
+        $equipe_slug,
+        $ligue_slug
     ) {
         $this->mailDatas = [
             'invitationType' => $invitationType,
@@ -32,7 +34,9 @@ class InvitationEquipe extends Notification
             'inviteurNom' => $inviteurNom,
             'equipe' => $equipe,
             'ligue' => $ligue,
-            'sport' => $sport
+            'sport' => $sport,
+            'equipe_slug' => $equipe_slug,
+            'ligue_slug' => $ligue_slug,
         ];
     }
 
@@ -64,7 +68,7 @@ class InvitationEquipe extends Notification
                     ->line($this->mailDatas['inviteurPrenom'] . ' ' . $this->mailDatas['inviteurNom'] . ' vous invite à créer une nouvelle équipe.')
                     ->line('Ligue : ' . $this->mailDatas['ligue'])
                     ->line('Sport : ' . $this->mailDatas['sport'])
-                    ->action('Créer une nouvelle équipe', url('/rejoindre?ligue=' . $this->mailDatas['ligue']));
+                    ->action('Créer une nouvelle équipe', url('/rejoindre?ligue=' . $this->mailDatas['ligue_slug']));
                 break;
 
             // Rejoindre une equipe
@@ -75,7 +79,7 @@ class InvitationEquipe extends Notification
                     ->line('Ligue : ' . $this->mailDatas['ligue'])
                     ->line('Equipe : ' . $this->mailDatas['equipe'])
                     ->line('Sport : ' . $this->mailDatas['sport'])
-                    ->action('Rejoindre l\'équipe', url('/rejoindre?ligue=' . $this->mailDatas['ligue'] . '&equipe='. $this->mailDatas['equipe']));
+                    ->action('Rejoindre l\'équipe', url('/rejoindre?ligue=' . $this->mailDatas['ligue_slug'] . '&equipe='. $this->mailDatas['equipe_slug']));
                 break;
 
             default:

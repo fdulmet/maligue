@@ -8,6 +8,7 @@
     <div class="container reset-password">
         <div class="row">
             <div class="col-md-8 offset-md-2">
+                <?php dd($ligue); ?>
                 <div class="card">
                     <div class="card-header">
                         Inscription

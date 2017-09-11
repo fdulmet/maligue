@@ -40,10 +40,42 @@ class LigueController extends Controller
    */
   public function ajouter(Request $request)
   {
-      dd($request->all());
+      $ligue = null;
+      $equipe = null;
 
+      if ($request->has('ligue_slug'))
+      {
+          $ligue = Ligue::findBySlug($request->get('ligue_slug'));
 
-    return view('ligue.ajouter', $request->all());
+          if (!$ligue)
+          {
+              throw new ModelNotFoundException('Ligue not found.');
+          }
+      }
+      else
+      {
+          flash('La ligue dans laquelle un utilisateur vous a ajouté n\'existe pas.')->error();
+
+          return redirect('/');
+      }
+
+      if ($request->has('equipe_slug'))
+      {
+          $equipe = Equipe::findBySlug($request->get('equipe_slug'));
+
+          if (!$equipe)
+          {
+              throw new ModelNotFoundException('Equipe not found.');
+          }
+      }
+
+      $saison = $ligue->seasons()->first();
+
+      return view('ligue.ajouter', [
+          'ligue'  => $ligue,
+          'equipe' => $equipe,
+          'saison' => $saison,
+      ]);
   }
 
   /**
