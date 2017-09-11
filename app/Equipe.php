@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * @mixin \Eloquent
@@ -11,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Equipe extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasSlug;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +21,7 @@ class Equipe extends Model
      * @var array
      */
     protected $fillable = [
-        'nom', 'user_id', 'logo'
+        'nom', 'slug', 'user_id', 'logo'
     ];
 
     /**
@@ -28,6 +30,16 @@ class Equipe extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions()
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('nom')
+            ->saveSlugsTo('slug');
+    }
 
     // Plusieurs users peuvent appartenir à une équipe.
     public function users()
