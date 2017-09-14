@@ -19,13 +19,32 @@ class CalendrierHelper {
         $currentSaison = session('currentSaison');
 
         $games = Game::where(['ligue_id' => $currentLigue->id, 'season_id' => $currentSaison->id])->get()->sort(function($a, $b) {
-            if($a->date === $b->date) {
-                if($a->heure === $b->heure) {
+
+            $aDate = $a->date;
+            $aHeure = $a->heure;
+
+            $bDate = $b->date;
+            $bHeure = $b->heure;
+
+            if (!is_null($a->date_report) && !is_null($a->heure_report))
+            {
+                $aDate = $a->date_report;
+                $aHeure= $a->heure_report;
+            }
+
+            if (!is_null($b->date_report) && !is_null($b->heure_report))
+            {
+                $bDate = $b->date_report;
+                $bHeure= $b->heure_report;
+            }
+
+            if($aDate === $bDate) {
+                if($aHeure === $bHeure) {
                     return 0;
                 }
-                return $a->heure < $b->heure ? -1 : 1;
+                return $aHeure < $bHeure ? -1 : 1;
             }
-            return $a->date < $b->date ? -1 : 1;
+            return $aDate < $bDate ? -1 : 1;
         });
 
         $statsCalendrier = [];// Array of games statistics
