@@ -182,13 +182,13 @@ class MatchController extends Controller
             $game->heure_report = Carbon::parse($request->input('date_report'))->format('H:i:s');
         }
 
-        $game->equipes()->attach($request->input('equipe1'));
-        $game->equipes()->attach($request->input('equipe2'));
-
         if (!$game->save())
         {
             throw new InternalErrorException('Une erreur s\'est produite, impossible de créer le match.');
         }
+
+        $game->equipes()->attach($request->input('equipe1'));
+        $game->equipes()->attach($request->input('equipe2'));
 
         return redirect()->action('MatchController@index');
     }
