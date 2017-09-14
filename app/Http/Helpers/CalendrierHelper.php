@@ -92,6 +92,6 @@ class CalendrierHelper {
 
     public function lieu()
     {
-        return 'UrbanSoccer la Défense';
+        return ' Le Five Paris La Chapelle';
     }
 }
