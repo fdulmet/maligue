@@ -23,5 +23,4 @@
 
 @section('modals')
     @include('modals.contact.vueContact')
-    @include('modals.profilJoueur.vueProfilJoueur')
 @endsection
