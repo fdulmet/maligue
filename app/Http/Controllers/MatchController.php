@@ -151,6 +151,8 @@ class MatchController extends Controller
 
     public function store(CreerMatchRequest $request)
     {
+        $edit = false;
+
         if ($request->has('matchId'))
         {
             $game = Game::find(intval($request->get('matchId')));
@@ -159,6 +161,8 @@ class MatchController extends Controller
             {
                 throw new ModelNotFoundException('Game not found.');
             }
+
+            $edit = true;
         }
         else
         {
@@ -185,6 +189,11 @@ class MatchController extends Controller
         if (!$game->save())
         {
             throw new InternalErrorException('Une erreur s\'est produite, impossible de créer le match.');
+        }
+
+        if ($edit === true)
+        {
+            $game->equipes()->sync([]);
         }
 
         $game->equipes()->attach($request->input('equipe1'));
