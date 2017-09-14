@@ -5,6 +5,9 @@
                 <h5 class="modal-title">
                     Inviter des amis à créer une équipe dans {{ $nomAuthLigue }}
                 </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('inviterAmiACreerEquipe') }}">
