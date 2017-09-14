@@ -7,7 +7,7 @@ html, body {
   padding: 5px;
   max-width: 1440px;
   width: 100%;
-  margin: 20px auto;
+  margin: 20px auto 0;
 }
 
 #banner {
@@ -585,7 +585,7 @@ h2 {
 
   tbody
   {
-    max-height: 25rem;
+    max-height: 20rem;
     display: inline-block;
     width: 100%;
     overflow: auto;
