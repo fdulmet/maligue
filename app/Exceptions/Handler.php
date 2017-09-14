@@ -78,7 +78,9 @@ class Handler extends ExceptionHandler
             return response()->view('errors.404', [], 404);
         }
 
-        $currentLigue  = $request->session()->get('currentLigue');
+        $currentSaison  = $request->session()->get('currentSaison');
+        $currentLigue   = $request->session()->get('currentLigue');
+        $currentEquipe  = $request->session()->get('currentEquipe');
 
         // Http exceptions
         if ($this->isHttpException($e))
@@ -97,9 +99,12 @@ class Handler extends ExceptionHandler
 
             if (in_array($statusCode, array(403, 404, 500, 503)))
             {
-                return response()->view('errors.' . $statusCode, [
+                return response()->view('errors.' . $statusCode, [], $statusCode)->with([
+                    'currentSaison' => $currentSaison,
                     'currentLigue' => $currentLigue,
-                ], $statusCode);
+                    'currentEquipe' => $currentEquipe,
+                    'nomAuthLigue' => $currentLigue->nom,
+                ]);
             }
         }
 
