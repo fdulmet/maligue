@@ -30,15 +30,20 @@ class Classer
             $rangParPoints[$data->points][$data->diff][$data->butsPour][] = $equipe;
         }
 
-        dd($rangParPoints);
+        var_dump($rangParPoints);
 
         ksort($rangParPoints);// Sort by points
+
+        var_dump($rangParPoints);
+
         foreach ($rangParPoints as $diff) {
             ksort($diff);
             foreach ($diff as $butsPour) {
                 ksort($butsPour);
             }
         }
+
+        dd($rangParPoints);
 
         function flatten(array $array)
         {
