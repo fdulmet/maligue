@@ -50,7 +50,7 @@ class Classer
 
         foreach ($rangParPoints as $test)
         {
-            var_dump($test->toArray());
+            dump($test);
         }
 
         $rangs = flatten($rangParPoints);
