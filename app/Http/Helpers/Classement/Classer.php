@@ -30,6 +30,8 @@ class Classer
             $rangParPoints[$data->points][$data->diff][$data->butsPour][] = $equipe;
         }
 
+        dd($rangParPoints);
+
         ksort($rangParPoints);// Sort by points
         foreach ($rangParPoints as $diff) {
             ksort($diff);
