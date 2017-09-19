@@ -32,8 +32,9 @@ class Classer
 
         ksort($rangParPoints);// Sort by points
 
-        foreach ($rangParPoints as $diff) {
-            natsort($diff);
+        foreach ($rangParPoints as $i => $diff) {
+            $diff = array_reverse($diff);
+            $rangParPoints[$i] = $diff;
             foreach ($diff as $butsPour) {
                 ksort($butsPour);
             }
