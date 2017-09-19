@@ -55,14 +55,9 @@ class Classer
 
         $rangs = flatten($rangParPoints);
 
-        foreach ($rangs as $test2)
-        {
-            var_dump($test2->toArray());
-        }
+        dd($rangs);
 
         $rangs = array_reverse($rangs);
-
-        dd($rangs);
 
         return $rangs;
     }
