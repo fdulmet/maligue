@@ -35,7 +35,7 @@ class Classer
         foreach ($rangParPoints as $diff) {
             ksort($diff);
             foreach ($diff as $butsPour) {
-                ksort($butsPour);
+                natsort($butsPour);
             }
         }
 
