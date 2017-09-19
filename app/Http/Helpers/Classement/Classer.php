@@ -48,12 +48,20 @@ class Classer
             return $return;
         }
 
+        foreach ($rangParPoints as $test)
+        {
+            var_dump($test->toArray());
+        }
+
         $rangs = flatten($rangParPoints);
 
-        var_dump($rangs);
+        foreach ($rangs as $test2)
+        {
+            var_dump($test2->toArray());
+        }
 
         $rangs = array_reverse($rangs);
-        
+
         dd($rangs);
 
         return $rangs;
