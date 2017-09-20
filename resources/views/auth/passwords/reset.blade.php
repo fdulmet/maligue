@@ -51,7 +51,7 @@
                         <div class="form-group row{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="sr-only control-label">{{ trans('passwords.password_confirm') }}</label>
                             <div class="offset-sm-2 col-sm-8">
-                                <input type="password" name="password" class="form-control" id="password-confirm" placeholder="Confirmer mot de passe" required>
+                                <input type="password" name="password_confirmation" class="form-control" id="password-confirm" placeholder="Confirmer mot de passe" required>
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
