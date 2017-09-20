@@ -46,7 +46,7 @@ class ResetPassword extends Notification
     {
         return (new MailMessage)
             ->line('Vous recevez ce mail parceque vous fait une demande de changement de mot de passe.')
-            ->action('Réinitialiser le mot de passe', route('auth.password.reset', $this->token))
+            ->action('Réinitialiser le mot de passe', route('password.reset.token', ['token' => $this->token]))
             ->line('Si vous n\'avez pas demandé de réinitialisation d\'un mot de passe, aucune autre action n\'est requise.');
     }
 }
