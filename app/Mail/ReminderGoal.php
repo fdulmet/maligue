@@ -41,16 +41,24 @@ class ReminderGoal extends Mailable
     protected $date;
 
     /**
+     * Heure
+     *
+     * @var Carbon
+     */
+    protected $heure;
+
+    /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($username, $team1, $team2, $date)
+    public function __construct($username, $team1, $team2, $date, $heure)
     {
         $this->username = $username;
         $this->team1 = $team1;
         $this->team2 = $team2;
         $this->date = $date;
+        $this->heure = $heure;
     }
 
     /**
@@ -66,7 +74,7 @@ class ReminderGoal extends Mailable
                 'team1' => $this->username,
                 'team2' => $this->username,
                 'date' => $this->date,
-                'heure' => $this->date,
+                'heure' => $this->heure,
             ]);
     }
 }
