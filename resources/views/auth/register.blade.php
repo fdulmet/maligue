@@ -1,7 +1,11 @@
 @extends('/layouts/app')
 
 @section('banner')
-    @include('_banner')
+    @if(Auth::guest())
+        @include('_banner_guest')
+    @else
+        @include('_banner')
+    @endif
 @endsection
 
 @section('content')
