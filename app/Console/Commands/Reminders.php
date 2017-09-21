@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\ReminderGoal;
+use App\Mail\ReminderMatch;
 use Illuminate\Console\Command;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Mail;
 
 class Reminders extends Command
@@ -41,11 +42,8 @@ class Reminders extends Command
     {
         $type = $this->argument('type');
 
-        Mail::to('bj.delorme@gmail.com')
-            ->send((new MailMessage)
-                ->subject('Maligue.fr - Reminder ' . $type)
-                ->line('Vous avez un match prévu demain, ne l\'oubliez pas !')
-                ->line('maligue.fr'));
+        Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal());
+        //Mail::to('bj.delorme@gmail.com')->send(new ReminderMatch());
 
         // User::find($this->argument('user'))
 
