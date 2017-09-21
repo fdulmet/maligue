@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
 
 class Handler extends ExceptionHandler
 {
@@ -78,6 +79,11 @@ class Handler extends ExceptionHandler
             return response()->view('errors.404', [], 404);
         }
 
+        if( !\Auth::check() )
+        {
+            return redirect()->route('login');
+        }
+
         $currentSaison  = $request->session()->get('currentSaison');
         $currentLigue   = $request->session()->get('currentLigue');
         $currentEquipe  = $request->session()->get('currentEquipe');
@@ -103,12 +109,10 @@ class Handler extends ExceptionHandler
                     'currentSaison' => $currentSaison,
                     'currentLigue' => $currentLigue,
                     'currentEquipe' => $currentEquipe,
-                    'nomAuthLigue' => $currentLigue->nom,
+                    'nomAuthLigue' => $currentLigue ? $currentLigue->nom : '',
                 ]);
             }
         }
-
-
 
         // uncomment line below if you want 500 error page for all other errors
         // I prefer to use default behavior for them
@@ -116,7 +120,7 @@ class Handler extends ExceptionHandler
             'currentLigue' => $currentLigue,
         ], 500);
 
-        return parent::render($request, $e);
+        //return parent::render($request, $e);
     }
 
     /**
