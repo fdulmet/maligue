@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Game;
 use App\Mail\ReminderGoal;
 use App\Mail\ReminderMatch;
 use Illuminate\Console\Command;
@@ -42,10 +43,23 @@ class Reminders extends Command
     {
         $type = $this->argument('type');
 
+        $now = \Carbon\Carbon::now()->format('Y-m-d');
+
+        // Find all games played without score
+        $games = Game::with('equipes')
+            ->doesntHave('equipe_game')
+            ->where('date', '<', $now)
+            ->get();
+
+        $username = 'Benjamin';
+        $team1 = '';
+        $team2 = '';
+        $date = $now;
+
         switch ($type)
         {
             case 'goal':
-                Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal());
+                Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($username, $team1, $team2, $date));
                 break;
 
             case 'match':
