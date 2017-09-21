@@ -2,9 +2,8 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            ![Some option text][logo]
-
-            [logo]: {{asset('images/logo_maligue.svg')}} "Logo"
+            ![logo]({{asset('images/logo_maligue.svg')}})
+            ![]({{base64_encode(file_get_contents(resource_path(asset('images/logo_maligue.svg'))))}})
         @endcomponent
     @endslot
 

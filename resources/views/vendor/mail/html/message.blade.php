@@ -2,7 +2,8 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            <img src="{{ asset('images/logo_maligue.svg') }}">
+
+            <img src="{{ $message->embed(asset('images/logo_maligue.svg')) }}">
         @endcomponent
     @endslot
 
