@@ -2,7 +2,9 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            {{ config('app.name') }}
+            ![Some option text][logo]
+
+            [logo]: {{asset('images/logo_maligue.svg')}} "Logo"
         @endcomponent
     @endslot
 
@@ -21,7 +23,7 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            © {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
+            © {{ date('Y') }} {{ config('app.name') }}. Tous droits réservés.
         @endcomponent
     @endslot
 @endcomponent
