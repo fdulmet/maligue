@@ -3,7 +3,7 @@
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
             ![logo]({{asset('images/logo_maligue.svg')}})
-            ![]({{base64_encode(file_get_contents(resource_path(app_path('public/images/logo_maligue.svg'))))}})
+            ![]({{base64_encode(file_get_contents(public_path('images/logo_maligue.svg')))}})
         @endcomponent
     @endslot
 
