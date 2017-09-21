@@ -2,11 +2,21 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            {{ config('app.name') }}
+            <img src="{{ asset('images/logo_maligue.svg') }}">
         @endcomponent
     @endslot
 
-    Test goal
+    <p>
+        Bonjour #NAME,
+    </p>
+
+    <p>
+        Vous n'avez pas encore rentré le score du match #E1 - #E2 du #date #heure
+    </p>
+
+    @component('mail::button', ['url' => config('app.url')])
+        Entrer le score
+    @endcomponent
 
     {{-- Subcopy --}}
     @if (isset($subcopy))
@@ -20,7 +30,7 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
+            &copy; {{ date('Y') }} {{ config('app.name') }}. Tous droits réservés.
         @endcomponent
     @endslot
 @endcomponent
