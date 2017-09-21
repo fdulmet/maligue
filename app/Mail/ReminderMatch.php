@@ -28,6 +28,6 @@ class ReminderMatch extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.reminders.match');
+        return $this->view('emails.reminders.match');
     }
 }

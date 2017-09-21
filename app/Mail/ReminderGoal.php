@@ -28,6 +28,6 @@ class ReminderGoal extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.reminders.goal');
+        return $this->view('emails.reminders.goal');
     }
 }
