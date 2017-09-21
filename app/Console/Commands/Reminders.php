@@ -42,10 +42,17 @@ class Reminders extends Command
     {
         $type = $this->argument('type');
 
-        Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal());
-        //Mail::to('bj.delorme@gmail.com')->send(new ReminderMatch());
+        switch ($type)
+        {
+            case 'goal':
+                Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal());
+                break;
 
-        // User::find($this->argument('user'))
+            case 'match':
+                Mail::to('bj.delorme@gmail.com')->send(new ReminderMatch());
+                break;
+        }
 
+        $this->info('Emails sent.');
     }
 }
