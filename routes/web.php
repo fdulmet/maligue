@@ -49,88 +49,90 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('password/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
     Route::get('password/reset/{token}', ['as' => 'password.reset.token', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
     Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
-});
 
-Route::get('/register', function () {
-    return redirect('/login');
-});
-
-Route::resource('user', 'UserController', ['only' => [
-    'update'
-]]);
-
-// Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
-// Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
-
-/**
- * Routes pour les saisons
- */
-// Route::prefix('saison')
-//     ->group(function () {
-//         Route::get('{saisonSlug}', function($saisonSlug) {
-//             echo $saisonSlug;
-//         });
-//     });
-
-Route::get('/', 'HomeController@index')
-    ->name('home');
-
-/**
- * Routes pour les ligues
- */
-// route d'inscription, crée une ligue, une equipe et un user
-Route::get('rejoindre', 'LigueController@ajouter')->name('ajoutLigue');
-Route::get('inscription', 'LigueController@ajouter')->name('ajoutLigueBis');
-
-Route::prefix('ligue')
-    ->group(function () {
-        Route::get('afficher/{idLigue}', 'LigueController@index');
-        Route::post('add', 'LigueController@add')
-            ->name('addLigue');
+    Route::get('/register', function () {
+        return redirect('/login');
     });
 
-// Equipes
-Route::get('equipe/desactiver', 'EquipeController@deactivate')->name('equipe.deactivate');
-Route::get('equipe/retirerjoueur', 'EquipeController@removePlayer')->name('equipe.removePlayer');
-Route::post('equipe/ajouterjoueur', 'EquipeController@addPlayer')->name('equipe.addPlayer');
-Route::post('equipe/creer', 'EquipeController@store')->name('equipe.store');
-Route::put('equipe/modifier-capitaine', 'EquipeController@updateCapitaine')->name('equipe.updateCapitaine');
-Route::put('equipe/modifier-nom', 'EquipeController@updateName')->name('equipe.updateName');
-Route::put('equipe/modifier-logo', 'EquipeController@updateLogo')->name('equipe.updateLogo');
+    Route::resource('user', 'UserController', ['only' => [
+        'update'
+    ]]);
 
-Route::get('/changer-equipe', 'HomeController@switchTeam')->name('switchTeam');
-Route::get('/changer-saison', 'HomeController@switchSaison')->name('switchSaison');
+    // Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
+    // Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
+
+    /**
+     * Routes pour les saisons
+     */
+    // Route::prefix('saison')
+    //     ->group(function () {
+    //         Route::get('{saisonSlug}', function($saisonSlug) {
+    //             echo $saisonSlug;
+    //         });
+    //     });
+
+    Route::get('/', 'HomeController@index')
+        ->name('home');
+
+    /**
+     * Routes pour les ligues
+     */
+    // route d'inscription, crée une ligue, une equipe et un user
+    Route::get('rejoindre', 'LigueController@ajouter')->name('ajoutLigue');
+    Route::get('inscription', 'LigueController@ajouter')->name('ajoutLigueBis');
+
+    Route::prefix('ligue')
+        ->group(function () {
+            Route::get('afficher/{idLigue}', 'LigueController@index');
+            Route::post('add', 'LigueController@add')
+                ->name('addLigue');
+        });
+
+    // Equipes
+    Route::get('equipe/desactiver', 'EquipeController@deactivate')->name('equipe.deactivate');
+    Route::get('equipe/retirerjoueur', 'EquipeController@removePlayer')->name('equipe.removePlayer');
+    Route::post('equipe/ajouterjoueur', 'EquipeController@addPlayer')->name('equipe.addPlayer');
+    Route::post('equipe/creer', 'EquipeController@store')->name('equipe.store');
+    Route::put('equipe/modifier-capitaine', 'EquipeController@updateCapitaine')->name('equipe.updateCapitaine');
+    Route::put('equipe/modifier-nom', 'EquipeController@updateName')->name('equipe.updateName');
+    Route::put('equipe/modifier-logo', 'EquipeController@updateLogo')->name('equipe.updateLogo');
+
+    Route::get('/changer-equipe', 'HomeController@switchTeam')->name('switchTeam');
+    Route::get('/changer-saison', 'HomeController@switchSaison')->name('switchSaison');
 
 
-// Saisons
-Route::get('saisons', 'SaisonController@index')->name('saison.index');
-Route::get('saisons/creer', 'SaisonController@create')->name('saison.create');
-Route::post('saisons/creer', 'SaisonController@store')->name('saison.store');
+    // Saisons
+    Route::get('saisons', 'SaisonController@index')->name('saison.index');
+    Route::get('saisons/creer', 'SaisonController@create')->name('saison.create');
+    Route::post('saisons/creer', 'SaisonController@store')->name('saison.store');
 
-// Matchs
-Route::post('match', 'MatchController@save');
-Route::get('matchs', 'MatchController@index')->name('matchs.index');
-Route::get('matchs/creer', 'MatchController@create')->name('matchs.create');
-Route::get('matchs/editer', 'MatchController@create')->name('matchs.edit');
-Route::post('matchs/creer', 'MatchController@store')->name('matchs.store');
-Route::get('matchs/supprimer', 'MatchController@destroy')->name('matchs.destroy');
+    // Matchs
+    Route::post('match', 'MatchController@save');
+    Route::get('matchs', 'MatchController@index')->name('matchs.index');
+    Route::get('matchs/creer', 'MatchController@create')->name('matchs.create');
+    Route::get('matchs/editer', 'MatchController@create')->name('matchs.edit');
+    Route::post('matchs/creer', 'MatchController@store')->name('matchs.store');
+    Route::get('matchs/supprimer', 'MatchController@destroy')->name('matchs.destroy');
 
-/**
- * Routes pour les invitations
- */
-Route::prefix('invitation')
-    ->group(function () {
+    /**
+     * Routes pour les invitations
+     */
+    Route::prefix('invitation')
+        ->group(function () {
 
-        // Invitation à rejoindre une equipe
-        Route::post('rejoindreEquipe', 'InvitationController@rejoindreEquipe')
-            ->name('inviterAmisDansEquipe');
+            // Invitation à rejoindre une equipe
+            Route::post('rejoindreEquipe', 'InvitationController@rejoindreEquipe')
+                ->name('inviterAmisDansEquipe');
 
-        // Invitation à créer une equipe
-        Route::post('creerEquipe', 'InvitationController@creerEquipe')
-            ->name('inviterAmiACreerEquipe');
-    });
+            // Invitation à créer une equipe
+            Route::post('creerEquipe', 'InvitationController@creerEquipe')
+                ->name('inviterAmiACreerEquipe');
+        });
 
-Route::get('/{ligue?}', 'HomeController@index')->name('currentLigue');
+    Route::get('/{ligue?}', 'HomeController@index')->name('currentLigue');
+});
+
+
 
 /*Route::post('', function() {
     Mail::to('lolo@gmail.com')->send(new InviterAmisDansEquipe);
