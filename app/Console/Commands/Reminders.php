@@ -52,20 +52,21 @@ class Reminders extends Command
         $gamesWithoutScore = [];
         foreach($games as $game)
         {
-            if (is_null($game->equipes()->first()->buts))
+            $teams = $game->equipes()->get();
+            $team1 = $teams->first();
+            $team2 = $teams->last();
+            if (is_null($team1->pivot->buts))
             {
                 $gamesWithoutScore[] = [
-                    'team1' => $game->equipes()->first()->nom,
-                    'team1captainId' => $game->equipes()->first()->user_id,
-                    'team2' => $game->equipes()->latest()->nom,
-                    'team2captainId' => $game->equipes()->latest()->user_id,
+                    'team1' => $team1->nom,
+                    'team1captainId' => $team1->user_id,
+                    'team2' => $team2->nom,
+                    'team2captainId' => $team2->user_id,
                     'date' => $game->date,
                     'heure' => $game->heure,
                 ];
             }
         }
-
-        dd($gamesWithoutScore);
 
         foreach ($gamesWithoutScore as $game)
         {
@@ -75,7 +76,7 @@ class Reminders extends Command
             switch ($type)
             {
                 case 'goal':
-                    Mail::to($user->email)->send(new ReminderGoal($user->nom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
+                    Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($user->prenom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
                     break;
 
                 case 'match':
@@ -84,23 +85,8 @@ class Reminders extends Command
             }
         }
 
-
-        $username = 'Benjamin';
-        $team1 = '';
-        $team2 = '';
-        $date = $now;
-
-        switch ($type)
-        {
-            case 'goal':
-                Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($username, $team1, $team2, $date));
-                break;
-
-            case 'match':
-                Mail::to('bj.delorme@gmail.com')->send(new ReminderMatch());
-                break;
-        }
-
         $this->info('Emails sent.');
+
+        return true;
     }
 }
