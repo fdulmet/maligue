@@ -47,7 +47,7 @@ class Reminders extends Command
         $now = \Carbon\Carbon::now()->format('Y-m-d');
 
         // Find all games played without score
-        $games = Game::with('equipes')->where('date', '<', $now)->get();
+        $games = Game::with('equipes')->where('date', '<', $now)->where('date_report', '<', $now)->get();
 
         $gamesWithoutScore = [];
         foreach($games as $game)
