@@ -55,6 +55,7 @@ class Reminders extends Command
             $teams = $game->equipes()->get();
             $team1 = $teams->first();
             $team2 = $teams->last();
+
             if (is_null($team1->pivot->buts))
             {
                 $gamesWithoutScore[] = [
@@ -71,16 +72,25 @@ class Reminders extends Command
         foreach ($gamesWithoutScore as $game)
         {
             // Send first mail
-            $user = User::find($game['team1captainId'])->first();
+            $captain1 = User::find($game['team1captainId'])->first();
+            $captain2 = User::find($game['team2captainId'])->first();
 
             switch ($type)
             {
                 case 'goal':
-                    Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($user->prenom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
+                    // Mail to the first captain
+                    Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($captain1->prenom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
+
+                    // Mail to the second captain
+                    Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($captain2->prenom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
                     break;
 
                 case 'match':
-                    Mail::to($user->email)->send(new ReminderMatch());
+                    // Mail to the first captain
+                    Mail::to($captain1->email)->send(new ReminderMatch());
+
+                    // Mail to the second captain
+                    Mail::to($captain2->email)->send(new ReminderMatch());
                     break;
             }
         }

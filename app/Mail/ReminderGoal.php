@@ -71,8 +71,8 @@ class ReminderGoal extends Mailable
         return $this->markdown('emails.reminders.goal')
             ->with([
                 'username' => $this->username,
-                'team1' => $this->username,
-                'team2' => $this->username,
+                'team1' => $this->team1,
+                'team2' => $this->team2,
                 'date' => $this->date,
                 'heure' => $this->heure,
             ]);
