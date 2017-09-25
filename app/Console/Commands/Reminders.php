@@ -69,33 +69,40 @@ class Reminders extends Command
             }
         }
 
-        foreach ($gamesWithoutScore as $game)
+        if (!empty($gamesWithoutScore))
         {
-            // Send first mail
-            $captain1 = User::find($game['team1captainId'])->first();
-            $captain2 = User::find($game['team2captainId'])->first();
-
-            switch ($type)
+            foreach ($gamesWithoutScore as $game)
             {
-                case 'goal':
-                    // Mail to the first captain
-                    Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($captain1->prenom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
+                // Send first mail
+                $captain1 = User::find($game['team1captainId'])->first();
+                $captain2 = User::find($game['team2captainId'])->first();
 
-                    // Mail to the second captain
-                    Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($captain2->prenom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
-                    break;
+                switch ($type)
+                {
+                    case 'goal':
+                        // Mail to the first captain
+                        Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($captain1->prenom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
 
-                case 'match':
-                    // Mail to the first captain
-                    Mail::to($captain1->email)->send(new ReminderMatch());
+                        // Mail to the second captain
+                        Mail::to('bj.delorme@gmail.com')->send(new ReminderGoal($captain2->prenom, $game['team1'], $game['team2'], $game['date'], $game['heure']));
+                        break;
 
-                    // Mail to the second captain
-                    Mail::to($captain2->email)->send(new ReminderMatch());
-                    break;
+                    case 'match':
+                        // Mail to the first captain
+                        Mail::to($captain1->email)->send(new ReminderMatch());
+
+                        // Mail to the second captain
+                        Mail::to($captain2->email)->send(new ReminderMatch());
+                        break;
+                }
             }
-        }
 
-        $this->info('Emails sent.');
+            $this->info('Emails sent.');
+        }
+        else
+        {
+            $this->info('Perfect ! All teams have filled their goals.');
+        }
 
         return true;
     }
