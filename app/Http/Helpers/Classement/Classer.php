@@ -11,13 +11,6 @@ class Classer
     {
         $currentLigue = session('currentLigue');
 
-        $user = Auth::user();
-/*
-        if ($user->email == 'bj.delorme@gmail.com')
-        {
-
-        }
-*/
         $equipes = $currentLigue->equipes()->get();
         $rangParPoints = [];
 
@@ -37,23 +30,8 @@ class Classer
             }
             $rangParPoints[$data->points][$data->diff][$data->butsPour][] = $equipe;
         }
-/*
-        if ($user->email == 'bj.delorme@gmail.com')
-        {
-            echo '<pre>';
-            var_dump($rangParPoints);
-            echo '</pre>';
-        }*/
 
         ksort($rangParPoints); // Sort by points
-
-/*
-        if ($user->email == 'bj.delorme@gmail.com')
-        {
-            echo '<pre>';
-            var_dump($rangParPoints);
-            echo '</pre>';
-        }*/
 
         foreach ($rangParPoints as $points => $diff)
         {
@@ -70,28 +48,6 @@ class Classer
 
         $rangs = array_reverse($rangs);
 
-        /*
-        if ($user->email == 'bj.delorme@gmail.com')
-        {
-            echo '<pre>';
-            var_dump($rangParPoints);
-            echo '</pre>';
-
-            $rangs = self::flatten($rangParPoints);
-
-            echo '<pre>';
-            var_dump($rangs);
-            echo '</pre>';
-
-            $rangs = array_reverse($rangs);
-
-            echo '<pre>';
-            var_dump($rangs);
-            echo '</pre>';
-
-            dd('fin');
-        }
-        */
         return $rangs;
     }
 
