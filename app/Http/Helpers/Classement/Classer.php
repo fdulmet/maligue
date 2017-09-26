@@ -44,6 +44,7 @@ class Classer
             foreach ($diff as $k => $butsPour)
             {
                 ksort($butsPour);
+                $butsPour = array_reverse($butsPour, true);
                 echo '<pre>';
                 var_dump($butsPour);
                 echo '</pre>';
