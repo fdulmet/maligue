@@ -41,13 +41,13 @@ class Classer
             echo '<pre>';
             var_dump($diff);
             echo '</pre>';
-            foreach ($diff as $butsPour)
+            foreach ($diff as $k => $butsPour)
             {
                 krsort($butsPour);
                 echo '<pre>';
                 var_dump($butsPour);
                 echo '</pre>';
-                $rangParPoints[$points][$diff] = $butsPour;
+                $rangParPoints[$points][$k] = $butsPour;
             }
             echo '<br>------------------------------------------<br>';
         }
