@@ -53,11 +53,13 @@ class Classer
         }
         echo '<br>------------------------------------------<br>';
         echo '<br>------------------------------------------<br>';
-        dd('fin');
+
 
         $rangs = self::flatten($rangParPoints);
 
         $rangs = array_reverse($rangs);
+
+        dd($rangs);
 
         return $rangs;
     }
