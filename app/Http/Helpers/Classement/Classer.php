@@ -28,7 +28,7 @@ class Classer
             if (!isset($rangParPoints[$data->points][$data->diff][$data->butsPour])) {
                 $rangParPoints[$data->points][$data->diff][$data->butsPour] = [];
             }
-            $rangParPoints[$data->points][$data->diff][$data->butsPour][] = $equipe->nom;
+            $rangParPoints[$data->points][$data->diff][$data->butsPour][] = $equipe;
         }
 
         ksort($rangParPoints); // Sort by points
