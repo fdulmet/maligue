@@ -28,7 +28,7 @@ class Classer
             if (!isset($rangParPoints[$data->points][$data->diff][$data->butsPour])) {
                 $rangParPoints[$data->points][$data->diff][$data->butsPour] = [];
             }
-            $rangParPoints[$data->points][$data->diff][$data->butsPour][] = $equipe;
+            $rangParPoints[$data->points][$data->diff][$data->butsPour][] = $equipe->nom;
         }
 
         ksort($rangParPoints); // Sort by points
@@ -38,11 +38,15 @@ class Classer
             krsort($diff);
             $diff = array_reverse($diff, true);
             $rangParPoints[$points] = $diff;
+            echo '<pre>';
             var_dump($diff);
+            echo '</pre>';
             foreach ($diff as $butsPour)
             {
                 krsort($butsPour);
+                echo '<pre>';
                 var_dump($butsPour);
+                echo '</pre>';
                 $rangParPoints[$points][$diff] = $butsPour;
             }
             echo '<br>------------------------------------------<br>';
