@@ -41,6 +41,7 @@ class Classer
             foreach ($diff as $butsPour)
             {
                 krsort($butsPour);
+                $rangParPoints[$points][$diff] = $butsPour;
             }
         }
 
