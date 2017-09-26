@@ -43,7 +43,7 @@ class Classer
             echo '</pre>';
             foreach ($diff as $k => $butsPour)
             {
-                krsort($butsPour);
+                ksort($butsPour);
                 echo '<pre>';
                 var_dump($butsPour);
                 echo '</pre>';
