@@ -38,29 +38,16 @@ class Classer
             krsort($diff);
             $diff = array_reverse($diff, true);
             $rangParPoints[$points] = $diff;
-            echo '<pre>';
-            var_dump($diff);
-            echo '</pre>';
             foreach ($diff as $k => $butsPour)
             {
                 ksort($butsPour);
-                //$butsPour = array_reverse($butsPour, true);
-                echo '<pre>';
-                var_dump($butsPour);
-                echo '</pre>';
                 $rangParPoints[$points][$k] = $butsPour;
             }
-            echo '<br>------------------------------------------<br>';
         }
-        echo '<br>------------------------------------------<br>';
-        echo '<br>------------------------------------------<br>';
-
 
         $rangs = self::flatten($rangParPoints);
 
         $rangs = array_reverse($rangs);
-
-        dd($rangs);
 
         return $rangs;
     }
