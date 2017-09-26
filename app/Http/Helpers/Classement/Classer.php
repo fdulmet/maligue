@@ -55,10 +55,11 @@ class Classer
             echo '</pre>';
         }
 
-        foreach ($rangParPoints as $i => $diff)
+        foreach ($rangParPoints as $points => $diff)
         {
+            ksort($diff);
             $diff = array_reverse($diff, true);
-            $rangParPoints[$i] = $diff;
+            $rangParPoints[$points] = $diff;
             foreach ($diff as $butsPour)
             {
                 ksort($butsPour);
