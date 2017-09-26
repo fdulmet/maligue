@@ -38,12 +38,18 @@ class Classer
             krsort($diff);
             $diff = array_reverse($diff, true);
             $rangParPoints[$points] = $diff;
+            var_dump($diff);
             foreach ($diff as $butsPour)
             {
                 krsort($butsPour);
+                var_dump($butsPour);
                 $rangParPoints[$points][$diff] = $butsPour;
             }
+            echo '<br>------------------------------------------<br>';
         }
+        echo '<br>------------------------------------------<br>';
+        echo '<br>------------------------------------------<br>';
+        dd('fin');
 
         $rangs = self::flatten($rangParPoints);
 
