@@ -2,6 +2,7 @@
 namespace App\Http\Helpers\Classement;
 
 use App\Equipe;
+use Illuminate\Support\Facades\Auth;
 
 class Classer
 {
