@@ -15,13 +15,24 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            //$table->integer('IDequipe')->unsigned();//c'est une foreign key(pourquoi pas foreign à la place de integer ?)
+            //unsigned means that it needs to be positive
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string ('tel');//mettre que pour capitaines (string pour pas que ça vire le 0 du début) ?
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+
+            //$table->foreign('IDequipe')->references('id')->on('equipes')->onDelete('cascade');
+
         });
     }
+
+        //Schema::enableForeignKeyConstraints();
+        //Schema::disableForeignKeyConstraints();
 
     /**
      * Reverse the migrations.
@@ -30,6 +41,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        /*Schema::table('users', function(Blueprint $table) {
+            $table->dropForeign(['IDequipe']);
+        });*/
+
         Schema::dropIfExists('users');
     }
 }
