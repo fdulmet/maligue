@@ -15,7 +15,7 @@ class AlterLeaguesTable extends Migration
     {
       Schema::table('leagues', function (Blueprint $table) {
           $table->renameColumn('nom', 'name');
-          $table->integer('user_id')->unsigned();
+          $table->integer('user_id')->unsigned()->nullable();
           $table->foreign('user_id')
               ->references('id')
               ->on('users');
