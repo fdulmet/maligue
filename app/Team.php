@@ -12,7 +12,7 @@ class Team extends Model
     use SoftDeletes, HasSlug;
 
     protected $fillable = [
-      'name', 'slug', 'user_id', 'logo'
+      'name', 'slug', 'user_id', 'logo', 'sheet_url',
     ];
 
     protected $attributes = [
