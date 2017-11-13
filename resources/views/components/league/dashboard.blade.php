@@ -49,8 +49,8 @@
                 </button>
 
                 @if(Auth::user()->isAdmin)
-                  <a href="{{route('web_season_index')}}" class='btn btn-green'>Saisons</a>
-                  <a href="{{route('web_game_index')}}" class='btn btn-green'>Matchs</a>
+                  <a href="{{route('league.season.index', ['leagueSlug' => $league->slug ])}}" class='btn btn-green'>Saisons</a>
+                  <a href="{{route('league.season.game.index', ['leagueSlug' => $league->slug, 'seasonSlug' => $season->slug])}}" class='btn btn-green'>Matchs</a>
                 @endif
 
             </div>

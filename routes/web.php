@@ -170,13 +170,13 @@ Route::group([
       'uses' => 'TeamController@delete',
     ]);
     Route::group([
-      'prefix' => 'player/{playerId}'
+      'prefix' => 'player'
     ], function() {
       Route::post('/', [
         'as' => 'attachPlayer',
         'uses' => 'TeamController@attachPlayer',
       ]);
-      Route::post('/delete', [
+      Route::get('{playerId}/delete', [
         'as' => 'detachPlayer',
         'uses' => 'TeamController@detachPlayer',
       ]);

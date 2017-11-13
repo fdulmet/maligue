@@ -23,7 +23,7 @@ html, body {
 
   ul {
     list-style: none;
-    
+
     li {
 
       .caret {
@@ -222,7 +222,7 @@ h1 {
 
   a {
     color: #fff;
-    
+
     &:hover, &:focus, &:visited {
       color: #fff;
       text-decoration: none;
@@ -484,7 +484,7 @@ h2 {
       font-weight: bold;
       padding: 15px 5px 15px 0px;
     }
-    #trChaqueMatch {
+    .trChaqueMatch {
       td {
         padding: 10px 5px 10px 5px;
         background-color: #fff;
@@ -496,23 +496,23 @@ h2 {
         &:nth-of-type(5) { width: 1rem; }
         &:last-child { width: 8rem; text-align: left; }
       }
-      #equipe1{
+      .equipe1{
         text-align: right;
       }
-      #equipe2{
+      .equipe2{
         text-align: left;
       }
     }
-    #trChaqueMatch:nth-child(even){
+    .trChaqueMatch:nth-child(even){
       td {
         padding: 10px 5px 10px 5px;
         //background-color: #6dbf6d;
         background-color: #f1f1f1;
       }
-      #equipe1{
+      .equipe1{
         text-align: right;
       }
-      #equipe2{
+      .equipe2{
         text-align: left;
       }
     }
@@ -530,18 +530,18 @@ h2 {
 }
 
 // scrollbar
-#style-4::-webkit-scrollbar-track
+.style-4::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
 
-#style-4::-webkit-scrollbar
+.style-4::-webkit-scrollbar
 {
   width: 10px;
 }
 
-#style-4::-webkit-scrollbar-thumb
+.style-4::-webkit-scrollbar-thumb
 {
   background-color: #d2d2d2;
   border-radius: 10px;

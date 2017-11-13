@@ -1,5 +1,10 @@
 @if($team)
 @include('components.team.modals.invite_to_team')
+@include('components.team.modals.remove_player')
+@include('components.team.modals.add_player')
+@include('components.team.modals.update_name')
+@include('components.team.modals.update_captain')
+@include('components.team.modals.update_logo')
 <div class="row equipe-profil no-gutters">
     <div class="artist-collage col-md-2">
         @if(!$team->logo)
@@ -36,7 +41,7 @@
                             <button type="button" class="btn btn-green" title="Modifier nom de l'équipe" rel="tooltip" data-toggle="modal" data-target="#updateTeamName"><i class="fa fa-edit"></i></button>
                             @if(Auth::user()->isAdmin)
                                 <button type="button" class="btn btn-green" title="Désactiver l'équipe" rel="tooltip" data-toggle="modal" data-target="#deactivateEquipe{{ $team->id }}"><i class="fa fa-ban" title="Désactiver l'équipe"></i></button>
-                                <button type="button" class="btn btn-green" title="Ajouter un joueur" rel="tooltip" data-toggle="modal" data-target="#addPlayer{{ $team->id }}"><i class="fa fa-plus" title="Ajouter un joueur"></i></button>
+                                <button type="button" class="btn btn-green" title="Ajouter un joueur" rel="tooltip" data-toggle="modal" data-target="#addPlayer"><i class="fa fa-plus" title="Ajouter un joueur"></i></button>
                             @endif
                             @if($team->logo)
                                 <button type="button" class="btn btn-green" title="Changer logo" rel="tooltip" data-toggle="modal" data-target="#updateTeamLogo"><i class="fa fa-picture-o" title="Changer logo"></i></button>
@@ -80,7 +85,7 @@
                         {{ $player->first_name }} {{ $player->last_name }}
                     @endif
                     @if(Auth::user()->isAdmin || $player->id === Auth::user()->id)
-                        <a href="#" data-url="{{ json_encode(['joueur' => $player->id, 'equipe' => $team->id]) }}" title="Retirer le joueur" data-toggle="modal" data-target="#retirerJoueur">
+                        <a href="#" data-url="{{ route('team.detachPlayer', ['teamSlug' => $team->slug, 'playerId' => $player->id ])}}" title="Retirer le joueur" data-toggle="modal" data-target="#retirerJoueur">
                             <i class="fa fa-remove"></i>
                         </a>
                     @endif

@@ -55,5 +55,6 @@
       ga('create', 'UA-105709945-1', 'auto');
       ga('send', 'pageview');
     </script>
+    @stack('scripts')
 </body>
 </html>
