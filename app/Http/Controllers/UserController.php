@@ -35,7 +35,6 @@ class UserController extends Controller
         }
         try {
           $user->save();
-          \Debugbar::info($user);
           flash('Votre profil a bien été mis à jour')->success();
           return back();
         } catch (QueryException $exception) {

@@ -17,7 +17,6 @@ Route::get('/', function () {
       $team = $user->teams[0];
       if ($team) {
         $league = $team->leagues[0];
-        \Debugbar::info($league);
         $season = $league->seasons[0];
         return redirect()
           ->route('league.season.team.dashboard',
@@ -190,10 +189,12 @@ Route::group([
   'prefix' => 'user/{userId}',
   'middleware' => [],
 ], function () {
+  /*
   Route::get('/', [
     'as' => 'edit',
     'uses' => 'UserController@edit',
   ]);
+  */
   Route::post('/', [
     'as' => 'update',
     'uses' => 'UserController@update',
