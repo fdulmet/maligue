@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Team;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
 use App\Team;
 
 class UpdateTeamRequest extends FormRequest
@@ -16,7 +17,7 @@ class UpdateTeamRequest extends FormRequest
     {
         $user = Auth::user();
         $team = Team::where('slug', $this->route('teamSlug'))->first();
-        return ($user && $team && $user->id === $team->captain->id);
+        return (($user && $team) && ($user->id === $team->captain->id || $user->isAdmin));
     }
 
     /**
@@ -27,7 +28,10 @@ class UpdateTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'name' => 'string|max:255',
+          'captain' => 'integer:exists:users,id',
+          'logo' => 'image',
+          'sheet_url' => 'string|max:1024',
         ];
     }
 }

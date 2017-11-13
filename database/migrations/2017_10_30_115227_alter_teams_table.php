@@ -15,7 +15,7 @@ class AlterTeamsTable extends Migration
   {
     Schema::table('teams', function (Blueprint $table) {
         $table->renameColumn('nom', 'name');
-        $table->string('sheet_url')->nullable()->default(null);
+        $table->string('sheet_url', 1024)->nullable()->default(null);
     });
   }
 

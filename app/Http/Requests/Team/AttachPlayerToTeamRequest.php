@@ -3,8 +3,8 @@
 namespace App\Http\Requests\Team;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
 use App\Team;
-use App\User;
 
 class AttachPlayerToTeamRequest extends FormRequest
 {
@@ -17,8 +17,7 @@ class AttachPlayerToTeamRequest extends FormRequest
     {
         $user = Auth::user();
         $team = Team::where('slug', $this->route('teamSlug'))->first();
-        $player = User::find('playerId');
-        return ($user && $team && $player && $user->id === $team->captain->id);
+        return ($user && $team && $user->id === $team->captain->id);
     }
 
     /**
@@ -29,7 +28,7 @@ class AttachPlayerToTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'playerId' => 'required|integer'
         ];
     }
 }

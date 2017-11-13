@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Team;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\User;
+use Auth;
 use App\Team;
 
 class DetachPlayerToTeamRequest extends FormRequest
@@ -17,8 +17,7 @@ class DetachPlayerToTeamRequest extends FormRequest
     {
         $user = Auth::user();
         $team = Team::where('slug', $this->route('teamSlug'))->first();
-        $player = User::find('playerId');
-        return ($user && $team && $player && $user->id === $team->captain->id);
+        return ($user && $team && $user->id === $team->captain->id);
     }
 
     /**
