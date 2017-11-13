@@ -22,7 +22,7 @@ class Game extends Model
   ];
 
   protected $casts = [
-
+    'canceled' => 'boolean',
   ];
 
   protected $dates = [
