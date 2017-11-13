@@ -7,8 +7,7 @@ profilJoueur
 @endslot
 <div class="modal-dialog">
 
-  <form class="form-horizontal" role="form" method="POST" action="{{ route('api_user_update_user', Auth::user()->id) }}">
-      {{ method_field('PUT') }}
+  <form class="form-horizontal" role="form" method="POST" action="{{ route('user.update', ['userId' => Auth::user()->id])}}">
       {{ csrf_field() }}
       <div class="row form-group{{ $errors->has('last_name') ? ' has-danger' : '' }}">
           <label for="last_name" class="col-md-4 control-label">Votre nom *</label>

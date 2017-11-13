@@ -1,0 +1,602 @@
+
+html, body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+#wrapper {
+  padding: 5px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 20px auto 0;
+}
+
+#banner {
+  background: #fff;
+  padding: 0;
+  border-bottom: 2px solid #E24242;
+
+  #logoSite {
+    img {
+      max-width: 120px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    
+    li {
+
+      .caret {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .banner-right {
+    text-align: right;
+
+    .container-fluid {
+      height: 100%;
+      padding: 0;
+
+      .row {
+        height: 100%;
+        padding-bottom: 1.5rem;
+      }
+    }
+  }
+
+  .btn-contact {
+    margin-left: 2rem;
+    padding: 4px 30px 5px;
+  }
+}
+
+.content-login {
+  padding: 7rem 0 4rem;
+
+  #pvu{
+    color: #494949;
+  }
+}
+
+#cardLogin {
+  width: 26rem;
+  border: 1px solid #297D3E;
+  border-radius: .75rem;
+
+  .card-header {
+    background: #FC3838;
+    color: #fff;
+
+    &:first-child {
+      border-radius: calc(.75rem - 1px) calc(.75rem - 1px) 0 0;
+      padding: .5rem;
+    }
+  }
+}
+
+.reset-password,
+.no-season {
+
+  .card {
+    border: 1px solid #297D3E;
+    border-radius: .75rem;
+
+    .card-header {
+      background: #FC3838;
+      color: #fff;
+
+      &:first-child {
+        border-radius: calc(.75rem - 1px) calc(.75rem - 1px) 0 0;
+        padding: .5rem;
+      }
+    }
+  }
+}
+
+#espace_equipe {
+
+  .dropdown-equipe {
+
+    .btn {
+      font-weight: bold;
+    }
+
+    a {
+      font-size: 1.2rem;
+    }
+  }
+
+  .equipe-profil {
+    margin-top: 1.6rem;
+
+    h4 {
+      display: inline-block;
+      margin-left: 1rem;
+    }
+
+    .team-name {
+      margin-top: .9rem;
+      font-weight: bold;
+      color: #297D3E;
+    }
+
+    .btn-group {
+      margin-left: .3rem;
+      margin-bottom: .3rem;
+      margin-top: .3rem;
+    }
+  }
+
+  .equipe-buttons {
+    margin-top: .5rem;
+    margin-left: 1rem;
+
+    .btn {
+      min-width: 10rem;
+      margin-bottom: .25rem;
+      font-size: .8rem;
+
+      &.btn-dropdown-green {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .list-players .list-group-item:first-child {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+
+  .list-players .list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  .list-players .list-group-item {
+    background: none;
+    color: #000;
+    border: 0;
+    padding: 0;
+
+    i.fa {
+      margin-left: .5rem;
+    }
+  }
+}
+
+
+.list-group :not(:first-child) {
+}
+
+.prochainMatch,
+.dernierMatch {
+  border-bottom: 1px solid #d9d9d9;
+  width: 100%;
+  margin-bottom: .5rem;
+
+  tr {
+    td {
+      &:nth-of-type(1) { width: 8rem; }
+      &:nth-of-type(2) { min-width: 6rem; text-align: right; }
+      &:nth-of-type(3) { width: 2rem; }
+      &:nth-of-type(4) { width: 1rem; }
+      &:nth-of-type(5) { width: 2rem; }
+      &:last-child { width: 6rem; text-align: left; }
+    }
+  }
+
+  td{
+    border: 0 solid black;
+    padding-right: .5rem;
+    padding-bottom: .25rem;
+  }
+  .tdChampsButs{
+    input{
+      width: 40px;
+    }
+  }
+}
+
+h1 {
+  font-weight: bold;
+  color: #E24242;
+  font-size: 1.8rem;
+}
+
+.sportHidden {
+  display: none;
+}
+
+.btn-orange,
+.btn-green {
+  width: auto;
+  padding: 4px 10px 5px;
+  color: #fff;
+  display: inline-block;
+
+  &:hover, &:focus, &:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  a {
+    color: #fff;
+    
+    &:hover, &:focus, &:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+.btn-orange {background: #E24242;}
+.btn-green {
+  background: #fff;
+  color: #297D3E;
+  border: 1px solid #297D3E;
+
+  &:hover,&.hover,&.active,&:active,&:focus,&:visited {
+    color: #297D3E;
+    background: #fff;
+    box-shadow: inset 0px 0px 1px 1px #cbe4d1;
+  }
+}
+
+.btn {
+  border-radius: 0;
+  cursor: pointer;
+  font-size: .9rem;
+
+  &.focus, &:focus {
+    box-shadow: none;
+  }
+}
+.btn-link {
+  color: #FC3838;
+}
+
+.btn-dropdown {
+  display: inline-block;
+}
+
+.btn-dropdown-orange {
+  color: #E24242;
+  border: 0;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.dropdown {
+
+  &.dropdown-equipe {
+    display: inline-block;
+    margin-top: 0.3rem;
+  }
+  &.show > .btn-secondary.dropdown-toggle.btn-dropdown-green {
+    color: #297D3E;
+    background-color: #f1f1f1;
+    border-color: #297D3E;
+  }
+
+    .btn {
+
+    &.btn-dropdown-green {
+      color: #297D3E;
+      border: 0;
+
+      &.btn.btn-secondary:hover,
+      &.btn.btn-secondary.hover,
+      &.btn.btn-secondary.active,
+      &.btn.btn-secondary:active {
+        color: #297D3E;
+        background-color: #f1f1f1;
+        border-color: #297D3E;
+      }
+    }
+
+    &.btn-secondary:hover {
+      color: #E24242;
+      background-color: #f9efef;
+      border-color: #E24242;
+    }
+
+    &.btn-secondary.active, &.btn-secondary:active {
+      color: #E24242;
+      background-color: #f9efef;
+      border-color: #E24242;
+    }
+  }
+
+  &.show>.btn-secondary.dropdown-toggle {
+    color: #E24242;
+    background-color: #f9efef;
+    border-color: #E24242;
+  }
+
+  .dropdown-menu {
+    font-size: .7rem;
+    color: #E24242;
+    border: 1px solid #E24242;
+    border-radius: 0;
+
+    .dropdown-item {
+      padding: 6px 1.5rem;
+      font-size: .9rem!important;
+    }
+  }
+}
+
+.color-green {
+  color: #297D3E;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.header-saison {
+  margin-top: 2.6rem;
+  margin-bottom: 2rem;
+
+  h1 {
+
+    img {
+      max-width: 4rem;
+    }
+  }
+
+  .buttons {
+    margin-top: -.2rem;
+    margin-left: 4rem;
+
+    a, button {
+      margin-left: .25rem;
+      margin-bottom: .25rem;
+      font-size: .8rem;
+    }
+
+    .btn-green {
+      color: #E24242;
+      border-color: #E24242;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .dropdown {
+    display: inline-block;
+    margin-left: .5rem;
+    margin-top: .5rem;
+
+    .btn {
+      font-size: .7rem;
+      font-weight: bold;
+      padding: .5rem;
+      border: 0;
+
+      &.btn-secondary:hover {
+        color: #E24242;
+        background-color: #f9efef;
+        border-color: #E24242;
+      }
+
+      &.btn-secondary.active, &.btn-secondary:active {
+        color: #E24242;
+        background-color: #f9efef;
+        border-color: #E24242;
+      }
+    }
+
+    &.show>.btn-secondary.dropdown-toggle {
+      color: #E24242;
+      background-color: #f9efef;
+      border-color: #E24242;
+    }
+
+    .dropdown-menu {
+      font-size: .7rem;
+    }
+  }
+}
+
+#menu {
+  margin: 1.5rem 0 2.5rem;
+}
+
+#effectifsEquipes {
+  .media {
+    h5 {
+      margin-left: 1rem;
+    }
+  }
+}
+
+//Espace ligue
+#espace_ligue {
+  height: 100%;
+
+  .classement {
+    width: 100%;
+
+    &.table thead {
+      tr {
+        &:nth-of-type(2) td { color: #297D3E; }
+
+        th {
+          border-color: transparent;
+        }
+      }
+    }
+
+    #motClassement{
+      font-weight: bold;
+    }
+    #motsEntetes{
+      //background-color: rgba(214, 33, 16, 0.7);
+      color: darkred;
+      font-weight: bold;
+      td{
+        padding: 15px 5px 15px 5px;
+      }
+    }
+    #trChaqueEquipe {
+      td {
+        padding: 10px 5px 10px 5px;
+        text-align: center;
+        background: #fff;
+      }
+      #equipe1{
+        text-align: right;
+      }
+      #equipe2{
+        text-align: left;
+      }
+    }
+    #trChaqueEquipe:nth-child(even){
+      td {
+        padding: 10px 5px 10px 5px;
+        text-align: center;
+        background: #f07676;
+      }
+      #equipe1{
+        text-align: right;
+      }
+      #equipe2{
+        text-align: left;
+      }
+    }
+  }
+
+  .calendrier{
+    width: 100%;
+
+    &.table thead th {
+      border-color: transparent;
+    }
+
+    #lieu{
+      color: darkred;
+      font-weight: bold;
+      padding: 15px 5px 15px 0px;
+    }
+    #trChaqueMatch {
+      td {
+        padding: 10px 5px 10px 5px;
+        background-color: #fff;
+
+        &:nth-of-type(1) { width: 8rem; }
+        &:nth-of-type(2) { width: 8rem; text-align: right; }
+        &:nth-of-type(3) { width: 1rem; }
+        &:nth-of-type(4) { width: .5rem; }
+        &:nth-of-type(5) { width: 1rem; }
+        &:last-child { width: 8rem; text-align: left; }
+      }
+      #equipe1{
+        text-align: right;
+      }
+      #equipe2{
+        text-align: left;
+      }
+    }
+    #trChaqueMatch:nth-child(even){
+      td {
+        padding: 10px 5px 10px 5px;
+        //background-color: #6dbf6d;
+        background-color: #f1f1f1;
+      }
+      #equipe1{
+        text-align: right;
+      }
+      #equipe2{
+        text-align: left;
+      }
+    }
+  }
+  #cadeaux{
+    height: 100%;
+    color: darkgreen;
+    padding : 3% 3% 3% 3%;
+    margin-top: 3%;
+  }
+}
+
+.modal-dialog {
+  max-width: 700px!important;
+}
+
+// scrollbar
+#style-4::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+#style-4::-webkit-scrollbar
+{
+  width: 10px;
+}
+
+#style-4::-webkit-scrollbar-thumb
+{
+  background-color: #d2d2d2;
+  border-radius: 10px;
+}
+
+.reset-password,
+.no-season {
+  margin-top: 4rem;
+}
+
+.alert {
+  width: 100%;
+  border-radius: 0 0 .25rem .25rem;
+}
+.alert-dismissible .close {
+  top: 0;
+  right: 0;
+  padding: 0;
+}
+
+.btn-group {
+  .btn-green {
+    border: 0;
+  }
+}
+
+.table-small {
+  font-size: .8rem;
+}
+
+.badge-lg {
+  font-size: 100%;
+}
+
+.calendrier {
+  thead
+  {
+    display: inline-block;
+    width: 100%;
+  }
+
+  tbody
+  {
+    max-height: 20rem;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+
+    tr {
+      width: 100%;
+      display: inline-table;
+    }
+  }
+}
+
+.modal {
+  font-size: .9rem;
+}

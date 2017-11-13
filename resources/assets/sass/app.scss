@@ -1,9 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:300,400,600);
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+$fa-font-path: '../fonts';
 
-// Variables
-@import "variables";
+@import '../../../node_modules/font-awesome/scss/font-awesome.scss';
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "variables";//on importe un fichier de variables pour Bootstrap
+@import "banner";
+@import "content";
+@import "editable_table";
+@import "auth";
+@import "v1";
+// fake comment
+
+//on fait les modifs dans _variables.scss, avec gulp watch qui tourne en continue (ou uniquement gulp à chaque fois),
+//traque les modifications
+//et lance "laravel elixir, sass compiled! (plugin rouge qui s'affiche en haut à doite)
+//qui modifie public/css/app.css
+
+//pour compresser app.css pour la production :
+//gulp --production
+
+//pour avoir une génération automatique en cas de changement de la source :
+//<samp>gulp watch</samp>
+
+//tuto pour app.scss et app.js :
+//http://laravel.sillo.org/cours-laravel-5-3-les-bases-css-et-javascript/

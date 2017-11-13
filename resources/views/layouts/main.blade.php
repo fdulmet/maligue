@@ -27,6 +27,7 @@
 </head>
 <body>
   <div id="wrapper">
+    @include('flash::message')
     @if(Auth::guest())
         @include('components.banners.guest')
     @else
