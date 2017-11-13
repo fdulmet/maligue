@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
 use App\User;
 
 class DeleteUserRequest extends FormRequest
@@ -16,7 +17,7 @@ class DeleteUserRequest extends FormRequest
     {
         $currentUser = Auth::user();
         $targetUser = User::find($this->route('userId'));
-        return ($currentUser->id === $target->id);
+        return ($currentUser->id === $targetUser->id);
     }
 
     /**

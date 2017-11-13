@@ -8,7 +8,7 @@
                 Connexion
             </div>
             <div class="card-block">
-                <form role="form" method="POST" action="{{ route('login_post') }}">
+                <form role="form" method="POST" action="/login">
                     {{ csrf_field() }}
 
                     <div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">

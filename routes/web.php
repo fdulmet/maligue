@@ -12,9 +12,28 @@
 */
 
 Route::get('/', function () {
+    $user = Auth::user();
+    if ($user) {
+      $team = $user->teams[0];
+      if ($team) {
+        $league = $team->leagues[0];
+        \Debugbar::info($league);
+        $season = $league->seasons[0];
+        return redirect()
+          ->route('league.season.team.dashboard',
+          [
+            'leagueSlug' => $league->slug,
+            'seasonSlug' => $season->slug,
+            'teamSlug' => $team->slug,
+          ]);
+      }
+    } else {
+      return redirect()
+        ->route('login');
+    }
   /* show /league/season/team > dashboard */
   /* if no team > create team */
-    return view('welcome');
+    // return view('welcome');
 });
 
 Route::group([
@@ -168,7 +187,7 @@ Route::group([
 });
 Route::group([
   'as' => 'user.',
-  'prefix' => 'user/{id}',
+  'prefix' => 'user/{userId}',
   'middleware' => [],
 ], function () {
   Route::get('/', [
@@ -220,5 +239,3 @@ POST /register > créer un utilisateur
 
 */
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\User;
 
+use Auth;
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserRequest extends FormRequest
@@ -15,7 +17,7 @@ class UpdateUserRequest extends FormRequest
     {
         $currentUser = Auth::user();
         $targetUser = User::find($this->route('userId'));
-        return ($currentUser->id === $target->id);
+        return ($currentUser->id === $targetUser->id);
     }
 
     /**
@@ -26,7 +28,11 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'first_name' => 'string|max:255',
+          'last_name' => 'string|max:255',
+          'phone' => 'string|min:10|max:10',
+          'email => string|email',
+          'password => string|min:3|max:32',
         ];
     }
 }
