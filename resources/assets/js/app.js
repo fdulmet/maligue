@@ -1,6 +1,6 @@
 
 $(function () {
-
+    $('[data-toggle="tooltip"]').tooltip();
   $('#formUpdateCapitaine').one('submit', function (e) {
     e.preventDefault();
 

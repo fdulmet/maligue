@@ -6,6 +6,7 @@
 @include('components.team.modals.update_captain')
 @include('components.team.modals.update_logo')
 @include('components.team.modals.deactivate_team')
+@include('components.team.modals.payments_sheet')
 <div class="row equipe-profil no-gutters">
     <div class="artist-collage col-md-2">
         @if(!$team->logo)
@@ -39,14 +40,15 @@
                 @if(Auth::user()->isAdmin || Auth::user()->id === $team->captain->id)
                     <div class="btn-group btn-group-sm" role="group">
                         <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-green" title="Modifier nom de l'équipe" rel="tooltip" data-toggle="modal" data-target="#updateTeamName"><i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-green" data-toggle="modal" data-target="#updateTeamName"><i data-toggle="tooltip" title="Modifier nom de l'équipe"  class="fa fa-edit"></i></button>
                             @if(Auth::user()->isAdmin)
-                                <button type="button" class="btn btn-green" title="Désactiver l'équipe" rel="tooltip" data-toggle="modal" data-target="#deactivateEquipe"><i class="fa fa-ban" title="Désactiver l'équipe"></i></button>
-                                <button type="button" class="btn btn-green" title="Ajouter un joueur" rel="tooltip" data-toggle="modal" data-target="#addPlayer"><i class="fa fa-plus" title="Ajouter un joueur"></i></button>
+                                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#deactivateEquipe"><i class="fa fa-ban" data-toggle="tooltip" title="Désactiver l'équipe"></i></button>
+                                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#addPlayer"><i class="fa fa-plus" data-toggle="tooltip" title="Ajouter un joueur"></i></button>
                             @endif
-                            @if($team->logo)
-                                <button type="button" class="btn btn-green" title="Changer logo" rel="tooltip" data-toggle="modal" data-target="#updateTeamLogo"><i class="fa fa-picture-o" title="Changer logo"></i></button>
-                            @endif
+
+                            <button type="button" class="btn btn-green" data-toggle="modal" data-target="#updateTeamLogo"><i class="fa fa-picture-o" data-toggle="tooltip" title="Changer logo"></i></button>
+                            <button type="button" class="btn btn-green" data-toggle="modal" data-target="#paymentsSheet"><i class="fa fa-eur" data-toggle="tooltip" title="Etat des paiements"></i></button>
+
                         </div>
                     </div>
                 @endif
