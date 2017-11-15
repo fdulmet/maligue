@@ -1,6 +1,7 @@
 @include('components.league.modals.captain_information')
 @include('components.league.modals.teams_information')
 @include('components.league.modals.invite_to_league')
+@include('components.league.modals.reward')
 @include('components.modals.delay_rules')
 <div class="row header-saison">
     <div class="col-md-12">
@@ -47,7 +48,9 @@
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#reglesReports">
                     Règlement pour les reports
                 </button>
-
+                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#reward">
+                    Récompenses
+                </button>
                 @if(Auth::user()->isAdmin)
                   <a href="{{route('league.season.index', ['leagueSlug' => $league->slug ])}}" class='btn btn-green'>Saisons</a>
                   <a href="{{route('league.season.game.index', ['leagueSlug' => $league->slug, 'seasonSlug' => $season->slug])}}" class='btn btn-green'>Matchs</a>
