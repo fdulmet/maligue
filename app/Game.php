@@ -43,4 +43,8 @@ class Game extends Model
   {
       return $this->belongsTo('App\Season');
   }
+  public function initialGame()
+  {
+    return $this->belongsTo('App\Game', 'initial_game', 'id');
+  }
 }

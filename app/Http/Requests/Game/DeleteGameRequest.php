@@ -4,6 +4,7 @@ namespace App\Http\Requests\Game;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\League;
+use Auth;
 
 class DeleteGameRequest extends FormRequest
 {
@@ -14,9 +15,7 @@ class DeleteGameRequest extends FormRequest
      */
     public function authorize()
     {
-        $league = League::with(['season' => function($query) {
-          $query->where('slug', $this->route('seasonSlug'));
-        }])->where('slug', $this->route('leagueSlug'))->first();
+        $league = League::where('slug', $this->route('leagueSlug'))->first();
         $user = Auth::user();
         return ($league && $user && $user->id === $league->owner->id);
     }

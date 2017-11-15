@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests\Game;
 
-use App\League;
 use Illuminate\Foundation\Http\FormRequest;
+use App\League;
 use Auth;
 
-class CreateGameRequest extends FormRequest
+class CancelDelayGameRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +27,8 @@ class CreateGameRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
+          //
         ];
     }
 }

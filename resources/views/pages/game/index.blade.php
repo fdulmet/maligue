@@ -6,7 +6,7 @@
             <div class="col">
                 <p>
                     <br>
-                    <a href="{{route('web_game_create')}}" class='btn btn-green'>Créer un match</a>
+                    <a href="{{route('league.season.game.create', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug])}}" class='btn btn-green'>Créer un match</a>
                     <br>
                 </p>
             </div>
@@ -31,6 +31,7 @@
 
                     <tbody>
                     @foreach($games as $game)
+                      @if ($game->teams->count() === 2)
                         <tr>
                             <td>{{ $game->place }}</td>
                             <td>{{ $game->field }}</td>
@@ -41,10 +42,11 @@
                             <td>{{ $game->league->name }}</td>
                             <td>{{ $game->canceled}}</td>
                             <td>
-                              <a href="{{route('web_game_edit', ['id' => $game->id])}}" class='btn btn-green'>Editer</a>
-                              <a href="{{route('web_game_delete', ['id' => $game->id])}}" class='btn btn-orange btn-block'>Supprimer</a>
+                              <a href="{{route('league.season.game.edit', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'id' => $game->id])}}" class='btn btn-green'>Editer</a>
+                              <a href="{{route('league.season.game.delete', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'id' => $game->id])}}" class='btn btn-orange btn-block'>Supprimer</a>
                             </td>
                         </tr>
+                      @endif
                     @endforeach
                     </tbody>
                 </table>

@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Game;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\League;
+use Auth;
 
 class StoreGameRequest extends FormRequest
 {
@@ -13,9 +15,7 @@ class StoreGameRequest extends FormRequest
      */
     public function authorize()
     {
-        $league = League::with(['season' => function($query) {
-          $query->where('slug', $this->route('seasonSlug'));
-        }])->where('slug', $this->route('leagueSlug'))->first();
+        $league = League::where('slug', $this->route('leagueSlug'))->first();
         $user = Auth::user();
         return ($league && $user && $user->id === $league->owner->id);
     }
@@ -29,9 +29,11 @@ class StoreGameRequest extends FormRequest
     {
         return [
             'place' => 'required|string',
-            'field' => 'required|string',
+            'field' => 'string',
             'when' => 'required|date',
-            'initial_game' => 'nullable|integer|exists:games,id'
+            'team_1' => 'required|exists:teams,id',
+            'team_2' => 'required|exists:teams,id',
+            //'initial_game' => 'integer|exists:games,id'
         ];
     }
 }

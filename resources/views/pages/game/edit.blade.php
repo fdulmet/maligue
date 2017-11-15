@@ -6,7 +6,7 @@
             <div class="col">
                 <p>
                     <br>
-                    <a href="{{route('web_game_index')}}" class='btn btn-green'>Liste des matchs</a>
+                    <a href="{{route('league.season.game.index', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug])}}" class='btn btn-green'>Liste des matchs</a>
                     <br>
                 </p>
             </div>
@@ -23,13 +23,12 @@
                         @endif
                     </div>
                     <div class="card-block">
-
-                        <form method="POST" action="linkto.match.store.or.create" accept-charset="UTF-8">
-
-                        {{ csrf_field() }}
                         @if ($game)
-                        <input type='hidden' name='matchId' value='{{$game->id}}'>
+                          <form method="POST" action="{{route('league.season.game.update', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'gameId' => $game->id])}}" accept-charset="UTF-8">
+                        @else
+                          <form method="POST" action="{{route('league.season.game.store', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug])}}" accept-charset="UTF-8">
                         @endif
+                        {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
                             <label for="place" class="col-md-4 control-label">Lieu</label>
 
@@ -70,6 +69,7 @@
                                 @endif
                             </div>
                         </div>
+                        {{--
                         <div class="form-group{{ $errors->has('league_id') ? ' has-error' : '' }}">
                             <label for="league_id">Ligue</label>
                             <select class="form-control" id="league" name="league_id">
@@ -101,6 +101,7 @@
                                 </span>
                             @endif
                         </div>
+                        --}}
                         <div class="form-group{{ $errors->has('team_1') ? ' has-error' : '' }}">
                             <label for="team_1">Equipe 1</label>
                             <select class="form-control" id="team_1" name="team_1">
@@ -131,22 +132,67 @@
                                 </span>
                             @endif
                         </div>
-
-
-                        @if(!is_null($game))
-                          <hr>
-
-                          <h3>Report du match</h3>
-
-                          @if(!is_null($game->initial_game))
-                            <p>Le match était initialement prévu le {{$game->initial_game->when}}</p>
-                            <button>Annuler le report</button>
-                          @endif
-
-                          Reporter le match ?
-                        @endif
                         <input class="btn btn-green pull-right" type="submit" value="{{($game) ? 'Modifier' : 'Créer'}}">
                       </form>
+                        <br/>
+                        @if($game)
+                          <hr>
+
+                          <h5>Report du match</h5>
+
+                          @if($game->initialGame)
+                            <p>Le match était initialement prévu le {{$game->initialGame->when}}. <br/>
+                              <a class='btn btn-orange' href="{{route('league.season.game.cancelDelay', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'gameId' => $game->id])}}">Annuler le report</a>
+                            </p>
+                          @endif
+                          <h6>Reporter le match</h5>
+                          <form method="POST" action="{{route('league.season.game.delay', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'gameId' => $game->id])}}" accept-charset="UTF-8">
+                            {{csrf_field()}}
+                            <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
+                                <label for="place" class="col-md-4 control-label">Lieu</label>
+
+                                <div class="col-md-6">
+                                    <input id="place" type="text" class="form-control" name="place" value="{{ ($game) ? $game->place : old('place') }}" required>
+
+                                    @if ($errors->has('place'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('place') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('field') ? ' has-error' : '' }}">
+                                <label for="field" class="col-md-4 control-label">Terrain</label>
+
+                                <div class="col-md-6">
+                                    <input id="field" type="text" class="form-control" name="field" value="{{ ($game) ? $game->field : old('field') }}" required>
+
+                                    @if ($errors->has('field'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('field') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('when') ? ' has-error' : '' }}">
+                                <label for="when" class="col-md-4 control-label">Date</label>
+
+                                <div class="col-md-6">
+                                    <input id="when" type="datetime-local" class="form-control" name="when" value="{{ ($game) ? \Carbon\Carbon::parse($game->when)->format('Y-m-d\TH:i') : old('when') }}" required>
+
+                                    @if ($errors->has('when'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('when') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <input class="btn btn-green pull-right" type="submit" value="Reporter le match">
+                          </form>
+
+                        @endif
+
                     </div>
                 </div>
             </div>

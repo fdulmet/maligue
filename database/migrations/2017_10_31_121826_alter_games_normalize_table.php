@@ -45,6 +45,7 @@ class AlterGamesNormalizeTable extends Migration
             'when' => Carbon::createFromFormat('Y-m-d H:i:s', "{$game->date_report} {$game->heure_report}", 'Europe/Paris'),
             'initial_game' => $game->id,
           ]);
+          // TODO RELATIONSHPS !!!!
           $game->update([
             'canceled' => true,
           ]);
