@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Team;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
+use App\Team;
 
 class DeleteTeamRequest extends FormRequest
 {
@@ -15,7 +17,7 @@ class DeleteTeamRequest extends FormRequest
     {
       $user = Auth::user();
       $team = Team::where('slug', $this->route('teamSlug'))->first();
-      return ($user && $team && $user->id === $team->captain->id);
+      return (($user && $team ) && ($user->id === $team->captain->id || $user->isAdmin));
     }
 
     /**

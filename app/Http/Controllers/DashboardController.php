@@ -130,17 +130,5 @@ class DashboardController extends Controller
         \Debugbar::info($e);
       }
 
-        /*
-        $users = App\User::with(['posts' => function ($query) {
-    $query->where('title', 'like', '%first%');
-}])->get();*/
-      /*
-      return view('pages.league.index', [
-          'league' => $team->leagues[0],
-          'team' => $team,
-          'season' => $team->leagues[0]->season[0],
-      ]);
-      */
-      //return view('home');
     }
 }

@@ -1,9 +1,9 @@
 @foreach($lastGames as $game)
   @if (count($game->teams) === 2)
 
-  Form::open(['action' => 'MatchController@save'])
-  Form::hidden('game_id', $statCalendrier['game_id'])
-
+<form class="form-horizontal" role="form" method="POST" action="{{ route('league.season.game.setScore', ['leagueSlug' => $league->slug, 'seasonSlug' => $season->slug, 'gameId' => $game->id]) }}">
+  <input name="_method" type="hidden" value="PUT">
+  {{ csrf_field() }}
   <table class="dernierMatch">
       <tr>
           <td>
@@ -26,7 +26,7 @@
                   @endif
                 @else
                     @if(Auth::user()->isAdmin || Auth::user()->id === $team->captain->id)
-                      <input type="text" name="buts_1">
+                      <input type="text" name="goal[{{$game->teams[0]->id}}]">
                     @endif
                 @endif
             </td>
@@ -42,7 +42,7 @@
                 @endif
               @else
                   @if(Auth::user()->isAdmin || Auth::user()->id === $team->captain->id)
-                    <input type="text" name="buts_2">
+                    <input type="text" name="goal[{{$game->teams[1]->id}}]">
                   @endif
               @endif
             </td>
@@ -50,12 +50,17 @@
 
           <td>{{ $game->teams[1]->name }}</td>
 
-          @if(!(isset($game->teams[1]->pivot->goals) && isset($game->teams[0]->pivot->goals)) && (Auth::user()->isAdmin || Auth::user()->id === $team->captain->id))
-            <td>Form::submit('OK', ['class' => 'btn btn-orange'])</td>
+          @if(!$game->canceled &&
+            !(isset($game->teams[1]->pivot->goals) && isset($game->teams[0]->pivot->goals))
+            && (Auth::user()->isAdmin || Auth::user()->id === $team->captain->id))
+            <td><button type="submit" class="btn btn-orange btn-block" id="bouton_submit">
+                Modifier
+            </button></td>
           @else
             <td>&nbsp;</td>
           @endif
       </tr>
   </table>
+</form>
   @endif
 @endforeach

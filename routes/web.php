@@ -124,21 +124,37 @@ Route::group([
           'as' => 'store',
           'uses' => 'GameController@store',
           ]);
-          Route::get('/{gameId}', [
-          'as' => 'edit',
-          'uses' => 'GameController@edit',
-          ]);
-          Route::post('/{gameId}', [
-          'as' => 'update',
-          'uses' => 'GameController@update',
-          ]);
-          Route::get('/{gameId}/delete', [
-          'as' => 'delete',
-          'uses' => 'GameController@delete',
-          ]);
+          Route::group([
+            'prefix' => '{gameId}',
+          ], function() {
+            Route::get('/', [
+            'as' => 'edit',
+            'uses' => 'GameController@edit',
+            ]);
+            Route::put('/', [
+            'as' => 'setScore',
+            'uses' => 'GameController@setScore',
+            ]);
+            Route::post('/', [
+            'as' => 'update',
+            'uses' => 'GameController@update',
+            ]);
+            Route::get('/delete', [
+            'as' => 'delete',
+            'uses' => 'GameController@delete',
+            ]);
+            Route::post('/delay', [
+            'as' => 'delay',
+            'uses' => 'GameController@delay',
+            ]);
+            Route::get('/delay/cancel', [
+            'as' => 'cancelDelay',
+            'uses' => 'GameController@cancelDelay',
+            ]);
           });
         });
       });
+    });
   });
 });
 Route::group([
@@ -165,7 +181,7 @@ Route::group([
       'as' => 'invite',
       'uses' => 'InvitationController@createPlayer',
     ]);
-    Route::post('delete', [
+    Route::get('delete', [
       'as' => 'delete',
       'uses' => 'TeamController@delete',
     ]);

@@ -5,6 +5,7 @@
 @include('components.team.modals.update_name')
 @include('components.team.modals.update_captain')
 @include('components.team.modals.update_logo')
+@include('components.team.modals.deactivate_team')
 <div class="row equipe-profil no-gutters">
     <div class="artist-collage col-md-2">
         @if(!$team->logo)
@@ -40,7 +41,7 @@
                         <div class="btn-group mr-2" role="group" aria-label="First group">
                             <button type="button" class="btn btn-green" title="Modifier nom de l'équipe" rel="tooltip" data-toggle="modal" data-target="#updateTeamName"><i class="fa fa-edit"></i></button>
                             @if(Auth::user()->isAdmin)
-                                <button type="button" class="btn btn-green" title="Désactiver l'équipe" rel="tooltip" data-toggle="modal" data-target="#deactivateEquipe{{ $team->id }}"><i class="fa fa-ban" title="Désactiver l'équipe"></i></button>
+                                <button type="button" class="btn btn-green" title="Désactiver l'équipe" rel="tooltip" data-toggle="modal" data-target="#deactivateEquipe"><i class="fa fa-ban" title="Désactiver l'équipe"></i></button>
                                 <button type="button" class="btn btn-green" title="Ajouter un joueur" rel="tooltip" data-toggle="modal" data-target="#addPlayer"><i class="fa fa-plus" title="Ajouter un joueur"></i></button>
                             @endif
                             @if($team->logo)

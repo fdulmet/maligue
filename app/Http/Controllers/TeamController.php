@@ -59,8 +59,19 @@ class TeamController extends Controller
         return back();
       }
     }
-    public function delete(DeleteTeamRequest $request) {
-
+    public function delete(DeleteTeamRequest $request, $teamSlug) {
+      $team = Team::where('slug', '=', $teamSlug)->first();
+      if (!$team) {
+        abort(404);
+      }
+      try {
+        $team->delete();
+        flash("L'équipe a bien été désactivée")->success();
+        return redirect('/');
+      } catch (\Exception $e) {
+        flash('Une erreur est survenue')->error();
+        return back();
+      }
     }
     public function attachPlayer(AttachPlayerToTeamRequest $request, $teamSlug) {
       $team = Team::where('slug', '=', $teamSlug)->first();
