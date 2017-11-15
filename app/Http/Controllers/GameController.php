@@ -90,7 +90,8 @@ class GameController extends Controller
       foreach($game->teams as $team) {
         $game->teams()->updateExistingPivot($team->id, ['goals' => $goals[$team->id]]);
       }
-      return view('home');
+      flash('Le score du match a bien été mis à jour')->success();
+      return back();
     }
     public function edit(EditGameRequest $request, $leagueSlug, $seasonSlug, $gameId) {
       $league = League::with('teams')->where('slug', $leagueSlug)->first();
