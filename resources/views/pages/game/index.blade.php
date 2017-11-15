@@ -42,8 +42,8 @@
                             <td>{{ $game->league->name }}</td>
                             <td>{{ $game->canceled}}</td>
                             <td>
-                              <a href="{{route('league.season.game.edit', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'id' => $game->id])}}" class='btn btn-green'>Editer</a>
-                              <a href="{{route('league.season.game.delete', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'id' => $game->id])}}" class='btn btn-orange btn-block'>Supprimer</a>
+                              <a href="{{route('league.season.game.edit', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'gameId' => $game->id])}}" class='btn btn-green'>Editer</a>
+                              <a href="{{route('league.season.game.delete', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'gameId' => $game->id])}}" class='btn btn-orange btn-block'>Supprimer</a>
                             </td>
                         </tr>
                       @endif
