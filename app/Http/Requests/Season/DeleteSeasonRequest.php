@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Season;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
+use App\League;
 
 class DeleteSeasonRequest extends FormRequest
 {
@@ -15,7 +17,7 @@ class DeleteSeasonRequest extends FormRequest
     {
         $user = Auth::user();
         $league = League::where('slug', $this->route('leagueSlug'))->first();
-        return ($user && $team && $league && $user->id === $league->owner->id);
+        return ($user && $league && $user->id === $league->owner->id);
     }
 
     /**

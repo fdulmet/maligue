@@ -23,7 +23,7 @@ class Season extends Model
   ];
 
   protected $casts = [
-
+    'is_archived' => 'boolean',
   ];
 
   protected $dates = [

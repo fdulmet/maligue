@@ -85,8 +85,8 @@ Route::group([
           'as' => 'update',
           'uses' => 'SeasonController@update',
         ]);
-        Route::post('/delete', [
-          'as' => 'edit',
+        Route::get('/delete', [
+          'as' => 'delete',
           'uses' => 'SeasonController@delete',
         ]);
         Route::group([

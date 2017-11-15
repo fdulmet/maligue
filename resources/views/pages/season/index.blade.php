@@ -6,7 +6,7 @@
             <div class="col">
                 <p>
                     <br>
-                    <a href="{{route('web_season_create')}}" class='btn btn-green'>Créer une nouvelle saison</a>
+                    <a href="{{route('league.season.create', ['leagueSlug' => $league->slug])}}" class='btn btn-green'>Créer une nouvelle saison</a>
                     <br>
                 </p>
             </div>
@@ -29,12 +29,12 @@
                     @foreach($seasons as $season)
                         <tr>
                             <td>{{ $season->name }}</td>
-                            <td>{{ $season->league->name }}</td>
+                            <td>{{ $league->name }}</td>
                             <td>{{ $season->date_start}}</td>
                             <td>{{ $season->date_end }}</td>
                             <td>
-                                <a href="#" class="btn btn-green">Modifier</a>
-                                <a href="#" class="btn btn-orange btn-block">Archiver</a>
+                                <a href="{{route('league.season.edit', ['leagueSlug' => $league->slug, 'seasonSlug' => $season->slug])}}" class="btn btn-green">Modifier</a>
+                                <a href="{{route('league.season.delete', ['leagueSlug' => $league->slug, 'seasonSlug' => $season->slug])}}" class="btn btn-orange btn-block">Archiver</a>
                             </td>
                         </tr>
                     @endforeach
