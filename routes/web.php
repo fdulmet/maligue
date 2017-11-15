@@ -170,9 +170,17 @@ Route::group([
     'as' => 'create',
     'uses' => 'TeamController@store',
   ]);
+  Route::get('/', [
+    'as' => 'index',
+    'uses' => 'TeamController@index',
+  ]);
   Route::group([
     'prefix' => '{teamSlug}',
   ], function() {
+    Route::get('/', [
+      'as' => 'edit',
+      'uses' => 'TeamController@edit',
+    ]);
     Route::post('/', [
       'as' => 'update',
       'uses' => 'TeamController@update',

@@ -7,10 +7,13 @@ use App\Http\Requests\Team\CreateTeamRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\UpdateTeamRequest;
 use App\Http\Requests\Team\DeleteTeamRequest;
+use App\Http\Requests\Team\IndexTeamRequest;
+use App\Http\Requests\Team\EditTeamRequest;
 use App\Http\Requests\Team\AttachPlayerToTeamRequest;
 use App\Http\Requests\Team\DetachPlayerToTeamRequest;
 use App\Team;
 use App\User;
+use Auth;
 
 class TeamController extends Controller
 {
@@ -19,6 +22,21 @@ class TeamController extends Controller
     }
     public function store(StoreTeamRequest $request) {
 
+    }
+    public function index(IndexTeamRequest $request) {
+      $teams = Team::all();
+      return view('pages.team.index', [
+        'teams' => $teams,
+      ]);
+    }
+    public function edit(EditTeamRequest $request, $teamSlug) {
+      $team = Team::where('slug', '=', $teamSlug)->first();
+      if (!$team) {
+        abort(404);
+      }
+      return view('pages.team.edit', [
+        'team' => $team,
+      ]);
     }
     public function update(UpdateTeamRequest $request, $teamSlug) {
       $team = Team::where('slug', '=', $teamSlug)->first();
@@ -53,7 +71,7 @@ class TeamController extends Controller
       try {
         $team->save();
         flash("L'équipe a bien été mise à jour")->success();
-        return redirect('/');
+        return back();
       } catch (Exception $e) {
         flash('Une erreur est survenue')->error();
         return back();

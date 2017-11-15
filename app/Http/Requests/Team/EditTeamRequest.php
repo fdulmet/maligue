@@ -4,9 +4,7 @@ namespace App\Http\Requests\Team;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
-use App\Team;
-
-class UpdateTeamRequest extends FormRequest
+class EditTeamRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,8 +14,7 @@ class UpdateTeamRequest extends FormRequest
     public function authorize()
     {
         $user = Auth::user();
-        $team = Team::where('slug', $this->route('teamSlug'))->first();
-        return (($user && $team) && ($user->id === $team->captain->id || $user->isAdmin));
+        return ($user && $user->isAdmin);
     }
 
     /**
@@ -28,10 +25,6 @@ class UpdateTeamRequest extends FormRequest
     public function rules()
     {
         return [
-          'name' => 'string|max:255',
-          'captain' => 'integer:exists:users,id',
-          'logo' => 'image',
-          'sheet_url' => 'url|max:1024',
         ];
     }
 }
