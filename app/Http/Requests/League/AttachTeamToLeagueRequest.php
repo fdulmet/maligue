@@ -17,7 +17,7 @@ class AttachTeamToLeagueRequest extends FormRequest
         $user = Auth::user();
         $league = League::where('slug', $this->route('leagueSlug'))->first();
         $team = Team::where('slug', $this->route('teamSlug'))->first();
-        return ($user && $team && $league && $user->id === $league->owner->id);
+        return ($user && $team && $league && ($user->id === $league->owner->id || $user->isAdmin));
     }
 
     /**

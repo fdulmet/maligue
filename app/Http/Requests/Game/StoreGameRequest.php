@@ -17,7 +17,7 @@ class StoreGameRequest extends FormRequest
     {
         $league = League::where('slug', $this->route('leagueSlug'))->first();
         $user = Auth::user();
-        return ($league && $user && $user->id === $league->owner->id);
+        return ($league && $user && ($user->id === $league->owner->id || $user->isAdmin));
     }
 
     /**

@@ -17,7 +17,7 @@ class DeleteUserRequest extends FormRequest
     {
         $currentUser = Auth::user();
         $targetUser = User::find($this->route('userId'));
-        return ($currentUser->id === $targetUser->id);
+        return ($currentUser->id === $targetUser->id || $currentUser->isAdmin);
     }
 
     /**

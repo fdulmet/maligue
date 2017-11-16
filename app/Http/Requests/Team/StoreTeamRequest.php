@@ -4,7 +4,6 @@ namespace App\Http\Requests\Team;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-// TODO
 class StoreTeamRequest extends FormRequest
 {
     /**

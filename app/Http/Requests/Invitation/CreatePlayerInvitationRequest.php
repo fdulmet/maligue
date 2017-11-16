@@ -17,7 +17,7 @@ class CreatePlayerInvitationRequest extends FormRequest
     {
         $user = Auth::user();
         $team = Team::where('slug', $this->route('teamSlug'))->first();
-        return ($user && $team && $user->id === $team->captain->id);
+        return ($user && $team && ($user->id === $team->captain->id || $user->isAdmin));
     }
 
     /**

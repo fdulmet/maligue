@@ -17,7 +17,7 @@ class IndexGameRequest extends FormRequest
     {
         $league = League::with('owner')->where('slug', $this->route('leagueSlug'))->first();
         $user = Auth::user();
-        return ($league && $user && $user->id === $league->owner->id);
+        return ($league && $user && ($user->id === $league->owner->id || $user->isAdmin));
     }
 
     /**

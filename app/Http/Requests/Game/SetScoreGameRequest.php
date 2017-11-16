@@ -21,6 +21,9 @@ class SetScoreGameRequest extends FormRequest
         if (!$user || !$game) {
           return false;
         }
+        if ($user->isAdmin) {
+          $authorize = true;
+        }
         foreach ($game->teams as $team) {
           if ($team->captain->id === $user->id) {
             $authorize = true;

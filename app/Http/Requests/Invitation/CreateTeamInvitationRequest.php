@@ -17,7 +17,7 @@ class CreateTeamInvitationRequest extends FormRequest
     {
         $user = Auth::user();
         $league = League::where('slug', $this->route('leagueSlug'))->first();
-        return ($user && $league && $user->id === $league->owner->id);
+        return ($user && $league && ($user->id === $league->owner->id || $user->isAdmin));
     }
 
     /**

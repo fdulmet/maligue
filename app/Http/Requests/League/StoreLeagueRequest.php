@@ -4,7 +4,6 @@ namespace App\Http\Requests\League;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-// TODO
 class StoreLeagueRequest extends FormRequest
 {
     /**

@@ -17,7 +17,7 @@ class EditUserRequest extends FormRequest
     {
         $currentUser = Auth::user();
         $targetUser = User::find($this->route('userId'));
-        return ($currentUser->id === $target->id);
+        return ($currentUser->id === $target->id || $currentUser->isAdmin);
     }
 
     /**
