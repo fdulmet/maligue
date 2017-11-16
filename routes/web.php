@@ -42,14 +42,20 @@ Route::group([
     // 'auth:web',
   ],
 ], function () {
+  /*
   Route::post('/', [
     'as' => 'store',
     'uses' => 'LeagueController@store',
+  ]);
+  Route::get('/', [
+    'as' => 'index',
+    'uses' => 'LeagueController@index',
   ]);
   Route::get('/create', [
     'as' => 'create',
     'uses' => 'LeagueController@create',
   ]);
+  */
   Route::group([
     'prefix' => '{leagueSlug}',
   ], function() {
@@ -162,14 +168,16 @@ Route::group([
   'prefix' => 'team',
   'middleware' => [],
 ], function () {
+  /*
   Route::get('create', [
     'as' => 'create',
     'uses' => 'TeamController@create',
   ]);
   Route::post('create', [
-    'as' => 'create',
+    'as' => 'store',
     'uses' => 'TeamController@store',
   ]);
+  */
   Route::get('/', [
     'as' => 'index',
     'uses' => 'TeamController@index',

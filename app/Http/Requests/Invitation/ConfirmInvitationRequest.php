@@ -1,8 +1,10 @@
 <?php
-//TODO
 namespace App\Http\Requests\Invitation;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
+use App\Invitation;
+use App\User;
 
 class ConfirmInvitationRequest extends FormRequest
 {
@@ -13,7 +15,22 @@ class ConfirmInvitationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        $invitation = Invitation::where('token', '=', $this->route('token'))->where('consumed', '=', false)->first();
+        if ($invitation) {
+          $invitedUser = User::where('email', '=', $invitation->email)->first();
+          $user = Auth::user();
+          \Debugbar::info($user);
+          \Debugbar::info($invitedUser);
+          if ($invitedUser && $user) {
+            return ($user->email === $invitedUser->email);
+          } else if (!$invitedUser && Auth::guest()) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return false;
+        }
     }
 
     /**
@@ -24,7 +41,6 @@ class ConfirmInvitationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
         ];
     }
 }

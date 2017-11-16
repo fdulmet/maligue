@@ -18,8 +18,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     @foreach($league->seasons as $s)
-                        {{--<a class="dropdown-item" href="{{ route('switchSaison', ['saisonId' => $saison->id]) }}">{{ $saison->nom }}</a> --}}
-                        {{$s->name}}
+                        <a class="dropdown-item" href="{{ route('league.season.team.dashboard', [ 'leagueSlug' => $league->slug,
+                                                                                                  'seasonSlug' => $s->slug,
+                                                                                                  'teamSlug' => $team->slug]) }}">{{ $s->name }}</a>
                     @endforeach
                     <!--
                     <a class="dropdown-item" href="http://laliguedespingouins.fr/" target="_blank">2016-17</a>
@@ -51,7 +52,7 @@
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#reward">
                     Récompenses
                 </button>
-                @if(Auth::user()->isAdmin)
+                @if(Auth::user()->isAdmin || Auth::user()->id === $league->owner->id)
                   <a href="{{route('league.season.index', ['leagueSlug' => $league->slug ])}}" class='btn btn-green'>Saisons</a>
                   <a href="{{route('league.season.game.index', ['leagueSlug' => $league->slug, 'seasonSlug' => $season->slug])}}" class='btn btn-green'>Matchs</a>
                 @endif

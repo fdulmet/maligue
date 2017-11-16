@@ -15,7 +15,7 @@ class AlterUsersConfirmedTable extends Migration
     {
       Schema::table('users', function (Blueprint $table) {
         $table->boolean('confirmed')->default(false)->after('password');
-        $table->boolean('is_client')->default(false)->after('confirmed');
+        $table->boolean('is_client')->default(true)->after('confirmed');
       });
     }
 

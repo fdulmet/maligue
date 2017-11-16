@@ -5,21 +5,48 @@ inviterAmisRejoindre
 @slot('title')
     Inviter des amis à rejoindre l'équipe {{ $team->name }}
 @endslot
-<form class="form-horizontal" role="form" method="POST" action="route('inviterAmisDansEquipe')">
-    {{ csrf_field() }}
+<div class="form-horizontal" >
 
     <div class="form-group">
         <div class="col-md-12">
-            <input id="emailInvite1" type="text" class="form-control" name="emails"
-                   placeholder="hatembenarfa@gmail.com, antoinegriezmann@gmail.com, etc" required>
+          <input id="invite_team_input" type="text" class="form-control" name="emails" data-role="tagsinput"
+                 placeholder="hatembenarfa@gmail.com, antoinegriezmann@gmail.com, etc" required>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-12">
+          <form class="form-horizontal" role="form" method="POST" action="{{route('team.invite', ['teamSlug' => $team->slug])}}" id='invite_team_form'>
+            {{ csrf_field() }}
             <button type="submit" class="btn btn-orange btn-block" id="bouton_submit">
                 Envoyer invitation
             </button>
+          </form>
         </div>
     </div>
-</form>
+</div>
 @endcomponent
+@push('scripts')
+<script>
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+var invite_team_emails = {};
+
+$('#invite_team_input').on('beforeItemAdd', function(event) {
+  if (!validateEmail(event.item)) {
+    event.cancel = true;
+  }
+});
+$('#invite_team_input').on('itemAdded', function(event) {
+  var key = Math.random().toString(36).substring(7);
+  invite_team_emails[event.item] = key;
+  var element = "<input type='hidden' name='emails[]' value='" +  event.item + "' id='email-" + key + "'>";
+  $("#invite_team_form").prepend(element);
+});
+$('#invite_team_input').on('itemRemoved', function(event) {
+  var key = invite_team_emails[event.item];
+  $( "#email-" + key ).remove();
+});
+</script>
+@endpush

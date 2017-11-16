@@ -125,3 +125,5 @@ var file = undefined;
     r.length > 0 && (r.trigger("click.fileupload"), t.preventDefault())
   })
 }(window.jQuery)
+
+require('./tagsinput');

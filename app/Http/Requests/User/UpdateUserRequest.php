@@ -30,7 +30,7 @@ class UpdateUserRequest extends FormRequest
         return [
           'first_name' => 'string|max:255',
           'last_name' => 'string|max:255',
-          'phone' => 'string|min:10|max:10',
+          'phone' => 'string|size:10',
           'email => string|email',
           'password => string|min:3|max:32',
         ];

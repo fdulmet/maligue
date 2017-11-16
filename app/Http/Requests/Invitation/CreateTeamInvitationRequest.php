@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Invitation;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
 use App\League;
 
 class CreateTeamInvitationRequest extends FormRequest
@@ -27,8 +28,8 @@ class CreateTeamInvitationRequest extends FormRequest
     public function rules()
     {
         return [
-          'emails' => 'required',
-          'emails.*' => 'email',
+          'emails' => 'required|array',
+          'emails.*' => 'required|email',
         ];
     }
 }

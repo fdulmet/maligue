@@ -31,7 +31,7 @@ class UserController extends Controller
           $user->email = $request->input('email');
         }
         if ($request->filled('password')) {
-          $user->password = bcrypt($request->input('first_name'));
+          $user->password = bcrypt($request->input('password'));
         }
         try {
           $user->save();

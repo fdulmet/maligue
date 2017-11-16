@@ -28,7 +28,12 @@
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 @foreach(Auth::user()->teams as $t)
-                                    <a class="dropdown-item" href="{{ route('switchTeam', ['equipeId' => $t->id]) }}">{{ $t->name }}</a>
+                                  @if ($t->leagues->where('id', $league->id)->count() >= 1)
+                                    <a class="dropdown-item" href="{{ route('league.season.team.dashboard', [ 'leagueSlug' => $league->slug,
+                                                                                                              'seasonSlug' => $season->slug,
+                                                                                                              'teamSlug' => $t->slug,
+                                                                                                            ]) }}">{{ $t->name }}</a>
+                                  @endif
                                 @endforeach
                             </div>
                         </div>
@@ -67,9 +72,11 @@
                         Modifier le capitaine
                     </button>
                 @endif
+                @if(Auth::user()->isAdmin)
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisCreer" id="bouton_invitation_creer">
                     Inviter à créer une équipe
                 </button>
+                @endif
             </div>
         </div>
     </div>
