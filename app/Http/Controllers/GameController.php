@@ -113,6 +113,9 @@ class GameController extends Controller
       $league = League::with([
         'teams' => function($query) use($team1Id, $team2Id) {
           $query->whereIn('team_id', [$team1Id, $team2Id]);
+        },
+        'seasons' => function($query) use($seasonSlug) {
+          $query->where('slug', '=', $seasonSlug);
         }
         ])->where('slug', '=', $leagueSlug)->first();
       if (!$league || $league->seasons->count() !== 1) {
