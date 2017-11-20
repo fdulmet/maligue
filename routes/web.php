@@ -39,7 +39,7 @@ Route::group([
   'as' => 'league.',
   'prefix' => 'league',
   'middleware' => [
-    // 'auth:web',
+      'auth:web',
   ],
 ], function () {
   /*
@@ -166,7 +166,9 @@ Route::group([
 Route::group([
   'as' => 'team.',
   'prefix' => 'team',
-  'middleware' => [],
+  'middleware' => [
+      'auth:web',
+  ]
 ], function () {
   /*
   Route::get('create', [
@@ -219,7 +221,9 @@ Route::group([
 Route::group([
   'as' => 'user.',
   'prefix' => 'user/{userId}',
-  'middleware' => [],
+  'middleware' => [
+      'auth:web',
+  ]
 ], function () {
   /*
   Route::get('/', [
@@ -244,31 +248,19 @@ Route::post('/confirm/{token}', [
   'as' => 'invitation.register',
   'uses' => 'InvitationController@register',
 ]);
-/*
-POST /league > créer une ligue
-GET /league/{slug}/season > liste des saisons
-POST /league/{slug}/season > create season
-GET /league/{slug}/season/{slug}/ > dashboard
-POST /league/{slug}/invite > inviter à creer une équipe dans la ligue
-GET /league/{slug}/team > liste des équipes
-POST /league/{slug}/team/{id} > ajouter une équipe dans la ligue
-DELETE /league/{slug}/team/{id} > supprimer une équipe de la ligue
-GET /match > liste des matchs
-POST /match > créer un match
-DELETE /match/{id} > supprimer un match
-PATCH /match/{id} > maj match
-GET /team > liste des équipe
-POST /team > créer une équipe
-PATCH /team/{id} > update équipe
-GET /team/{id} > voir une équipe
-DELETE /team/{id} > supprimer une équipe
-POST /team/{id}/invite > inviter à rejoindre un équipe
-POST /team/{id}/player/{id} > ajouter un joueur dans l'équipe
-DELETE /team/{id}/player/{id} > supprimer un joueur dans l'équipe
-GET /user > liste des utilisateurs
-PATCH /user/{id} > maj user
-DELETE /user/{id} > supprimer un joueur
-POST /register > créer un utilisateur
 
-*/
-Auth::routes();
+// Auth::routes();
+// Detailled authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
