@@ -20,15 +20,6 @@ class AlterInvitesTable extends Migration
           $table->integer('from_user')->unsigned();
           $table->integer('team_id')->unsigned()->nullable()->default(null);
           $table->integer('league_id')->unsigned()->nullable()->default(null);
-          $table->foreign('league_id')
-              ->references('id')
-              ->on('leagues');
-          $table->foreign('team_id')
-              ->references('id')
-              ->on('teams');
-          $table->foreign('from_user')
-              ->references('id')
-              ->on('users');
       });
       Schema::rename('invites', 'invitations');
     }

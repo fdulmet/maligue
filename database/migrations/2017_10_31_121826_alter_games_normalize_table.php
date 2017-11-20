@@ -38,14 +38,17 @@ class AlterGamesNormalizeTable extends Migration
           'when' => $when,
         ]);
         if ($game->lieu_report !== null && $game->date_report !== null && $game->heure_report !== null) {
-          Game::create([
+          $newgame = Game::create([
             'place' => $game->lieu_report,
             'league_id' => $game->league_id,
             'season_id' => $game->season_id,
             'when' => Carbon::createFromFormat('Y-m-d H:i:s', "{$game->date_report} {$game->heure_report}", 'Europe/Paris'),
             'initial_game' => $game->id,
           ]);
-          // TODO RELATIONSHPS !!!!
+          $newgame->teams()->sync([
+            $game->teams[0]->id => ['goals' => $game->teams[0]->pivot->goals],
+            $game->teams[1]->id => ['goals' => $game->teams[1]->pivot->goals],
+          ]);
           $game->update([
             'canceled' => true,
           ]);
