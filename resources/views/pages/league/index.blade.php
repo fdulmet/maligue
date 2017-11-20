@@ -12,11 +12,3 @@
   </div>
 </div>
 @endsection
-
-@section('modals')
-    modal
-@endsection
-
-@section('footer')
-    footer
-@endsection
