@@ -116,7 +116,7 @@
                           {{ $player->first_name }} {{ $player->last_name }}
                       @endif
                       @if(Auth::user()->isAdmin || $player->id === Auth::user()->id)
-                          <a href="#" data-url="{{ route('equipe.removePlayer', ['joueur' => $player->id, 'equipe' => $team->id]) }}" title="Retirer le joueur" data-toggle="modal" data-target="#retirerJoueur">
+                          <a href="#" data-url="{{ route('team.detachPlayer', ['teamSlug' => $team->slug, 'playerId' => $player->id ]) }}" title="Retirer le joueur" data-toggle="modal" data-target="#retirerJoueur">
                               <i class="fa fa-remove"></i>
                           </a>
                       @endif
