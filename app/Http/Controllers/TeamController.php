@@ -71,7 +71,7 @@ class TeamController extends Controller
       try {
         $team->save();
         flash("L'équipe a bien été mise à jour")->success();
-        return back();
+        return redirect('/');
       } catch (Exception $e) {
         flash('Une erreur est survenue')->error();
         return back();
