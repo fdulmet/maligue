@@ -5,11 +5,9 @@ namespace App\Listeners;
 use App\Events\InvitationCreatedEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Notification;
-use App\Notifications\InvitationNotification;
 use App\Notifications\InvitationSentNotification;
 
-class SendInvitationListener implements ShouldQueue
+class SendInvitationConfirmationListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -29,14 +27,13 @@ class SendInvitationListener implements ShouldQueue
      */
     public function handle(InvitationCreatedEvent $event)
     {
-        $date = date("Y-m-d H:i:s");
-        \Storage::append('file.log', "{$date} LISTENER");
-        \Storage::append('file.log', "{$date} {$event->invitation->email}");
+      $date = date("Y-m-d H:i:s");
+      \Storage::append('fileconfirmation.log', "{$date} SendInvitationConfirmationListener");
         try {
-          Notification::route('mail', $event->invitation->email)
-            ->notify(new InvitationNotification($event->invitation));
+          $user = $event->invitation->fromUser;
+          $user->notify(new InvitationSentNotification($event->invitation));
         } catch(\Exception $e) {
-          \Storage::append('file.log', $e);
+          \Storage::append('fileconfirmation.log', $e);
         }
     }
 }

@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\InvitationCreatedEvent' => [
             'App\Listeners\SendInvitationListener',
+            'App\Listeners\SendInvitationConfirmationListener',
         ],
         'App\Events\InvitationAcceptedEvent' => [
             'App\Listeners\SendInvitationFeedbackListener',

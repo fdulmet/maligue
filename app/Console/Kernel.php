@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Console\Commands\RemindGameCommand;
+use App\Console\Commands\RemindSetScoreCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,8 +15,16 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        RemindGameCommand::class,
+        RemindSetScoreCommand::class,
     ];
+
+    protected function scheduleRunsHourly(Schedule $schedule)
+    {
+        foreach ($schedule->events() as $event) {
+                $event->expression = substr_replace($event->expression, '*', 0, 1);
+        }
+    }
 
     /**
      * Define the application's command schedule.
@@ -24,8 +34,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('invitation:cleanup')->daily();
+        $schedule->command('remind:score')->daily();
+        $schedule->command('remind:game')->daily();
+        $schedule->command('queue:restart')->hourly();
+        $schedule->command('queue:work --tries=3 --sleep=10')->hourly()->withoutOverlapping();
+        $this->scheduleRunsHourly($schedule);
     }
 
     /**
