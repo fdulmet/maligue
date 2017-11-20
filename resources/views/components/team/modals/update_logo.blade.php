@@ -26,6 +26,7 @@ updateTeamLogo
                     Mettre à jour le logo
                 </button>
             </div>
+        </form>
     </div>
 </div>
 
