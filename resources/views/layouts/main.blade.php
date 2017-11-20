@@ -28,7 +28,9 @@
 <body>
   <div id="wrapper">
     @include('flash::message')
-    @include('errors.errors')
+    @isset($errors)
+      @include('errors.errors', ['errors' => $errors])
+    @endisset
     @if(Auth::guest())
         @include('components.banners.guest')
     @else
