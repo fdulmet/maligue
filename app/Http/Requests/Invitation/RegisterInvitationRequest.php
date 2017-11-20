@@ -43,7 +43,7 @@ class RegisterInvitationRequest extends FormRequest
             'register.first_name' => 'required_with:register|string|max:255',
             'register.last_name' => 'required_with:register|string|max:255',
             'register.phone'  => 'required_with:register|string|size:10',
-            'register.password' => 'required_with:register|string|min:3|max:20|confirmed',
+            'register.password' => 'required_with:register|string|min:6|max:32|confirmed',
             'team' => 'array',
             'team.name' => 'required_with:team|string|min:3|max:255',
             'team.logo' => 'image',

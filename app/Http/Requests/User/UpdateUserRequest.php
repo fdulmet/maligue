@@ -32,7 +32,7 @@ class UpdateUserRequest extends FormRequest
           'last_name' => 'string|max:255',
           'phone' => 'string|size:10',
           'email => string|email',
-          'password => string|min:3|max:32',
+          'password => string|min:6|max:32|confirmed',
         ];
     }
 }
