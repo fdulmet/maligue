@@ -22,7 +22,7 @@ class DashboardController extends Controller
                     $query->where('canceled', '=', false);
                   },
                 ]);
-                $query->where('slug', '=', $seasonSlug);
+                // $query->where('slug', '=', $seasonSlug);
               },
               'teams', 'teams.captain', 'teams.users'
             ]);
@@ -33,7 +33,7 @@ class DashboardController extends Controller
           'users',
         ])->where('slug', '=', $teamSlug)->first();
         $league = $team->leagues[0];
-        $season = $league->seasons[0];
+        $season = $league->seasons->where('slug', $seasonSlug)->first();
         /* on compile le résumé de la saison */
         $games = $season->games;
         $summary = [];
