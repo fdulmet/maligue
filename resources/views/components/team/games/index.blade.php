@@ -15,7 +15,7 @@ $lastGames = $games->filter(function ($value, $key) use ($now) {
         <strong class="color-green">Derniers matchs :</strong>
         <br>
         <br>
-        <div class="scrollbar scrollToBottom" id="style-4" style="max-height: 7rem; overflow: auto;">
+        <div class="scrollbar scrollToBottom" id="style-4" style="max-height: 10rem; overflow: auto;">
             <div class="force-overflow"></div>
             @include('components.team.games.last', ['lastGames' => $lastGames, 'team' => $team])
         </div>
@@ -29,7 +29,7 @@ $lastGames = $games->filter(function ($value, $key) use ($now) {
         <strong class="color-green">Prochains matchs :</strong>
         <br>
         <br>
-        <div class="scrollbar" id="style-4" style="max-height: 6rem; overflow: auto;">
+        <div class="scrollbar" id="style-4" style="max-height: 8rem; overflow: auto;">
             <div class="force-overflow"></div>
             @include('components.team.games.next', ['nextGames' => $nextGames])
         </div>
