@@ -115,8 +115,30 @@ class DashboardController extends Controller
             }
           }
         }
+        /*
         $seasonSummary = collect($summary)->sortByDesc(function ($team, $key) {
           return $team["points"];
+        });
+        */
+        $seasonSummary = collect($summary)->sort(function ($a, $b) {
+          if ($a['points'] > $b['points']) {
+            return -1;
+          } else if ($a['points'] < $b['points']) {
+            return 1;
+          } else {
+            if ($a['goals']['diff'] > $b['goals']['diff']) {
+              return -1;
+            } else if($a['goals']['diff'] < $b['goals']['diff']) {
+              return 1;
+            } else {
+              if ($a['goals']['positive'] > $b['goals']['positive']) {
+                return -1;
+              } else {
+                return 1;
+              }
+            }
+          }
+          //return $team["points"];
         });
         $season->summary = $seasonSummary;
         /* on envoie tout ça dans la vue */
