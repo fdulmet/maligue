@@ -7,6 +7,7 @@
 @include('components.team.modals.update_logo')
 @include('components.team.modals.deactivate_team')
 @include('components.team.modals.payments_sheet')
+@include('components.team.modals.manage_players')
 <div class="row equipe-profil no-gutters">
     <div class="artist-collage col-md-2">
         @if(!$team->logo)
@@ -71,6 +72,9 @@
                     <button type="button" class="btn btn-green" data-toggle="modal" data-target="#updateCapitaine" id="bouton_updateCapitaine">
                         Modifier le capitaine
                     </button>
+                    <button type="button" class="btn btn-green" data-toggle="modal" data-target="#managePlayers" id="bouton_managePlayers">
+                        Gérer les joueurs
+                    </button>
                 @endif
                 @if(Auth::user()->isAdmin)
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisCreer" id="bouton_invitation_creer">
@@ -82,49 +86,5 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col">
-        <br>
-        <strong class="color-green">Effectif :</strong>
-        <div class="list-group list-players">
-            @foreach($team->users->take(5) as $player)
-                <span class="list-group-item">
-                    @if($player->id === $team->captain->id)
-                        {{ $player->first_name }} {{ $player->last_name }} (capitaine)
-                    @else
-                        {{ $player->first_name }} {{ $player->last_name }}
-                    @endif
-                    @if(Auth::user()->isAdmin || $player->id === Auth::user()->id)
-                        <a href="#" data-url="{{ route('team.detachPlayer', ['teamSlug' => $team->slug, 'playerId' => $player->id ])}}" title="Retirer le joueur" data-toggle="modal" data-target="#retirerJoueur">
-                            <i class="fa fa-remove"></i>
-                        </a>
-                    @endif
-                </span>
-            @endforeach
-        </div>
-    </div>
-    @if($team->users->count() > 5)
-        <div class="col">
-            <br>
-            <br>
-            <div class="list-group list-players">
-                @foreach($team->users->splice(5)->take(5) as $player)
-                    <span class="list-group-item">
-                      @if($player->id === $team->captain->id)
-                          {{ $player->first_name }} {{ $player->last_name }} (capitaine)
-                      @else
-                          {{ $player->first_name }} {{ $player->last_name }}
-                      @endif
-                      @if(Auth::user()->isAdmin || $player->id === Auth::user()->id)
-                          <a href="#" data-url="{{ route('team.detachPlayer', ['teamSlug' => $team->slug, 'playerId' => $player->id ]) }}" title="Retirer le joueur" data-toggle="modal" data-target="#retirerJoueur">
-                              <i class="fa fa-remove"></i>
-                          </a>
-                      @endif
-                </span>
-                @endforeach
-            </div>
-        </div>
-    @endif
-</div>
 @include('components.team.games.index')
 @endif
