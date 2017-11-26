@@ -24,10 +24,16 @@
     });
     @endphp
     @foreach($seasonLastGames as $game)
-      @if(count($game->teams) === 2)
+      @if(count($game->teams) === 2 && !$game->canceled)
         <tr class="trChaqueMatch">
             <td>
-                {{ $game->whenWithFormatting }}
+                @if ($game->initialGame)
+                <span style="text-decoration: line-through;">{{$game->initialGame->whenWithFormatting}}</span>
+                <br/>
+                <span class="badge badge-warning">{{$game->whenWithFormatting}}</span>
+                @else
+                <span>{{ $game->whenWithFormatting }}</span>
+                @endif
             </td>
             <td>
                 {{ $game->place}}
