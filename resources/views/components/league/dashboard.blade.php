@@ -32,13 +32,13 @@
                                                                                                   'teamSlug' => $team->slug]) }}">{{ $s->name }}</a>
                     @endforeach
                     @if ($league->slug === 'la-ligue-des-pinguoins')
-                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2017-2016">2016-2017</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2016-2015">2015-2016</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2015-2014">2014-2015</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2014-2013">2013-2014</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2013-2012">2012-2013</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2012-2011">2011-2012</a>
-                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2011-2010">2010-2011</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2017-2016">2016-17</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2016-2015">2015-16</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2015-2014">2014-15</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2014-2013">2013-14</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2013-2012">2012-13</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2012-2011">2011-12</a>
+                      <a class="dropdown-item" data-toggle="modal" data-target="#oldSeason-2011-2010">2010-11</a>
                     @endif
                 </div>
             </div>
