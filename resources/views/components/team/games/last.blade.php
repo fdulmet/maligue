@@ -54,7 +54,7 @@
             !(isset($game->teams[1]->pivot->goals) && isset($game->teams[0]->pivot->goals))
             && (Auth::user()->isAdmin || Auth::user()->id === $team->captain->id))
             <td><button type="submit" class="btn btn-orange btn-block" id="bouton_submit">
-                Modifier
+                Ok
             </button></td>
           @else
             <td>&nbsp;</td>
