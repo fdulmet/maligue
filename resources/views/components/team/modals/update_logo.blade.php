@@ -13,7 +13,7 @@ updateTeamLogo
 
             <div class="form-group">
               <div class="fileupload fileupload-new" data-provides="fileupload">
-                  <span class="btn btn-orange btn-file">
+                  <span class="btn btn-info btn-file">
                   <span class="fileupload-new">Choisir l'image</span>
                   <span class="fileupload-exists">Choisir une autre image</span>
                       <input name="logo" type="file">
