@@ -1,4 +1,4 @@
-@component('components.modals.large')
+@component('components.modals.fullscreen')
 @slot('id')
 oldSeason-2016-2015
 @endslot

@@ -12,6 +12,10 @@ $fa-font-path: '../fonts';
 @import "auth";
 @import "v1";
 @import "tagsinput";
+.modal-fullscreen {
+  max-width: none !important;
+  width: 100% !important;
+}
 // fake comment
 
 //on fait les modifs dans _variables.scss, avec gulp watch qui tourne en continue (ou uniquement gulp à chaque fois),
