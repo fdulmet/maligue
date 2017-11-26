@@ -65,6 +65,9 @@
                   <a href="{{route('league.season.index', ['leagueSlug' => $league->slug ])}}" class='btn btn-green'>Saisons</a>
                   <a href="{{route('league.season.game.index', ['leagueSlug' => $league->slug, 'seasonSlug' => $season->slug])}}" class='btn btn-green'>Matchs</a>
                 @endif
+                @if (Auth::user()->isAdmin)
+                <a href="{{route('team.index')}}" class='btn btn-green'>Equipes</a>
+                @endif
 
             </div>
         </div>
