@@ -3756,33 +3756,33 @@ body {
 
 .prochainMatch tr td:nth-of-type(1),
 .dernierMatch tr td:nth-of-type(1) {
-  width: 8rem;
+  width: 10ex;
 }
 
 .prochainMatch tr td:nth-of-type(2),
 .dernierMatch tr td:nth-of-type(2) {
-  min-width: 6rem;
+  width: 15ex;
   text-align: right;
 }
 
 .prochainMatch tr td:nth-of-type(3),
 .dernierMatch tr td:nth-of-type(3) {
-  width: 2rem;
+  width: 2ex;
 }
 
 .prochainMatch tr td:nth-of-type(4),
 .dernierMatch tr td:nth-of-type(4) {
-  width: 1rem;
+  width: 1ex;
 }
 
 .prochainMatch tr td:nth-of-type(5),
 .dernierMatch tr td:nth-of-type(5) {
-  width: 2rem;
+  width: 2ex;
 }
 
-.prochainMatch tr td:last-child,
-.dernierMatch tr td:last-child {
-  width: 6rem;
+.prochainMatch tr td:nth-of-type(6),
+.dernierMatch tr td:nth-of-type(6) {
+  width: 15ex;
   text-align: left;
 }
 
