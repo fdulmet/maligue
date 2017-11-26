@@ -56,7 +56,7 @@ class RemindGameNotification extends Notification
                     ->line("Votre équipe {$myTeam->name} rencontre {$otherTeam->name} demain")
                     ->line("Lieu : {$game->place}")
                     ->line("Terrain : {$game->field}")
-                    ->line("Rendez-vous : {$when->format('d/m/Y à G:i')}")
+                    ->line("Début du match : {$when->format('d/m/Y à G:i')}")
                     ->action('Voir sur Ma Ligue', url('/'));
     }
 
