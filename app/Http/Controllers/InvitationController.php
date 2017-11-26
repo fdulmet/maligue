@@ -34,6 +34,7 @@ class InvitationController extends Controller
           $invitation->save();
           event(new InvitationCreatedEvent($invitation));
         }
+        flash("Vos invitations ont bien été envoyées")->success();
         return back();
     }
     public function createTeam(CreateTeamInvitationRequest $request, $leagueSlug) {
@@ -52,6 +53,7 @@ class InvitationController extends Controller
           $invitation->save();
           event(new InvitationCreatedEvent($invitation));
         }
+        flash("Vos invitations ont bien été envoyées")->success();
         return back();
     }
     public function register(RegisterInvitationRequest $request, $token) {
