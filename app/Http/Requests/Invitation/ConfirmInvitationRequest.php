@@ -19,8 +19,6 @@ class ConfirmInvitationRequest extends FormRequest
         if ($invitation) {
           $invitedUser = User::where('email', '=', $invitation->email)->first();
           $user = Auth::user();
-          \Debugbar::info($user);
-          \Debugbar::info($invitedUser);
           if ($invitedUser && $user) {
             return ($user->email === $invitedUser->email);
           } else if (!$invitedUser && Auth::guest()) {

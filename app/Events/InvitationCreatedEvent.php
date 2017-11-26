@@ -25,7 +25,6 @@ class InvitationCreatedEvent
     {
         $this->invitation = $invitation;
         $date = date("Y-m-d H:i:s");
-        \Storage::append('file.log', "{$date} EVENT");
     }
 
     /**

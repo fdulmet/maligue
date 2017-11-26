@@ -28,12 +28,11 @@ class SendInvitationConfirmationListener implements ShouldQueue
     public function handle(InvitationCreatedEvent $event)
     {
       $date = date("Y-m-d H:i:s");
-      \Storage::append('fileconfirmation.log', "{$date} SendInvitationConfirmationListener");
         try {
           $user = $event->invitation->fromUser;
           $user->notify(new InvitationSentNotification($event->invitation));
         } catch(\Exception $e) {
-          \Storage::append('fileconfirmation.log', $e);
+          \Storage::append('file.log', $e);
         }
     }
 }

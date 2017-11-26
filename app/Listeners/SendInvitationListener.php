@@ -30,8 +30,6 @@ class SendInvitationListener implements ShouldQueue
     public function handle(InvitationCreatedEvent $event)
     {
         $date = date("Y-m-d H:i:s");
-        \Storage::append('file.log', "{$date} LISTENER");
-        \Storage::append('file.log', "{$date} {$event->invitation->email}");
         try {
           Notification::route('mail', $event->invitation->email)
             ->notify(new InvitationNotification($event->invitation));

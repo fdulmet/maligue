@@ -42,9 +42,7 @@ class InvitationNotification extends Notification
     public function toMail($notifiable)
     {
         $date = date("Y-m-d H:i:s");
-        \Storage::append('file.log', "{$date} NOTIFICATION");
         $invitation = $this->invitation;
-        \Storage::append('file.log', json_encode($invitation));
         $mail = new MailMessage;
         if ($invitation->team) {
           $mail->subject('[maligue.fr] - Invitation à rejoindre une équipe')

@@ -85,7 +85,7 @@ class GameController extends Controller
       }
       $teamsId = array_keys($goals);
       if ($game->teams->count() !== 2 || $game->teams->whereIn('id', $teamsId)->count() !== 2) {
-        \Debugbar::info('Erreur');
+        abort(500);
       }
       foreach($game->teams as $team) {
         $game->teams()->updateExistingPivot($team->id, ['goals' => $goals[$team->id]]);

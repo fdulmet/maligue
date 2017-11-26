@@ -127,7 +127,7 @@ class DashboardController extends Controller
             'users' => $users,
         ]);
       } catch(\Exception $e) {
-        \Debugbar::info($e);
+        abort(500);
       }
 
     }

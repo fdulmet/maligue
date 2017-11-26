@@ -29,7 +29,6 @@ class SendInvitationFeedbackListener implements ShouldQueue
     public function handle(InvitationAcceptedEvent $event)
     {
       $date = date("Y-m-d H:i:s");
-      \Storage::append('file.log', "{$date} InvitationAcceptedEvent LISTENER");
       try {
         $user = $event->invitation->fromUser;
         $user->notify(new InvitationAcceptedNotification($event->invitedUser));
