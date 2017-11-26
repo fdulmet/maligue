@@ -35,14 +35,14 @@
                         <tr>
                             <td>{{ $game->place }}</td>
                             <td>{{ $game->field }}</td>
-                            <td>{{ $game->when }}</td>
+                            <td>{{ $game->whenWithFormatting }}</td>
                             <td>{{ $game->teams[0]->name }}</td>
                             <td>{{ $game->teams[1]->name }}</td>
                             <td>{{ $game->season->name }}</td>
                             <td>{{ $game->league->name }}</td>
                             <td>
                               @if($game->initialGame)
-                                {{ $game->initialGame->when }}
+                                {{ $game->initialGame->whenWithFormatting }}
                               @endif
                             </td>
                             <td>

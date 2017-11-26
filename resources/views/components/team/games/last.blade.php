@@ -7,7 +7,7 @@
   <table class="dernierMatch">
       <tr>
           <td>
-            {{$game->when}}
+            {{$game->whenWithFormatting}}
           </td>
           <td>{{ $game->teams[0]->name }}</td>
           @if($game->canceled)

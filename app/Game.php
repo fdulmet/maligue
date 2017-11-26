@@ -47,4 +47,7 @@ class Game extends Model
   {
     return $this->belongsTo('App\Game', 'initial_game', 'id');
   }
+  public function getWhenWithFormattingAttribute() {
+    return $this->when->format('d/m/y H\hi');
+  }
 }

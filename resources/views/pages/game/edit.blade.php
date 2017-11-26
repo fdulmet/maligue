@@ -141,7 +141,7 @@
                           <h5>Report du match</h5>
 
                           @if($game->initialGame)
-                            <p>Le match était initialement prévu le {{$game->initialGame->when}}. <br/>
+                            <p>Le match était initialement prévu le {{$game->initialGame->whenWithFormatting}}. <br/>
                               <a class='btn btn-orange' href="{{route('league.season.game.cancelDelay', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'gameId' => $game->id])}}">Annuler le report</a>
                             </p>
                           @endif

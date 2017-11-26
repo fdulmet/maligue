@@ -27,7 +27,7 @@
       @if(count($game->teams) === 2)
         <tr class="trChaqueMatch">
             <td>
-                {{ $game->when }}
+                {{ $game->whenWithFormatting }}
             </td>
             <td>
                 {{ $game->place}}
@@ -55,7 +55,7 @@
         <tr class="trChaqueMatch">
         @endif
             <td>
-                {{ $game->when }}
+                {{ $game->whenWithFormatting }}
             </td>
             <td>
                 {{ $game->place}}

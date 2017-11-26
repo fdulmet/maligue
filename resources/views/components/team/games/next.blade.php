@@ -6,7 +6,7 @@
             @if($game->canceled)
                 Annulé ou reporté
             @else
-                {{$game->when}}
+                {{$game->whenWithFormatting}}
             @endif
           </td>
           <td>{{ $game->teams[0]->name }}</td>
