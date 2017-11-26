@@ -24,14 +24,14 @@
                         <th class="team2">Equipe 2</th>
                         <th class="saison st-sort">Saison</th>
                         <th class="ligue st-sort">Ligue</th>
-                        <th class="report st-sort">Annulé</th>
+                        <th class="report st-sort">Date avant report</th>
                         <th class="actions">Actions</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     @foreach($games as $game)
-                      @if ($game->teams->count() === 2)
+                      @if ($game->teams->count() === 2 && !$game->canceled)
                         <tr>
                             <td>{{ $game->place }}</td>
                             <td>{{ $game->field }}</td>
@@ -40,7 +40,11 @@
                             <td>{{ $game->teams[1]->name }}</td>
                             <td>{{ $game->season->name }}</td>
                             <td>{{ $game->league->name }}</td>
-                            <td>{{ $game->canceled}}</td>
+                            <td>
+                              @if($game->initialGame)
+                                {{ $game->initialGame->when }}
+                              @endif
+                            </td>
                             <td>
                               <a href="{{route('league.season.game.edit', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'gameId' => $game->id])}}" class='btn btn-green'>Editer</a>
                               <a href="{{route('league.season.game.delete', ['leagueSlug' => $leagueSlug, 'seasonSlug' => $seasonSlug, 'gameId' => $game->id])}}" class='btn btn-orange btn-block'>Supprimer</a>
