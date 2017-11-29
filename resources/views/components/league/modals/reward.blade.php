@@ -7,11 +7,11 @@ reward
 @endslot
 <div class="row">
     <div class="col-md-12">
-        Vous pouvez gagner :
+        Cette saison, vous pouvez gagner :
         <ul>
-          <li>Des tshirts</li>
-          <li>Des CD de Rihanna</li>
-          <li>Des peluches footix</li>
+          <li>Un pichet d’1,5L de bière est offert à l’équipe victorieuse de chaque match (à partager en cas de match nul !).</li>
+          <li>Toutes les équipes peuvent bénéficier de 10% de remise sur les équipements Adidas à partir d'une commande pour 5 joueurs
+          Des tshirts</li>
         </ul>
 
     </div>
