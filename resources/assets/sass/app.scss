@@ -1,10 +1,21 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);//@import url('https://fonts.googleapis.com/css?family=Pacifico:300,400,600');
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";// Bootstrap (on importe la librairie Bootstrap au format Sass)
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:300,400,600);
+
+$fa-font-path: '../fonts';
+
+@import '../../../node_modules/font-awesome/scss/font-awesome.scss';
+
 //@import "variables";//on importe un fichier de variables pour Bootstrap
 @import "banner";
 @import "content";
 @import "editable_table";
 @import "auth";
+@import "v1";
+@import "tagsinput";
+.modal-fullscreen {
+  max-width: none !important;
+  width: 100% !important;
+}
 // fake comment
 
 //on fait les modifs dans _variables.scss, avec gulp watch qui tourne en continue (ou uniquement gulp à chaque fois),

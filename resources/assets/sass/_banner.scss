@@ -6,8 +6,6 @@
     float: left;
   }
   h2 {
-    margin: 10px;
-    text-shadow: 1px 1px 1px black;
     #titreNomLigue {
       color: white;
       text-decoration: none;
@@ -38,13 +36,6 @@
     margin: 0;
     vertical-align: bottom;
     padding-left:0;
-    #prenom_nom {
-      color: white;
-      text-decoration: none;
-      text-shadow: 1px 1px 1px black;
-      font-size: small;
-      vertical-align: bottom;
-    }
     #dropdownMenu {
       color: black;
     }
@@ -72,14 +63,5 @@
     #bouton_fermer_profil_joueur{
       background-color: #d2d2d2;
     }
-  }
-  #bouton_contact{
-    color: white;
-    text-shadow: 1px 1px 1px black;
-    font-size: small;
-    border-radius: 0px;
-    background-color: transparent;
-    border-color: transparent;
-    padding: 0.5% 1.5% 0.5% 1.5%;//haut droite bas gauche
   }
 }

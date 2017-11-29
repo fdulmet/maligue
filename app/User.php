@@ -2,16 +2,19 @@
 
 namespace App;
 
-use App\Equipe;
-use App\Notifications\AdminNewUserMail;
-use App\Notifications\ResetPassword;
-use App\Notifications\UserWelcomeMail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -19,64 +22,59 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom', 'prenom', 'email', 'password', 'tel'
+        'first_name',
+        'last_name',
+        'phone',
+        'email',
+        'password',
+        'confirmed',
+        'is_client',
     ];
 
+    protected $casts = [
+        'is_client' => 'boolean',
+        'confirmed' => 'boolean',
+    ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The dates attributes.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
+     * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
-
 
     /**
      * Plusieurs équipes peuvent appartenir à un user.
      */
-    public function equipes()
+    public function teams()
     {
-        return $this->belongsToMany('App\Equipe');
+        return $this->belongsToMany('App\Team')->orderBy('name');
     }
 
-    /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
+    public function leagueAdmin()
     {
-        $this->notify(new ResetPassword($token));
+        return $this->hasMany('App\League');
     }
 
-    public function sendWelcomeMail()
+    public function teamCaptain()
     {
-        // Envoi de mail au nouvel inscris
-        $this->notify(new UserWelcomeMail());
+        return $this->hasMany('App\Team');
     }
-
-    public function isCapitaine($idEquipe)
-    {
-        $isCapitaine = Equipe::where([
-            'id' => $idEquipe,
-            'user_id' => $this->id
-        ])->get();
-
-        return $isCapitaine->count();
+    public function getIsAdminAttribute() {
+      return (!$this->is_client);
     }
 }
-
-/*
-    public function articles()//cf Joueur.php commentaires bas pour voir qu'y faire dans le cas d'articles qui appartiennent à un user
-    {
-        return $this->hasMany('App\Article')
-    }
-    */
-
-//public function equipe()
-//{
-//    return $this->hasOne('App\Equipe');//hasMany pour : un joueur peut avoir pluieurs équipes
-//}

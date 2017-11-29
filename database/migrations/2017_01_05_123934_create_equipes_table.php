@@ -24,8 +24,9 @@ class CreateEquipesTable extends Migration
                 ->references('id')
                 ->on('users');
 
-            $table->timestamps();
             $table->string('logo')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

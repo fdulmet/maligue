@@ -2,99 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Http\Requests\User\EditUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\User\DeleteUserRequest;
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
-    // /**
-    //  * Display a listing of the resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function index()
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Show the form for creating a new resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function create()
-    // {
-    //     //
-    // }
-
-    // *
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show($id)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit($id)
-    // {
-    //     //
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $inputs = $request->all();
-
-        Auth::user()
-            ->update([
-                'nom' => $inputs['nom'],
-                'prenom' => $inputs['prenom'],
-                'email' => $inputs['email'],
-                'tel' => $inputs['tel']
-            ]);
-
-        // Message de l'appli
-        flash('Votre profil a bien été mis à jour')
-            ->success();
-
-        return redirect()
-            ->back();
+    public function edit(EditUserRequest $request) {
     }
+    public function update(UpdateUserRequest $request, $id) {
+      $user = User::find($id);
+      if (!$user) {
+        abort(404);
+      } else {
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+        if ($request->filled('first_name')) {
+          $user->first_name = $request->input('first_name');
+        }
+        if ($request->filled('last_name')) {
+          $user->last_name = $request->input('last_name');
+        }
+        if ($request->filled('phone')) {
+          $user->phone = $request->input('phone');
+        }
+        if ($request->filled('email')) {
+          $user->email = $request->input('email');
+        }
+        if ($request->filled('password')) {
+          $user->password = bcrypt($request->input('password'));
+        }
+        try {
+          $user->save();
+          flash('Votre profil a bien été mis à jour')->success();
+          return back();
+        } catch (QueryException $exception) {
+          return back()->withInput(
+            $request->except('password')
+          );
+        }
+      }
+    }
+    public function delete(DeleteUserRequest $request) {
+      $user = User::find($id);
+      if (!$user) {
+        abort(404);
+      } else {
+        try {
+          $user->delete();
+          flash("L'utilisateur a bien été supprimé")->success();
+          return back();
+        } catch (QueryException $exception) {
+          return back()->withInput(
+            $request->except('password')
+          );
+        }
+      }
+    }
 }

@@ -1,1 +1,0 @@
-Récompense pour le vainqueur de la {{ $nomAuthLigue }} : un maillot floqué par joueur.

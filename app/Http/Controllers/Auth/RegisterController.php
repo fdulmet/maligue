@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\RegisterEvent;
 use App\User;
-use App\Invite;
-use App\Equipe;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -30,11 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/LigueSMP';
-    // protected function redirectTo()
-    // {
-    //     return '/smp';
-    // }
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -55,12 +48,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'ligue' => 'required|max:255',
-            'equipe' => 'required|max:255',
-            'nom' => 'required|max:255',
-            'prenom' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -68,53 +58,14 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return \App\User
      */
     protected function create(array $data)
     {
-        $equipe         = \App\Equipe::where('nom', $data['equipe'])->first();
-        $isCapitaine    = !isset($equipe);
-
-        //Pour remplir la table users
-        $user = User::create([
-            'nom' => $data['nom'],
-            'prenom' => $data['prenom'],
+        return User::create([
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'is_capitaine' => $isCapitaine,
         ]);
-
-        // check si la personne est un invité
-        // si oui on passe la variable à vrai
-        $isInvited = Invite::where('email', $data['email']);
-        if( $isInvited->count() != 0 ) {
-            $isInvited->update([
-                'is_registered' => TRUE
-            ]);
-        }
-
-        //Pour remplir les tables equipe_user et equipes
-        if (isset($equipe)) {
-            $user->equipes()->save($equipe);
-        }
-        else {
-            $user->equipes()->save(new \App\Equipe(['nom' => $data['equipe']]));
-        }
-        $equipe = $user->equipes()->where('nom', $data['equipe'])->get();
-        $ligue  = new \App\Ligue(['nom' => $data['ligue'], 'sport' => 'Foot-à-5']);
-        $ligue->save();
-//        $equipe->ligues()->attach($ligue->id);
-//        $equipe->save();
-
-        return $user;
-
-
-        //Pour remplir les tables equipe_ligue et ligues
-        /*$user->equipes()->save( new \App\Equipe(['nom' => $data['id']]) );
-        $equipe = Equipe::;
-        $equipe->ligues()->save( new \App\Ligue(['nom' => $data['ligue']]) );
-        return $equipe;*/
     }
 }
-//event(new RegisterEvent($user));
-//...?

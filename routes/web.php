@@ -11,133 +11,256 @@
 |
 */
 
-//Route::get('/', 'IndexController@index');
-//pour créer un controller : php artisan make:controller MachinController
-//pour connaître les options dispos de make:controller FAIRE php artisan help make:controller
-
-//Route::get('joueurs', 'JoueursController@index' );// ensuite j'ajoute la public function index (ou create ou...) à JoueursController.php
-//Route::get('joueurs/create', 'JoueursController@create' );//il faut bien mettre la ligne create avant la ligne {id} pour que ce soit d'abord créé
-//Route::get('joueurs/{id}', 'JoueursController@show' );
-//Route::post('joueurs', 'JoueursController@store');
-//Route::get('joueurs/{id}/edit', 'JoueursController@edit');
-
-//Route::resource('joueurs', 'JoueursController');
-//crée automatiquement toutes les routes 'joueurs etc' ci-dessus et d'autres (destroy, update)
-//pour les voir : php artisan route:list
-//mais il faut quand même créer les méthodes dans JoueursController (public function create() etc)
-
-use App\Mail\InviterAmisDansEquipe;
-use App\Http\Controllers;
-
-/**
- * Laravel Auth system
- */
-Auth::routes();
-
-Route::get('/register', function () {
-    return redirect('/login');
+Route::get('/', function () {
+    $user = Auth::user();
+    if ($user) {
+      $team = $user->teams[0];
+      if ($team) {
+        $league = $team->leagues[0];
+        $season = $league->seasons[0];
+        return redirect()
+          ->route('league.season.team.dashboard',
+          [
+            'leagueSlug' => $league->slug,
+            'seasonSlug' => $season->slug,
+            'teamSlug' => $team->slug,
+          ]);
+      }
+    } else {
+      return redirect()
+        ->route('login');
+    }
+  /* show /league/season/team > dashboard */
+  /* if no team > create team */
+    // return view('welcome');
 });
 
-Route::resource('user', 'UserController', ['only' => [
-    'update'
-]]);
-
-// Route::get('login/facebook', 'Auth\FacebookController@redirectToProvider');//Auth\FacebookController c'est le namespace
-// Route::get('login/facebook/callback', 'Auth\FacebookController@handleProviderCallback');
-
-/**
- * Routes pour les saisons
- */
-// Route::prefix('saison')
-//     ->group(function () {
-//         Route::get('{saisonSlug}', function($saisonSlug) {
-//             echo $saisonSlug;
-//         });
-//     });
-
-Route::get('/', 'HomeController@index')
-    ->name('home');
-
-/**
- * Routes pour les ligues
- */
-// route d'inscription, crée une ligue, une equipe et un user
-Route::get('inscription', 'LigueController@ajouter')
-    ->name('ajoutLigue');
-Route::prefix('ligue')
-    ->group(function () {
-        Route::get('afficher/{idLigue}', 'LigueController@index');
-        Route::post('add', 'LigueController@add')
-            ->name('addLigue');
+Route::group([
+  'as' => 'league.',
+  'prefix' => 'league',
+  'middleware' => [
+      'auth:web',
+  ],
+], function () {
+  /*
+  Route::post('/', [
+    'as' => 'store',
+    'uses' => 'LeagueController@store',
+  ]);
+  Route::get('/', [
+    'as' => 'index',
+    'uses' => 'LeagueController@index',
+  ]);
+  Route::get('/create', [
+    'as' => 'create',
+    'uses' => 'LeagueController@create',
+  ]);
+  */
+  Route::group([
+    'prefix' => '{leagueSlug}',
+  ], function() {
+    Route::post('/invite', [
+      'as' => 'invite',
+      'uses' => 'InvitationController@createTeam',
+    ]);
+    Route::group([
+      'as' => 'season.',
+      'prefix' => 'season',
+      'middleware' => [],
+    ], function () {
+      Route::get('/', [
+        'as' => 'index',
+        'uses' => 'SeasonController@index',
+      ]);
+      Route::get('/create', [
+        'as' => 'create',
+        'uses' => 'SeasonController@create',
+      ]);
+      Route::post('/create', [
+        'as' => 'store',
+        'uses' => 'SeasonController@store',
+      ]);
+      Route::group([
+        'prefix' => '{seasonSlug}',
+      ], function () {
+        Route::get('/', [
+          'as' => 'edit',
+          'uses' => 'SeasonController@edit',
+        ]);
+        Route::post('/', [
+          'as' => 'update',
+          'uses' => 'SeasonController@update',
+        ]);
+        Route::get('/delete', [
+          'as' => 'delete',
+          'uses' => 'SeasonController@delete',
+        ]);
+        Route::group([
+          'as' => 'team.',
+          'prefix' => 'team/{teamSlug}',
+          'middleware' => [],
+        ], function () {
+          Route::get('/', [
+            'as' => 'dashboard',
+            'uses'  => 'DashboardController@index',
+          ]);
+          Route::post('/', [
+            'as' => 'attachTeam',
+            'uses' => 'LeagueController@attachTeam',
+          ]);
+          Route::post('delete', [
+            'as' => 'detachTeam',
+            'uses' => 'LeagueController@detachTeam',
+          ]);
+        });
+        Route::group([
+          'as' => 'game.',
+          'prefix' => 'game',
+          'middleware' => [],
+        ], function () {
+          Route::get('/', [
+            'as' => 'index',
+            'uses' => 'GameController@index',
+          ]);
+          Route::get('/create', [
+            'as' => 'create',
+            'uses' => 'GameController@create',
+            ]);
+          Route::post('/create', [
+          'as' => 'store',
+          'uses' => 'GameController@store',
+          ]);
+          Route::group([
+            'prefix' => '{gameId}',
+          ], function() {
+            Route::get('/', [
+            'as' => 'edit',
+            'uses' => 'GameController@edit',
+            ]);
+            Route::put('/', [
+            'as' => 'setScore',
+            'uses' => 'GameController@setScore',
+            ]);
+            Route::post('/', [
+            'as' => 'update',
+            'uses' => 'GameController@update',
+            ]);
+            Route::get('/delete', [
+            'as' => 'delete',
+            'uses' => 'GameController@delete',
+            ]);
+            Route::post('/delay', [
+            'as' => 'delay',
+            'uses' => 'GameController@delay',
+            ]);
+            Route::get('/delay/cancel', [
+            'as' => 'cancelDelay',
+            'uses' => 'GameController@cancelDelay',
+            ]);
+          });
+        });
+      });
     });
-
-
-// Route::get('/smp', 'HomeController@index');
-
-Route::post('/entrerscore', 'EntrerScoreController@entrerscore');
-
-
-/**
- * Routes pour les invitations
- */
-Route::prefix('invitation')
-    ->group(function () {
-
-        // Invitation à rejoindre une equipe
-        Route::post('rejoindreEquipe', 'InvitationController@rejoindreEquipe')
-            ->name('inviterAmisDansEquipe');
-
-        // Invitation à créer une equipe
-        Route::post('creerEquipe', 'InvitationController@creerEquipe')
-            ->name('inviterAmiACreerEquipe');
+  });
+});
+Route::group([
+  'as' => 'team.',
+  'prefix' => 'team',
+  'middleware' => [
+      'auth:web',
+  ]
+], function () {
+  /*
+  Route::get('create', [
+    'as' => 'create',
+    'uses' => 'TeamController@create',
+  ]);
+  Route::post('create', [
+    'as' => 'store',
+    'uses' => 'TeamController@store',
+  ]);
+  */
+  Route::get('/', [
+    'as' => 'index',
+    'uses' => 'TeamController@index',
+  ]);
+  Route::group([
+    'prefix' => '{teamSlug}',
+  ], function() {
+    Route::get('/', [
+      'as' => 'edit',
+      'uses' => 'TeamController@edit',
+    ]);
+    Route::post('/', [
+      'as' => 'update',
+      'uses' => 'TeamController@update',
+    ]);
+    Route::post('invite', [
+      'as' => 'invite',
+      'uses' => 'InvitationController@createPlayer',
+    ]);
+    Route::get('delete', [
+      'as' => 'delete',
+      'uses' => 'TeamController@delete',
+    ]);
+    Route::group([
+      'prefix' => 'player'
+    ], function() {
+      Route::post('/', [
+        'as' => 'attachPlayer',
+        'uses' => 'TeamController@attachPlayer',
+      ]);
+      Route::get('{playerId}/delete', [
+        'as' => 'detachPlayer',
+        'uses' => 'TeamController@detachPlayer',
+      ]);
     });
+  });
 
-/*Route::post('', function() {
-    Mail::to('lolo@gmail.com')->send(new InviterAmisDansEquipe);
-})->name('inviterAmisDansEquipe');*/
+});
+Route::group([
+  'as' => 'user.',
+  'prefix' => 'user/{userId}',
+  'middleware' => [
+      'auth:web',
+  ]
+], function () {
+  /*
+  Route::get('/', [
+    'as' => 'edit',
+    'uses' => 'UserController@edit',
+  ]);
+  */
+  Route::post('/', [
+    'as' => 'update',
+    'uses' => 'UserController@update',
+  ]);
+  Route::post('/delete', [
+    'as' => 'delete',
+    'uses' => 'UserController@delete',
+  ]);
+});
+Route::get('/confirm/{token}', [
+  'as' => 'invitation.confirm',
+  'uses' => 'InvitationController@confirm',
+]);
+Route::post('/confirm/{token}', [
+  'as' => 'invitation.register',
+  'uses' => 'InvitationController@register',
+]);
 
-/*Test editer un form :
->>>>>>> 3944fb3db548d55bcc717bed683229ba67e2bab7
-Route::get('tests', 'TestController@index');
-Route::get('tests/create', 'TestController@create' );
-Route::get('tests/{id}', 'TestController@show' );
-Route::post('tests', 'TestController@store');
-Route::get('tests/{id}/edit', 'TestController@edit');*/
+// Auth::routes();
+// Detailled authentication Routes...
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-//Route::get('/test', 'TestController@test');
+// Registration Routes...
+// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::post('register', 'Auth\RegisterController@register');
 
-//Route::get('/', 'HomeController@show');
-//Route::get('/home', 'HomeController@show');
-
-/*Route::get('partials/contact', function () {
-    $name = 'François Dulmet';
-    return view('partials/contact')->with('name', $name);
-    //on peut écrire partials.contact pour une écriture un peu orientée objet (~?)
-});*/
-
-//Route::get('tests', 'ExemplesController@content');
-//on peut aussi faire sans passer par controller comme ça : (mais en pratique on le fait pas)
-//Route::get('coordonnees_capitaines', function () {
-//    return view('coordonnees_capitaines');
-//});
-
-/*On peut faire avec un array pour plusieurs variables :
- * Route::get('partials/contact', function () {
-    return view('partials.contact')->with([
-        'first' => 'Marie',
-        'last' => 'Dupont'
-    ])
-*/
-//et on met dans contact.blade.php : <p>La meuf machin s'appelle {{ $first }} {{$last}}</p>
-
-// et y'a encore 2 autres possibilités à la fin de la vidéo
-// https://laracasts.com/series/laravel-5-fundamentals/episodes/4?autoplay=true
-// la dernière étant visiblement la plus clean...
-
-
-
-
-
-
-
-
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');

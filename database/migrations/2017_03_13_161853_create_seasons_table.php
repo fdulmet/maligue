@@ -22,6 +22,9 @@ class CreateSeasonsTable extends Migration
             $table->foreign('ligue_id')
                 ->references('id')
                 ->on('ligues');
+            $table->date('date_start')->nullable();
+            $table->date('date_end')->nullable();
+            $table->boolean('is_archived')->nullable();
             $table->timestamps();
         });
     }

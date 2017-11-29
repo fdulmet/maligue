@@ -13,13 +13,6 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
-    /*Notice that Mailtrap is missing here.
-    It uses SMTP (du coup dans .env on a MAIL_DRIVER=smtp (et donc pas MAIL_DRIVER=mailgun par exemple))
-    and is provided as default in every Laravel installation because it is made for testing purposes.*/
-
-    'mandrill' => [
-        'secret' => env('MANDRILL_KEY'),
-    ],
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -40,12 +33,6 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
-    ],
-
-    'facebook' => [
-        'client_id' => '1089588914497148',
-        'client_secret' => '563d81a98dbb7c42c963e94e463cda85',
-        //'redirect' => 'https://maligue.fr/',
     ],
 
 ];

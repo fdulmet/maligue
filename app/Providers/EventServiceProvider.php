@@ -13,16 +13,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        // Invitation d'une nouvelle personne
-        'App\Events\InviteNewPersons' => [
-            'App\Listeners\SendEmailToNewPersons',
-            'App\Listeners\SendEmailToInviter',
-            'App\Listeners\InsertEmailInInvitesTable'
+        'App\Events\InvitationCreatedEvent' => [
+            'App\Listeners\SendInvitationListener',
+            'App\Listeners\SendInvitationConfirmationListener',
         ],
-        // Une personne s'inscrit après
-        // avoir reçu une invite
-        'App\Events\RegisterAfterInvitation' => [
-            // 'App\Listeners\SendEmailToNewPerson'
+        'App\Events\InvitationAcceptedEvent' => [
+            'App\Listeners\SendInvitationFeedbackListener',
         ],
     ];
 
@@ -35,6 +31,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //à utiliser si on veut générer manuellement des events
+        //
     }
 }

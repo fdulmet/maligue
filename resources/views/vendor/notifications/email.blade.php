@@ -6,7 +6,7 @@
 @if ($level == 'error')
 # Whoops!
 @else
-# Hello!
+# Hello !
 @endif
 @endif
 
@@ -37,15 +37,14 @@
 
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)
-{{ $line }}
-
+{!! $line  !!}
 @endforeach
 
 <!-- Salutation -->
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-Footballistiquement,<br>{{ config('app.name') }}
+À très bientôt sur les terrains !<br>
 @endif
 
 <!-- Subcopy -->
