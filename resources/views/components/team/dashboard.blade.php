@@ -68,12 +68,12 @@
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisRejoindre" id="bouton_invitation_rejoindre">
                     Inviter à rejoindre {{ $team->name }}
                 </button>
+                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#managePlayers" id="bouton_managePlayers">
+                    Joueurs
+                </button>
                 @if(Auth::user()->isAdmin || Auth::user()->id === $team->captain->id)
                     <button type="button" class="btn btn-green" data-toggle="modal" data-target="#updateCapitaine" id="bouton_updateCapitaine">
                         Modifier le capitaine
-                    </button>
-                    <button type="button" class="btn btn-green" data-toggle="modal" data-target="#managePlayers" id="bouton_managePlayers">
-                        Gérer les joueurs
                     </button>
                 @endif
                 @if(Auth::user()->isAdmin)
