@@ -105,7 +105,6 @@
 $(function () {
   $(document).ready(function (){
     var startPosition = $('#calendrierLeagueBreakpoint').offset().top;
-    console.log(startPosition);
     $("#leaguecalendar").scrollTop(startPosition - 350);
   })
 });
