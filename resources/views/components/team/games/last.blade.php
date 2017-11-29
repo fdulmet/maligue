@@ -17,14 +17,27 @@
           </td>
           <td>{{ $game->teams[0]->name }}</td>
           <td class="tdChampsButs">
+            @php
+              $goalClass = '';
+              if (isset($game->teams[0]->pivot->goals) && isset($game->teams[1]->pivot->goals)) {
+                if($game->teams[0]->id === $team->id) {
+                  $myTeamGoal = $game->teams[0]->pivot->goals;
+                  $otherTeamGoal = $game->teams[1]->pivot->goals;
+                } else {
+                  $myTeamGoal = $game->teams[1]->pivot->goals;
+                  $otherTeamGoal = $game->teams[0]->pivot->goals;
+                }
+                if ($myTeamGoal > $otherTeamGoal) {
+                  $goalClass = 'badge-success';
+                } else if ($myTeamGoal < $otherTeamGoal) {
+                  $goalClass = 'badge-danger';
+                } else {
+                  $goalClass = 'badge-default';
+                }
+              }
+            @endphp
               @if (isset($game->teams[0]->pivot->goals))
-                @if($game->teams[0]->pivot->goals > $game->teams[1]->pivot->goals)
-                  <span class="badge badge-lg badge-success">{{ $game->teams[0]->pivot->goals }}</span>
-                @elseif($game->teams[0]->pivot->goals < $game->teams[1]->pivot->goals)
-                  <span class="badge badge-lg badge-danger">{{ $game->teams[0]->pivot->goals }}</span>
-                @else
-                  <span class="badge badge-lg badge-default">{{ $game->teams[0]->pivot->goals }}</span>
-                @endif
+                <span class="badge badge-lg {{$goalClass}}">{{ $game->teams[0]->pivot->goals }}</span>
               @else
                   @if(Auth::user()->isAdmin || Auth::user()->id === $team->captain->id)
                     <input type="text" name="goal[{{$game->teams[0]->id}}]">
@@ -34,13 +47,7 @@
           <td>-</td>
           <td class="tdChampsButs">
             @if (isset($game->teams[1]->pivot->goals))
-              @if($game->teams[1]->pivot->goals > $game->teams[0]->pivot->goals)
-                <span class="badge badge-lg badge-success">{{ $game->teams[1]->pivot->goals }}</span>
-              @elseif($game->teams[1]->pivot->goals < $game->teams[0]->pivot->goals)
-                <span class="badge badge-lg badge-danger">{{ $game->teams[1]->pivot->goals }}</span>
-              @else
-                <span class="badge badge-lg badge-default">{{ $game->teams[1]->pivot->goals }}</span>
-              @endif
+              <span class="badge badge-lg {{$goalClass}}">{{ $game->teams[1]->pivot->goals }}</span>
             @else
                 @if(Auth::user()->isAdmin || Auth::user()->id === $team->captain->id)
                   <input type="text" name="goal[{{$game->teams[1]->id}}]">
