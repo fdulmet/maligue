@@ -60,6 +60,6 @@ class League extends Model
 
     public function seasons()
     {
-        return $this->hasMany('App\Season')->orderBy('name');
+        return $this->hasMany('App\Season')->orderBy('created_at', 'desc');
     }
 }
