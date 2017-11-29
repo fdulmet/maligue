@@ -15,9 +15,10 @@ class CreateTeamInvitationRequest extends FormRequest
      */
     public function authorize()
     {
-        $user = Auth::user();
-        $league = League::where('slug', $this->route('leagueSlug'))->first();
-        return ($user && $league && ($user->id === $league->owner->id || $user->isAdmin));
+        // $user = Auth::user();
+        // $league = League::where('slug', $this->route('leagueSlug'))->first();
+        // return ($user && $league && ($user->id === $league->owner->id || $user->isAdmin));
+        return Auth::user();
     }
 
     /**
