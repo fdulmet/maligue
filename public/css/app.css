@@ -3808,6 +3808,7 @@ h1 {
   display: none;
 }
 
+.btn-yellow,
 .btn-orange,
 .btn-green {
   width: auto;
@@ -3816,6 +3817,9 @@ h1 {
   display: inline-block;
 }
 
+.btn-yellow:hover,
+.btn-yellow:focus,
+.btn-yellow:visited,
 .btn-orange:hover,
 .btn-orange:focus,
 .btn-orange:visited,
@@ -3826,11 +3830,15 @@ h1 {
   text-decoration: none;
 }
 
+.btn-yellow a,
 .btn-orange a,
 .btn-green a {
   color: #fff;
 }
 
+.btn-yellow a:hover,
+.btn-yellow a:focus,
+.btn-yellow a:visited,
 .btn-orange a:hover,
 .btn-orange a:focus,
 .btn-orange a:visited,
@@ -3839,6 +3847,24 @@ h1 {
 .btn-green a:visited {
   color: #fff;
   text-decoration: none;
+}
+
+.btn-yellow {
+  background: #fff;
+  border: 1px solid #f0ad4e;
+  color: #f0ad4e;
+}
+
+.btn-yellow:hover,
+.btn-yellow.hover,
+.btn-yellow.active,
+.btn-yellow:active,
+.btn-yellow:focus,
+.btn-yellow:visited {
+  color: #f0ad4e;
+  background: #fff;
+  -webkit-box-shadow: inset 0px 0px 1px 1px #cbe4d1;
+          box-shadow: inset 0px 0px 1px 1px #cbe4d1;
 }
 
 .btn-orange {

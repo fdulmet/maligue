@@ -209,6 +209,7 @@ h1 {
   display: none;
 }
 
+.btn-yellow,
 .btn-orange,
 .btn-green {
   width: auto;
@@ -231,6 +232,16 @@ h1 {
   }
 }
 
+.btn-yellow {
+  background: #fff;
+  border: 1px solid #f0ad4e;
+  color: #f0ad4e;
+  &:hover,&.hover,&.active,&:active,&:focus,&:visited {
+    color: #f0ad4e;
+    background: #fff;
+    box-shadow: inset 0px 0px 1px 1px #cbe4d1;
+  }
+}
 .btn-orange {background: #E24242;}
 .btn-green {
   background: #fff;
