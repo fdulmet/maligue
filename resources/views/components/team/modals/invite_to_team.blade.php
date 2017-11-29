@@ -11,6 +11,7 @@ inviterAmisRejoindre
         <div class="col-md-12">
           <input id="invite_team_input" type="text" class="form-control" name="emails" data-role="tagsinput"
                  placeholder="hatembenarfa@gmail.com, antoinegriezmann@gmail.com, etc" required>
+          <i>Chaque mail doit être séparé par une virgule. Seuls les mails valides (et mis en forme comme tel) seront utilisés</i>
         </div>
     </div>
     <div class="form-group">
