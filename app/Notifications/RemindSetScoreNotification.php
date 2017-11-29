@@ -51,9 +51,9 @@ class RemindSetScoreNotification extends Notification
         $otherTeam = $this->otherTeam;
         $when = new \Carbon\Carbon ($game->when);
         return (new MailMessage)
-          ->subject('[maligue.fr] - Votre équipe a-t-elle gagné son dernier match ?')
+          ->subject('[maligue.fr] - Un score n’a pas encore été entré')
           ->line("Votre équipe {$myTeam->name} a rencontré {$otherTeam->name} le {$when->format('d/m/Y à G:i')}")
-          ->line("Mais pour le moment, aucune des deux équipes n'a rentré le résultat de ce match")
+          ->line("Pour le moment, aucune des deux équipes n'a rentré le score de ce match")
           ->action('Entrer le score', url('/'));
     }
 
