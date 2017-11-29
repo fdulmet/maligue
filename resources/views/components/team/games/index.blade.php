@@ -4,9 +4,11 @@ $now = \Carbon\Carbon::now();
 $nextGames = $games->filter(function ($value, $key) use ($now) {
     return $now->lt($value->when);
 });
+$nextGames = $nextGames->sortBy('when')->values()->all();
 $lastGames = $games->filter(function ($value, $key) use ($now) {
     return $now->gt($value->when);
 });
+$lastGames = $lastGames->sortBy('when')->values()->all();
 @endphp
 <div class="row">
     <div class="col">
