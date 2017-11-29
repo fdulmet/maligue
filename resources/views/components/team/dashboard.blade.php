@@ -76,11 +76,9 @@
                         Modifier le capitaine
                     </button>
                 @endif
-                @if(Auth::user()->isAdmin)
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#inviterAmisCreer" id="bouton_invitation_creer">
                     Inviter à créer une équipe
                 </button>
-                @endif
             </div>
         </div>
     </div>
