@@ -9,21 +9,17 @@ updateTeamLogo
 @endslot
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-
-
-            <div class="form-group">
-              <div class="fileupload fileupload-new" data-provides="fileupload">
-                  <span class="btn btn-info btn-file">
-                  <span class="fileupload-new">Choisir l'image</span>
-                  <span class="fileupload-exists">Choisir une autre image</span>
-                      <input name="logo" type="file">
-                  </span>
-                  <span class="fileupload-preview"></span>
-                  <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-              </div>
-            </div>
-
-        </form>
+        <div class="form-group">
+          <div class="fileupload fileupload-new" data-provides="fileupload">
+              <span class="btn btn-info btn-file">
+              <span class="fileupload-new">Choisir l'image</span>
+              <span class="fileupload-exists">Choisir une autre image</span>
+                  <input name="logo" type="file">
+              </span>
+              <span class="fileupload-preview"></span>
+              <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+          </div>
+        </div>
     </div>
 </div>
 @slot('footer')
@@ -34,3 +30,4 @@ updateTeamLogo
 </div>
 @endslot
 @endcomponent
+</form>

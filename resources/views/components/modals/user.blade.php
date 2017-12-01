@@ -5,8 +5,6 @@ profilJoueur
 @slot('title')
   Profil Joueur
 @endslot
-<div class="modal-dialog">
-
   <form class="form-horizontal" role="form" method="POST" action="{{ route('user.update', ['userId' => Auth::user()->id])}}">
       {{ csrf_field() }}
       <div class="row form-group{{ $errors->has('last_name') ? ' has-danger' : '' }}">
@@ -71,5 +69,4 @@ profilJoueur
       </div>
       <button type="submit" class="btn btn-orange btn-block">Mettre à jour</button>
     </form>
-  </div>
   @endcomponent
