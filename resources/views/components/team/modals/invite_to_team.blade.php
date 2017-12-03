@@ -11,6 +11,7 @@ inviterAmisRejoindre
         <div class="col-md-12">
           <input id="invite_team_input" type="text" class="form-control" name="emails" data-role="tagsinput"
                  placeholder="hatembenarfa@gmail.com, antoinegriezmann@gmail.com, etc" required>
+          <i>Mettre une virgule à la fin de chaque email (même le dernier) pour qu’il soit pris en compte</i>
         </div>
     </div>
     <div class="form-group">

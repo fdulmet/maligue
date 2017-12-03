@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "edaf34a9dc11ae9c14f4f71dbceed20f",
-    "content-hash": "3e943114bf35f5321b559b0f832500d6",
+    "hash": "4d3f4841b3a3a827cdc569d921a2d48f",
+    "content-hash": "14fab1d6f4e8ccc8a1521fa78ed46649",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -733,6 +733,51 @@
                 "trusted proxy"
             ],
             "time": "2017-06-15 17:19:42"
+        },
+        {
+            "name": "genealabs/laravel-caffeine",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/laravel-caffeine.git",
+                "reference": "b1ab964f2f78463f58f003181e5eb30d3a9fba01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-caffeine/zipball/b1ab964f2f78463f58f003181e5eb30d3a9fba01",
+                "reference": "b1ab964f2f78463f58f003181e5eb30d3a9fba01",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "5.1.* || 5.3.* || 5.4.* || 5.5.*",
+                "illuminate/support": "5.1.* || 5.3.* || 5.4.* || 5.5.*",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GeneaLabs\\LaravelCaffeine\\Providers\\LaravelCaffeineService"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeneaLabs\\LaravelCaffeine\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Bronner",
+                    "email": "hello@genealabs.com"
+                }
+            ],
+            "description": "Keeping Your Laravel Forms Awake",
+            "time": "2017-09-01 01:08:45"
         },
         {
             "name": "jakub-onderka/php-console-color",

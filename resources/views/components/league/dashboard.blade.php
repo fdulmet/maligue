@@ -58,7 +58,7 @@
                 <button type="button" class="btn btn-green" data-toggle="modal" data-target="#reglesReports">
                     Règlement pour les reports
                 </button>
-                <button type="button" class="btn btn-green" data-toggle="modal" data-target="#reward">
+                <button type="button" class="btn btn-yellow" data-toggle="modal" data-target="#reward">
                     Récompenses
                 </button>
                 @if(Auth::user()->isAdmin || Auth::user()->id === $league->owner->id)

@@ -90,7 +90,7 @@ class GameController extends Controller
       foreach($game->teams as $team) {
         $game->teams()->updateExistingPivot($team->id, ['goals' => $goals[$team->id]]);
       }
-      flash('Le score du match a bien été mis à jour')->success();
+      flash('Le score du match a bien enregistré')->success();
       return back();
     }
     public function edit(EditGameRequest $request, $leagueSlug, $seasonSlug, $gameId) {

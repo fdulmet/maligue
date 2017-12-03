@@ -39,7 +39,16 @@
                             <a class="btn btn-link" href="{{ url('/password/reset') }}">Mot de passe oublié ?</a>
                         </div>
                     </div>
-
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-8 text-center">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" name='remember' class="form-check-input">
+                              Se souvenir de moi
+                            </label>
+                          </div>
+                        </div>
+                    </div>
 
                     <div class="form-group row">
                         <div class="offset-sm-2 col-sm-8 text-center">
