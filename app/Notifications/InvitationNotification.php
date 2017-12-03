@@ -46,7 +46,7 @@ class InvitationNotification extends Notification
         $mail = new MailMessage;
         if ($invitation->team) {
           $mail->subject('[maligue.fr] - Invitation à rejoindre une équipe')
-          ->line($invitation->fromUser->first_name . ' ' . $invitation->fromUser->last_name . ' vous invite à rejoindre une équipe.')
+          ->line($invitation->fromUser->first_name . ' ' . $invitation->fromUser->last_name . ' vous invite à rejoindre son équipe.')
           ->line('Equipe : ' . $invitation->team->name)
           ->line('Ligue : ' . $invitation->team->leagues[0]->name)
           ->line('Sport : ' . $invitation->team->leagues[0]->sport);

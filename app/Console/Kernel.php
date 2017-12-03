@@ -35,8 +35,13 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('invitation:cleanup')->daily();
-        $schedule->command('remind:score')->daily();
-        $schedule->command('remind:game')->daily();
+        $schedule->command('remind:score')->daily()->skip(function () {
+          return ((int) date('i') > (int) env('CRON_BREAKPOINT', 40));
+        });
+
+        $schedule->command('remind:game')->daily()->skip(function () {
+          return ((int) date('i') > (int) env('CRON_BREAKPOINT', 40));
+        });
         $schedule->command('queue:restart')->hourly();
         $schedule->command('queue:work --tries=3 --sleep=10')->hourly()->withoutOverlapping();
         $this->scheduleRunsHourly($schedule);
