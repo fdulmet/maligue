@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'mailjet' => [
+      'key' => env('MAILJET_APIKEY'),
+      'secret' => env('MAILJET_APISECRET'),
+    ]
+
 ];
