@@ -32,7 +32,7 @@ class SendInvitationConfirmationListener implements ShouldQueue
           $user = $event->invitation->fromUser;
           $user->notify(new InvitationSentNotification($event->invitation));
         } catch(\Exception $e) {
-          \Storage::append('file.log', $e);
+          \Log::info($e->getMessage());
         }
     }
 }

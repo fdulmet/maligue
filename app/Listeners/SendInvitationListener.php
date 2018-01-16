@@ -34,7 +34,7 @@ class SendInvitationListener implements ShouldQueue
           Notification::route('mail', $event->invitation->email)
             ->notify(new InvitationNotification($event->invitation));
         } catch(\Exception $e) {
-          \Storage::append('file.log', $e);
+          \Log::info($e->getMessage());
         }
     }
 }
