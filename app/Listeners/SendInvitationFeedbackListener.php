@@ -33,7 +33,7 @@ class SendInvitationFeedbackListener implements ShouldQueue
         $user = $event->invitation->fromUser;
         $user->notify(new InvitationAcceptedNotification($event->invitedUser));
       } catch(\Exception $e) {
-        \Storage::append('file.log', $e);
+        \Log::info($e->getMessage());
       }
     }
 }
